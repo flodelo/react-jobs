@@ -1,0 +1,40 @@
+### Path for  test
+GET http://localhost:5050/hello
+
+### Find all jobs
+GET http://localhost:5050/jobs
+
+### Find one job
+GET http://localhost:5050/job/1
+
+### Add one job
+POST http://localhost:5050/jobs/save
+Content-Type: application/json
+
+{
+     "title": "Offre en télétravail",
+     "description" : "Pleines de bonnes choses",
+     "company" : "ME",
+     "technology" : "React bien sûr",
+     "locality" : "Île de France",
+     "contract" : "CDI",
+     "salary" : "avec primes",
+     "user_id" : 1
+}
+
+### Update one job
+PATCH http://localhost:5050/jobs/update
+Content-Type: application/json
+
+{
+     "id": 3,
+     "title": "Junior Developer",
+     "description" : "Pleines de bonnes choses en télétravail",
+     "company" : "ME",
+     "technology" : "React bien sûr",
+     "locality" : "Cher",
+     "contract" : "CDI",
+     "salary" : "avec primes",
+     "user_id" : 1
+
+}

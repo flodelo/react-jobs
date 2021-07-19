@@ -53,6 +53,59 @@ class Job {
             }
         }
     }
+
+     /**
+     * Retrieves a job  from database
+     * @static
+     * @async
+     * @param {number} id 
+     * @returns {Job} the instance identified with its id
+     * @throws {Error} an error object
+     */
+      static async findOne(id) {
+        try {
+            const {rows} = await database.query('SELECT * FROM job WHERE id=$1', [id]);
+            if (rows[0]) {
+                return new Job(rows[0]);
+            } else {
+                throw new JobError(id);
+            }
+         } catch (error) {
+            if (error.detail) {
+                throw new Error(error.detail);
+            } else {
+                throw error;
+            }
+        }
+    }
+
+   /**
+    * Adds or updates an instance of Job in database
+    * @async
+    * @returns {Job} the inserted or updated instance
+    * @throws {Error} An Error object
+    */
+    async save() {
+        try {
+            if (this.id) {
+                await database.query('SELECT update_job($1)', [this]);
+            } else {
+                //it is important to name the result here, else wise 
+                //postgres will do it automatically and we won't be able 
+                //to guess
+                const {rows} = await database.query('SELECT id FROM add_job($1)', [this]);
+                this.id = rows[0].id;
+                return this;
+            }
+        } catch (error) {
+            console.log(error);
+            if (error.detail) {
+                throw new Error(error.detail);
+            } else {
+                throw error;
+            }
+        }
+   } 
 };
 
 module.exports = Job;
