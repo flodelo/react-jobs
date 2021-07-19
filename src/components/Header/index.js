@@ -20,6 +20,7 @@ const Header = () => {
       </Button>
       <Button size={responsiveSize} color="blue.500" mr="2" >Log in</Button>
       <Menu>
+        {/* Creation du menu burger avec props */}
         <MenuButton 
         size={responsiveSize}
         as={IconButton}
