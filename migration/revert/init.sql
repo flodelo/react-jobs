@@ -2,6 +2,6 @@
 
 BEGIN;
 
-DROP TABLE user, job;
+DROP TABLE "user", job;
 
 COMMIT;
