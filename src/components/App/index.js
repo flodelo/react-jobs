@@ -1,14 +1,19 @@
 // == Import npm
-import React from 'react';
+import * as React from "react";
+import { ChakraProvider } from "@chakra-ui/react";
 
 // == Import
 import './styles.css';
 
+import Header from '../Header';
+
 // == Composant
-const App = () => (
+const App = ({ Component }) => (
+  <ChakraProvider>
   <div className="app">
-    <h1>React-jobs.fr</h1>
+    <Header />
   </div>
+  </ChakraProvider>
 );
 
 // == Export
