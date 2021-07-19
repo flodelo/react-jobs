@@ -15,10 +15,26 @@ const Header = () => {
     </Box>
     <Spacer />
     <Box>
-      <Button size={responsiveSize} color="blue.500" variant="outline" mr="2">
+      <Button 
+      display={{
+        sm: "none",
+        md: "inline-block",
+        lg: "inline-block",
+      }}
+      size={responsiveSize} 
+      color="blue.500" 
+      variant="outline" mr="2">
         Sign Up
       </Button>
-      <Button size={responsiveSize} color="blue.500" mr="2" >Log in</Button>
+      <Button 
+      display={{
+        sm: "none",
+        md: "inline-block",
+        lg: "inline-block",
+      }}
+      size={responsiveSize} 
+      color="blue.500" 
+      mr="2" >Log in</Button>
       <Menu>
         {/* Creation du menu burger avec props */}
         <MenuButton 
