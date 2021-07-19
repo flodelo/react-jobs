@@ -1,5 +1,7 @@
 import React from 'react';
-import { Flex, Spacer, Box, Heading, Button, useBreakpointValue } from "@chakra-ui/react";
+import { Flex, Spacer, Box, Heading, Button, IconButton, Menu, MenuButton, useBreakpointValue } from "@chakra-ui/react";
+
+import { HamburgerIcon } from '@chakra-ui/icons';
 
 const Header = () => {
 
@@ -17,7 +19,15 @@ const Header = () => {
         Sign Up
       </Button>
       <Button size={responsiveSize} color="blue.500" mr="2" >Log in</Button>
-      <Button size={responsiveSize} color="black" variant="ghost">Menu</Button>
+      <Menu>
+        <MenuButton 
+        size={responsiveSize}
+        as={IconButton}
+        aria-label="Options"
+        icon={<HamburgerIcon />}
+        color="blue.500"
+        />
+      </Menu>
     </Box>
   </Flex>
 )}
