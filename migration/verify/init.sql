@@ -2,6 +2,7 @@
 
 BEGIN;
 
--- XXX Add verifications here.
+SELECT id FROM user WHERE false;
+SELECT id FROM job WHERE false;
 
 ROLLBACK;
