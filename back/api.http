@@ -5,19 +5,19 @@ GET http://localhost:5050/hello
 GET http://localhost:5050/jobs
 
 ### Find one job
-GET http://localhost:5050/job/1
+GET http://localhost:5050/job/4
 
 ### Add one job
 POST http://localhost:5050/jobs/save
 Content-Type: application/json
 
 {
-     "title": "Offre en télétravail",
-     "description" : "Pleines de bonnes choses",
-     "company" : "ME",
+     "title": "Poste React Junior",
+     "description" : "Lorem",
+     "company" : "Dom Einhorn",
      "technology" : "React bien sûr",
-     "locality" : "Île de France",
-     "contract" : "CDI",
+     "locality" : "Normandie",
+     "contract" : "CDD",
      "salary" : "avec primes",
      "user_id" : 1
 }
@@ -27,14 +27,14 @@ PATCH http://localhost:5050/jobs/update
 Content-Type: application/json
 
 {
-     "id": 3,
-     "title": "Junior Developer",
-     "description" : "Pleines de bonnes choses en télétravail",
-     "company" : "ME",
-     "technology" : "React bien sûr",
+     "id": 8,
+     "title": "Poste React Junior",
+     "description" : "Café à volonté",
+     "company" : "Dom Einhorn",
+     "technology" : "React et peut-être du PHP",
      "locality" : "Cher",
-     "contract" : "CDI",
-     "salary" : "avec primes",
+     "contract" : "stage",
+     "salary" : "3 oeufs et une pomme",
      "user_id" : 1
 
 }
