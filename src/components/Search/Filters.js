@@ -13,12 +13,12 @@ import {
 } from '@chakra-ui/react';
 
 const Filters = () => (
-  <div>
-    <Accordion allowToggle>
+  <>
+    <Accordion allowToggle justifyContent="center" w="25%" m="auto">
       <AccordionItem>
         <h2>
           <AccordionButton>
-            <Box flex="1" textAlign="center">
+            <Box flex="1" textAlign="center" justify="center">
               Recherche avancée
             </Box>
             <AccordionIcon />
@@ -33,7 +33,7 @@ const Filters = () => (
       </AccordionItem>
     </Accordion>
 
-  </div>
+  </>
 );
 
 export default Filters;

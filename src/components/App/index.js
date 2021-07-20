@@ -6,8 +6,9 @@ import { ChakraProvider } from '@chakra-ui/react';
 import './styles.css';
 
 import Header from '../Header';
+import JobDetails from '../JobDetails';
 import Search from '../Search';
-import List from '../List';
+import JobsList from '../JobsList';
 
 
 // == Composant
@@ -16,7 +17,7 @@ const App = ({ Component }) => (
     <div className="app">
       <Header />
       <Search />
-      <List />
+      <JobsList />
     </div>
   </ChakraProvider>
 );
