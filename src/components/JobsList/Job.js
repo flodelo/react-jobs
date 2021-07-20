@@ -8,7 +8,7 @@ import PropTypes from 'prop-types';
 
 export default function Job({ job }) {
   return (
-    <Box bg="white" p={5} shadow="md" borderWidth="1px" w="100%">
+    <Box bg="white" p={5} shadow="md" borderWidth="1px" w="90%" maxW="800px">
       <Heading as="h2" size="md">{job.description}</Heading>
       <Heading as="h3" size="sm" color="blue.500">{job.company}</Heading>
       <span>{job.technology.map((tech) => (<Badge colorScheme="gray" mr="1" key={tech}>{tech}</Badge>))}</span>
