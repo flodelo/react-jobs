@@ -1,27 +1,25 @@
 import React, { useState, useEffect } from 'react';
 
 import {
-  ListItem, UnorderedList,
+  VStack, StackDivider,
 } from '@chakra-ui/react';
 
 import Job from './Job';
 
 import data from '../../data/jobs.json';
 
-
 export default function JobsList() {
+  const [jobs, setJobs] = useState([]);
 
-const [jobs, setJobs] = useState([]);
-
-useEffect(() => {
+  useEffect(() => {
     setJobs(data);
-}, []);
+  }, []);
 
-console.log(jobs);
+  console.log(jobs);
 
-return (
-    <UnorderedList justify="center">
-      <ListItem>{jobs.map((job) => <Job job={job} key={job.id} />)}</ListItem>
-    </UnorderedList>
+  return (
+    <VStack p={2} bg="gray.50" spacing={4} divider={<StackDivider borderColor="gray.200" align="stretch" />}>
+      {jobs.map((job) => <Job job={job} key={job.id} />)}
+    </VStack>
   );
 }
