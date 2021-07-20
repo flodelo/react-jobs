@@ -9,12 +9,13 @@ import Filters from './Filters';
 
 const Search = () => (
   <>
-    <HStack spacing="10px" justify="center">
+    <HStack spacing="10px" justify="center" mr={10} ml={10} mb={5}>
       <Input
         variant="outline"
+        display="flex"
         placeholder="Recherche par mots-clés..."
-        m="5"
-        w="700px"
+        
+        w="500px"
       />
       <Button color="blue.500">Go</Button>
     </HStack>

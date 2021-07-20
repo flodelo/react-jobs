@@ -11,7 +11,7 @@ const Header = () => {
   // Le hook useBreakpointValue répond également au redimensionnement de la fenêtre et renvoie la valeur appropriée pour la nouvelle taille de la fenêtre
 
   return (
-    <Flex>
+    <Flex p={10}>
       <Box p="2">
         <Heading size={responsiveSize}><span role="img" aria-label="atom emoji">⚛</span> React-jobs.fr</Heading>
       </Box>
