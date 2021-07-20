@@ -7,6 +7,8 @@ import './styles.css';
 
 import Header from '../Header';
 import Search from '../Search';
+import List from '../List';
+
 
 // == Composant
 const App = ({ Component }) => (
@@ -14,6 +16,7 @@ const App = ({ Component }) => (
     <div className="app">
       <Header />
       <Search />
+      <List />
     </div>
   </ChakraProvider>
 );

@@ -1,9 +1,9 @@
 import React from 'react'
 
-export default function list() {
+export default function JobList() {
   return (
     <div>
-      
+      <p>résultats</p>
     </div>
   )
 }
