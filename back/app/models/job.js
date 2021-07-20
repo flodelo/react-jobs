@@ -23,8 +23,8 @@ class JobError extends Error {
 class Job {
 
     // we're referencing the custom error as static property of the model 
-    //to test the class of an error in the controller without having to 
-    //import the class of the error
+    // to test the class of an error in the controller without having to 
+    // import the class of the error
     
     static JobError = JobError;
 
@@ -55,7 +55,7 @@ class Job {
     }
 
      /**
-     * Retrieves a job  from database
+     * Retrieves a job from database
      * @static
      * @async
      * @param {number} id 
@@ -105,7 +105,31 @@ class Job {
                 throw error;
             }
         }
-   } 
+   }
+     /**
+     * Deletes a job from database
+     * @static
+     * @async
+     * @param {number} id 
+     * @returns {Job} the deleted instance
+     * @throws {Error} an error object
+     */
+    static async findOneAndDelete(id) {
+        try {
+            const {rows} = await database.query('SELECT * FROM job WHERE id=$1', [id]);
+            if (rows[0]) {
+                await database.query('DELETE FROM job WHERE id=$1', [id]);
+            } else {
+                throw new JobError(id);
+            }
+        } catch (error) {
+            if (error.detail) {
+                throw new Error(error.detail);
+            } else {
+                throw error;
+            }
+        }
+    }
 };
 
 module.exports = Job;
