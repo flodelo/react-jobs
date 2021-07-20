@@ -14,6 +14,7 @@ const Search = () => (
         variant="outline"
         placeholder="Recherche par mots-clés..."
         m="5"
+        w="700px"
       />
       <Button color="blue.500">Go</Button>
     </HStack>
