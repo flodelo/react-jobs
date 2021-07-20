@@ -7,7 +7,7 @@ import {
 import { HamburgerIcon } from '@chakra-ui/icons';
 
 const Header = () => {
-  const responsiveSize = useBreakpointValue(['xs', 'md', 'lg']);
+  const responsiveSize = useBreakpointValue(['md', 'lg']);
   // Le hook useBreakpointValue répond également au redimensionnement de la fenêtre et renvoie la valeur appropriée pour la nouvelle taille de la fenêtre
 
   return (
@@ -19,7 +19,7 @@ const Header = () => {
       <Box>
         <Button
           display={{
-            sm: 'none',
+            base: 'none',
             md: 'inline-block',
             lg: 'inline-block',
           }}
@@ -32,7 +32,7 @@ const Header = () => {
         </Button>
         <Button
           display={{
-            sm: 'none',
+            base: 'none',
             md: 'inline-block',
             lg: 'inline-block',
           }}
