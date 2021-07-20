@@ -1,19 +1,27 @@
-import React from 'react';
-
-import Job from './Job';
+import React, { useState, useEffect } from 'react';
 
 import {
   ListItem, UnorderedList,
 } from '@chakra-ui/react';
 
+import Job from './Job';
+
+import data from '../../data/jobs.json';
+
 
 export default function JobsList() {
-  return (
+
+const [jobs, setJobs] = useState([]);
+
+useEffect(() => {
+    setJobs(data);
+}, []);
+
+console.log(jobs);
+
+return (
     <UnorderedList justify="center">
-      <ListItem><Job /></ListItem>
-      <ListItem><Job /></ListItem>
-      <ListItem><Job /></ListItem>
-      <ListItem><Job /></ListItem>
+      <ListItem>{jobs.map((job) => <Job job={job} key={job.id} />)}</ListItem>
     </UnorderedList>
   );
 }
