@@ -8,8 +8,8 @@ import {
 import Filters from './Filters';
 
 const Search = () => (
-  <div>
-    <HStack spacing="10px">
+  <>
+    <HStack spacing="10px" justify="center">
       <Input
         variant="outline"
         placeholder="Recherche par mots-clés..."
@@ -19,7 +19,7 @@ const Search = () => (
       <Button color="blue.500">Go</Button>
     </HStack>
     <Filters />
-  </div>
+  </>
 );
 
 export default Search;
