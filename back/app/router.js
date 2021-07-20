@@ -1,10 +1,11 @@
-const { request, response } = require('express');
-const express = require('express');
-const router = express.Router();
+const { Router } = require('express');
 const jobController = require('./controllers/jobController');
-const Job = require('./models/job');
 // const userController = require('./controllers/userController');
 
+const jobSchema = require('./schemas/job');
+const { validateBody } = require('./services/validator');
+
+const router = Router();
 
 /**
  * Test route
@@ -55,7 +56,7 @@ router.get('/job/:id(\\d+)', jobController.findOne);
 * @returns {Job.model} 201 - The newly created job
 * @returns {string} 500 - An error message
 */
-router.post('/jobs/save', /*validateBody(boardgameSchema),*/ jobController.save);
+router.post('/jobs/save', validateBody(jobSchema), jobController.save);
 
 
 /**
@@ -66,7 +67,7 @@ router.post('/jobs/save', /*validateBody(boardgameSchema),*/ jobController.save)
 * @returns {*} 204 - Job has been updated
 * @returns {string} 500 - An SQL error message
 */
-router.patch('/jobs/update', /*validateBody(boardgameSchema),*/ jobController.save);
+router.patch('/jobs/update', validateBody(jobSchema), jobController.save);
 
 router.use((request, response) => response.status(404).json(`Endpoint ${request.url} not found`))
 
