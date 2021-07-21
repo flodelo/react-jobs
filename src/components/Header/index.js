@@ -15,13 +15,13 @@ const Header = () => {
   return (
     <Flex p={10}>
       <Box p="2">
-        <Heading size={responsiveSize}><span role="img" aria-label="atom emoji">⚛</span> React-jobs.fr</Heading>
+        <Heading onclick="location.href='/'" size={responsiveSize}><span role="img" aria-label="atom emoji">⚛</span> React-jobs.fr</Heading>
       </Box>
       <Spacer />
       <Box>
 
         <NavLink
-          to="/register"
+          to="/inscription"
         >
           <Button
             display={{
@@ -38,7 +38,7 @@ const Header = () => {
           </Button>
         </NavLink>
         <NavLink
-          to="/login"
+          to="/connexion"
         >
           <Button
             display={{

@@ -16,6 +16,7 @@ import Search from '../Search';
 import JobsList from '../JobsList';
 import RegistrationForm from '../Header/RegistrationForm';
 import LogInForm from '../Header/LogInForm';
+import Footer from '../Footer';
 
 // == Composant
 export default function footer() {
@@ -27,14 +28,17 @@ export default function footer() {
             <Header />
             <Search />
             <JobsList />
+            <Footer />
           </Route>
-          <Route path="/register">
+          <Route path="/inscription">
             <Header />
             <RegistrationForm />
+            <Footer />
           </Route>
-          <Route path="/login">
+          <Route path="/connexion">
             <Header />
             <LogInForm />
+            <Footer />
           </Route>
           {/* <Route>
           <Error />

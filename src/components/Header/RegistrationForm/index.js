@@ -1,6 +1,19 @@
 import React, { useState, useEffect } from 'react';
+
+import {
+  Flex,
+  Box,
+  FormControl,
+  FormLabel,
+  Input,
+  Stack,
+  Link,
+  Button,
+  Heading,
+  useColorModeValue,
+} from '@chakra-ui/react';
+
 // import axios from 'axios';
-import './style.css';
 // import {API_BASE_URL, ACCESS_TOKEN_NAME} from '../../constants/apiConstants';
 // import { withRouter } from "react-router-dom";
 
@@ -66,52 +79,73 @@ export default function RegistrationForm(props) {
         } */
   };
   return (
-    <div className="card col-12 col-lg-4 login-card mt-2 hv-center">
-      <form>
-        <div className="form-group text-left">
-          <label htmlFor="exampleInputEmail1">Email address</label>
-          <input
-            type="email"
-            className="form-control"
-            id="email"
-            aria-describedby="emailHelp"
-            placeholder="Enter email"
-            value={state.email}
-            onChange={handleChange}
-          />
-          <small id="emailHelp" className="form-text text-muted">Nous protégeons vos données</small>
-        </div>
-        <div className="form-group text-left">
-          <label htmlFor="exampleInputPassword1">Password</label>
-          <input
-            type="password"
-            className="form-control"
-            id="password"
-            placeholder="Password"
-            value={state.password}
-            onChange={handleChange}
-          />
-        </div>
-        <div className="form-group text-left">
-          <label htmlFor="exampleInputPassword1">Confirm Password</label>
-          <input
-            type="password"
-            className="form-control"
-            id="confirmPassword"
-            placeholder="Confirm Password"
-            value={state.confirmPassword}
-            onChange={handleChange}
-          />
-        </div>
-        <button
-          type="submit"
-          className="btn btn-primary"
-          onClick={handleSubmitClick}
+    <Flex
+      align="center"
+      justify="center"
+      bg={useColorModeValue('gray.50', 'gray.800')}
+      height="100%"
+    >
+      <Stack spacing={8} mx="auto" maxW="lg" py={12} px={6}>
+        <Stack align="center">
+          <Heading fontSize="4xl">Inscription 🐱‍💻</Heading>
+        </Stack>
+        <Box
+          rounded="lg"
+          bg={useColorModeValue('white', 'gray.700')}
+          boxShadow="lg"
+          p={8}
         >
-          Register
-        </button>
-      </form>
-      <div className="alert alert-success mt-2" style={{ display: state.successMessage ? 'block' : 'none' }} role="alert">
+          <Stack spacing={4}>
+            <FormControl id="email">
+              <FormLabel>Adresse e-mail</FormLabel>
+              <Input
+                type="email"
+                id="email"
+                value={state.email}
+                onChange={handleChange}
+              />
+            </FormControl>
+
+            <FormControl id="password">
+              <FormLabel>Mot de passe</FormLabel>
+              <Input
+                type="password"
+                id="password"
+                value={state.password}
+                onChange={handleChange}
+              />
+            </FormControl>
+            <FormControl id="password">
+              <FormLabel>Confirmez votre mot de passe</FormLabel>
+              <Input
+                type="password"
+                id="confirmPassword"
+                value={state.confirmPassword}
+                onChange={handleChange}
+              />
+            </FormControl>
+            <Stack spacing={10}>
+              <Stack
+                direction={{ base: 'column', sm: 'row' }}
+                align="start"
+                justify="space-between"
+              >
+                <Link color="blue.500">Déja un compte ? Connectez-vous</Link>
+              </Stack>
+              <Button
+                color="blue.500"
+                onClick={handleSubmitClick}
+              >
+                Je m'inscris
+              </Button>
+            </Stack>
+          </Stack>
+        </Box>
+      </Stack>
+    </Flex>
+  )};
+
+      /* <div className="alert alert-success mt-2" style={{ display: state.successMessage ? 'block' : 'none' }} role="alert">
         {state.successMessage}
       </div>
       <div className="mt-2">
@@ -120,6 +154,6 @@ export default function RegistrationForm(props) {
       </div>
     </div>
   );
-}
+} */
 
 // export default withRouter(RegistrationForm);

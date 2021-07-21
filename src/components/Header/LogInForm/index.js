@@ -33,14 +33,14 @@ export default function LogInForm() {
 
   return (
     <Flex
-      minH="100vh"
       align="center"
       justify="center"
+      height="100%"
       bg={useColorModeValue('gray.50', 'gray.800')}
     >
       <Stack spacing={8} mx="auto" maxW="lg" py={12} px={6}>
         <Stack align="center">
-          <Heading fontSize="4xl">Connexion</Heading>
+          <Heading fontSize="4xl">Connexion ✌️</Heading>
         </Stack>
         <Box
           rounded="lg"
@@ -74,17 +74,13 @@ export default function LogInForm() {
                 align="start"
                 justify="space-between"
               >
-                <Link color="blue.400">Mot de passe oublié ?</Link>
+                <Link color="blue.500">Mot de passe oublié ?</Link>
               </Stack>
               <Button
-                bg="blue.400"
-                color="white"
-                _hover={{
-                  bg: 'blue.500',
-                }}
+                color="blue.500"
                 onClick={handleSubmitClick}
               >
-                Se connecter
+                Je me connecte
               </Button>
             </Stack>
           </Stack>
