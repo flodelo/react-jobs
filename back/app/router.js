@@ -102,6 +102,37 @@ router.get('/users', /*checkAdmin,*/ userController.findAll);
  */
 router.get('/user/:id(\\d+)', /*checkAdmin,*/ userController.findOne);
 
+/**
+* Adds an updated user in database
+* @route PATCH /user/update
+* @group Jobboard
+* @param {User.model} object.body.required User object to update in database
+* @returns {*} 204 - User has been updated
+* @returns {string} 500 - An error message
+*/
+router.patch('/users/update', /*validateBody(userSchema)*/ userController.save);
+
+/**
+* Adds an updated user in database
+* @route POST /user/save
+* @group Jobboard
+* @param {User.model} object.body.required User object to save in database
+* @returns {*} 204 - User has been updated
+* @returns {string} 500 - An error message
+*/
+router.post('/user/save', /*validateBody(userSchema)*/ userController.save);
+
+ /**
+ * Finds and deletes a user in database
+ * @route DELETE /user/delete/{id}
+ * @group Jobboard
+ * @param {number} id.path.required The id of the job to delete
+ * @returns {*} 204 - User has been deleted
+ * @returns {string} 404 - An error message
+ * @returns {string} 500 - An error message
+ */
+  router.delete('/user/delete/:id(\\d+)', userController.delete);
+
 router.use((request, response) => response.status(404).json(`Endpoint ${request.url} not found`))
 
 module.exports = router;
