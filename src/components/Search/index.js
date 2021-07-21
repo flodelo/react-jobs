@@ -17,7 +17,7 @@ const Search = () => (
         
         w="500px"
       />
-      <Button color="blue.500">Go</Button>
+      <Button color="blue.500">Chercher</Button>
     </HStack>
     <Filters />
   </>
