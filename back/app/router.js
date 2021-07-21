@@ -1,6 +1,7 @@
 const { Router } = require('express');
+
 const jobController = require('./controllers/jobController');
-// const userController = require('./controllers/userController');
+const userController = require('./controllers/userController');
 
 const jobSchema = require('./schemas/job');
 const { validateBody } = require('./services/validator');
@@ -79,6 +80,36 @@ router.patch('/jobs/update', validateBody(jobSchema), jobController.save);
  * @returns {string} 500 - An error message
  */
 router.delete('/job/delete/:id(\\d+)', jobController.delete);
+
+/**
+ * Responds with all users in database
+ * @route GET /users
+ * @group Jobboard
+ * @returns {Array<Jobs>} 200 - An array of users
+ * @returns {string} 500 - An error message
+ */
+ router.get('/users', /*checkAdmin,*/ userController.findAll);
+
+
+ /**
+  * Responds with  this user  who wants to login in database
+  * @route 
+  * @group Jobboard
+  * @returns {Array<User>}
+  * @returns {string} 500 - An error message
+  */
+ router.get('/user/:id(\\d+)', /*checkAdmin,*/ userController.findOne);
+
+ /**
+ * Finds and deletes a user in database
+ * @route DELETE /user/delete/{id}
+ * @group Jobboard
+ * @param {number} id.path.required The id of the job to delete
+ * @returns {*} 204 - User has been deleted
+ * @returns {string} 404 - An error message
+ * @returns {string} 500 - An error message
+ */
+router.delete('/user/delete/:id(\\d+)', userController.delete);
 
 router.use((request, response) => response.status(404).json(`Endpoint ${request.url} not found`))
 

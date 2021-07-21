@@ -41,3 +41,12 @@ Content-Type: application/json
 
 ### Find one job and delete
 DELETE http://localhost:5050/job/delete/13
+
+### Find all users
+GET http://localhost:5050/users
+
+### Find one user by id
+GET http://localhost:5050/user/1
+
+### Find a user and delete
+DELETE http://localhost:5050/user/delete/3
