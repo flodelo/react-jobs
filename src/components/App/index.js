@@ -1,5 +1,10 @@
 // == Import npm
 import * as React from 'react';
+import {
+  Switch,
+  Route,
+} from 'react-router-dom';
+
 import { ChakraProvider } from '@chakra-ui/react';
 
 // == Import
@@ -12,20 +17,31 @@ import JobsList from '../JobsList';
 import RegistrationForm from '../Header/RegistrationForm';
 import LogInForm from '../Header/LogInForm';
 
-
-
 // == Composant
-const App = ({ Component }) => (
-  <ChakraProvider>
-    <div className="app">
-      <Header />
-      <Search />
-      <JobsList />
-      <RegistrationForm />
-      <LogInForm />
-    </div>
-  </ChakraProvider>
-);
+export default function footer() {
+  return (
+    <ChakraProvider>
+      <div className="app">
+        <Switch>
+          <Route exact path="/">
+            <Header />
+            <Search />
+            <JobsList />
+          </Route>
+          <Route path="/register">
+            <Header />
+            <RegistrationForm />
+          </Route>
+          <Route path="/login">
+            <Header />
+            <LogInForm />
+          </Route>
+          {/* <Route>
+          <Error />
+        </Route> */}
+        </Switch>
+      </div>
+    </ChakraProvider>
 
-// == Export
-export default App;
+  );
+}

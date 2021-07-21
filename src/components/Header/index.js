@@ -1,5 +1,7 @@
 /* eslint-disable max-len */
 import React from 'react';
+import { NavLink } from 'react-router-dom';
+
 import {
   Flex, Spacer, Box, Heading, Button, IconButton, Menu, MenuButton, useBreakpointValue,
 } from '@chakra-ui/react';
@@ -17,30 +19,40 @@ const Header = () => {
       </Box>
       <Spacer />
       <Box>
-        <Button
-          display={{
-            base: 'none',
-            md: 'inline-block',
-            lg: 'inline-block',
-          }}
-          size={responsiveSize}
-          color="blue.500"
-          variant="outline"
-          mr="2"
+
+        <NavLink
+          to="/register"
         >
-          Inscription
-        </Button>
-        <Button
-          display={{
-            base: 'none',
-            md: 'inline-block',
-            lg: 'inline-block',
-          }}
-          size={responsiveSize}
-          color="blue.500"
-          mr="2"
-        >Connexion
-        </Button>
+          <Button
+            display={{
+              base: 'none',
+              md: 'inline-block',
+              lg: 'inline-block',
+            }}
+            size={responsiveSize}
+            color="blue.500"
+            variant="outline"
+            mr="2"
+          >
+            Inscription
+          </Button>
+        </NavLink>
+        <NavLink
+          to="/login"
+        >
+          <Button
+            display={{
+              base: 'none',
+              md: 'inline-block',
+              lg: 'inline-block',
+            }}
+            size={responsiveSize}
+            color="blue.500"
+            mr="2"
+          >
+            Connexion
+          </Button>
+        </NavLink>
         <Menu>
           {/* Creation du menu burger avec props */}
           <MenuButton
