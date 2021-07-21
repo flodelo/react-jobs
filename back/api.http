@@ -5,7 +5,7 @@ GET http://localhost:5050/hello
 GET http://localhost:5050/jobs
 
 ### Find one job
-GET http://localhost:5050/job/1
+GET http://localhost:5050/job/4
 
 ### Add one job
 POST http://localhost:5050/jobs/save
@@ -17,6 +17,11 @@ Content-Type: application/json
      "company" : "TIKO",
      "technology" : "React-Redux bien sûr",
      "locality" : "Nouvelle-Aquitaine",
+     "title": "React Junior",
+     "description" : "Lorem Ipsum",
+     "company" : "Dom Einhorn",
+     "technology" : "React bien sûr",
+     "locality" : "Var",
      "contract" : "CDI",
      "salary" : "avec primes",
      "user_id" : 1
@@ -27,21 +32,24 @@ PATCH http://localhost:5050/jobs/update
 Content-Type: application/json
 
 {
-     "id": 3,
-     "title": "Junior Developer",
-     "description" : "Pleines de bonnes choses en télétravail",
-     "company" : "ME",
-     "technology" : "React bien sûr",
+     "id": 8,
+     "title": "Poste React Junior",
+     "description" : "Café à volonté",
+     "company" : "Dom Einhorn",
+     "technology" : "React et peut-être du PHP",
      "locality" : "Cher",
-     "contract" : "CDI",
-     "salary" : "avec primes",
+     "contract" : "stage",
+     "salary" : "3 oeufs et une pomme",
      "user_id" : 1
+
 
 
 }
 
-### Delete one job by id
-
-DELETE http://localhost:5050/jobs/delete/1
 
 
+
+
+### Find one job and delete
+DELETE http://localhost:5050/job/delete/13
+>>>>>>> f7610bf4a603621736b548a75bf673c1a2fefa2d

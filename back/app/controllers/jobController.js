@@ -3,6 +3,7 @@ const { Job } = require('../models/job');
 
 
 const jobController = {
+
     findAll: async (_, response) => {
         try {
             const jobs = await Job.findAll();
@@ -11,6 +12,7 @@ const jobController = {
             response.status(500).send(error.message);
         }
     },
+
     findOne: async (request, response) => {
         try {
             const job = await Job.findOne(parseInt(request.params.id, 10));
@@ -23,6 +25,7 @@ const jobController = {
             }
         }
     },
+
     save: async (request, response) => {
         try {
             const job = new Job(request.body);
@@ -39,6 +42,19 @@ const jobController = {
         }
     },
 
+    delete: async (request, response) => {
+        try {
+            const job = await Job.findOneAndDelete(parseInt(request.params.id, 10));
+            if(!job) // if job is not anymore, delete was successful
+                response.status(204).json(job);
+        } catch (error) {
+            if (error instanceof Job.JobError) {
+                response.status(404).send(error.message);
+            } else {
+                response.status(500).send(error.message);
+            }
+        }
+    }
 }
     
 
