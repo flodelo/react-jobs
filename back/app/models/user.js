@@ -127,30 +127,6 @@ class User {
 
         
     
-     /**
-     * Deletes a user from database
-     * @static
-     * @async
-     * @param {number} id 
-     * @returns {User}} the deleted instance
-     * @throws {Error} an error object
-     */
-      static async findOneAndDelete(id) {
-        try {
-            const {rows} = await database.query('SELECT * FROM "user" WHERE id=$1', [id]);
-            if (rows[0]) {
-                await database.query('DELETE FROM "user" WHERE id=$1', [id]);
-            } else {
-                throw new UserError(id);
-            }
-        } catch (error) {
-            if (error.detail) {
-                throw new Error(error.detail);
-            } else {
-                throw error;
-            }
-        }
-    }
-}
+
 
 module.exports = User;
