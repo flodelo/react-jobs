@@ -52,4 +52,10 @@ Content-Type: application/json
 
 ### Find one job and delete
 DELETE http://localhost:5050/job/delete/13
->>>>>>> f7610bf4a603621736b548a75bf673c1a2fefa2d
+
+### Find all users
+GET http://localhost:5050/users
+
+
+### Find one user by id
+GET http://localhost:5050/user/1

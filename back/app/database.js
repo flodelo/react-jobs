@@ -4,7 +4,7 @@ const pool = new Pool({
     connectionString: process.env.DATABASE_URL
 });
 
-if (process.env.NODE_ENV === "production") {
+/*if (process.env.NODE_ENV === "production") {
     
     pool = new Pool({
 
@@ -15,6 +15,6 @@ if (process.env.NODE_ENV === "production") {
             rejectUnauthorized: false
         }
     });
-}
+}*/
 
 module.exports = pool;

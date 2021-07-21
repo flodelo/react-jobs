@@ -1,8 +1,8 @@
 
 const { Router } = require('express');
-const jobController = require('./controllers/jobController');
 
-// const userController = require('./controllers/userController');
+const jobController = require('./controllers/jobController');
+const userController = require('./controllers/userController');
 
 const jobSchema = require('./schemas/job');
 const { validateBody } = require('./services/validator');
@@ -25,6 +25,7 @@ router.get('/hello', (request, response) => response.json('Hello World!'));
  * @returns {string} 500 - An error message
  */
 router.get('/jobs', jobController.findAll);
+
 
 /**
 * Responds with one job from database
@@ -83,15 +84,23 @@ router.patch('/jobs/update', validateBody(jobSchema), jobController.save);
 router.delete('/job/delete/:id(\\d+)', jobController.delete);
 
 /**
-* Deleted job in database
-* @route DELETE /job/delete
-* @group Jobboard
-* @param {Job.model} object.body.required Job object to delete in database
-* @returns {*} 204 - Job has been updated
-* @returns {string} 500 - An SQL error message
-*/
-router.delete('/jobs/delete/:id(\\d+)', jobController.deletedJob);
+ * Responds with all users in database
+ * @route GET /users
+ * @group Jobboard
+ * @returns {Array<Jobs>} 200 - An array of users
+ * @returns {string} 500 - An error message
+ */
+router.get('/users', /*checkAdmin,*/ userController.findAll);
 
+
+/**
+ * Responds with  this user  who wants to login in database
+ * @route 
+ * @group Jobboard
+ * @returns {Array<User>}
+ * @returns {string} 500 - An error message
+ */
+router.get('/user/:id(\\d+)', /*checkAdmin,*/ userController.login);
 
 router.use((request, response) => response.status(404).json(`Endpoint ${request.url} not found`))
 
