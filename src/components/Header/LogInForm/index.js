@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 import {
   Flex,
@@ -14,6 +14,23 @@ import {
 } from '@chakra-ui/react';
 
 export default function LogInForm() {
+  const [state, setState] = useState({
+    email: '',
+    password: '',
+  });
+  const handleChange = (e) => {
+    const { id, value } = e.target;
+    setState((prevState) => ({
+      ...prevState,
+      [id]: value,
+    }));
+  };
+
+  const handleSubmitClick = (e) => {
+    e.preventDefault();
+    console.log(state.email, state.password);
+  };
+
   return (
     <Flex
       minH="100vh"
@@ -34,11 +51,22 @@ export default function LogInForm() {
           <Stack spacing={4}>
             <FormControl id="email">
               <FormLabel>Adresse e-mail</FormLabel>
-              <Input type="email" />
+              <Input
+                type="email"
+                id="email"
+                value={state.email}
+                onChange={handleChange}
+              />
             </FormControl>
+
             <FormControl id="password">
               <FormLabel>Mot de passe</FormLabel>
-              <Input type="password" />
+              <Input
+                type="password"
+                id="password"
+                value={state.password}
+                onChange={handleChange}
+              />
             </FormControl>
             <Stack spacing={10}>
               <Stack
@@ -54,6 +82,7 @@ export default function LogInForm() {
                 _hover={{
                   bg: 'blue.500',
                 }}
+                onClick={handleSubmitClick}
               >
                 Se connecter
               </Button>
