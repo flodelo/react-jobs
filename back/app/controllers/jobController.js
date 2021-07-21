@@ -1,4 +1,6 @@
-const Job = require('../models/job');
+const { Job } = require('../models/job');
+
+
 
 const jobController = {
 
@@ -54,5 +56,9 @@ const jobController = {
         }
     }
 }
+    
+
+
+
 
 module.exports = jobController;

@@ -1,3 +1,4 @@
+
 const { Router } = require('express');
 
 const jobController = require('./controllers/jobController');
@@ -24,6 +25,7 @@ router.get('/hello', (request, response) => response.json('Hello World!'));
  * @returns {string} 500 - An error message
  */
 router.get('/jobs', jobController.findAll);
+
 
 /**
 * Responds with one job from database
@@ -62,7 +64,7 @@ router.post('/jobs/save', validateBody(jobSchema), jobController.save);
 
 /**
 * Adds an updated job in database
-* @route PATCH /jobs/update
+* @route PATCH /job/update
 * @group Jobboard
 * @param {Job.model} object.body.required Job object to update in database
 * @returns {*} 204 - Job has been updated
@@ -89,7 +91,6 @@ router.delete('/job/delete/:id(\\d+)', jobController.delete);
  * @returns {string} 500 - An error message
  */
  router.get('/users', /*checkAdmin,*/ userController.findAll);
-
 
  /**
   * Responds with  this user  who wants to login in database

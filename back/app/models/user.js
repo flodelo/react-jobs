@@ -15,6 +15,7 @@ class UserError extends Error {
 * @property {string} password
 * @property {string} role
 */
+
 class User {
 
     static UserError = UserError;
@@ -123,6 +124,7 @@ class User {
             }
         }
     }
+
         
     
 }
