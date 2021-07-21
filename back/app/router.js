@@ -90,14 +90,24 @@ router.delete('/job/delete/:id(\\d+)', jobController.delete);
  * @returns {Array<User>} 200 - An array of users
  * @returns {string} 500 - An error message
  */
-router.get('/users', /*checkAdmin,*/ userController.findAll);
+ router.get('/users', /*checkAdmin,*/ userController.findAll);
 
+ /**
+  * Responds with  this user  who wants to login in database
+  * @route 
+  * @group Jobboard
+  * @returns {Array<User>}
+  * @returns {string} 500 - An error message
+  */
+ router.get('/user/:id(\\d+)', /*checkAdmin,*/ userController.findOne);
 
-/**
- * Responds with  this user  who wants to login in database
- * @route 
+ /**
+ * Finds and deletes a user in database
+ * @route DELETE /user/delete/{id}
  * @group Jobboard
- * @returns {Array<User>}
+ * @param {number} id.path.required The id of the job to delete
+ * @returns {*} 204 - User has been deleted
+ * @returns {string} 404 - An error message
  * @returns {string} 500 - An error message
  */
 router.get('/user/:id(\\d+)', /*checkAdmin,*/ userController.findOne);
@@ -131,7 +141,7 @@ router.post('/user/save', /*validateBody(userSchema)*/ userController.save);
  * @returns {string} 404 - An error message
  * @returns {string} 500 - An error message
  */
-  router.delete('/user/delete/:id(\\d+)', userController.delete);
+router.delete('/user/delete/:id(\\d+)', userController.delete);
 
 router.use((request, response) => response.status(404).json(`Endpoint ${request.url} not found`))
 

@@ -14,6 +14,7 @@ const userController = {
     },
 
     findOne: async (request, response) => {
+ 
         try {
             const user = await User.findOne(parseInt(request.params.id, 10));
             response.json(user);
@@ -55,6 +56,8 @@ const userController = {
             }
         }
     }
+
+
 
 
 };
