@@ -9,7 +9,9 @@ import Header from '../Header';
 import JobDetails from '../JobDetails';
 import Search from '../Search';
 import JobsList from '../JobsList';
-import RegistrationForm from '../Header/RegistrationForm'
+import RegistrationForm from '../Header/RegistrationForm';
+import LogInForm from '../Header/LogInForm';
+
 
 
 // == Composant
@@ -19,7 +21,8 @@ const App = ({ Component }) => (
       <Header />
       <Search />
       <JobsList />
-      <RegistrationForm/>
+      <RegistrationForm />
+      <LogInForm />
     </div>
   </ChakraProvider>
 );
