@@ -87,7 +87,7 @@ router.delete('/job/delete/:id(\\d+)', jobController.delete);
  * Responds with all users in database
  * @route GET /users
  * @group Jobboard
- * @returns {Array<Jobs>} 200 - An array of users
+ * @returns {Array<User>} 200 - An array of users
  * @returns {string} 500 - An error message
  */
 router.get('/users', /*checkAdmin,*/ userController.findAll);
@@ -100,7 +100,7 @@ router.get('/users', /*checkAdmin,*/ userController.findAll);
  * @returns {Array<User>}
  * @returns {string} 500 - An error message
  */
-router.get('/user/:id(\\d+)', /*checkAdmin,*/ userController.login);
+router.get('/user/:id(\\d+)', /*checkAdmin,*/ userController.findOne);
 
 router.use((request, response) => response.status(404).json(`Endpoint ${request.url} not found`))
 
