@@ -12,12 +12,12 @@ POST http://localhost:5050/jobs/save
 Content-Type: application/json
 
 {
-     "title": "Poste React Junior",
-     "description" : "Lorem",
+     "title": "React Junior",
+     "description" : "Lorem Ipsum",
      "company" : "Dom Einhorn",
      "technology" : "React bien sûr",
-     "locality" : "Normandie",
-     "contract" : "CDD",
+     "locality" : "Var",
+     "contract" : "CDI",
      "salary" : "avec primes",
      "user_id" : 1
 }
@@ -38,3 +38,6 @@ Content-Type: application/json
      "user_id" : 1
 
 }
+
+### Find one job and delete
+DELETE http://localhost:5050/job/delete/13
