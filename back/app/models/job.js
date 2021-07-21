@@ -79,6 +79,8 @@ class Job {
         }
     }
 
+    
+
    /**
     * Adds or updates an instance of Job in database
     * @async
@@ -106,6 +108,8 @@ class Job {
             }
         }
    }
+
+   
      /**
      * Deletes a job from database
      * @static

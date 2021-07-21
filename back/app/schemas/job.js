@@ -12,4 +12,5 @@ const schema = Joi.object({
     user_id: Joi.number().integer().required()
 });
 
+
 module.exports = schema; 

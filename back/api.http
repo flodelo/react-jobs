@@ -12,6 +12,11 @@ POST http://localhost:5050/jobs/save
 Content-Type: application/json
 
 {
+     "title": "Offre4",
+     "description" : "Job en full remote",
+     "company" : "TIKO",
+     "technology" : "React-Redux bien sûr",
+     "locality" : "Nouvelle-Aquitaine",
      "title": "React Junior",
      "description" : "Lorem Ipsum",
      "company" : "Dom Einhorn",
@@ -29,7 +34,7 @@ Content-Type: application/json
 {
      "id": 8,
      "title": "Poste React Junior",
-     "description" : "Café à volonté",
+     "description" : "Boisson à volonté",
      "company" : "Dom Einhorn",
      "technology" : "React et peut-être du PHP",
      "locality" : "Cher",
@@ -37,7 +42,46 @@ Content-Type: application/json
      "salary" : "3 oeufs et une pomme",
      "user_id" : 1
 
+
+
 }
+
 
 ### Find one job and delete
 DELETE http://localhost:5050/job/delete/13
+
+### Find all users
+GET http://localhost:5050/users
+
+### Find one user by id
+GET http://localhost:5050/user/1
+
+### PAth testing save 
+PATCH http://localhost:5050/users/update
+Content-Type: application/json
+
+{
+     
+     "firstName": "Alexandre",
+     "lastName": "Chochois",
+     "email": "alexandre.chochois@oclock.io",
+     "password": "trucDAlex",
+     "role": "Admin"
+}
+
+### 
+POST http://localhost:5050/user/save
+Content-Type: application/json
+
+{
+     
+     "firstName": "Florian",
+     "lastName": "Brun-Buisson",
+     "email": "florian.brunbuisson@oclock.io",
+     "password": "trucDeFloBrun",
+     "role": "Admin"
+}
+
+
+### Find one job and delete
+DELETE http://localhost:5050/user/delete/7
