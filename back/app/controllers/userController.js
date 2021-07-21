@@ -1,4 +1,4 @@
-const { User } = require("../models/user");
+const User = require("../models/user");
 
 const userController = {
 
@@ -13,7 +13,8 @@ const userController = {
         }
     },
 
-    login: async (request, response) => {
+    findOne: async (request, response) => {
+ 
         try {
             const user = await User.findOne(parseInt(request.params.id, 10));
             response.json(user);
@@ -26,6 +27,19 @@ const userController = {
         }
     },
 
+    delete: async (request, response) => {
+        try {
+            const user = await User.findOneAndDelete(parseInt(request.params.id, 10));
+            if(!user) // if user is no more, delete was successful
+                response.status(204).json(user);
+        } catch (error) {
+            if (error instanceof User.UserError) {
+                response.status(404).send(error.message);
+            } else {
+                response.status(500).send(error.message);
+            }
+        }
+    }
 
 };
 
