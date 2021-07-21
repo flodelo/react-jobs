@@ -7,11 +7,15 @@ const express = require('express');
 const PORT = process.env.PORT || 1234;
 const router = require('./app/router');
 
-
+//const swaggerConfig = require('./app/middlewares/swagger.js');
 
 const app = express();
 
 //app.use(cors());
+//const expressSwagger = require('express-swagger-generator')(app);
+//expressSwagger(swaggerConfig);
+
+
 
 // dès qu'on veut utiliser une requète POST
 app.use(express.json());
@@ -30,5 +34,5 @@ app.use(router);
 
 //notre serveur écoute sur le PORT
 app.listen(PORT, () => {
-  console.log(`Listening on ${PORT}`);
+  console.log(`Listening on ${PORT}`)
 });

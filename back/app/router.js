@@ -1,8 +1,8 @@
-const { request, response } = require('express');
+
 const express = require('express');
 const router = express.Router();
 const jobController = require('./controllers/jobController');
-const Job = require('./models/job');
+
 // const userController = require('./controllers/userController');
 
 
@@ -55,18 +55,29 @@ router.get('/job/:id(\\d+)', jobController.findOne);
 * @returns {Job.model} 201 - The newly created job
 * @returns {string} 500 - An error message
 */
-router.post('/jobs/save', /*validateBody(boardgameSchema),*/ jobController.save);
+router.post('/jobs/save', /*validateBody(jobSchema),*/ jobController.save);
 
 
 /**
 * Adds an updated job in database
-* @route PATCH /jobs/update
+* @route PATCH /job/update
 * @group Jobboard
 * @param {Job.model} object.body.required Job object to update in database
 * @returns {*} 204 - Job has been updated
 * @returns {string} 500 - An SQL error message
 */
 router.patch('/jobs/update', /*validateBody(boardgameSchema),*/ jobController.save);
+
+/**
+* Deleted job in database
+* @route DELETE /job/delete
+* @group Jobboard
+* @param {Job.model} object.body.required Job object to delete in database
+* @returns {*} 204 - Job has been updated
+* @returns {string} 500 - An SQL error message
+*/
+router.delete('/jobs/delete/:id(\\d+)', jobController.deletedJob);
+
 
 router.use((request, response) => response.status(404).json(`Endpoint ${request.url} not found`))
 
