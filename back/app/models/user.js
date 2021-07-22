@@ -18,6 +18,10 @@ class UserError extends Error {
 
 class User {
 
+    // we're referencing the custom error as static property of the model 
+    // to test the class of an error in the controller without having to 
+    // import the class of the error
+
     static UserError = UserError;
 
     constructor(data={}) {
@@ -48,7 +52,7 @@ class User {
     }
 
     /**
-     * Retrieves one user existing from database
+     * Retrieves one user from database
      * @static
      * @async
      * @param {number} id 
@@ -73,7 +77,7 @@ class User {
     }
 
     /**
-    * Adds or updates an instance of User in database if they don't exist
+    * Adds or updates an instance of User in database
     * @async
     * @returns {User} the inserted or updated instance
     * @throws {Error} An Error object
@@ -83,7 +87,9 @@ class User {
             if (this.id) {
                 await database.query('SELECT update_user($1)', [this]);
             } else {
-                
+                //it is important to name the result here, else wise 
+                //postgre will do it automatically and we won't be able 
+                //to guess
                 const {rows} = await database.query('SELECT id FROM add_user($1)', [this]);
                 this.id = rows[0].id;
                 return this;
@@ -100,7 +106,6 @@ class User {
         }
     }
 
-    
      /**
      * Deletes a user from database
      * @static

@@ -55,7 +55,7 @@ class Job {
     }
 
      /**
-     * Retrieves a job from database
+     * Retrieves one job from database
      * @static
      * @async
      * @param {number} id 
@@ -79,8 +79,6 @@ class Job {
         }
     }
 
-    
-
    /**
     * Adds or updates an instance of Job in database
     * @async
@@ -93,7 +91,7 @@ class Job {
                 await database.query('SELECT update_job($1)', [this]);
             } else {
                 //it is important to name the result here, else wise 
-                //postgres will do it automatically and we won't be able 
+                //postgre will do it automatically and we won't be able 
                 //to guess
                 const {rows} = await database.query('SELECT id FROM add_job($1)', [this]);
                 this.id = rows[0].id;
@@ -109,7 +107,6 @@ class Job {
         }
    }
 
-   
      /**
      * Deletes a job from database
      * @static
