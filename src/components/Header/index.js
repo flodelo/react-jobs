@@ -15,7 +15,7 @@ const Header = () => {
  const redirectHome = () => {
   window.location.href = "/";
  } 
- // Fonction permettant une redirection lors de l'event onClick sur un élémznt texte
+ // Fonction permettant une redirection lors de l'event onClick sur un élément texte
   
   return (
     <Flex p={10}>
