@@ -1,4 +1,8 @@
 import React, { useState } from 'react';
+// import { withRouter } from "react-router-dom";
+
+import axios from 'axios';
+import {API_BASE_URL, ACCESS_TOKEN_NAME} from '../../constants/apiConstants';
 
 import {
   Flex,
@@ -17,6 +21,7 @@ export default function LogInForm() {
   const [state, setState] = useState({
     email: '',
     password: '',
+    successMessage: null
   });
   const handleChange = (e) => {
     const { id, value } = e.target;
@@ -29,7 +34,36 @@ export default function LogInForm() {
   const handleSubmitClick = (e) => {
     e.preventDefault();
     console.log(state.email, state.password);
-  };
+    const payload={
+      "email":state.email,
+      "password":state.password,
+  }
+  axios.post(API_BASE_URL+'/user/login', payload)
+            .then(function (response) {
+                if(response.status === 200){
+                    setState(prevState => ({
+                        ...prevState,
+                        'successMessage' : 'Connexion réussi.'
+                    }))
+                    localStorage.setItem(ACCESS_TOKEN_NAME,response.data.token);
+                    redirectToHome();
+                    props.showError(null)
+                }
+                else if(response.code === 204){
+                    props.showError("Le nom d'utilisateur et le mot de passe ne correspondent pas");
+                }
+                else{
+                    props.showError("Le nom d'utilisateur n'existe pas");
+                }
+            })
+            .catch(function (error) {
+                console.log(error);
+            });
+    }
+    const redirectToHome = () => {
+        props.updateTitle('Accueil')
+        props.history.push('/');
+    }
 
   return (
     <Flex
@@ -74,7 +108,8 @@ export default function LogInForm() {
                 align="start"
                 justify="space-between"
               >
-                <Link color="blue.500">Mot de passe oublié ?</Link>
+                <Link 
+                href="/register" color="blue.500">Pas encore de compte ? Cliquez ici pour vous inscrire</Link>
               </Stack>
               <Button
                 color="blue.500"

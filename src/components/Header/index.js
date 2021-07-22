@@ -25,7 +25,7 @@ const Header = () => {
       <Box>
 
         <Link
-          href="/inscription"
+          href="/register"
         >
           <Button
             display={{
@@ -42,7 +42,7 @@ const Header = () => {
           </Button>
         </Link>
         <Link
-          href="/connexion"
+          href="/login"
         >
           <Button
             display={{

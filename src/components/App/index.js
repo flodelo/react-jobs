@@ -30,12 +30,12 @@ export default function footer() {
             <JobsList />
             <Footer />
           </Route>
-          <Route path="/inscription">
+          <Route path="/register">
             <Header />
             <RegistrationForm />
             <Footer />
           </Route>
-          <Route path="/connexion">
+          <Route path="/login">
             <Header />
             <LogInForm />
             <Footer />
@@ -49,3 +49,4 @@ export default function footer() {
 
   );
 }
+

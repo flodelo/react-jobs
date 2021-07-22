@@ -136,7 +136,7 @@ export default function RegistrationForm(props) {
                 justify="space-between"
               >
 
-              <Link href="/connexion" color="blue.500">Déja un compte ? Connectez-vous</Link>
+              <Link href="/login" color="blue.500">Déja un compte ? Connectez-vous</Link>
 
               </Stack>
               <Button
