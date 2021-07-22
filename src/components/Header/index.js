@@ -1,9 +1,8 @@
 /* eslint-disable max-len */
 import React from 'react';
-import { NavLink } from 'react-router-dom';
 
 import {
-  Flex, Spacer, Box, Heading, Button, IconButton, Menu, MenuButton, useBreakpointValue,
+  Flex, Spacer, Box, Link, Heading, Button, IconButton, Menu, MenuButton, useBreakpointValue,
 } from '@chakra-ui/react';
 
 import { HamburgerIcon } from '@chakra-ui/icons';
@@ -25,8 +24,8 @@ const Header = () => {
       <Spacer />
       <Box>
 
-        <NavLink
-          to="/inscription"
+        <Link
+          href="/inscription"
         >
           <Button
             display={{
@@ -41,9 +40,9 @@ const Header = () => {
           >
             Inscription
           </Button>
-        </NavLink>
-        <NavLink
-          to="/connexion"
+        </Link>
+        <Link
+          href="/connexion"
         >
           <Button
             display={{
@@ -57,7 +56,7 @@ const Header = () => {
           >
             Connexion
           </Button>
-        </NavLink>
+        </Link>
         <Menu>
           {/* Creation du menu burger avec props */}
           <MenuButton

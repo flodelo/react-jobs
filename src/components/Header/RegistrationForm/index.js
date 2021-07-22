@@ -1,13 +1,15 @@
 import React, { useState, useEffect } from 'react';
+import { NavLink } from 'react-router-dom';
+
 
 import {
   Flex,
   Box,
   FormControl,
   FormLabel,
+  Link,
   Input,
   Stack,
-  Link,
   Button,
   Heading,
   useColorModeValue,
@@ -133,7 +135,9 @@ export default function RegistrationForm(props) {
                 align="start"
                 justify="space-between"
               >
-                <Link color="blue.500" href="/connexion">Déja un compte ? Connectez-vous</Link>
+
+              <Link href="/connexion" color="blue.500">Déja un compte ? Connectez-vous</Link>
+
               </Stack>
               <Button
                 color="blue.500"
