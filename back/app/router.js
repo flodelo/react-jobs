@@ -5,6 +5,7 @@ const jobController = require('./controllers/jobController');
 const userController = require('./controllers/userController');
 
 const jobSchema = require('./schemas/job');
+const userSchema = require('./schemas/user');
 const { validateBody } = require('./services/validator');
 
 const router = Router();
@@ -103,24 +104,24 @@ router.delete('/job/delete/:id(\\d+)', jobController.delete);
 
 
 /**
-* Adds an updated user in database
+* Updated user in database
 * @route PATCH /user/update
 * @group Jobboard
 * @param {User.model} object.body.required User object to update in database
 * @returns {*} 204 - User has been updated
 * @returns {string} 500 - An error message
 */
-router.patch('/users/update', /*validateBody(userSchema)*/ userController.save);
+router.patch('/users/update', validateBody(userSchema), userController.save);
 
 /**
-* Adds an updated user in database
+* Adds user in database
 * @route POST /user/save
 * @group Jobboard
 * @param {User.model} object.body.required User object to save in database
 * @returns {*} 204 - User has been updated
 * @returns {string} 500 - An error message
 */
-router.post('/user/save', /*validateBody(userSchema)*/ userController.save);
+router.post('/user/save', validateBody(userSchema), userController.save);
 
  /**
  * Finds and deletes a user in database
