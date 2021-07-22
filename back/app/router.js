@@ -6,6 +6,7 @@ const userController = require('./controllers/userController');
 const Job = require('./models/job');
 
 const jobSchema = require('./schemas/job');
+const userSchema = require('./schemas/user');
 const { validateBody } = require('./services/validator');
 
 const router = Router();
@@ -88,6 +89,17 @@ router.delete('/job/delete/:id(\\d+)', jobController.delete);
 
 //ROUTES RELATED TO USER
 
+ /**
+* @typedef UserPost
+* @property {number} id
+* @property {string} firstName
+* @property {string} lastName
+* @property {string} email
+* @property {string} password
+* @property {string} role
+*/
+
+
 /**
  * Responds with all users in database
  * @route GET /users
@@ -108,35 +120,33 @@ router.delete('/job/delete/:id(\\d+)', jobController.delete);
   */
  router.get('/user/:id(\\d+)', /*checkAdmin,*/ userController.findOne);
 
- /**
-* @typedef UserPost
-* @property {number} id
-* @property {string} firstName
-* @property {string} lastName
-* @property {string} email
-* @property {string} password
-* @property {string} role
-*/
 
 /**
+
 * Adds a new user in database
 * @route POST /user/save
+
 * @group Jobboard
 * @param {UserPost.model} object.body.required User object to add to database
 * @returns {Job.model} 201 - The newly created user
 * @returns {string} 500 - An error message
 */
-router.post('/user/save', /*validateBody(userSchema)*/ userController.save);
+
+
+
+router.post('/user/save', validateBody(userSchema), userController.save);
 
 /**
 * Updates a user in database
 * @route PATCH /users/update
+
 * @group Jobboard
 * @param {User.model} object.body.required User object to update in database
 * @returns {*} 204 - User has been updated
 * @returns {string} 500 - An error message
 */
-router.patch('/users/update', /*validateBody(userSchema)*/ userController.save);
+
+router.patch('/users/update', validateBody(userSchema), userController.save);
 
  /**
  * Finds and deletes a user in database
