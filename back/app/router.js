@@ -89,15 +89,7 @@ router.delete('/job/delete/:id(\\d+)', jobController.delete);
 
 //ROUTES RELATED TO USER
 
- /**
-* @typedef UserPost
-* @property {number} id
-* @property {string} firstName
-* @property {string} lastName
-* @property {string} email
-* @property {string} password
-* @property {string} role
-*/
+
 
 
 /**
@@ -120,6 +112,15 @@ router.delete('/job/delete/:id(\\d+)', jobController.delete);
   */
  router.get('/user/:id(\\d+)', /*checkAdmin,*/ userController.findOne);
 
+ /**
+* @typedef UserPost
+* @property {number} id
+* @property {string} firstName
+* @property {string} lastName
+* @property {string} email
+* @property {string} password
+* @property {string} role
+*/
 
 /**
 
@@ -139,7 +140,6 @@ router.post('/user/save', validateBody(userSchema), userController.save);
 /**
 * Updates a user in database
 * @route PATCH /users/update
-
 * @group Jobboard
 * @param {User.model} object.body.required User object to update in database
 * @returns {*} 204 - User has been updated
