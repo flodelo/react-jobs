@@ -101,16 +101,6 @@ router.delete('/job/delete/:id(\\d+)', jobController.delete);
   */
  router.get('/user/:id(\\d+)', /*checkAdmin,*/ userController.findOne);
 
- /**
- * Finds and deletes a user in database
- * @route DELETE /user/delete/{id}
- * @group Jobboard
- * @param {number} id.path.required The id of the job to delete
- * @returns {*} 204 - User has been deleted
- * @returns {string} 404 - An error message
- * @returns {string} 500 - An error message
- */
-router.get('/user/:id(\\d+)', /*checkAdmin,*/ userController.findOne);
 
 /**
 * Adds an updated user in database

@@ -5,23 +5,18 @@ GET http://localhost:5050/hello
 GET http://localhost:5050/jobs
 
 ### Find one job
-GET http://localhost:5050/job/4
+GET http://localhost:5050/job/3
 
 ### Add one job
 POST http://localhost:5050/jobs/save
 Content-Type: application/json
 
 {
-     "title": "Offre4",
+     "title": "Offre",
      "description" : "Job en full remote",
      "company" : "TIKO",
-     "technology" : "React-Redux bien sûr",
+     "technology" : "React-Redux c'est sûr",
      "locality" : "Nouvelle-Aquitaine",
-     "title": "React Junior",
-     "description" : "Lorem Ipsum",
-     "company" : "Dom Einhorn",
-     "technology" : "React bien sûr",
-     "locality" : "Var",
      "contract" : "CDI",
      "salary" : "avec primes",
      "user_id" : 1
@@ -32,40 +27,38 @@ PATCH http://localhost:5050/jobs/update
 Content-Type: application/json
 
 {
-     "id": 8,
+     "id": 15,
      "title": "Poste React Junior",
      "description" : "Boisson à volonté",
-     "company" : "Dom Einhorn",
+     "company" : "che JB",
      "technology" : "React et peut-être du PHP",
      "locality" : "Cher",
      "contract" : "stage",
      "salary" : "3 oeufs et une pomme",
      "user_id" : 1
 
-
-
 }
 
 
 ### Find one job and delete
-DELETE http://localhost:5050/job/delete/13
+DELETE http://localhost:5050/job/delete/15
 
 ### Find all users
 GET http://localhost:5050/users
 
 ### Find one user by id
-GET http://localhost:5050/user/1
+GET http://localhost:5050/user/2
 
 ### PAth testing save 
 PATCH http://localhost:5050/users/update
 Content-Type: application/json
 
 {
-     
-     "firstName": "Alexandre",
-     "lastName": "Chochois",
-     "email": "alexandre.chochois@oclock.io",
-     "password": "trucDAlex",
+     "id": 7,
+     "firstName": "Alex",
+     "lastName": "BB",
+     "email": "flo@oclock.io",
+     "password": "trucDeFloBB",
      "role": "Admin"
 }
 
@@ -75,10 +68,10 @@ Content-Type: application/json
 
 {
      
-     "firstName": "Florian",
-     "lastName": "Brun-Buisson",
-     "email": "florian.brunbuisson@oclock.io",
-     "password": "trucDeFloBrun",
+     "firstName": "Flo",
+     "lastName": "BB",
+     "email": "f@oclock.io",
+     "password": "trucDeFloBB",
      "role": "Admin"
 }
 
