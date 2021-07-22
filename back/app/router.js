@@ -3,6 +3,7 @@ const { Router } = require('express');
 
 const jobController = require('./controllers/jobController');
 const userController = require('./controllers/userController');
+const Job = require('./models/job');
 
 const jobSchema = require('./schemas/job');
 const userSchema = require('./schemas/user');
@@ -18,6 +19,9 @@ const router = Router();
  */
 router.get('/hello', (request, response) => response.json('Hello World!'));
 
+
+// ROUTES RELATED TO JOB
+
 /**
  * Responds with all jobs in database
  * @route GET /jobs
@@ -27,9 +31,8 @@ router.get('/hello', (request, response) => response.json('Hello World!'));
  */
 router.get('/jobs', jobController.findAll);
 
-
 /**
-* Responds with one job from database
+* Responds with one job in database
 * @route GET /job/{id}
 * @group Jobboard
 * @param {number} id.path.required The id of the job to fetch
@@ -38,7 +41,6 @@ router.get('/jobs', jobController.findAll);
 * @returns {string} 500 - An error message
 */
 router.get('/job/:id(\\d+)', jobController.findOne);
-
 
 /**
 * @typedef JobPost
@@ -52,20 +54,20 @@ router.get('/job/:id(\\d+)', jobController.findOne);
 * @property {string} salary
 * @property {number} user_id
 */
+
 /**
 * Adds a new job in database
 * @route POST /jobs/save
 * @group Jobboard
-* @param {JobPost.model} object.body.required Job object to add in database
+* @param {JobPost.model} object.body.required Job object to add to database
 * @returns {Job.model} 201 - The newly created job
 * @returns {string} 500 - An error message
 */
 router.post('/jobs/save', validateBody(jobSchema), jobController.save);
 
-
 /**
-* Adds an updated job in database
-* @route PATCH /job/update
+* Updates a job in database
+* @route PATCH /jobs/update
 * @group Jobboard
 * @param {Job.model} object.body.required Job object to update in database
 * @returns {*} 204 - Job has been updated
@@ -84,6 +86,20 @@ router.patch('/jobs/update', validateBody(jobSchema), jobController.save);
  */
 router.delete('/job/delete/:id(\\d+)', jobController.delete);
 
+
+//ROUTES RELATED TO USER
+
+ /**
+* @typedef UserPost
+* @property {number} id
+* @property {string} firstName
+* @property {string} lastName
+* @property {string} email
+* @property {string} password
+* @property {string} role
+*/
+
+
 /**
  * Responds with all users in database
  * @route GET /users
@@ -94,34 +110,43 @@ router.delete('/job/delete/:id(\\d+)', jobController.delete);
  router.get('/users', /*checkAdmin,*/ userController.findAll);
 
  /**
-  * Responds with  this user  who wants to login in database
-  * @route 
+  * Responds with one user in database
+  * @route GET /user/{id}
   * @group Jobboard
-  * @returns {Array<User>}
+  * @param {number} id.path.required The id of the user to fetch
+  * @returns {Job.model} 200 - One user identified by his/her id
+  * @returns {string} 404 - An error message
   * @returns {string} 500 - An error message
   */
  router.get('/user/:id(\\d+)', /*checkAdmin,*/ userController.findOne);
 
 
 /**
-* Updated user in database
-* @route PATCH /user/update
+
+* Adds a new user in database
+* @route POST /user/save
+
+* @group Jobboard
+* @param {UserPost.model} object.body.required User object to add to database
+* @returns {Job.model} 201 - The newly created user
+* @returns {string} 500 - An error message
+*/
+
+
+
+router.post('/user/save', validateBody(userSchema), userController.save);
+
+/**
+* Updates a user in database
+* @route PATCH /users/update
+
 * @group Jobboard
 * @param {User.model} object.body.required User object to update in database
 * @returns {*} 204 - User has been updated
 * @returns {string} 500 - An error message
 */
-router.patch('/users/update', validateBody(userSchema), userController.save);
 
-/**
-* Adds user in database
-* @route POST /user/save
-* @group Jobboard
-* @param {User.model} object.body.required User object to save in database
-* @returns {*} 204 - User has been updated
-* @returns {string} 500 - An error message
-*/
-router.post('/user/save', validateBody(userSchema), userController.save);
+router.patch('/users/update', validateBody(userSchema), userController.save);
 
  /**
  * Finds and deletes a user in database

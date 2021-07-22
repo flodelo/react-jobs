@@ -5,14 +5,14 @@ GET http://localhost:5050/hello
 GET http://localhost:5050/jobs
 
 ### Find one job
-GET http://localhost:5050/job/3
+GET http://localhost:5050/job/2
 
 ### Add one job
 POST http://localhost:5050/jobs/save
 Content-Type: application/json
 
 {
-     "title": "Offre",
+     "title": "Enocre Autre Offre",
      "description" : "Job en full remote",
      "company" : "TIKO",
      "technology" : "React-Redux c'est sûr",
@@ -27,8 +27,8 @@ PATCH http://localhost:5050/jobs/update
 Content-Type: application/json
 
 {
-     "id": 15,
-     "title": "Poste React Junior",
+     "id": 3,
+     "title": "Poste React",
      "description" : "Boisson à volonté",
      "company" : "che JB",
      "technology" : "React et peut-être du PHP",
@@ -39,42 +39,41 @@ Content-Type: application/json
 
 }
 
-
 ### Find one job and delete
-DELETE http://localhost:5050/job/delete/15
+DELETE http://localhost:5050/job/delete/3
+
+
 
 ### Find all users
 GET http://localhost:5050/users
 
 ### Find one user by id
-GET http://localhost:5050/user/2
+GET http://localhost:5050/user/4
 
-### PAth testing save 
+### Update one user 
 PATCH http://localhost:5050/users/update
 Content-Type: application/json
 
 {
      "id": 7,
-     "firstName": "Alex",
+     "firstName": "Florian",
      "lastName": "BB",
      "email": "flo@oclock.io",
      "password": "trucDeFloBB",
      "role": "Admin"
 }
 
-### 
+### Add one user
 POST http://localhost:5050/user/save
 Content-Type: application/json
 
 {
-     
-     "firstName": "Flo",
+     "firstName": "Felana",
      "lastName": "BB",
-     "email": "f@oclock.io",
+     "email": "felana@oclock.io",
      "password": "trucDeFloBB",
      "role": "Admin"
 }
 
-
 ### Find one job and delete
-DELETE http://localhost:5050/user/delete/7
+DELETE http://localhost:5050/user/delete/10
