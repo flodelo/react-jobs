@@ -12,10 +12,14 @@ const Header = () => {
   const responsiveSize = useBreakpointValue(['md', 'lg']);
   // Le hook useBreakpointValue répond également au redimensionnement de la fenêtre et renvoie la valeur appropriée pour la nouvelle taille de la fenêtre
 
+ const redirectHome = () => {
+  window.location.href = "/";
+ } 
+  
   return (
     <Flex p={10}>
       <Box p="2">
-        <Heading onclick="location.href='/'" size={responsiveSize}><span role="img" aria-label="atom emoji">⚛</span> React-jobs.fr</Heading>
+        <Heading onClick={redirectHome} size={responsiveSize}><span role="img" aria-label="atom emoji">⚛</span> React-jobs.fr</Heading>
       </Box>
       <Spacer />
       <Box>
