@@ -3,7 +3,7 @@ const { Router } = require('express');
 
 const jobController = require('./controllers/jobController');
 const userController = require('./controllers/userController');
-const Job = require('./models/job');
+const poleemploiController = require('./controllers/poleemploiController');
 
 const jobSchema = require('./schemas/job');
 const userSchema = require('./schemas/user');
@@ -89,9 +89,6 @@ router.delete('/job/delete/:id(\\d+)', jobController.delete);
 
 //ROUTES RELATED TO USER
 
-
-
-
 /**
  * Responds with all users in database
  * @route GET /users
@@ -123,18 +120,13 @@ router.delete('/job/delete/:id(\\d+)', jobController.delete);
 */
 
 /**
-
 * Adds a new user in database
 * @route POST /user/save
-
 * @group Jobboard
 * @param {UserPost.model} object.body.required User object to add to database
 * @returns {Job.model} 201 - The newly created user
 * @returns {string} 500 - An error message
 */
-
-
-
 router.post('/user/save', validateBody(userSchema), userController.save);
 
 /**
@@ -145,7 +137,6 @@ router.post('/user/save', validateBody(userSchema), userController.save);
 * @returns {*} 204 - User has been updated
 * @returns {string} 500 - An error message
 */
-
 router.patch('/users/update', validateBody(userSchema), userController.save);
 
  /**
@@ -158,6 +149,21 @@ router.patch('/users/update', validateBody(userSchema), userController.save);
  * @returns {string} 500 - An error message
  */
 router.delete('/user/delete/:id(\\d+)', userController.delete);
+
+
+// ROUTE tO FETCH POLE EMPLOI DATA
+
+/**
+* Responds with one job from API Pôle Emploi
+* @route GET /job/{id}
+* @group Jobboard
+* @param {number} id.path.required The id of the job to fetch
+* @returns {Job.model} 200 - A single job identified by its id
+* @returns {string} 404 - An error message
+* @returns {string} 500 - An error message
+*/
+router.get('/job/:id(\\d+)'/* url dynamique qui fait lien vers l'offre de PE souhaité*/, poleemploiController.fetchOneJob);
+
 
 router.use((request, response) => response.status(404).json(`Endpoint ${request.url} not found`))
 
