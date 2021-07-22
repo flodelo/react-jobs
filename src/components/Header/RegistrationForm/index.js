@@ -77,6 +77,9 @@ export default function RegistrationForm(props) {
         } else {
             props.showError('Passwords do not match');
         } */
+
+  
+         
   };
   return (
     <Flex
@@ -130,7 +133,7 @@ export default function RegistrationForm(props) {
                 align="start"
                 justify="space-between"
               >
-                <Link color="blue.500">Déja un compte ? Connectez-vous</Link>
+                <Link color="blue.500" href="/connexion">Déja un compte ? Connectez-vous</Link>
               </Stack>
               <Button
                 color="blue.500"
