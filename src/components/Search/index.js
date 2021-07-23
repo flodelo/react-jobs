@@ -14,10 +14,9 @@ const Search = () => (
         variant="outline"
         display="flex"
         placeholder="Recherche par mots-clés..."
-        
         w="500px"
       />
-      <Button color="blue.500">Go</Button>
+      <Button color="blue.500">Chercher</Button>
     </HStack>
     <Filters />
   </>

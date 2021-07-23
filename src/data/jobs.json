@@ -14,5 +14,21 @@
       "technology": ["react native", "react"],
       "locality": "Poitiers",
       "contract": "Remote"
+  },
+  {
+    "id": 3,
+    "description": "Developpeur Junior React H/F",
+    "company": "Welcome to the jungle",
+    "technology": ["react", "javascript"],
+    "locality": "Lyon",
+    "contract": "CDD"
+  },
+  {
+    "id": 4,
+    "description": "Full-stack React Javascript - URGENT",
+    "company": "Algolia",
+    "technology": ["react", "redux"],
+    "locality": "Paris",
+    "contract": "CDI"
   }
 ]
