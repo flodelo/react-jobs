@@ -14,7 +14,7 @@ import {
   Heading,
   useColorModeValue,
 } from '@chakra-ui/react';
-import { API_BASE_URL, ACCESS_TOKEN_NAME } from '../../constants/apiConstants';
+import { API_BASE_URL, USER_TOKEN } from '../../constants/apiConstants';
 
 export default function LogInForm() {
   const [state, setState] = useState({
@@ -22,6 +22,7 @@ export default function LogInForm() {
     password: '',
     successMessage: null,
   });
+
   const handleChange = (e) => {
     const { id, value } = e.target;
     setState((prevState) => ({
@@ -40,11 +41,13 @@ export default function LogInForm() {
     axios.post(`${API_BASE_URL}/user/login`, payload)
       .then((response) => {
         if (response.status === 200) {
+          console.log(response)
           setState((prevState) => ({
             ...prevState,
             successMessage: 'Connexion réussi.',
           }));
-          localStorage.setItem(ACCESS_TOKEN_NAME, response.data.token);
+          localStorage.setItem(USER_TOKEN, response.data.token);
+          
           redirectToHome();
           props.showError(null);
         }
