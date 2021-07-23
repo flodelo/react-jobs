@@ -13,27 +13,37 @@ import {
 } from '@chakra-ui/react';
 
 const Filters = () => (
-  <div>
-    <Accordion allowToggle>
+  <>
+    <Accordion bg="gray.50"
+    color="blue.500" 
+    allowToggle 
+    justifyContent="center" 
+    width={{
+            base: "75%",
+            md: "75%",
+            lg: "50%",
+          }} 
+          m="auto"
+          maxW="500px">
       <AccordionItem>
         <h2>
           <AccordionButton>
-            <Box flex="1" textAlign="center">
+            <Box flex="1" textAlign="center" justify="center">
               Recherche avancée
             </Box>
             <AccordionIcon />
           </AccordionButton>
         </h2>
-        <AccordionPanel pb={4}>
-          <Checkbox defaultIsChecked>React native</Checkbox>
-          <Checkbox defaultIsChecked>Redux</Checkbox>
-          <Checkbox defaultIsChecked>Node JS</Checkbox>
-          <Checkbox defaultIsChecked>Remote</Checkbox>
+        <AccordionPanel pb={4} display="flex" alignItems="center" justifyContent="space-around" flexWrap="wrap">
+          <Checkbox display="flex" m="1" defaultIsChecked>React native</Checkbox>
+          <Checkbox display="flex" m="1" defaultIsChecked>Redux</Checkbox>
+          <Checkbox display="flex" m="1" defaultIsChecked>Node JS</Checkbox>
+          <Checkbox display="flex" m="1" defaultIsChecked>Remote</Checkbox>
         </AccordionPanel>
       </AccordionItem>
     </Accordion>
 
-  </div>
+  </>
 );
 
 export default Filters;
