@@ -31,7 +31,7 @@ router.get('/hello', (request, response) => response.json('Hello World!'));
 * @returns {Array<Jobs>} 200 - An array of jobs
 * @returns {string} 500 - An error message
 */
-router.get('/jobs', jobController.findAll);
+router.get('/jobs', jobController.findAllJobs);
 
 /**
 * Responds with one job in database
@@ -42,7 +42,7 @@ router.get('/jobs', jobController.findAll);
 * @returns {string} 404 - An error message
 * @returns {string} 500 - An error message
 */
-router.get('/job/:id(\\d+)', jobController.findOne);
+router.get('/job/:id(\\d+)', jobController.findOneJob);
 
 /**
 * @typedef JobPost
@@ -65,7 +65,7 @@ router.get('/job/:id(\\d+)', jobController.findOne);
 * @returns {Job.model} 201 - The newly created job
 * @returns {string} 500 - An error message
 */
-router.post('/jobs/save', validateBody(jobSchema), jobController.save);
+router.post('/jobs/save', authorizationAdmin, validateBody(jobSchema), jobController.addJob);
 
 /**
 * Updates a job in database
@@ -75,7 +75,7 @@ router.post('/jobs/save', validateBody(jobSchema), jobController.save);
 * @returns {*} 204 - Job has been updated
 * @returns {string} 500 - An error message
 */
-router.patch('/jobs/update', validateBody(jobSchema), jobController.save);
+router.patch('/jobs/update', authorizationAdmin, validateBody(jobSchema), jobController.addJob);
 
 /**
 * Finds and deletes a job in database
@@ -86,7 +86,7 @@ router.patch('/jobs/update', validateBody(jobSchema), jobController.save);
 * @returns {string} 404 - An error message
 * @returns {string} 500 - An error message
 */
-router.delete('/job/delete/:id(\\d+)', jobController.delete);
+router.delete('/job/delete/:id(\\d+)', authorizationAdmin, jobController.deleteJob);
 
 
 //ROUTES RELATED TO USER
@@ -129,6 +129,8 @@ router.get('/user/:id(\\d+)', authorizationAdmin, userController.getOneUser);
 * @returns {string} 500 - An error message
 */
 router.post('/user/addUser', authorizationUser, validateBody(userSchema), userController.addUser);
+// SE RAJOUTER UN COMPTE ADMIN NOUS-MEME VA LE FORMULAIRE DE LOGIN
+//router.post('/user/addUser', authorizationAdmin, validateBody(userSchema), userController.addUser);
 
 /**
 * Updates a user in database
@@ -140,7 +142,7 @@ router.post('/user/addUser', authorizationUser, validateBody(userSchema), userCo
 */
 router.patch('/users/update', authorizationUser, validateBody(userSchema), userController.addUser);
 // SI BESOIN DE RAJOUTER UNE ROUTE POUR LES ADMIN pour modifier les info user
-//router.patch('/users/update', authorizationAdmin, validateBody(userSchema), userController.addUser);
+router.patch('/users/update', authorizationAdmin, validateBody(userSchema), userController.addUser);
 
 /**
 * Finds and deletes a user in database
@@ -153,7 +155,7 @@ router.patch('/users/update', authorizationUser, validateBody(userSchema), userC
 */
 router.delete('/user/delete/:id(\\d+)', authorizationUser, userController.deleteOneUser);
 // SI BESOIN D'ETRE UN ADMIN POUR SUPPRIMER UN PROFIL Utilisateur lambda
-//router.delete('/user/delete/:id(\\d+)', authorizationAdmin, userController.deleteOneUser);
+router.delete('/user/delete/:id(\\d+)', authorizationAdmin, userController.deleteOneUser);
 
 router.use((request, response) => response.status(404).json(`Endpoint ${request.url} not found`))
 
