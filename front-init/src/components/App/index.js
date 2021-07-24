@@ -19,7 +19,7 @@ import LogInForm from '../Header/LogInForm';
 import Footer from '../Footer';
 
 // == Composant
-export default function footer() {
+export default function App() {
 
   const [toDo, setTodo] = useState([]);
 
