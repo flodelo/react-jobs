@@ -3,12 +3,13 @@ const jwt = require('jsonwebtoken');
 require('dotenv').config();
 
 module.exports = function (request, response, next) {
-
+      
     try {
 
+        
         // Stock the token we recieved from the header authorization
-        const token = request.headers("Authorization");
-
+        const token = request.headers["Authorization"];
+        
         // Verify if the token is valid
         if (!token) {
             response.status(403).json("Acces denied");
