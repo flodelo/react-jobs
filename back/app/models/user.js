@@ -9,7 +9,7 @@ class UserError extends Error {
 /**
 * @typedef User
 * @property {number} id
-* @property {string} firstname
+* @property {string} firstName
 * @property {string} lastName
 * @property {string} email
 * @property {string} password
