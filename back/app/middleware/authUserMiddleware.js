@@ -6,8 +6,8 @@ module.exports = function (request, response, next) {
 
     try {
 
-        const token = request.headers("Authorization");
-
+        const token = request.headers["Authorization"];
+        console.log(token);
             if (!token) {
                 response.status(403).json("Acces denied");
             }
