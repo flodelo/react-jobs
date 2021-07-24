@@ -46,7 +46,7 @@ export default function footer() {
         <Switch>
           <Route exact path="/">
             <Header />
-            <Search />
+            <Search jobs={toDo} />
             <JobsList jobs={toDo} />
             <Footer />
           </Route>
