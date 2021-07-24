@@ -1,5 +1,5 @@
 // == Import npm
-import * as React from 'react';
+import React, { useEffect, useState } from 'react';
 import {
   Switch,
   Route,
@@ -20,6 +20,26 @@ import Footer from '../Footer';
 
 // == Composant
 export default function footer() {
+
+  const [toDo, setTodo] = useState([]);
+
+  useEffect(() => {
+
+    fetch('https://jsonplaceholder.typicode.com/todos')
+    .then(data => {
+      console.log(data);
+      return data.json();
+    })
+    .then(data => {
+      data = data.slice(0, 20)
+      console.log(data);
+      setTodo(data)
+    })
+    .catch(error => {
+      error
+    })
+  }, [])
+
   return (
     <ChakraProvider>
       <div className="app">
@@ -27,7 +47,7 @@ export default function footer() {
           <Route exact path="/">
             <Header />
             <Search />
-            <JobsList />
+            <JobsList jobs={toDo} />
             <Footer />
           </Route>
           <Route path="/register">
@@ -80,3 +100,21 @@ function App() {
     </div>
   );
 }*/
+
+/*
+
+useEffect(() => {
+
+    const [toDo, setTodo] = useState();
+
+    fetch('https://jsonplaceholder.typicode.com/todos')
+    .then(data => {
+      console.log(data);
+      return data.json();
+    })
+    .then(data => {
+      console.log(data);
+    })
+  }, [])
+
+*/

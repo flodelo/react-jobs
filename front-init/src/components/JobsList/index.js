@@ -6,16 +6,16 @@ import {
 
 import Job from './Job';
 
-import data from '../../data/jobs.json';
+// import data from '../../data/jobs.json';
 
-export default function JobsList() {
-  const [jobs, setJobs] = useState([]);
+export default function JobsList({ jobs }) {
+  /* const [jobs, setJobs] = useState([]);
 
   useEffect(() => {
     setJobs(data);
   }, []);
 
-  console.log(jobs);
+  console.log(jobs); */
 
   return (
     <VStack mt={5} p={10} bg="gray.50" spacing={4} divider={<StackDivider borderColor="gray.200" align="stretch" />}>
