@@ -8,7 +8,7 @@ GET http://localhost:5050/jobs
 GET http://localhost:5050/job/2
 
 ### Add one job
-POST http://localhost:5050/jobs/save
+POST http://localhost:5050/job/save
 Content-Type: application/json
 
 {
@@ -79,7 +79,7 @@ Content-Type: application/json
 DELETE http://localhost:5050/user/delete/10
 
 ### Registered user
-POST http://localhost:5050/user/auth/
+POST http://localhost:5050/user/register
 Content-type: application/json
 
 {
