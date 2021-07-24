@@ -34,24 +34,24 @@ export default function RegistrationForm(props) {
 
   const sendDetailsToServer = () => {
     if (state.email.length && state.password.length) {
-      props.showError(null);
+      // props.showError(null);
       const payload = {
         email: state.email,
         password: state.password,
       };
-      axios.post(`${API_BASE_URL}/user/register`, payload)
+      axios.post('http://localhost:5050/user/save', payload)
         .then((response) => {
           if (response.status === 200) {
             setState((prevState) => ({
               ...prevState,
               successMessage: 'Registration successful. Redirecting to home page..',
             }));
-            localStorage.setItem(ACCESS_TOKEN_NAME, response.data.token);
+            localStorage.setItem(/*USER_TOKEN,*/ response.data.token);
             redirectToHome();
-            props.showError(null);
+            // props.showError(null);
           }
           else {
-            props.showError('Some error ocurred');
+            // props.showError('Some error ocurred');
           }
         })
         .catch((error) => {
@@ -59,7 +59,7 @@ export default function RegistrationForm(props) {
         });
     }
     else {
-      props.showError('Please enter valid username and password');
+      // props.showError('Please enter valid username and password');
     }
   };
   const redirectToHome = () => {
