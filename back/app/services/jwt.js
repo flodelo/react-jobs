@@ -22,7 +22,7 @@ module.exports = {
             },
             SECRET_KEY_JWT, 
             {
-                expiresIn: "2h"
+                expiresIn: "24h"
             }
         )
     }
