@@ -4,7 +4,7 @@ const  Job  = require('../models/job');
 
 const jobController = {
 
-    findAll: async (_, response) => {
+    findAllJobs: async (_, response) => {
         try {
             const jobs = await Job.findAll();
             response.json(jobs);
@@ -13,7 +13,7 @@ const jobController = {
         }
     },
 
-    findOne: async (request, response) => {
+    findOneJob: async (request, response) => {
         try {
             const job = await Job.findOne(parseInt(request.params.id, 10));
             response.json(job);
@@ -26,7 +26,7 @@ const jobController = {
         }
     },
 
-    save: async (request, response) => {
+    addJob: async (request, response) => {
         try {
             const job = new Job(request.body);
             const newJob = await job.save();
@@ -42,7 +42,7 @@ const jobController = {
         }
     },
 
-    delete: async (request, response) => {
+    deleteJob: async (request, response) => {
         try {
             const job = await Job.findOneAndDelete(parseInt(request.params.id, 10));
             if(!job) // if job is not anymore, delete was successful
