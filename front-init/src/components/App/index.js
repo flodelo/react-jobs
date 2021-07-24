@@ -36,7 +36,7 @@ export default function footer() {
       setTodo(data)
     })
     .catch(error => {
-      error
+      console.log(error)
     })
   }, [])
 
