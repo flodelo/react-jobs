@@ -14,7 +14,7 @@ import {
   Heading,
   useColorModeValue,
 } from '@chakra-ui/react';
-import { API_BASE_URL, USER_TOKEN } from '../../constants/apiConstants';
+// import { API_BASE_URL, USER_TOKEN } from '../../constants/apiConstants';
 
 export default function LogInForm() {
   const [state, setState] = useState({
@@ -38,7 +38,7 @@ export default function LogInForm() {
       email: state.email,
       password: state.password,
     };
-    axios.post(`${API_BASE_URL}/user/login`, payload)
+    axios.post("http://localhost:5050/user/loginUser", payload)
       .then((response) => {
         if (response.status === 200) {
           console.log(response)
@@ -46,16 +46,16 @@ export default function LogInForm() {
             ...prevState,
             successMessage: 'Connexion réussi.',
           }));
-          localStorage.setItem(USER_TOKEN, response.data.token);
+          // localStorage.setItem(USER_TOKEN, response.data.token);
           
           redirectToHome();
-          props.showError(null);
+          // props.showError(null);
         }
         else if (response.code === 204) {
-          props.showError("Le nom d'utilisateur et le mot de passe ne correspondent pas");
+          // props.showError("Le nom d'utilisateur et le mot de passe ne correspondent pas");
         }
         else {
-          props.showError("Le nom d'utilisateur n'existe pas");
+          // props.showError("Le nom d'utilisateur n'existe pas");
         }
       })
       .catch((error) => {
