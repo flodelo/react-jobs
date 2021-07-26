@@ -66,7 +66,7 @@ router.get('/job/:id(\\d+)', jobController.findOneJob);
 * @returns {Job.model} 201 - The newly created job
 * @returns {string} 500 - An error message
 */
-router.post('/jobs/save', /*authorizationAdmin*/validateBody(jobSchema), jobController.addJob);
+router.post('/job/save', /*authorizationAdmin*/validateBody(jobSchema), jobController.addJob);
 
 /**
 * Updates a job in database
@@ -76,7 +76,7 @@ router.post('/jobs/save', /*authorizationAdmin*/validateBody(jobSchema), jobCont
 * @returns {*} 204 - Job has been updated
 * @returns {string} 500 - An error message
 */
-router.patch('/jobs/update', authorizationAdmin, validateBody(jobSchema), jobController.addJob);
+router.patch('/job/update',/* authorizationAdmin,*/ validateBody(jobSchema), jobController.addJob);
 
 /**
 * Finds and deletes a job in database
@@ -87,7 +87,7 @@ router.patch('/jobs/update', authorizationAdmin, validateBody(jobSchema), jobCon
 * @returns {string} 404 - An error message
 * @returns {string} 500 - An error message
 */
-router.delete('/job/delete/:id(\\d+)', authorizationAdmin, jobController.deleteJob);
+router.delete('/job/delete/:id(\\d+)', /*authorizationAdmin,*/ jobController.deleteJob);
 
 
 //ROUTES RELATED TO USER
@@ -129,7 +129,7 @@ router.get('/user/:id(\\d+)', authorizationAdmin, userController.getOneUser);
 * @returns {User.model} 201 - The newly created user
 * @returns {string} 500 - An error message
 */
-router.post('/user/register', authorizationUser, validateBody(userSchema), userController.isRegister);
+router.post('/user/registerUser', authorizationUser, validateBody(userSchema), userController.isRegister);
 
 // SE RAJOUTER UN COMPTE ADMIN NOUS-MEME VIA LE FORMULAIRE DE LOGIN
 /**
@@ -139,7 +139,7 @@ router.post('/user/register', authorizationUser, validateBody(userSchema), userC
 * @param {UserPost.model} object.body.required User object to add to database
 * @returns {User.model} 201 - The newly created Admin* @returns {String} 500 - An error message
 */
-router.post('/user/register', authorizationAdmin, validateBody(userSchema), userController.isRegister);
+router.post('/user/registerAdmin', authorizationAdmin, validateBody(userSchema), userController.isRegister);
 
 
 /**

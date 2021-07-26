@@ -5,16 +5,16 @@ GET http://localhost:5050/hello
 GET http://localhost:5050/jobs
 
 ### Find one job
-GET http://localhost:5050/job/2
+GET http://localhost:5050/job/1
 
 ### Add one job
 POST http://localhost:5050/job/save
 Content-Type: application/json
 
 {
-     "title": "Enocre Autre Offre",
-     "description" : "Job en full remote",
-     "company" : "TIKO",
+     "title": "Une offre de folie",
+     "description" : "Job en  remote",
+     "company" : "mm&a",
      "technology" : "React-Redux c'est sûr",
      "locality" : "Nouvelle-Aquitaine",
      "contract" : "CDI",
@@ -23,20 +23,18 @@ Content-Type: application/json
 }
 
 ### Update one job
-PATCH http://localhost:5050/jobs/update
+PATCH http://localhost:5050/job/update
 Content-Type: application/json
 
 {
-     "id": 3,
-     "title": "Poste React",
-     "description" : "Boisson à volonté",
-     "company" : "che JB",
-     "technology" : "React et peut-être du PHP",
-     "locality" : "Cher",
-     "contract" : "stage",
-     "salary" : "3 oeufs et une pomme",
+     "title": "Une offre de folie",
+     "description" : "Job en  remote",
+     "company" : "mm&a",
+     "technology" : "React-Redux c'est sûr",
+     "locality" : "Nouvelle-Aquitaine",
+     "contract" : "CDI",
+     "salary" : "sans primes",
      "user_id" : 1
-
 }
 
 ### Find one job and delete
@@ -63,16 +61,16 @@ Content-Type: application/json
      "role": "Admin"
 }
 
-### Add one user
-POST http://localhost:5050/user/save
+### Add one user/ user register
+POST http://localhost:5050/user/registerUser
 Content-Type: application/json
 
 {
-     "firstName": "Michel",
-     "lastName": "Brun-Buisson",
-     "email": "florianBB@oclock.io",
-     "password": "trucDeFlorianBB",
-     "role": "Admin"
+     "firstName": "Maria",
+     "lastName": "Dubart",
+     "email": "mdb@oclock.io",
+     "password": "trucDeMaria",
+     "role": "User-Agent: "
 }
 
 ### Find one job and delete

@@ -1,5 +1,6 @@
 const  User  = require("../models/user");
 const jwt = require('../services/jwt');
+const bcrypt = require('bcrypt');
 
 const userController = {
 
