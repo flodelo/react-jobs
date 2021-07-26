@@ -6,10 +6,10 @@ module.exports = function (request, response, next) {
 
     try {
 
-        const token = request.headers["Authorization"];
+        const token = request.header("Authorization");
         console.log(token);
             if (!token) {
-                response.status(403).json("Acces denied");
+            response.status(403).json("Acces User denied");
             }
             const verify = jwt.verify(token, process.env.SECRET_KEY);
             request.user = verify;
