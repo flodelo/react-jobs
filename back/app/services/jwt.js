@@ -18,6 +18,7 @@ module.exports = {
 
             { 
                 userId: userData.id,
+                userEmail: userData.email,
                 isAdmin: isAdmin
             },
             SECRET_KEY_JWT, 

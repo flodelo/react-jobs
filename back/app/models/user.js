@@ -59,13 +59,13 @@ class User {
     * @returns {User} the instance identified with its id
     * @throws {Error} an error object
     */
-    static async findOne(id, email) {
+    static async findOneById(id) {
         try {
-            const {rows} = await database.query('SELECT * FROM "user" WHERE id =$1  AND email=$2', [id, email]);
+            const {rows} = await database.query('SELECT * FROM "user" WHERE id =$1  ', [id]);
             if (rows[0]) {
                 return new User(rows[0]);
             } else {
-                throw new UserError(id, email);
+                throw new UserError(id);
             }
         } catch (error) {
             if (error.detail) {
@@ -76,6 +76,22 @@ class User {
         }
     }
 
+    static async findOneByEmail(email) {
+        try {
+            const {rows} = await database.query('SELECT * FROM "user" WHERE email=$1  ', [email]);
+            if (rows[0]) {
+                return new User(rows[0]);
+            } else {
+                throw new UserError(email);
+            }
+        } catch (error) {
+            if (error.detail) {
+                throw new Error(error.detail);
+            } else {
+                throw error;
+            }
+        }
+    }
     /**
     * Adds or updates an instance of User in database
     * @async
