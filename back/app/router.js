@@ -1,10 +1,13 @@
-
 const { Router } = require('express');
 
 const jobController = require('./controllers/jobController');
 const userController = require('./controllers/userController');
+const poleemploiController = require('./controllers/poleemploiController');
+
+
 const Job = require('./models/job');
 const User = require('./models/user');
+
 const jobSchema = require('./schemas/job');
 const userSchema = require('./schemas/user');
 const { validateBody } = require('./services/validator');
@@ -91,6 +94,7 @@ router.delete('/job/delete/:id(\\d+)', /*authorizationAdmin,*/ jobController.del
 
 
 //ROUTES RELATED TO USER
+
 /**
 * Responds with all users in database if Admin
 * @route GET /users
@@ -196,6 +200,24 @@ router.delete('/user/delete/:id(\\d+)', authorizationUser, userController.delete
 * @returns {string} 500 - An error message
 */
 router.delete('/user/delete/:id(\\d+)', authorizationAdmin, userController.deleteOneUser);
+
+
+// ROUTE TO FETCH POLE EMPLOI DATA
+
+/**
+ * Responds with jobs from API Pôle Emploi
+ * @name /jobs/pe
+ * @group Jobboard
+ * @route GET 
+ * @returns {Array<Jobs>} 200 - An array of jobs
+ * @returns {string} 500 - An error message
+ * @route POST 
+ * @returns {Array<Jobs>} 200 - An array of jobs
+ * @returns {string} 500 - An error message
+ */
+router.route('/jobs/pe/')
+       .get(poleemploiController.fetchJobs)
+       .post(poleemploiController.fetchJobs);
 
 router.use((request, response) => response.status(404).json(`Endpoint ${request.url} not found`))
 

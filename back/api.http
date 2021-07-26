@@ -77,6 +77,10 @@ Content-Type: application/json
 DELETE http://localhost:5050/user/delete/10
 
 
+### Pôle Emploi API jobs
+POST  http://localhost:5050/jobs/pe
+
+
 ### Login user
 POST  http://localhost:5050/user/loginUser
 Content-type: application/json
@@ -88,3 +92,4 @@ Content-type: application/json
      "password": "trucDeMarion",
      "role": "User-Agent: "
 }
+

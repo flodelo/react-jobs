@@ -56,9 +56,5 @@ const jobController = {
         }
     }
 }
-    
-
-
-
 
 module.exports = jobController;
