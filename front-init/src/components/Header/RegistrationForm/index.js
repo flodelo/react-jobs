@@ -18,6 +18,8 @@ import {
 
 export default function RegistrationForm(props) {
   const [state, setState] = useState({
+    firstname: '',
+    lastname: '',
     email: '',
     password: '',
     confirmPassword: '',
@@ -35,7 +37,6 @@ export default function RegistrationForm(props) {
     if (state.email.length && state.password.length) {
       // props.showError(null);
       const payload = {
-        // name + firstname
         firstname: state.firstname,
         lastname: state.lastname,
         email: state.email,
