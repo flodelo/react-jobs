@@ -7,7 +7,7 @@ const schema = Joi.object({
     lastName: Joi.string().required(),
     email: Joi.string().email().required(),
     password: Joi.string().required(),
-    role: Joi.string().required()//default user
+    // role: Joi.string().required()//default user
     //token: [Joi.string(),Joi.number()]
 
 });
