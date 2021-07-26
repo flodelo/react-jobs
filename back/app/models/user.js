@@ -81,9 +81,9 @@ class User {
             const {rows} = await database.query('SELECT * FROM "user" WHERE email=$1  ', [email]);
             if (rows[0]) {
                 return new User(rows[0]);
-            } else {
+            } /*else {
                 throw new UserError(email);
-            }
+            }*/
         } catch (error) {
             if (error.detail) {
                 throw new Error(error.detail);
