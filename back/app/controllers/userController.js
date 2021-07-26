@@ -19,7 +19,7 @@ const userController = {
     
             // We check if user already exist
             // Validate if user exist in our database
-            const existUser = await User.findOneByEmail({email});
+            const existUser = await User.findOneByEmail(email);
     
             if (existUser) {
                 response.status(409).send("User is allready exist ! Please, login");
@@ -28,15 +28,21 @@ const userController = {
             encryptedPassword = await bcrypt.hash(password, 10);
               
             // Creating user in our database
-           
-            const user = await User.create({
-                firstName,
-                lastName,
-                email: email.toLowerCase().toString(),
-                password: encryptedPassword
+            
+            
+            
+            const newUser = new User({
+                firstName: request.body.firstName.toLowerCase().toString(),
+                lastName: request.body.lastName.toLowerCase().toString(),
+                email: request.body.email.toLowerCase().toString(),
+                password: encryptedPassword,
+                role: "User-Agent "
             });
+            const insert = newUser.save();
+
+
     
-            response.status(201).send(user);
+            response.status(201).send(insert);
             
     
     
@@ -58,13 +64,13 @@ const userController = {
                     return response.status(400).send("All input are required");
                 }
                 // Validate if user exist in our database
-                const user = await User.findOneByEmail({ email });
+                const user = await User.findOneByEmail(email);
         
                 if (user && (await bcrypt.compare(password, user.password))) {
                     
                     delete user.password;
                     // user
-                    response.status(200).json({user, token: jwt.createToken(user)});
+                    return response.status(200).json({user, token: jwt.createToken(user)});
                 }
                 response.status(400).send("Invalid Informations");
         

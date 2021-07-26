@@ -150,7 +150,7 @@ router.post('/user/registerAdmin', /*authorizationAdmin,*/ validateBody(userSche
 * @returns {Job.model} 201 - The newly connected user
 * @returns {string} 500 - An error message
 */
-router.post('/user/login', /*authorizationUser,*/ validateBody(userSchema), userController.isLogin);
+router.post('/user/loginUser', /*authorizationUser,*/ validateBody(userSchema), userController.isLogin);
 
 /**
 * Connect an ADMIN in database
@@ -160,7 +160,7 @@ router.post('/user/login', /*authorizationUser,*/ validateBody(userSchema), user
 * @returns {User.model} 201 - The newly connected Admin
 * @returns {string} 500 - An error message
 */
-router.post('/user/login', /*authorizationAdmin,*/ validateBody(userSchema), userController.isLogin);
+router.post('/user/loginUser', /*authorizationAdmin,*/ validateBody(userSchema), userController.isLogin);
 
 /**
 * Updates a user in database
