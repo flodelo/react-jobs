@@ -77,3 +77,6 @@ Content-Type: application/json
 
 ### Find one job and delete
 DELETE http://localhost:5050/user/delete/10
+
+### Pôle Emploi API jobs
+GET "https://api.emploi-store.fr/partenaire/offresdemploi/v2/offres/search?motsCles=react"

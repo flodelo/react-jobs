@@ -3,7 +3,9 @@ const { Router } = require('express');
 
 const jobController = require('./controllers/jobController');
 const userController = require('./controllers/userController');
+// const joobleController = require('./controllers/joobleController');
 const poleemploiController = require('./controllers/poleemploiController');
+// const monsterController = require('./controllers/monsterController');
 
 const jobSchema = require('./schemas/job');
 const userSchema = require('./schemas/user');
@@ -151,18 +153,54 @@ router.patch('/users/update', validateBody(userSchema), userController.save);
 router.delete('/user/delete/:id(\\d+)', userController.delete);
 
 
-// ROUTE tO FETCH POLE EMPLOI DATA
+// ROUTE TO FETCH POLE EMPLOI DATA
 
 /**
-* Responds with one job from API Pôle Emploi
-* @route GET /job/{id}
-* @group Jobboard
-* @param {number} id.path.required The id of the job to fetch
-* @returns {Job.model} 200 - A single job identified by its id
-* @returns {string} 404 - An error message
-* @returns {string} 500 - An error message
-*/
-router.get('/job/:id(\\d+)'/* url dynamique qui fait lien vers l'offre de PE souhaité*/, poleemploiController.fetchOneJob);
+ * Responds with jobs from API Pôle Emploi
+ * @route GET 'https://api.emploi-store.fr/partenaire/offresdemploi/v2/offres/search?motsCles=react'
+ * @group Jobboard
+ * @returns {Array<Jobs>} 200 - An array of jobs
+ * @returns {string} 500 - An error message
+ */
+ router.get('https://api.emploi-store.fr/partenaire/offresdemploi/v2/offres/search?motsCles=react', poleemploiController.fetchJobs);
+
+
+// /**
+// * Responds with one job from API Pôle Emploi
+// * @route GET /job/{id}
+// * @group Jobboard
+// * @param {number} id.path.required The id of the job to fetch
+// * @returns {Job.model} 200 - A single job identified by its id
+// * @returns {string} 404 - An error message
+// * @returns {string} 500 - An error message
+// */
+// router.get('/job/:id(\\d+)'/* url dynamique qui fait lien vers l'offre de PE souhaité*/, poleemploiController.fetchOneJob);
+
+
+// // ROUTES RELATED TO FETCH JOOBLE DATA
+// // messages d'erreur reste à configurer, quelle donnée est-ce que cet API envoie???
+
+// /**
+//  * Responds with all jobs from API Jobble
+//  * @route GET "https://fr.jooble.org/api/"
+//  * @group Jobboard
+//  * @returns {Array<Jobs>} 200 - An array of jobs
+//  * @returns {string} 500 - An error message
+//  */
+// router.get("https://fr.jooble.org/api/", joobleController.fetchJobs);
+
+// /**
+// * Responds with one job from API Jooble
+// * @route GET "https://fr.jooble.org/api/{id}"
+// * @group Jobboard
+// * @param {number} id.path.required The id of the job to fetch
+// * @returns {Job.model} 200 - A single job identified by its id
+// * @returns {string} 404 - An error message
+// * @returns {string} 500 - An error message
+// */
+// router.get("https://fr.jooble.org/api/:id(\\d+)", joobleController.fetchOneJob);
+
+// router.get('https://api.jobs.com/search/jobs', monsterController.fetchJobs);
 
 
 router.use((request, response) => response.status(404).json(`Endpoint ${request.url} not found`))
