@@ -1,5 +1,5 @@
 // == Import npm
-import * as React from 'react';
+import React, { useEffect, useState } from 'react';
 import {
   Switch,
   Route,
@@ -19,15 +19,35 @@ import LogInForm from '../Header/LogInForm';
 import Footer from '../Footer';
 
 // == Composant
-export default function footer() {
+export default function App() {
+
+  const [toDo, setTodo] = useState([]);
+
+  useEffect(() => {
+
+    fetch('https://jsonplaceholder.typicode.com/todos')
+    .then(data => {
+      console.log(data);
+      return data.json();
+    })
+    .then(data => {
+      data = data.slice(0, 20)
+      console.log(data);
+      setTodo(data)
+    })
+    .catch(error => {
+      console.log(error)
+    })
+  }, [])
+
   return (
     <ChakraProvider>
       <div className="app">
         <Switch>
           <Route exact path="/">
             <Header />
-            <Search />
-            <JobsList />
+            <Search jobs={toDo} />
+            <JobsList jobs={toDo} />
             <Footer />
           </Route>
           <Route path="/register">
@@ -50,3 +70,51 @@ export default function footer() {
   );
 }
 
+
+
+/* import {useState, useEffect} from 'react'
+
+function App() {
+
+  const [dataImg, setDataImg] = useState();
+
+  useEffect(() => {
+
+    fetch('https://api.thecatapi.com/v1/images/search')
+    .then(response => {
+      console.log(response);
+      return response.json();
+    })
+    .then(data => {
+      console.log(data);
+      setDataImg(data[0].url)
+    })
+  }, [])
+
+  return (
+    <div className="App">
+      {dataImg &&
+      <img src={dataImg}
+      alt="cat image" style={{width: "500px"}}
+      />}
+    </div>
+  );
+}*/
+
+/*
+
+useEffect(() => {
+
+    const [toDo, setTodo] = useState();
+
+    fetch('https://jsonplaceholder.typicode.com/todos')
+    .then(data => {
+      console.log(data);
+      return data.json();
+    })
+    .then(data => {
+      console.log(data);
+    })
+  }, [])
+
+*/
