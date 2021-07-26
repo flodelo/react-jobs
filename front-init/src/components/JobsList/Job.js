@@ -20,17 +20,20 @@ export default function Job({ job }) {
       borderLeftColor: 'blue.500',
     }}
     >
-      <Heading as="h2" size="md">{job.description}</Heading>
-      <Heading as="h3" size="sm" color="blue.500">{job.company}</Heading>
-      <span>{job.technology.map((tech) => (<Badge colorScheme="gray" mr="1" key={tech}>{tech}</Badge>))}</span>
-      {/* ligne de code pour utiliser la méthode .map avec des composants UI */}
-      <p>{job.locality}</p>
-      <p>{job.contract}</p>
-    </Box>
+      {/* <Heading as="h2" size="md">{jobs.description}</Heading>
+      <Heading as="h3" size="sm" color="blue.500">{jobs.company}</Heading>
+      <span>{jobs.technology.map((tech) => (<Badge colorScheme="gray" mr="1" key={tech}>{tech}</Badge>))}</span>
+      ligne de code pour utiliser la méthode .map avec des composants UI
+      <p>{jobs.locality}</p>
+  <p>{jobs.contract}</p> */}
+  <Heading as="h2" size="md">{job.title}</Heading>
+  <Heading as="h3" size="sm" color="blue.500">{job.id}</Heading>
+  <p>{job.completed.toString()}</p>
+  </Box>
   );
 }
 
-Job.propTypes = {
+{/* Job.propTypes = {
   title: PropTypes.string,
   description: PropTypes.string,
   company: PropTypes.string,
@@ -46,4 +49,4 @@ Job.defaultProps = {
   technology: '',
   locality: '',
   contract: '',
-};
+};*/}
