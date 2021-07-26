@@ -19,23 +19,25 @@ const userController = {
     
             // We check if user already exist
             // Validate if user exist in our database
-            const existUser = await User.findOne({ email });
+            const existUser = await User.findOneByEmail({email});
     
             if (existUser) {
-                return response.status(409).send("User is allready exist ! Please, login");
+                response.status(409).send("User is allready exist ! Please, login");
             }    
-            //We will encrypting user password
-            encryptedPassword = await bcrypt.hash(password, 10);        
+                  //We will encrypting user password
+            encryptedPassword = await bcrypt.hash(password, 10);
+              
             // Creating user in our database
+           
             const user = await User.create({
                 firstName,
                 lastName,
                 email: email.toLowerCase().toString(),
-                password: encryptedPassword,
+                password: encryptedPassword
             });
     
             response.status(201).send(user);
-    
+            
     
     
         } catch (error) {
@@ -53,10 +55,10 @@ const userController = {
         
                 // Validation of of user input
                 if (!(email && password))  {
-                    response.status(400).send("All input are required");
+                    return response.status(400).send("All input are required");
                 }
                 // Validate if user exist in our database
-                const user = await User.findOne({ email });
+                const user = await User.findOneByEmail({ email });
         
                 if (user && (await bcrypt.compare(password, user.password))) {
                     
@@ -90,7 +92,7 @@ const userController = {
     getOneUser: async (request, response) => {
  
         try {
-            const user = await User.findOne(parseInt(request.params.id, 10));
+            const user = await User.findOneById(parseInt(request.params.id, 10));
             response.json(user);
         } catch(error) {
             if (error instanceof User.UserError) {
