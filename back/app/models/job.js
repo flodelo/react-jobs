@@ -22,9 +22,9 @@ class JobError extends Error {
 
 class Job {
 
-    // we're referencing the custom error as static property of the model 
-    // to test the class of an error in the controller without having to 
-    // import the class of the error
+// we're referencing the custom error as static property of the model 
+// to test the class of an error in the controller without having to 
+// import the class of the error
     
     static JobError = JobError;
 
@@ -34,13 +34,13 @@ class Job {
         }
     }
 
-   /**
-     * Retrieves all jobs from database
-     * @static
-     * @async
-     * @returns {Array<Job>} all jobs in database
-     * @throws {Error} an error object
-     */
+    /**
+    * Retrieves all jobs from database
+    * @static
+    * @async
+    * @returns {Array<Job>} all jobs in database
+    * @throws {Error} an error object
+    */
     static async findAll() {
         try {
             const {rows} = await database.query('SELECT * FROM job');
@@ -54,15 +54,15 @@ class Job {
         }
     }
 
-     /**
-     * Retrieves one job from database
-     * @static
-     * @async
-     * @param {number} id 
-     * @returns {Job} the instance identified with its id
-     * @throws {Error} an error object
-     */
-      static async findOne(id) {
+    /**
+    * Retrieves one job from database
+    * @static
+    * @async
+    * @param {number} id 
+    * @returns {Job} the instance identified with its id
+    * @throws {Error} an error object
+    */
+    static async findOne(id) {
         try {
             const {rows} = await database.query('SELECT * FROM job WHERE id=$1', [id]);
             if (rows[0]) {
@@ -70,7 +70,7 @@ class Job {
             } else {
                 throw new JobError(id);
             }
-         } catch (error) {
+        } catch (error) {
             if (error.detail) {
                 throw new Error(error.detail);
             } else {
@@ -79,7 +79,7 @@ class Job {
         }
     }
 
-   /**
+    /**
     * Adds or updates an instance of Job in database
     * @async
     * @returns {Job} the inserted or updated instance
@@ -105,16 +105,16 @@ class Job {
                 throw error;
             }
         }
-   }
+    }
 
-     /**
-     * Deletes a job from database
-     * @static
-     * @async
-     * @param {number} id 
-     * @returns {Job} the deleted instance
-     * @throws {Error} an error object
-     */
+    /**
+    * Deletes a job from database
+    * @static
+    * @async
+    * @param {number} id 
+    * @returns {Job} the deleted instance
+    * @throws {Error} an error object
+    */
     static async findOneAndDelete(id) {
         try {
             const {rows} = await database.query('SELECT * FROM job WHERE id=$1', [id]);
