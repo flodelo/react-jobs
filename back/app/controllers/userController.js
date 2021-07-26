@@ -28,9 +28,6 @@ const userController = {
             encryptedPassword = await bcrypt.hash(password, 10);
               
             // Creating user in our database
-            
-            
-            
             const newUser = new User({
                 firstName: request.body.firstName.toLowerCase().toString(),
                 lastName: request.body.lastName.toLowerCase().toString(),
@@ -39,13 +36,7 @@ const userController = {
                 role: "User-Agent "
             });
             const insert = newUser.save();
-
-
-    
             response.status(201).send(insert);
-            
-    
-    
         } catch (error) {
             console.log(error);
         } next();
@@ -78,11 +69,6 @@ const userController = {
                 console.log(error);
             }
     },
-                    
-
-            
-
-
 
     getAllUser: async (_, response) => {
         try {
@@ -139,10 +125,15 @@ const userController = {
         }
     },
 
-
-
-
-
 };
 
 module.exports = userController;
+
+
+
+
+
+
+
+
+
