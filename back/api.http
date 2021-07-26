@@ -12,11 +12,11 @@ POST http://localhost:5050/job/save
 Content-Type: application/json
 
 {
-     "title": "Une offre de folie",
-     "description" : "Job en  remote",
-     "company" : "mm&a",
-     "technology" : "React-Redux c'est sûr",
-     "locality" : "Nouvelle-Aquitaine",
+     "title": "Une offre",
+     "description" : "Job",
+     "company" : "startup",
+     "technology" : "React",
+     "locality" : "Bordeaux",
      "contract" : "CDI",
      "salary" : "avec primes",
      "user_id" : 1
