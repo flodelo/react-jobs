@@ -31,13 +31,13 @@ class User {
     }
 
     /**
-     * Retrieves all users from database
-     * @static
-     * @async
-     * @returns {Array<User>} all users in database
-     * @throws {Error} an error object
-     */
-     static async findAll() {
+    * Retrieves all users from database
+    * @static
+    * @async
+    * @returns {Array<User>} all users in database
+    * @throws {Error} an error object
+    */
+    static async findAll() {
         try {
             //console.log(rows);
             const {rows} = await database.query('SELECT * FROM "user"');
@@ -52,22 +52,22 @@ class User {
     }
 
     /**
-     * Retrieves one user from database
-     * @static
-     * @async
-     * @param {number} id 
-     * @returns {User} the instance identified with its id
-     * @throws {Error} an error object
-     */
-    static async findOne(id) {
+    * Retrieves one user from database
+    * @static
+    * @async
+    * @param {number} id 
+    * @returns {User} the instance identified with its id
+    * @throws {Error} an error object
+    */
+    static async findOne(id, email) {
         try {
-            const {rows} = await database.query('SELECT * FROM "user" WHERE id =$1', [id]);
+            const {rows} = await database.query('SELECT * FROM "user" WHERE id =$1  AND email=$2', [id, email]);
             if (rows[0]) {
                 return new User(rows[0]);
             } else {
-                throw new UserError(id);
+                throw new UserError(id, email);
             }
-         } catch (error) {
+        } catch (error) {
             if (error.detail) {
                 throw new Error(error.detail);
             } else {
@@ -99,22 +99,21 @@ class User {
             console.log(error);
             if (error.detail) {
                 throw new Error(error.detail);
-             } else {
+            } else {
                 throw error;
             }
-           
         }
     }
 
-     /**
-     * Deletes a user from database
-     * @static
-     * @async
-     * @param {number} id 
-     * @returns {User}} the deleted instance
-     * @throws {Error} an error object
-     */
-      static async findOneAndDelete(id) {
+    /**
+    * Deletes a user from database
+    * @static
+    * @async
+    * @param {number} id 
+    * @returns {User}} the deleted instance
+    * @throws {Error} an error object
+    */
+    static async findOneAndDelete(id) {
         try {
             const {rows} = await database.query('SELECT * FROM "user" WHERE id=$1', [id]);
             if (rows[0]) {
@@ -134,3 +133,4 @@ class User {
 
 
 module.exports = User;
+
