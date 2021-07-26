@@ -9,7 +9,7 @@ module.exports = function (request, response, next) {
         
         // Stock the token we recieved from the header authorization
         const token = request.header("Authorization");
-        
+        console.log(token);
         // Verify if the token is valid
         if (!token) {
             response.status(403).json("Acces  Admin denied");
