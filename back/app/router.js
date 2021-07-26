@@ -129,7 +129,7 @@ router.get('/user/:id(\\d+)', authorizationAdmin, userController.getOneUser);
 * @returns {User.model} 201 - The newly created user
 * @returns {string} 500 - An error message
 */
-router.post('/user/registerUser', authorizationUser, validateBody(userSchema), userController.isRegister);
+router.post('/user/registerUser', /*authorizationUser,*/ validateBody(userSchema), userController.isRegister);
 
 // SE RAJOUTER UN COMPTE ADMIN NOUS-MEME VIA LE FORMULAIRE DE LOGIN
 /**
@@ -139,7 +139,7 @@ router.post('/user/registerUser', authorizationUser, validateBody(userSchema), u
 * @param {UserPost.model} object.body.required User object to add to database
 * @returns {User.model} 201 - The newly created Admin* @returns {String} 500 - An error message
 */
-router.post('/user/registerAdmin', authorizationAdmin, validateBody(userSchema), userController.isRegister);
+router.post('/user/registerAdmin', /*authorizationAdmin,*/ validateBody(userSchema), userController.isRegister);
 
 
 /**
@@ -150,7 +150,7 @@ router.post('/user/registerAdmin', authorizationAdmin, validateBody(userSchema),
 * @returns {Job.model} 201 - The newly connected user
 * @returns {string} 500 - An error message
 */
-router.post('/user/login', authorizationUser, validateBody(userSchema), userController.isLogin);
+router.post('/user/login', /*authorizationUser,*/ validateBody(userSchema), userController.isLogin);
 
 /**
 * Connect an ADMIN in database
@@ -160,7 +160,7 @@ router.post('/user/login', authorizationUser, validateBody(userSchema), userCont
 * @returns {User.model} 201 - The newly connected Admin
 * @returns {string} 500 - An error message
 */
-router.post('/user/login', authorizationAdmin, validateBody(userSchema), userController.isLogin);
+router.post('/user/login', /*authorizationAdmin,*/ validateBody(userSchema), userController.isLogin);
 
 /**
 * Updates a user in database
