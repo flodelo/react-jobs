@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 
 import axios from 'axios';
-import { API_BASE_URL, ACCESS_TOKEN_NAME } from '../../constants/apiConstants';
 // import { withRouter } from "react-router-dom";
 
 import {
@@ -19,6 +18,8 @@ import {
 
 export default function RegistrationForm(props) {
   const [state, setState] = useState({
+    firstname: '',
+    lastname: '',
     email: '',
     password: '',
     confirmPassword: '',
@@ -36,17 +37,18 @@ export default function RegistrationForm(props) {
     if (state.email.length && state.password.length) {
       // props.showError(null);
       const payload = {
+        firstname: state.firstname,
+        lastname: state.lastname,
         email: state.email,
         password: state.password,
       };
-      axios.post('http://localhost:5050/user/save', payload)
+      axios.post('http://localhost:5050/user/registerUser', payload)
         .then((response) => {
           if (response.status === 200) {
             setState((prevState) => ({
               ...prevState,
               successMessage: 'Registration successful. Redirecting to home page..',
             }));
-            localStorage.setItem(/*USER_TOKEN,*/ response.data.token);
             redirectToHome();
             // props.showError(null);
           }
@@ -64,7 +66,7 @@ export default function RegistrationForm(props) {
   };
   const redirectToHome = () => {
     props.updateTitle('Home');
-    props.history.push('/home');
+    props.history.push('/');
   };
   const redirectToLogin = () => {
     props.updateTitle('Login');
@@ -77,7 +79,7 @@ export default function RegistrationForm(props) {
       sendDetailsToServer();
     }
     else {
-      props.showError('Passwords do not match');
+      // props.showError('Passwords do not match');
     }
   };
   return (
@@ -98,6 +100,26 @@ export default function RegistrationForm(props) {
           p={8}
         >
           <Stack spacing={4}>
+          <FormControl id="email">
+              <FormLabel>Prénom</FormLabel>
+              <Input
+                type="text"
+                id="firstname"
+                value={state.firstname}
+                onChange={handleChange}
+              />
+            </FormControl>
+
+            <FormControl id="email">
+              <FormLabel>Nom</FormLabel>
+              <Input
+                type="text"
+                id="lastname"
+                value={state.lastname}
+                onChange={handleChange}
+              />
+            </FormControl>
+
             <FormControl id="email">
               <FormLabel>Adresse e-mail</FormLabel>
               <Input
