@@ -13,18 +13,20 @@ const jobController = {
         }
     },
 
-    findOneJob: async (request, response) => {
-        try {
-            const job = await Job.findOne(parseInt(request.params.id, 10));
-            response.json(job);
-        } catch(error) {
-            if (error instanceof Job.JobError) {
-                response.status(404).send(error.message);
-            } else {
-                response.status(500).send(error.message);
-            }
-        }
-    },
+    // We are not sure yet to need this method as we might choose to handle 
+    // showing details of one job without changing the page 
+    // findOneJob: async (request, response) => {
+    //     try {
+    //         const job = await Job.findOne(parseInt(request.params.id, 10));
+    //         response.json(job);
+    //     } catch(error) {
+    //         if (error instanceof Job.JobError) {
+    //             response.status(404).send(error.message);
+    //         } else {
+    //             response.status(500).send(error.message);
+    //         }
+    //     }
+    // },
 
     addJob: async (request, response) => {
         try {
