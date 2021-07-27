@@ -15,6 +15,7 @@ const authorizationUser = require('./middleware/authUserMiddleware');
 const authorizationAdmin = require('../app/middleware/authAdminMiddleware');
 
 
+
 const router = Router();
 
 /**
@@ -230,14 +231,14 @@ module.exports = router;
 // un router pour les visiteurs connectées
 
 
-
-
-
-
-
-
-
 // un router pour les admins
+
+
+
+
+
+
+
 
 
 
