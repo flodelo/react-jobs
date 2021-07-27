@@ -42,13 +42,18 @@ export default function App() {
 
   return (
     <ChakraProvider>
-      <div className="app">
+              <div className="app">
         <Switch>
           <Route exact path="/">
             <Header />
             <Search jobs={toDo} />
             <JobsList jobs={toDo} />
             <Footer />
+          </Route>
+          <Route path="/job/:id" exact>
+            <JobDetails
+              jobs={toDo}
+            />
           </Route>
           <Route path="/register">
             <Header />

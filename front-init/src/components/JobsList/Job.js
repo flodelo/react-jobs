@@ -1,12 +1,13 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 import {
-  Heading, Box, Badge
+  Heading, Box, Badge,
 } from '@chakra-ui/react';
 
 import PropTypes from 'prop-types';
 
-export default function Job({ job }) {
+export default function Job({ id, job }) {
   return (
     <Box bg="white" 
     p={5} 
@@ -20,6 +21,7 @@ export default function Job({ job }) {
       borderLeftColor: 'blue.500',
     }}
     >
+    <Link to={`/job/${job.id}`} key={job.id}>
       {/* <Heading as="h2" size="md">{jobs.description}</Heading>
       <Heading as="h3" size="sm" color="blue.500">{jobs.company}</Heading>
       <span>{jobs.technology.map((tech) => (<Badge colorScheme="gray" mr="1" key={tech}>{tech}</Badge>))}</span>
@@ -29,6 +31,7 @@ export default function Job({ job }) {
   <Heading as="h2" size="md">{job.title}</Heading>
   <Heading as="h3" size="sm" color="blue.500">{job.id}</Heading>
   <p>{job.completed.toString()}</p>
+  </Link>
   </Box>
   );
 }
