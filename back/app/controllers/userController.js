@@ -5,7 +5,7 @@ const bcrypt = require('bcrypt');
 const userController = {
 
     isRegister: async (request, response, next) => {
-
+        console.log(isRegiter);
         try {
     
             // We get all user input from the front
@@ -24,9 +24,9 @@ const userController = {
             if (existUser) {
                 response.status(409).send("User is allready exist ! Please, login");
             }    
-                  //We will encrypting user password
+            //We will encrypting user password
             encryptedPassword = await bcrypt.hash(password, 10);
-              
+            
             // Creating user in our database
             const newUser = new User({
                 firstName: request.body.firstName.toLowerCase().toString(),
@@ -40,6 +40,7 @@ const userController = {
         } catch (error) {
             console.log(error);
         } next();
+        
     },
 
     isLogin: async (request, response) => {
@@ -51,20 +52,24 @@ const userController = {
                 const { email, password } = request.body;
         
                 // Validation of of user input
-                if (!(email && password))  {
+                if (!(email || password))  {
                     return response.status(400).send("All input are required");
                 }
                 // Validate if user exist in our database
                 const user = await User.findOneByEmail(email);
         
-                if (user && (await bcrypt.compare(password, user.password))) {
-                    
+                if (!user) {
+                    response.status(400).send("user not found");
+                }
+                const validPassword = await bcrypt.compare(password, user.password);
+                if (!validPassword) {
+                    response.status(400).send("Invalid password !");
+                } else {
                     delete user.password;
                     // user
                     return response.status(200).json({user, token: jwt.createToken(user)});
                 }
-                response.status(400).send("Invalid Informations");
-        
+            
             } catch (error) {
                 console.log(error);
             }

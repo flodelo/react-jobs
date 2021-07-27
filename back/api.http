@@ -66,10 +66,10 @@ POST http://localhost:5050/user/registerUser
 Content-Type: application/json
 
 {
-     "firstName": "Anastasia",
+     "firstName": "Nathalia",
      "lastName": "Romanov",
-     "email": "anarom@oclock.io",
-     "password": "princessedesneiges",
+     "email": "natrom@oclock.io",
+     "password": "princessedessables",
      "role": "User"
 }
 
@@ -86,10 +86,10 @@ POST  http://localhost:5050/user/loginUser
 Content-type: application/json
 
 {
-     "firstName": "Anastasia",
+     "firstName": "Nathalia",
      "lastName": "Romanov",
-     "email": "anarom@oclock.io",
-     "password": "princessedesneiges",
+     "email": "natrom@oclock.io",
+     "password": "princessedessables",
      "role": "User"
 }
 
