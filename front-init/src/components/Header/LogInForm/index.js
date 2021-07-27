@@ -38,7 +38,7 @@ export default function LogInForm(props) {
       "password" : state.password,
     };
     axios.post("http://localhost:5050/user/loginUser", payload)
- setup     .then((response) => {
+     .then((response) => {
         if (response.status === 200) {
           console.log(response)
           setState((prevState) => ({
