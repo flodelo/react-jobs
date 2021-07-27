@@ -14,13 +14,12 @@ import {
   Heading,
   useColorModeValue,
 } from '@chakra-ui/react';
-// import { API_BASE_URL, USER_TOKEN } from '../../constants/apiConstants';
 
-export default function LogInForm() {
+export default function LogInForm(props) {
   const [state, setState] = useState({
     email: '',
     password: '',
-    successMessage: null,
+    // successMessage: null,
   });
 
   const handleChange = (e) => {
@@ -33,20 +32,20 @@ export default function LogInForm() {
 
   const handleSubmitClick = (e) => {
     e.preventDefault();
-    console.log(state.email, state.password);
+    console.log(state);
     const payload = {
-      email: state.email,
-      password: state.password,
+      "email" : state.email,
+      "password" : state.password,
     };
     axios.post("http://localhost:5050/user/loginUser", payload)
-      .then((response) => {
+ setup     .then((response) => {
         if (response.status === 200) {
           console.log(response)
           setState((prevState) => ({
             ...prevState,
-            successMessage: 'Connexion réussi.',
+            // successMessage: 'Connexion réussi.',
           }));
-          // localStorage.setItem(USER_TOKEN, response.data.token);
+          localStorage.setItem("token", response.data.token);
           
           redirectToHome();
           // props.showError(null);
@@ -62,8 +61,9 @@ export default function LogInForm() {
         console.log(error);
       });
   };
-  const redirectToHome = () => {
-    props.updateTitle('Accueil');
+  const redirectToHome = (props) => {
+    // props.updateTitle('Accueil');
+    console.log(props)
     props.history.push('/');
   };
 
