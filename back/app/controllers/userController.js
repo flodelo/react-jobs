@@ -5,12 +5,12 @@ const bcrypt = require('bcrypt');
 const userController = {
 
     isRegister: async (request, response, next) => {
-        console.log(isRegiter);
+        //console.log(isResgiter);
         try {
     
             // We get all user input from the front
             // on a besoin que du mail et pwd ( vu par Caro)
-            const {  email, password } = request.body;
+            const { email, password } = request.body;
     
             // Make validation user input
             if (!(email && password)) {
@@ -23,7 +23,7 @@ const userController = {
     
             if (existUser) {
                 response.status(409).send("User is allready exist ! Please, login");
-            }    
+            } else {   
             //We will encrypting user password
             encryptedPassword = await bcrypt.hash(password, 10);
             
@@ -35,11 +35,13 @@ const userController = {
                 password: encryptedPassword,
                 role: "User-Agent " /*trouver comment "dynamiser" la valeur de la clé role (entre user at admin)*/
             });
-            const insert = newUser.save();
+            const insert =  await newUser.save();
+            console.log(insert);
             response.status(201).send(insert);
+            }
         } catch (error) {
             console.log(error);
-        } next();
+        } //next();
         
     },
 
