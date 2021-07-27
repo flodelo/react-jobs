@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 import {
   Heading, Box, Badge, Button, Link, Text,
@@ -6,7 +7,7 @@ import {
 
 import PropTypes from 'prop-types';
 
-export default function Job({ job }) {
+export default function Job({ id, job }) {
   return (
     <Box bg="white" 
     p={5} 
@@ -20,12 +21,14 @@ export default function Job({ job }) {
       borderLeftColor: 'blue.500',
     }}
     >
+    <Link to={`/job/${job.id}`} key={job.id}>
       {/* <Heading as="h2" size="md">{jobs.description}</Heading>
       <Heading as="h3" size="sm" color="blue.500">{jobs.company}</Heading>
       <span>{jobs.technology.map((tech) => (<Badge colorScheme="gray" mr="1" key={tech}>{tech}</Badge>))}</span>
       ligne de code pour utiliser la méthode .map avec des composants UI
       <p>{jobs.locality}</p>
   <p>{jobs.contract}</p> */}
+
   <Heading as="h2" size="md">{job.intitule}</Heading>
   {/* <Heading as="h3" size="sm" color="blue.500">{job.id}</Heading>*/}
   <Badge fontSize="1.25em" colorScheme="gray" mr="3">{job.typeContrat}</Badge>
