@@ -85,11 +85,11 @@ POST  http://localhost:5050/user/loginUser
 Content-type: application/json
 
 {
-     "firstName": "Nathalia",
-     "lastName": "Romanov",
-     "email": "natrom@oclock.io",
-     "password": "princessedessables",
-     "role": "User"
+     "firstName": "Michel",
+     "lastName": "Drucker",
+     "email": "md@oclock.io",
+     "password": "michel.drucker",
+     "role": "admin"
 }
 
 
@@ -99,9 +99,9 @@ POST http://localhost:5050/user/registerAdmin
 Content-Type: application/json
 
 {
-     "firstName": "Michael",
-     "lastName": "Jackson",
-     "email": "mj@oclock.io",
-     "password": "michael.jackson",
+     "firstName": "Michel",
+     "lastName": "Drucker",
+     "email": "md@oclock.io",
+     "password": "michel.drucker",
      "role": "admin"
 }
