@@ -8,8 +8,9 @@ const schema = Joi.object({
     email: Joi.string().email().required(),
     password: Joi.string().required(),
     role: Joi.string().default('user')
-    //token: [Joi.string(),Joi.number()
 });
 
 
 module.exports = schema; 
+
+

@@ -4,8 +4,7 @@ GET http://localhost:5050/hello
 ### Find all jobs
 GET http://localhost:5050/jobs
 
-### Find one job
-GET http://localhost:5050/job/3
+
 
 ### Add one job
 POST http://localhost:5050/job/save
@@ -66,11 +65,11 @@ POST http://localhost:5050/user/registerUser
 Content-Type: application/json
 
 {
-     "firstName": "Nathalia",
-     "lastName": "Romanov",
-     "email": "natrom@oclock.io",
-     "password": "princessedessables",
-     "role": "User"
+     "firstName": "Michael",
+     "lastName": "Jackson",
+     "email": "mj@oclock.io",
+     "password": "michael.jackson",
+     "role": "admin"
 }
 
 ### Find one job and delete
@@ -86,10 +85,23 @@ POST  http://localhost:5050/user/loginUser
 Content-type: application/json
 
 {
-     "firstName": "Nathalia",
-     "lastName": "Romanov",
-     "email": "natrom@oclock.io",
-     "password": "princessedessables",
-     "role": "User"
+     "firstName": "Michel",
+     "lastName": "Drucker",
+     "email": "md@oclock.io",
+     "password": "michel.drucker",
+     "role": "admin"
 }
 
+
+
+### Add one user/ user register
+POST http://localhost:5050/user/registerAdmin
+Content-Type: application/json
+
+{
+     "firstName": "Michel",
+     "lastName": "Drucker",
+     "email": "md@oclock.io",
+     "password": "michel.drucker",
+     "role": "admin"
+}
