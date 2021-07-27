@@ -26,7 +26,7 @@ const [toDo, setTodo] = useState([]);
 
   useEffect(() => {
 
-  fetch('https://jsonplaceholder.typicode.com/todos')
+  fetch('http://localhost:5050/jobs/pe')
     .then(data => {
       console.log(data);
       return data.json();
