@@ -5,12 +5,12 @@ const bcrypt = require('bcrypt');
 const userController = {
 
     isRegister: async (request, response, next) => {
-        console.log(isRegiter);
+        //console.log(isResgiter);
         try {
     
             // We get all user input from the front
             // on a besoin que du mail et pwd ( vu par Caro)
-            const {  email, password } = request.body;
+            const { email, password } = request.body;
     
             // Make validation user input
             if (!(email && password)) {
