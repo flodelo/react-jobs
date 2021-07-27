@@ -23,7 +23,7 @@ const userController = {
     
             if (existUser) {
                 response.status(409).send("User is allready exist ! Please, login");
-            }    
+            } else {   
             //We will encrypting user password
             encryptedPassword = await bcrypt.hash(password, 10);
             
@@ -33,13 +33,15 @@ const userController = {
                 lastName: request.body.lastName.toLowerCase().toString(),
                 email: request.body.email.toLowerCase().toString(),
                 password: encryptedPassword,
-                role: "User-Agent "
+                role: "User-Agent " /*trouver comment "dynamiser" la valeur de la clé role (entre user at admin)*/
             });
-            const insert = newUser.save();
+            const insert =  await newUser.save();
+            console.log(insert);
             response.status(201).send(insert);
+            }
         } catch (error) {
             console.log(error);
-        } next();
+        } //next();
         
     },
 
@@ -75,30 +77,32 @@ const userController = {
             }
     },
 
-    getAllUser: async (_, response) => {
-        try {
+    // We are not sure yet to need this method
+    // getAllUser: async (_, response) => {
+    //     try {
             
-            const users = await User.findAll();
-            //console.log(users);
-            response.json(users);
-        } catch(error) {
-            response.status(500).send(error.message);
-        }
-    },
+    //         const users = await User.findAll();
+    //         //console.log(users);
+    //         response.json(users);
+    //     } catch(error) {
+    //         response.status(500).send(error.message);
+    //     }
+    // },
 
-    getOneUser: async (request, response) => {
+    // we are not sure yet to need this method
+    // getOneUser: async (request, response) => {
  
-        try {
-            const user = await User.findOneById(parseInt(request.params.id, 10));
-            response.json(user);
-        } catch(error) {
-            if (error instanceof User.UserError) {
-                response.status(404).send(error.message);
-            } else {
-                response.status(500).send(error.message);
-            }
-        }
-    },
+    //     try {
+    //         const user = await User.findOneById(parseInt(request.params.id, 10));
+    //         response.json(user);
+    //     } catch(error) {
+    //         if (error instanceof User.UserError) {
+    //             response.status(404).send(error.message);
+    //         } else {
+    //             response.status(500).send(error.message);
+    //         }
+    //     }
+    // },
 
     addUser: async (request, response) => {
         try {
