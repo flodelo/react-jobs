@@ -1,5 +1,6 @@
 // == Import npm
 import React, { useEffect, useState } from 'react';
+
 import {
   Switch,
   Route,
@@ -21,11 +22,11 @@ import Footer from '../Footer';
 // == Composant
 export default function App() {
 
-  const [toDo, setTodo] = useState([]);
+const [toDo, setTodo] = useState([]);
 
   useEffect(() => {
 
-    fetch('https://jsonplaceholder.typicode.com/todos')
+  fetch('http://localhost:5050/jobs/pe')
     .then(data => {
       console.log(data);
       return data.json();
@@ -75,8 +76,6 @@ export default function App() {
   );
 }
 
-
-
 /* import {useState, useEffect} from 'react'
 
 function App() {
@@ -104,22 +103,6 @@ function App() {
       />}
     </div>
   );
-}*/
-
-/*
-
-useEffect(() => {
-
-    const [toDo, setTodo] = useState();
-
-    fetch('https://jsonplaceholder.typicode.com/todos')
-    .then(data => {
-      console.log(data);
-      return data.json();
-    })
-    .then(data => {
-      console.log(data);
-    })
-  }, [])
+}
 
 */
