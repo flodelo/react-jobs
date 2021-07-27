@@ -11,7 +11,7 @@ module.exports = {
         let isAdmin = false;
         
         // method package jwt
-        if (userData.role === "admin") {
+        if (userData.role.toLowerCase() === "admin") {
             isAdmin = true;
         }
         return jwt.sign(
