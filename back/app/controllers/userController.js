@@ -33,7 +33,7 @@ const userController = {
                 lastName: request.body.lastName.toLowerCase().toString(),
                 email: request.body.email.toLowerCase().toString(),
                 password: encryptedPassword,
-                role: "User-Agent "
+                role: "User-Agent"
             });
             const insert = newUser.save();
             response.status(201).send(insert);

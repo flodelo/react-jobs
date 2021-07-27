@@ -43,7 +43,7 @@ export default function RegistrationForm(props) {
         "lastName" : state.lastname,
         "email" : state.email,
         "password" : state.password,
-        "role" : "User-Agent",
+        // "role" : "User-Agent", (deleted > Felana request)
       };
       
      axios.post('http://localhost:5050/user/registerUser', payload)
