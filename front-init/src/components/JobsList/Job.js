@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 import {
-  Heading, Box, Badge,
+  Heading, Box, Badge, Button, Link, Text,
 } from '@chakra-ui/react';
 
 import PropTypes from 'prop-types';
@@ -28,10 +28,16 @@ export default function Job({ id, job }) {
       ligne de code pour utiliser la méthode .map avec des composants UI
       <p>{jobs.locality}</p>
   <p>{jobs.contract}</p> */}
-  <Heading as="h2" size="md">{job.title}</Heading>
-  <Heading as="h3" size="sm" color="blue.500">{job.id}</Heading>
-  <p>{job.completed.toString()}</p>
-  </Link>
+
+  <Heading as="h2" size="md">{job.intitule}</Heading>
+  {/* <Heading as="h3" size="sm" color="blue.500">{job.id}</Heading>*/}
+  <Badge fontSize="1.25em" colorScheme="gray" mr="3">{job.typeContrat}</Badge>
+  <Heading as="h3" size="sm" color="blue.500">{job.entreprise.nom}</Heading>
+  <Text noOfLines={[2, 4, 6, 8]}>{job.description}</Text>
+  {/* Display only few lines depending on the screen size > ["sm", "md", "lg", "xl"] : noOfLines={[2, 4, 6, 8]*/}
+  <Button color="blue.500">
+  <Link href={job.origineOffre.urlOrigine} isExternal>Je postule</Link>
+              </Button>
   </Box>
   );
 }

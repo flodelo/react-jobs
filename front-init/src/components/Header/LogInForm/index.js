@@ -14,13 +14,12 @@ import {
   Heading,
   useColorModeValue,
 } from '@chakra-ui/react';
-import { API_BASE_URL, USER_TOKEN } from '../../constants/apiConstants';
 
-export default function LogInForm() {
+export default function LogInForm(props) {
   const [state, setState] = useState({
     email: '',
     password: '',
-    successMessage: null,
+    // successMessage: null,
   });
 
   const handleChange = (e) => {
@@ -33,37 +32,40 @@ export default function LogInForm() {
 
   const handleSubmitClick = (e) => {
     e.preventDefault();
-    console.log(state.email, state.password);
+    console.log(state);
     const payload = {
-      email: state.email,
-      password: state.password,
+      "email" : state.email,
+      "password" : state.password,
     };
-    axios.post(`${API_BASE_URL}/user/login`, payload)
-      .then((response) => {
+    axios.post("http://localhost:5050/user/loginUser", payload)
+     .then((response) => {
         if (response.status === 200) {
           console.log(response)
           setState((prevState) => ({
             ...prevState,
-            successMessage: 'Connexion réussi.',
+            // successMessage: 'Connexion réussi.',
           }));
-          localStorage.setItem(USER_TOKEN, response.data.token);
+          const { user, token } = response.data
+          localStorage.setItem("token", token);
+          localStorage.setItem("user", JSON.stringify(user));
           
           redirectToHome();
-          props.showError(null);
+          // props.showError(null);
         }
         else if (response.code === 204) {
-          props.showError("Le nom d'utilisateur et le mot de passe ne correspondent pas");
+          // props.showError("Le nom d'utilisateur et le mot de passe ne correspondent pas");
         }
         else {
-          props.showError("Le nom d'utilisateur n'existe pas");
+          // props.showError("Le nom d'utilisateur n'existe pas");
         }
       })
       .catch((error) => {
         console.log(error);
       });
   };
-  const redirectToHome = () => {
-    props.updateTitle('Accueil');
+  const redirectToHome = (props) => {
+    // props.updateTitle('Accueil');
+    console.log(props)
     props.history.push('/');
   };
 
