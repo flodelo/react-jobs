@@ -1,21 +1,22 @@
 ### Path for  test
 GET http://localhost:5050/hello
 
+### Pôle Emploi API jobs
+POST  http://localhost:5050/jobs/pe
+
 ### Find all jobs
 GET http://localhost:5050/jobs
-
-
 
 ### Add one job
 POST http://localhost:5050/job/save
 Content-Type: application/json
 
 {
-     "title": "Une offre",
-     "description" : "Job",
-     "company" : "startup",
-     "technology" : "React",
-     "locality" : "Bordeaux",
+     "title": "Un offre superbe",
+     "description" : "Job qui fait tout",
+     "company" : "ME",
+     "technology" : "React et plus",
+     "locality" : "Vernon",
      "contract" : "CDI",
      "salary" : "avec primes",
      "user_id" : 1
@@ -74,10 +75,6 @@ Content-Type: application/json
 
 ### Find one job and delete
 DELETE http://localhost:5050/user/delete/10
-
-
-### Pôle Emploi API jobs
-POST  http://localhost:5050/jobs/pe
 
 
 ### Login user

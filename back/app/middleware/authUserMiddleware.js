@@ -10,7 +10,7 @@ module.exports = function (request, response, next) {
 
         
             if (!token) {
-            response.status(403).json("Acces User denied");
+            response.status(403).json("User access denied");
             }
             const verify = jwt.verify(token, process.env.TOKEN_KEY);
             request.user = verify;
