@@ -25,7 +25,7 @@ class Job {
 // we're referencing the custom error as static property of the model 
 // to test the class of an error in the controller without having to 
 // import the class of the error
-    
+  
     static JobError = JobError;
 
     constructor(data={}) {
