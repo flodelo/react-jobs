@@ -4,36 +4,34 @@ const bcrypt = require('bcrypt');
 
 const userController = {
 
-    isRegister: async (request, response, next) => {
-        //console.log(isResgiter);
+    isRegister: async (request, response) => {
+        //console.log(isRegister);
         try {
     
-            // We get all user input from the front
-            // on a besoin que du mail et pwd ( vu par Caro)
+            // User input from front-end (body): email and password
             const { email, password } = request.body;
     
-            // Make validation user input
+            // Validate user input
             if (!(email && password)) {
-                response.status(400).send("All input is required");
+                response.status(400).send("Please enter both, email and password!");
             }
     
-            // We check if user already exist
-            // Validate if user exist in our database
+            // Validate if user exists in database
             const existUser = await User.findOneByEmail(email);
     
             if (existUser) {
-                response.status(409).send("User is allready exist ! Please, login");
+                response.status(409).send("This user exists already! Please, login to proceed.");
             } else {   
-            //We will encrypting user password
+            // Encrypting user password
             encryptedPassword = await bcrypt.hash(password, 10);
             
-            // Creating user in our database
+            // Create user in database
             const newUser = new User({
                 firstName: request.body.firstName.toLowerCase().toString(),
                 lastName: request.body.lastName.toLowerCase().toString(),
                 email: request.body.email.toLowerCase().toString(),
                 password: encryptedPassword,
-                role: "User-Agent " /*trouver comment "dynamiser" la valeur de la clé role (entre user at admin)*/
+                role: " " /* empty string as "dynamisation", Joi's default role is "user", as all admins are registered directly in database at the moment this should be enough right now*/
             });
             const insert =  await newUser.save();
             console.log(insert);
@@ -41,34 +39,33 @@ const userController = {
             }
         } catch (error) {
             console.log(error);
-        } //next();
+        }
         
     },
 
     isLogin: async (request, response) => {
 
-        // our login logic goes here
+        // Our login logic goes here
             try {
                 
-                //we'll getting the user input
+                // Get user input
                 const { email, password } = request.body;
         
-                // Validation of of user input
+                // Validate user input
                 if (!(email || password))  {
-                    return response.status(400).send("All input are required");
+                    return response.status(400).send("Please enter both, email and password!");
                 }
-                // Validate if user exist in our database
+                // Validate if user exists in database
                 const user = await User.findOneByEmail(email);
         
                 if (!user) {
-                    response.status(400).send("user not found");
+                    response.status(400).send("This user could not be found.");
                 }
                 const validPassword = await bcrypt.compare(password, user.password);
                 if (!validPassword) {
-                    response.status(400).send("Invalid password !");
+                    response.status(400).send("Invalid password!");
                 } else {
                     delete user.password;
-                    // user
                     return response.status(200).json({user, token: jwt.createToken(user)});
                 }
             

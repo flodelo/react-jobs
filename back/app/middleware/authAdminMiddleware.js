@@ -12,13 +12,13 @@ module.exports = function (request, response, next) {
         
         // Verify if the token is valid
         if (!token) {
-            response.status(403).json("Acces  Admin denied");
+            response.status(403).json("Admin access denied");
         }
         // Verify if the token is valid
         const verify = jwt.verify(token, process.env.TOKEN_KEY);
         // Verify if the user is an Admin
         if (verify.isAdmin === false || verify.isAdmin === null ) {
-            return response.status(401).json("Vous n'avez pas les droits d'accès");
+            return response.status(401).json("You don't have access rights");
         }
 
         request.user = verify;

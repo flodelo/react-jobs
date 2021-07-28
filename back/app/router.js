@@ -41,8 +41,8 @@ router.get('/hello', (request, response) => response.json('Hello World!'));
  * @returns {string} 500 - An error message
  */
  router.route('/jobs/pe/')
- .get(poleemploiController.fetchJobs)
- .post(poleemploiController.fetchJobs);
+       .get(poleemploiController.fetchJobs)
+       .post(poleemploiController.fetchJobs);
 
 
 // ROUTES RELATED TO JOB
@@ -224,24 +224,6 @@ router.delete('/user/delete/:id(\\d+)', authorizationUser, userController.delete
 * @returns {string} 500 - An error message
 */
 router.delete('/user/delete/:id(\\d+)', authorizationAdmin, userController.deleteOneUser);
-
-
-// ROUTE TO FETCH POLE EMPLOI DATA
-
-/**
-* Responds with jobs from API Pôle Emploi
-* @name /jobs/pe
-* @group Jobboard
-* @route GET 
-* @returns {Array<Jobs>} 200 - An array of jobs
-* @returns {string} 500 - An error message
-* @route POST 
-* @returns {Array<Jobs>} 200 - An array of jobs
-* @returns {string} 500 - An error message
-*/
-router.route('/jobs/pe/')
-       .get(poleemploiController.fetchJobs)
-       .post(poleemploiController.fetchJobs);
 
 router.use((request, response) => response.status(404).json(`Endpoint ${request.url} not found`))
 
