@@ -100,7 +100,7 @@ router.post('/job/save', authorizationAdmin, validateBody(jobSchema), jobControl
 * @returns {*} 204 - Job has been updated
 * @returns {string} 500 - An error message
 */
-router.patch('/job/update', authorizationAdmin,validateBody(jobSchema), jobController.addJob);
+router.patch('/job/update', authorizationAdmin, validateBody(jobSchema), jobController.addJob);
 
 /**
 * Finds and deletes a job in database
@@ -158,15 +158,15 @@ router.delete('/job/delete/:id(\\d+)', authorizationAdmin, jobController.deleteJ
 */
 router.post('/user/registerUser', validateBody(userSchema), userController.isRegister);
 
-// SE RAJOUTER UN COMPTE ADMIN NOUS-MEME VIA LE FORMULAIRE DE LOGIN
-/**
-* Adds a new Admin in database
-* @route POST /user/register
-* @group Jobboard
-* @param {UserPost.model} object.body.required User object to add to database
-* @returns {User.model} 201 - The newly created Admin* @returns {String} 500 - An error message
-*/
-router.post('/user/registerAdmin', /*authorizationAdmin,*/ validateBody(userSchema), userController.isRegister);
+// // SE RAJOUTER UN COMPTE ADMIN NOUS-MEME VIA LE FORMULAIRE DE LOGIN
+// /**
+// * Adds a new Admin in database
+// * @route POST /user/register
+// * @group Jobboard
+// * @param {UserPost.model} object.body.required User object to add to database
+// * @returns {User.model} 201 - The newly created Admin* @returns {String} 500 - An error message
+// */
+// router.post('/user/registerAdmin', /*authorizationAdmin,*/ validateBody(userSchema), userController.isRegister);
 
 
 /**

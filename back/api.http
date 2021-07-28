@@ -10,16 +10,16 @@ GET http://localhost:5050/jobs
 ### Add one job
 POST http://localhost:5050/job/save
 Content-Type: application/json
-
+authorization: token eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjIzLCJ1c2VyRW1haWwiOiJoYXJyeUBob2d3YXJ0cy5pbyIsImlzQWRtaW4iOnRydWUsImlhdCI6MTYyNzQ4OTk1NSwiZXhwIjoxNjI3NTc2MzU1fQ.A7VMttHJbB4G_wcrXZ2Kl9nFvQaDOEN3X7YKDjpVlJk
 {
-     "title": "Un offre superbe",
+     "title": "Un offre",
      "description" : "Job qui fait tout",
      "company" : "ME",
      "technology" : "React et plus",
      "locality" : "Vernon",
      "contract" : "CDI",
      "salary" : "avec primes",
-     "user_id" : 1
+     "user_id" : 23
 }
 
 ### Update one job
@@ -66,7 +66,7 @@ POST http://localhost:5050/user/registerUser
 Content-Type: application/json
 
 {
-     "firstName": "Michael",
+     "firstName": "Mike",
      "lastName": "Jackson",
      "email": "mj@oclock.io",
      "password": "michael.jackson",
@@ -81,12 +81,9 @@ DELETE http://localhost:5050/user/delete/10
 POST  http://localhost:5050/user/loginUser
 Content-type: application/json
 
-{
-     "firstName": "Michel",
-     "lastName": "Drucker",
-     "email": "md@oclock.io",
-     "password": "michel.drucker",
-     "role": "admin"
+{    
+     "email": "mj@oclock.io",
+     "password": "michael.jackson"
 }
 
 
