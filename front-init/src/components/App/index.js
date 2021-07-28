@@ -22,7 +22,7 @@ import Footer from '../Footer';
 // == Composant
 export default function App() {
 
-const [toDo, setTodo] = useState([]);
+  const [jobs, setJobs] = useState([]);
 
   useEffect(() => {
 
@@ -34,7 +34,7 @@ const [toDo, setTodo] = useState([]);
     .then(data => {
       data = data.slice(0, 20)
       console.log(data);
-      setTodo(data)
+      setJobs(data)
     })
     .catch(error => {
       console.log(error)
@@ -47,13 +47,13 @@ const [toDo, setTodo] = useState([]);
         <Switch>
           <Route exact path="/">
             <Header />
-            <Search jobs={toDo} />
-            <JobsList jobs={toDo} />
+            <Search jobs={jobs} />
+            {/* <JobsList jobs={jobs}/> */}
             <Footer />
           </Route>
           <Route path="/job/:id" exact>
             <JobDetails
-              jobs={toDo}
+              jobs={jobs}
             />
           </Route>
           <Route path="/register">

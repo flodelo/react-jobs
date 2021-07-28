@@ -7,7 +7,7 @@ import {
 
 import PropTypes from 'prop-types';
 
-export default function Job({ id, job }) {
+export default function Job({ id, intitule }) {
   return (
     <Box bg="white" 
     p={5} 
@@ -28,8 +28,8 @@ export default function Job({ id, job }) {
       ligne de code pour utiliser la méthode .map avec des composants UI
       <p>{jobs.locality}</p>
   <p>{jobs.contract}</p> */}
-  <Heading as="h2" size="md">{job.intitule}</Heading>
-  <Heading as="h3" size="sm" color="blue.500">{job.id}</Heading>
+  <Heading as="h2" size="md">{intitule}</Heading>
+  <Heading as="h3" size="sm" color="blue.500">{id}</Heading>
   {/* <p>{job.completed.toString()}</p> */}
   </Link>
   </Box>
