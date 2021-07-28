@@ -1,0 +1,107 @@
+### Path for  test
+GET http://localhost:5050/hello
+
+### Find all jobs
+GET http://localhost:5050/jobs
+
+
+
+### Add one job
+POST http://localhost:5050/job/save
+Content-Type: application/json
+
+{
+     "title": "Une offre",
+     "description" : "Job",
+     "company" : "startup",
+     "technology" : "React",
+     "locality" : "Bordeaux",
+     "contract" : "CDI",
+     "salary" : "avec primes",
+     "user_id" : 1
+}
+
+### Update one job
+PATCH http://localhost:5050/job/update
+Content-Type: application/json
+
+{
+     "title": "Une offre de folie",
+     "description" : "Job en  remote",
+     "company" : "mm&a",
+     "technology" : "React-Redux c'est sûr",
+     "locality" : "Nouvelle-Aquitaine",
+     "contract" : "CDI",
+     "salary" : "sans primes",
+     "user_id" : 1
+}
+
+### Find one job and delete
+DELETE http://localhost:5050/job/delete/3
+
+
+
+### Find all users
+GET http://localhost:5050/users
+
+### Find one user by id
+GET http://localhost:5050/user/4
+
+### Update one user 
+PATCH http://localhost:5050/users/update
+Content-Type: application/json
+
+{
+     "id": 7,
+     "firstName": "François",
+     "lastName": "BB",
+     "email": "flo@oclock.io",
+     "password": "trucDeFloBB",
+     "role": "Admin"
+}
+
+### Add one user/ user register
+POST http://localhost:5050/user/registerUser
+Content-Type: application/json
+
+{
+     "firstName": "Michael",
+     "lastName": "Jackson",
+     "email": "mj@oclock.io",
+     "password": "michael.jackson",
+     "role": "admin"
+}
+
+### Find one job and delete
+DELETE http://localhost:5050/user/delete/10
+
+
+### Pôle Emploi API jobs
+POST  http://localhost:5050/jobs/pe
+
+
+### Login user
+POST  http://localhost:5050/user/loginUser
+Content-type: application/json
+
+{
+     "firstName": "Michel",
+     "lastName": "Drucker",
+     "email": "md@oclock.io",
+     "password": "michel.drucker",
+     "role": "admin"
+}
+
+
+
+### Add one user/ user register
+POST http://localhost:5050/user/registerAdmin
+Content-Type: application/json
+
+{
+     "firstName": "Michel",
+     "lastName": "Drucker",
+     "email": "md@oclock.io",
+     "password": "michel.drucker",
+     "role": "admin"
+}
