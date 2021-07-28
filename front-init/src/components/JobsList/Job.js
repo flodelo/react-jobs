@@ -12,7 +12,7 @@ import {
 
 import PropTypes from 'prop-types';
 
-export default function Job({ id, intitule, description, typeContrat }) {
+export default function Job({ id, intitule, description, typeContrat, entreprise }) {
   return (
     <Accordion width="80%" allowToggle _hover={{
       boxShadow: 'lg',
@@ -34,7 +34,7 @@ export default function Job({ id, intitule, description, typeContrat }) {
   <AccordionIcon />
   </AccordionButton>
   <AccordionPanel>
-  <Heading as="h3" size="sm" color="blue.500">{id}</Heading>
+  <Heading as="h3" size="sm" color="blue.500">{entreprise}</Heading>
   <p as="h3">{description}</p>
   <Button>Test</Button>
   </AccordionPanel>
