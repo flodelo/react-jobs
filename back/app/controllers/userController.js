@@ -29,8 +29,8 @@ const userController = {
             
             // Creating user in our database
             const newUser = new User({
-                firstName: request.body.firstName.toLowerCase().toString(),
-                lastName: request.body.lastName.toLowerCase().toString(),
+                firstName: request.body.firstname.toLowerCase().toString(),
+                lastName: request.body.lastname.toLowerCase().toString(),
                 email: request.body.email.toLowerCase().toString(),
                 password: encryptedPassword,
                 role: "User-Agent " /*trouver comment "dynamiser" la valeur de la clé role (entre user at admin)*/
