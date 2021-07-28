@@ -49,7 +49,7 @@ export default function Search ({jobs}) {
           )
           .map((val) => {
             return (
-              <Job key={val.id} typeContrat={val.typeContrat} description={val.description} intitule={val.intitule} id={val.id}
+              <Job key={val.id} entreprise={val.entreprise.nom} typeContrat={val.typeContrat} description={val.description} intitule={val.intitule} id={val.id}
               />
             );
           })}
