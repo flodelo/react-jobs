@@ -10,7 +10,7 @@ const userController = {
     
             // User input from front-end (body): email and password
             const { email, password } = request.body;
-    
+            console.log(request.body, "heelo");
             // Validate user input
             if (!(email && password)) {
                 response.status(400).send("Please enter both, email and password!");
@@ -27,8 +27,8 @@ const userController = {
             
             // Create user in database
             const newUser = new User({
-                firstName: request.body.firstName.toLowerCase().toString(),
-                lastName: request.body.lastName.toLowerCase().toString(),
+                firstName: request.body.firstname.toLowerCase().toString(),
+                lastName: request.body.lastname.toLowerCase().toString(),
                 email: request.body.email.toLowerCase().toString(),
                 password: encryptedPassword,
                 role: " " /* empty string as "dynamisation", Joi's default role is "user", as all admins are registered directly in database at the moment this should be enough right now*/

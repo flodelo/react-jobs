@@ -6,7 +6,7 @@ module.exports = function (request, response, next) {
 
     try {
 
-        const token = request.header("Authorization");
+            const token = request.headers.authorization.split(" ")[1];
 
         
             if (!token) {

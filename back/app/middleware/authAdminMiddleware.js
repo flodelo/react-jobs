@@ -3,16 +3,16 @@ const jwt = require('jsonwebtoken');
 require('dotenv').config();
 
 module.exports = function (request, response, next) {
-    
+    console.log(request.headers)
     try {
 
         
         // Stock the token we recieved from the header authorization
-        const token = request.header("Authorization");
-        
+        const token = request.headers.authorization.split(" ")[1];
+        console.log(token);
         // Verify if the token is valid
         if (!token) {
-            response.status(403).json("Admin access denied");
+            return response.status(403).json("Admin access denied");
         }
         // Verify if the token is valid
         const verify = jwt.verify(token, process.env.TOKEN_KEY);
