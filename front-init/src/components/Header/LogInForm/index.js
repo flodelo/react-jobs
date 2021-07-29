@@ -16,6 +16,8 @@ import {
 } from '@chakra-ui/react';
 
 export default function LogInForm(props) {
+  const [isAdmin, setIsAdmin] = useState(false)
+  const [isLogged, setIsLogged] = useState(false)
   const [state, setState] = useState({
     email: '',
     password: '',
@@ -40,16 +42,30 @@ export default function LogInForm(props) {
     axios.post("http://localhost:5050/user/loginUser", payload)
      .then((response) => {
         if (response.status === 200) {
+          const { user, token } = response.data
+          
+          if (user.token) {
+            setIsLogged(true)
+          }
+
+          if (user.role === "admin") {
+            setIsAdmin(true)
+          }
+
+          localStorage.setItem("token", token);
+          localStorage.setItem("user", JSON.stringify(user));
+
           console.log(response)
           setState((prevState) => ({
             ...prevState,
             // successMessage: 'Connexion réussi.',
           }));
-          const { user, token } = response.data
-          localStorage.setItem("token", token);
-          localStorage.setItem("user", JSON.stringify(user));
-          
-          redirectToHome();
+
+          if (isAdmin) {
+          redirectToDashboard() }
+
+          else { 
+          redirectToHome() }
           // props.showError(null);
         }
         else if (response.code === 204) {
@@ -63,6 +79,23 @@ export default function LogInForm(props) {
         console.log(error);
       });
   };
+
+ /* .then((response)) => {
+   const user = response.user
+   if (user.role.includes("Admin"))
+   redirectToDashboard() }
+
+  1. si le rôle de l'user est "Admin", rediriger vers "/admin" avec la vue 
+  2. redirection vers admin via react-router
+  3. envoi d'une offre via formulaire
+
+  A voir : 
+  1. comment garder le token et aussi comment réaliser un logout.
+  2. S'assurer que la route n'est pas accessible en tapant l'url avec /admin
+ } 
+ */
+
+
   const redirectToHome = (props) => {
     // props.updateTitle('Accueil');
     console.log(props)
