@@ -12,9 +12,7 @@ import { ChakraProvider } from '@chakra-ui/react';
 import './styles.css';
 
 import Header from '../Header';
-import JobDetails from '../JobDetails';
 import Search from '../Search';
-import JobsList from '../JobsList';
 import RegistrationForm from '../Header/RegistrationForm';
 import LogInForm from '../Header/LogInForm';
 import Footer from '../Footer';
@@ -48,13 +46,7 @@ export default function App() {
           <Route exact path="/">
             <Header />
             <Search jobs={jobs} />
-            {/* <JobsList jobs={jobs}/> */}
             <Footer />
-          </Route>
-          <Route path="/job/:id" exact>
-            <JobDetails
-              jobs={jobs}
-            />
           </Route>
           <Route path="/register">
             <Header />
@@ -77,13 +69,9 @@ export default function App() {
 }
 
 /* import {useState, useEffect} from 'react'
-
 function App() {
-
   const [dataImg, setDataImg] = useState();
-
   useEffect(() => {
-
     fetch('https://api.thecatapi.com/v1/images/search')
     .then(response => {
       console.log(response);
@@ -94,7 +82,6 @@ function App() {
       setDataImg(data[0].url)
     })
   }, [])
-
   return (
     <div className="App">
       {dataImg &&
@@ -104,5 +91,4 @@ function App() {
     </div>
   );
 }
-
 */
