@@ -8,7 +8,7 @@ import {
   Input, Button, HStack, VStack, StackDivider, Accordion,
 } from '@chakra-ui/react';
 import Filters from './Filters';
-import Job from '../JobsList/Job';
+import Job from '../Search/Job';
 
 export default function Search ({jobs}) {
   
