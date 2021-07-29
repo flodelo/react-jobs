@@ -17,14 +17,16 @@ import {
 } from '@chakra-ui/react';
 
 export default function RegistrationForm(props) {
+
   const [state, setState] = useState({
     firstname: '',
     lastname: '',
     email: '',
     password: '',
-    confirmPassword: '',
-    successMessage: null,
+    // confirmPassword: '',
+    // successMessage: null,
   });
+
   const handleChange = (e) => {
     const { id, value } = e.target;
     setState((prevState) => ({
@@ -34,54 +36,53 @@ export default function RegistrationForm(props) {
   };
 
   const sendDetailsToServer = () => {
-    if (state.email.length && state.password.length) {
+    // if (state.email.length && state.password.length) {
       // props.showError(null);
       const payload = {
-        firstname: state.firstname,
-        lastname: state.lastname,
-        email: state.email,
-        password: state.password,
+        "firstName" : state.firstname,
+        "lastName" : state.lastname,
+        "email" : state.email,
+        "password" : state.password,
+        // "role" : "User-Agent", (deleted > Felana request)
       };
-      axios.post('http://localhost:5050/user/registerUser', payload)
+      
+     axios.post('http://localhost:5050/user/registerUser', payload)
         .then((response) => {
           if (response.status === 200) {
             setState((prevState) => ({
               ...prevState,
-              successMessage: 'Registration successful. Redirecting to home page..',
+              // successMessage: 'Registration successful. Redirecting to home page..',
             }));
             redirectToHome();
+            console.log(response)
             // props.showError(null);
-          }
-          else {
-            // props.showError('Some error ocurred');
-          }
-        })
-        .catch((error) => {
-          console.log(error);
-        });
-    }
-    else {
-      // props.showError('Please enter valid username and password');
-    }
+          } else {
+          // props.showError("Some error ocurred");
+      }})
+  .catch((error) => {
+      console.log(error.response);
+  });
+ }
+
+
+  const handleSubmitClick = (e) => {
+    e.preventDefault();
+    console.log(state);
+    // if (state.password === state.confirmPassword) {
+      sendDetailsToServer();
+    // }
+    // else {
+      // props.showError('Passwords do not match');
+    // }
   };
+
   const redirectToHome = () => {
-    props.updateTitle('Home');
     props.history.push('/');
   };
   const redirectToLogin = () => {
-    props.updateTitle('Login');
     props.history.push('/login');
   };
-  const handleSubmitClick = (e) => {
-    e.preventDefault();
-    console.log(state.email);
-    if (state.password === state.confirmPassword) {
-      sendDetailsToServer();
-    }
-    else {
-      // props.showError('Passwords do not match');
-    }
-  };
+
   return (
     <Flex
       align="center"
@@ -145,7 +146,6 @@ export default function RegistrationForm(props) {
                 type="password"
                 id="confirmPassword"
                 value={state.confirmPassword}
-                onChange={handleChange}
               />
             </FormControl>
             <Stack spacing={10}>
