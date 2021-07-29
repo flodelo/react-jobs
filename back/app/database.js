@@ -1,3 +1,5 @@
+// Using a connection pool to avoid PostgreSQL to pipeline and execute serially all queries 
+// among simultaneous requests 
 const {Pool} = require('pg');
 
 const pool = new Pool({

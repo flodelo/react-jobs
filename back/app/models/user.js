@@ -82,7 +82,7 @@ class User {
     * Finds one user by his/her email in database
     * @static
     * @async
-    * @param {string} "email" 
+    * @param {string} email 
     * @returns {User} the instance identified by its email
     * @throws {Error} an error object
     */
@@ -154,7 +154,6 @@ class User {
         }
     }
 }    
-
 
 module.exports = User;
 
