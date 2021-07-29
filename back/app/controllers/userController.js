@@ -1,4 +1,4 @@
-const  User  = require("../models/user");
+const User = require("../models/user");
 const jwt = require('../services/jwt');
 const bcrypt = require('bcrypt');
 
@@ -28,11 +28,13 @@ const userController = {
             
             // Create user in database
             const newUser = new User({
+
                 firstName: request.body.firstname.toString().toLowerCase(),
                 lastName: request.body.lastname.toString().toLowerCase(),
                 email: request.body.email.toString().toLowerCase(),
                 password: encryptedPassword,
                 role: "user" /* empty string as "dynamisation", Joi's default role is "user", as all admins are registered directly in database at the moment this should be enough right now*/
+
             });
             const insert =  await newUser.save();
             console.log(insert);

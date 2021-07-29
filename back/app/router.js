@@ -5,9 +5,11 @@ const jobController = require('./controllers/jobController');
 const userController = require('./controllers/userController');
 const poleemploiController = require('./controllers/poleemploiController');
 
+
 // Schemas
 const jobSchema = require('./schemas/job');
 const userSchema = require('./schemas/user');
+
 
 // Middleware
 const authorizationAdmin = require('../app/middleware/authAdminMiddleware');
@@ -177,7 +179,7 @@ router.post('/users/registerUser', validateBody(userSchema), userController.isRe
 * @returns {Job.model} 201 - The newly connected user
 * @returns {string} 500 - An error message
 */
-router.post('/user/loginUser', userController.isLogin);
+router.post('/users/loginUser', userController.isLogin);
 
 // This route likely is superfluous
 // /**
@@ -189,6 +191,7 @@ router.post('/user/loginUser', userController.isLogin);
 // * @returns {string} 500 - An error message
 // */
 // router.post('/user/loginAdmin', /*authorizationAdmin,*/ validateBody(userSchema), userController.isLogin);
+
 
 // We are not sure yet to need this route
 // /**
@@ -215,6 +218,7 @@ router.post('/user/loginUser', userController.isLogin);
 // */
 // router.delete('/user/delete/:id(\\d+)', userController.deleteOneUser);
 
+
 // SI BESOIN D'ETRE UN ADMIN POUR SUPPRIMER UN PROFIL Utilisateur lambda
 /**
 * Finds and deletes a user in database
@@ -225,7 +229,7 @@ router.post('/user/loginUser', userController.isLogin);
 * @returns {string} 404 - An error message
 * @returns {string} 500 - An error message
 */
-router.delete('/user/delete/:id(\\d+)', authorizationAdmin, userController.deleteOneUser);
+router.delete('/users/delete/:id(\\d+)', authorizationAdmin, userController.deleteOneUser);
 
 router.use((request, response) => response.status(404).json(`Endpoint ${request.url} not found`))
 

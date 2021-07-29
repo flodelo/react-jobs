@@ -32,9 +32,11 @@ const jobController = {
         try {
             const job = new Job(request.body);
             const newJob = await job.save();
+
             if (newJob) { // equivalent if (newJob !== undefined)
                 // model responds with instance, hence it's an insert
                 response.status(201).json(newJob);
+
             } else {
                 // no return from model, hence it's an update
                 // error message if non existing id remains to be added
