@@ -5,7 +5,7 @@ import { useState, useEffect } from "react";
 
 // == Imports NPM
 import {
-  Input, Button, HStack, VStack, StackDivider,
+  Input, Button, HStack, VStack, StackDivider, Accordion,
 } from '@chakra-ui/react';
 import Filters from './Filters';
 import Job from '../JobsList/Job';
@@ -41,6 +41,7 @@ export default function Search ({jobs}) {
       </HStack>
       <Filters /> 
       <VStack mt={5} p={10} bg="gray.50" spacing={4} divider={<StackDivider borderColor="gray.200" align="stretch" />}>
+      <Accordion width="80%" allowToggle >
         {jobs
           .filter(val =>
             val.description.toLowerCase().includes(searchTerm.toLowerCase())
@@ -49,10 +50,11 @@ export default function Search ({jobs}) {
           )
           .map((val) => {
             return (
-              <Job key={val.id} entreprise={val.entreprise.nom} typeContrat={val.typeContrat} description={val.description} intitule={val.intitule} id={val.id}
+              <Job key={val.id} val={val}
               />
             );
           })}
+      </Accordion>
       </VStack>
     </>
   );
