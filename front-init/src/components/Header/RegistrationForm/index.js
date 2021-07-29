@@ -64,6 +64,21 @@ export default function RegistrationForm(props) {
   });
  }
 
+ /* .then((response)) => {
+   const user = response.user
+   if (user.role.includes("Admin"))
+   redirectToDashboard() }
+
+  1. si le rôle de l'user est "Admin", rediriger vers "/admin" avec la vue 
+  2. redirection vers admin via react-router
+  3. envoi d'une offre via formulaire
+
+  A voir : 
+  1. comment garder le token et aussi comment réaliser un logout.
+  2. S'assurer que la route n'est pas accessible en tapant l'url avec /admin
+ } 
+ */
+
 
   const handleSubmitClick = (e) => {
     e.preventDefault();
