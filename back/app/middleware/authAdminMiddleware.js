@@ -7,19 +7,20 @@ module.exports = function (request, response, next) {
     console.log(request.headers)
     try {
 
-        // Stock the token we recieved from the header authorization
+        // Stock the token we received from header authorization
         const token = request.headers.authorization.split(" ")[1];
         console.log(token);
-        // Verify if the token is valid
+        // If token is not valid
         if (!token) {
             return response.status(403).json("Admin access denied");
         }
-        // Verify if the token is valid
+        // If token is valid
         const verify = jwt.verify(token, process.env.TOKEN_KEY);
-        // Verify if the user is an Admin
+        // Verify if user has admin rights
         if (verify.isAdmin === false || verify.isAdmin === null ) {
-            return response.status(401).json("You don't have access rights");
-            
+
+            return response.status(401).json("You don't have the right access rights");
+
         }
 
         request.user = verify;
