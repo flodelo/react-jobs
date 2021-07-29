@@ -94,25 +94,19 @@ export default function Search ({jobs}) {
 
 
 /*
-
-
-
 export default function Search() {
   const [datas, setDatas] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
-
   useEffect(() => {
     fetch("https://jsonplaceholder.typicode.com/posts")
       .then((response) => response.json())
       .then((json) => setDatas(json));
   }, []);
-
   const handleSearchTerm = (e) => {
     setSearchTerm("");
     let value = e.target.value;
     value.length > 2 && setSearchTerm(e.target.value);
   };
-
   return (
     <>
       <div className="searchBar">
@@ -140,5 +134,4 @@ export default function Search() {
     </>
   );
 } 
-
 */
