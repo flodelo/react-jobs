@@ -16,6 +16,7 @@ import Search from '../Search';
 import RegistrationForm from '../Header/RegistrationForm';
 import LogInForm from '../Header/LogInForm';
 import Footer from '../Footer';
+import AdminForm from '../AdminForm';
 
 // == Composant
 export default function App() {
@@ -26,12 +27,12 @@ export default function App() {
 
   fetch('http://localhost:5050/jobs/pe')
     .then(data => {
-      console.log(data);
+      // console.log(data);
       return data.json();
     })
     .then(data => {
       data = data.slice(0, 50)
-      console.log(data);
+      // console.log(data);
       setJobs(data)
     })
     .catch(error => {
@@ -53,9 +54,14 @@ export default function App() {
             <RegistrationForm />
             <Footer />
           </Route>
-          <Route path="/login">
+          <Route exact path="/login">
             <Header />
             <LogInForm />
+            <Footer />
+          </Route>
+          <Route path="/login/adminform">
+            <Header />
+            <AdminForm />
             <Footer />
           </Route>
           {/* <Route>
