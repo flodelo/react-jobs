@@ -1,22 +1,22 @@
 const { Router } = require('express');
 
+// Controllers
 const jobController = require('./controllers/jobController');
 const userController = require('./controllers/userController');
 const poleemploiController = require('./controllers/poleemploiController');
 
-
-const Job = require('./models/job');
-const User = require('./models/user');
-
+// Schemas
 const jobSchema = require('./schemas/job');
 const userSchema = require('./schemas/user');
-const { validateBody } = require('./services/validator');
-const authorizationUser = require('./middleware/authUserMiddleware');
+
+// Middleware
 const authorizationAdmin = require('../app/middleware/authAdminMiddleware');
 
-
+const { validateBody } = require('./services/validator');
 
 const router = Router();
+
+//Routes
 
 /**
 * Test route
@@ -24,7 +24,7 @@ const router = Router();
 * @group Jobboard
 * @returns {string} 200 - 'Hello World!' if test is successful
 */
-router.get('/hello', (request, response) => response.json('Hello World!'));
+router.get('/hello', ( _, response) => response.json('Hello World!'));
 
 
 // ROUTE TO FETCH POLE EMPLOI DATA
@@ -48,7 +48,7 @@ router.route('/jobs/pe/')
 // ROUTES RELATED TO JOB
 
 /**
-* Responds with all jobs in database without discrimination
+* Responds with all jobs in database without user discrimination
 * @route GET /jobs
 * @group Jobboard
 * @returns {Array<Jobs>} 200 - An array of jobs
@@ -57,17 +57,17 @@ router.route('/jobs/pe/')
 router.get('/jobs', jobController.findAllJobs);
 
 // We are not sure yet to need this route as we might choose to handle 
-// showing details of one job without changing the page 
+// showing details of one job with a toggle, meaning without changing the page 
 // /**
 // * Responds with one job in database
-// * @route GET /job/{id}
+// * @route GET /jobs/{id}
 // * @group Jobboard
 // * @param {number} id.path.required The id of the job to fetch
 // * @returns {Job.model} 200 - A single job identified by its id
 // * @returns {string} 404 - An error message
 // * @returns {string} 500 - An error message
 // */
-// router.get('/job/:id(\\d+)', jobController.findOneJob);
+// router.get('/jobs/:id(\\d+)', jobController.findOneJob);
 
 /**
 * @typedef JobPost
@@ -90,28 +90,28 @@ router.get('/jobs', jobController.findAllJobs);
 * @returns {Job.model} 201 - The newly created job
 * @returns {string} 500 - An error message
 */
-router.post('/job/save', authorizationAdmin, validateBody(jobSchema), jobController.addJob);
+router.post('/jobs/save', authorizationAdmin, validateBody(jobSchema), jobController.addJob);
 
 /**
 * Updates a job in database
-* @route PATCH /jobs/update
+* @route PATCH /jobs/update/{id}
 * @group Jobboard
 * @param {Job.model} object.body.required Job object to update in database
 * @returns {*} 204 - Job has been updated
 * @returns {string} 500 - An error message
 */
-router.patch('/job/update', authorizationAdmin, validateBody(jobSchema), jobController.addJob);
+router.patch('/jobs/update/:id(\\d+)', authorizationAdmin, validateBody(jobSchema), jobController.addJob);
 
 /**
 * Finds and deletes a job in database
-* @route DELETE /job/delete/{id}
+* @route DELETE /jobs/delete/{id}
 * @group Jobboard
 * @param {number} id.path.required The id of the job to delete
 * @returns {*} 204 - Job has been deleted
 * @returns {string} 404 - An error message
 * @returns {string} 500 - An error message
 */
-router.delete('/job/delete/:id(\\d+)', authorizationAdmin, jobController.deleteJob);
+router.delete('/jobs/delete/:id(\\d+)', authorizationAdmin, jobController.deleteJob);
 
 
 //ROUTES RELATED TO USER
@@ -150,13 +150,13 @@ router.delete('/job/delete/:id(\\d+)', authorizationAdmin, jobController.deleteJ
 
 /**
 * Adds a new user in database
-* @route POST /user/register
+* @route POST /users/register
 * @group Jobboard
 * @param {UserPost.model} object.body.required User object to add to database
 * @returns {User.model} 201 - The newly created user
 * @returns {string} 500 - An error message
 */
-router.post('/user/registerUser', validateBody(userSchema), userController.isRegister);
+router.post('/users/registerUser', validateBody(userSchema), userController.isRegister);
 
 // // SE RAJOUTER UN COMPTE ADMIN NOUS-MEME VIA LE FORMULAIRE DE LOGIN
 // /**
@@ -170,8 +170,8 @@ router.post('/user/registerUser', validateBody(userSchema), userController.isReg
 
 
 /**
-* Connect a  user in database
-* @route POST /user/login
+* Connect a user in database
+* @route POST /user/loginUser
 * @group Jobboard
 * @param {UserPost.model} object.body.required User object to connect to database
 * @returns {Job.model} 201 - The newly connected user
@@ -190,28 +190,30 @@ router.post('/user/loginUser', userController.isLogin);
 // */
 // router.post('/user/loginAdmin', /*authorizationAdmin,*/ validateBody(userSchema), userController.isLogin);
 
-/**
-* Updates a user in database
-* @route PATCH /users/update
-* @group Jobboard
-* @param {User.model} object.body.required User object to update in database
-* @returns {*} 204 - User has been updated
-* @returns {string} 500 - An error message
-*/
-router.patch('/users/update', authorizationUser, validateBody(userSchema), userController.addUser);
-// SI BESOIN DE RAJOUTER UNE ROUTE POUR LES ADMIN pour modifier les info user
-router.patch('/users/update', authorizationAdmin, validateBody(userSchema), userController.addUser);
+// We are not sure yet to need this route
+// /**
+// * Updates a user in database
+// * @route PATCH /users/update
+// * @group Jobboard
+// * @param {User.model} object.body.required User object to update in database
+// * @returns {*} 204 - User has been updated
+// * @returns {string} 500 - An error message
+// */
+// router.patch('/users/update', authorizationUser, validateBody(userSchema), userController.addUser);
+// // SI BESOIN DE RAJOUTER UNE ROUTE POUR LES ADMIN pour modifier les info user
+// router.patch('/users/update', authorizationAdmin, validateBody(userSchema), userController.addUser);
 
-/**
-* Finds and deletes a user in database
-* @route DELETE /user/delete/{id}
-* @group Jobboard
-* @param {number} id.path.required The id of the job to delete
-* @returns {*} 204 - User has been deleted
-* @returns {string} 404 - An error message
-* @returns {string} 500 - An error message
-*/
-router.delete('/user/delete/:id(\\d+)', authorizationUser, userController.deleteOneUser);
+// We are not sure yet to need this route
+// /**
+// * Finds and deletes a user in database
+// * @route DELETE /user/delete/{id}
+// * @group Jobboard
+// * @param {number} id.path.required The id of the job to delete
+// * @returns {*} 204 - User has been deleted
+// * @returns {string} 404 - An error message
+// * @returns {string} 500 - An error message
+// */
+// router.delete('/user/delete/:id(\\d+)', userController.deleteOneUser);
 
 // SI BESOIN D'ETRE UN ADMIN POUR SUPPRIMER UN PROFIL Utilisateur lambda
 /**
