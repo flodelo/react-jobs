@@ -22,7 +22,7 @@ import Footer from '../Footer';
 // == Composant
 export default function App() {
 
-const [toDo, setTodo] = useState([]);
+  const [jobs, setJobs] = useState([]);
 
   useEffect(() => {
 
@@ -32,9 +32,9 @@ const [toDo, setTodo] = useState([]);
       return data.json();
     })
     .then(data => {
-      data = data.slice(0, 20)
+      data = data.slice(0, 50)
       console.log(data);
-      setTodo(data)
+      setJobs(data)
     })
     .catch(error => {
       console.log(error)
@@ -43,13 +43,18 @@ const [toDo, setTodo] = useState([]);
 
   return (
     <ChakraProvider>
-      <div className="app">
+              <div className="app">
         <Switch>
           <Route exact path="/">
             <Header />
-            <Search jobs={toDo} />
-            <JobsList jobs={toDo} />
+            <Search jobs={jobs} />
+            {/* <JobsList jobs={jobs}/> */}
             <Footer />
+          </Route>
+          <Route path="/job/:id" exact>
+            <JobDetails
+              jobs={jobs}
+            />
           </Route>
           <Route path="/register">
             <Header />
