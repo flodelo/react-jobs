@@ -46,7 +46,7 @@ export default function LogInForm() {
             ...prevState,
             successMessage: 'Connexion réussi.',
           }));
-          // localStorage.setItem(USER_TOKEN, response.data.token);
+          localStorage.setItem("USER_TOKEN", response.data.token);
           
           redirectToHome();
           // props.showError(null);
@@ -63,8 +63,8 @@ export default function LogInForm() {
       });
   };
   const redirectToHome = () => {
-    props.updateTitle('Accueil');
-    props.history.push('/');
+    // props.updateTitle('Accueil');
+    // props.history.push('/');
   };
 
   return (
