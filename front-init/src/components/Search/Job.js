@@ -62,7 +62,6 @@ export default function Job({ val }) {
   locality: PropTypes.string,
   contract: PropTypes.string,
 };
-
 Job.defaultProps = {
   title: '',
   description: '',

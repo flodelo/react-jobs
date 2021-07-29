@@ -12,9 +12,7 @@ import { ChakraProvider } from '@chakra-ui/react';
 import './styles.css';
 
 import Header from '../Header';
-import JobDetails from '../JobDetails';
 import Search from '../Search';
-import JobsList from '../JobsList';
 import RegistrationForm from '../Header/RegistrationForm';
 import LogInForm from '../Header/LogInForm';
 import Footer from '../Footer';
@@ -48,13 +46,7 @@ export default function App() {
           <Route exact path="/">
             <Header />
             <Search jobs={jobs} />
-            {/* <JobsList jobs={jobs}/> */}
             <Footer />
-          </Route>
-          <Route path="/job/:id" exact>
-            <JobDetails
-              jobs={jobs}
-            />
           </Route>
           <Route path="/register">
             <Header />
