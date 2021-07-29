@@ -1,11 +1,10 @@
 BEGIN;
 
 INSERT INTO "user"(firstName, lastName, email, password, role) VALUES
-
-('Felana', 'Letrange', 'felana@oclok.io', 'oclockfelanapwd', 'admin');
-
-INSERT INTO job (title, description, company, technology, locality, contract, salary, user_id) VALUES
-('Développeur react', 'lorem ipsum', 'oclockjob', 'react', 'paris', 'freelance', '35k', 1),
-('Développeur react-redux', 'lorem ipsum', 'oclockjob', 'react-redux', 'paris', 'freelance', '35k', 1);
+('Felana', 'Letrange', 'felana@oclock.io', 'Felana', 'admin'),
+('Caroline', 'Wiese', 'caroline@oclock.io', 'Caroline', 'admin'),
+('Florian', 'Brun-Buisson', 'florian@oclock.io', 'Florian', 'admin'),
+('Florian', 'Delobelle', 'flodelo@oclock.io', 'Florian', 'admin'),
+('Alexandre', 'Chochois', 'alexandre@oclock.io', 'Alexandre', 'admin');
 
 COMMIT;
