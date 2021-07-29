@@ -5,11 +5,9 @@ const jobController = require('./controllers/jobController');
 const userController = require('./controllers/userController');
 const poleemploiController = require('./controllers/poleemploiController');
 
-
 // Schemas
 const jobSchema = require('./schemas/job');
 const userSchema = require('./schemas/user');
-
 
 // Middleware
 const authorizationAdmin = require('../app/middleware/authAdminMiddleware');
@@ -17,6 +15,7 @@ const authorizationAdmin = require('../app/middleware/authAdminMiddleware');
 const { validateBody } = require('./services/validator');
 
 const router = Router();
+
 
 //Routes
 
@@ -85,7 +84,7 @@ router.get('/jobs', jobController.findAllJobs);
 */
 
 /**
-* Adds a new job in database
+* Adds a new job in database, only with admin access rights
 * @route POST /jobs/save
 * @group Jobboard
 * @param {JobPost.model} object.body.required Job object to add to database
@@ -95,7 +94,7 @@ router.get('/jobs', jobController.findAllJobs);
 router.post('/jobs/save', authorizationAdmin, validateBody(jobSchema), jobController.addJob);
 
 /**
-* Updates a job in database
+* Updates a job in database, only with admin access rights
 * @route PATCH /jobs/update/{id}
 * @group Jobboard
 * @param {Job.model} object.body.required Job object to update in database
@@ -105,7 +104,7 @@ router.post('/jobs/save', authorizationAdmin, validateBody(jobSchema), jobContro
 router.patch('/jobs/update/:id(\\d+)', authorizationAdmin, validateBody(jobSchema), jobController.addJob);
 
 /**
-* Finds and deletes a job in database
+* Finds and deletes a job in database, only with admin access rights
 * @route DELETE /jobs/delete/{id}
 * @group Jobboard
 * @param {number} id.path.required The id of the job to delete
@@ -131,14 +130,14 @@ router.delete('/jobs/delete/:id(\\d+)', authorizationAdmin, jobController.delete
 // We are not sure yet to need this route
 // /**
 // * Responds with one user in database
-// * @route GET /user/{id}
+// * @route GET /users/{id}
 // * @group Jobboard
 // * @param {number} id.path.required The id of the user to fetch
 // * @returns {User.model} 200 - One user identified by his/her id
 // * @returns {string} 404 - An error message
 // * @returns {string} 500 - An error message
 // */
-// router.get('/user/:id(\\d+)', authorizationAdmin, userController.getOneUser);
+// router.get('/users/:id(\\d+)', authorizationAdmin, userController.getOneUser);
 
 /**
 * @typedef UserPost
@@ -151,7 +150,7 @@ router.delete('/jobs/delete/:id(\\d+)', authorizationAdmin, jobController.delete
 */
 
 /**
-* Adds a new user in database
+* Adds a new user in database/ user registration
 * @route POST /users/register
 * @group Jobboard
 * @param {UserPost.model} object.body.required User object to add to database
@@ -163,17 +162,16 @@ router.post('/users/registerUser', validateBody(userSchema), userController.isRe
 // // SE RAJOUTER UN COMPTE ADMIN NOUS-MEME VIA LE FORMULAIRE DE LOGIN
 // /**
 // * Adds a new Admin in database
-// * @route POST /user/register
+// * @route POST /users/register
 // * @group Jobboard
 // * @param {UserPost.model} object.body.required User object to add to database
 // * @returns {User.model} 201 - The newly created Admin* @returns {String} 500 - An error message
 // */
-// router.post('/user/registerAdmin', /*authorizationAdmin,*/ validateBody(userSchema), userController.isRegister);
-
+// router.post('/users/registerAdmin', /*authorizationAdmin,*/ validateBody(userSchema), userController.isRegister);
 
 /**
-* Connect a user in database
-* @route POST /user/loginUser
+* Finds a user in database / user login
+* @route POST /users/loginUser
 * @group Jobboard
 * @param {UserPost.model} object.body.required User object to connect to database
 * @returns {Job.model} 201 - The newly connected user
@@ -181,7 +179,7 @@ router.post('/users/registerUser', validateBody(userSchema), userController.isRe
 */
 router.post('/users/loginUser', userController.isLogin);
 
-// This route likely is superfluous
+// This route likely is superfluous for now
 // /**
 // * Connect an ADMIN in database
 // * @route POST /user/login
@@ -191,7 +189,6 @@ router.post('/users/loginUser', userController.isLogin);
 // * @returns {string} 500 - An error message
 // */
 // router.post('/user/loginAdmin', /*authorizationAdmin,*/ validateBody(userSchema), userController.isLogin);
-
 
 // We are not sure yet to need this route
 // /**
@@ -218,11 +215,9 @@ router.post('/users/loginUser', userController.isLogin);
 // */
 // router.delete('/user/delete/:id(\\d+)', userController.deleteOneUser);
 
-
-// SI BESOIN D'ETRE UN ADMIN POUR SUPPRIMER UN PROFIL Utilisateur lambda
 /**
-* Finds and deletes a user in database
-* @route DELETE /user/delete/{id}
+* Finds and deletes a user in database, only with admin access rights
+* @route DELETE /users/delete/{id}
 * @group Jobboard
 * @param {number} id.path.required The id of the job to delete
 * @returns {*} 204 - User has been deleted
@@ -231,7 +226,7 @@ router.post('/users/loginUser', userController.isLogin);
 */
 router.delete('/users/delete/:id(\\d+)', authorizationAdmin, userController.deleteOneUser);
 
-router.use((request, response) => response.status(404).json(`Endpoint ${request.url} not found`))
+router.use((request, response) => response.status(404).json(`Endpoint ${request.url} not found`));
 
 module.exports = router;
 
@@ -240,9 +235,3 @@ module.exports = router;
 // suite au login, pour l'arrivée sur la "page de profil", il faudra une route user et admin de plus:
 // un router pour les visiteurs connectées
 // un router pour les admins
-
-
-
-
-
-
