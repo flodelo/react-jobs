@@ -57,14 +57,7 @@ GET http://localhost:5050/user/4
 PATCH http://localhost:5050/users/update
 Content-Type: application/json
 
-{
-     "id": 7,
-     "firstName": "François",
-     "lastName": "BB",
-     "email": "flo@oclock.io",
-     "password": "trucDeFloBB",
-     "role": "Admin"
-}
+
 
 ### Add one user/ user register
 POST http://localhost:5050/users/registerUser
@@ -75,32 +68,31 @@ Content-Type: application/json
      "lastname": "De Fruit",
      "email": "salade@oclock.io",
      "password": "Salade"
-     
 }
-
-### Find one job and delete
-DELETE http://localhost:5050/user/delete/10
 
 
 ### Login user
-POST  http://localhost:5050/user/loginUser
+POST  http://localhost:5050/users/loginUser
 Content-type: application/json
 
 {    
-     "email": "felana@oclock.io",
-     "password": "Felana"
+      "email": "felana@oclock.io",
+      "password": "Felana"
 }
 
-
-
-### Add one user/ user register
-POST http://localhost:5050/user/registerAdmin
+### Update one user 
+PATCH http://localhost:5050/users/update
 Content-Type: application/json
 
 {
-     "firstName": "Michel",
-     "lastName": "Drucker",
-     "email": "md@oclock.io",
-     "password": "michel.drucker",
-     "role": "admin"
+     "id": 7,
+     "firstName": "Felana",
+     "lastName": "Letrange",
+     "email": "fl@oclock.io",
+     "password": "trucDeFleLet",
+     "role": "Admin"
 }
+
+### Find one user and delete
+DELETE http://localhost:5050/users/delete/13
+authorization: token eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjE0LCJ1c2VyRW1haWwiOiJmbEBvY2xvY2suaW8iLCJpc0FkbWluIjp0cnVlLCJpYXQiOjE2Mjc1Njk4MTAsImV4cCI6MTYyNzY1NjIxMH0.O0l4hcptNNREfngF5cSJuTqPyvI0dGYMo_sEPhmtDsE

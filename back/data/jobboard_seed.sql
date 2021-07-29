@@ -8,3 +8,4 @@ INSERT INTO "user"(firstName, lastName, email, password, role) VALUES
 ('Alexandre', 'Chochois', 'alexandre@oclock.io', 'Alexandre', 'admin');
 
 COMMIT;
+

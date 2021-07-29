@@ -18,7 +18,9 @@ module.exports = function (request, response, next) {
         const verify = jwt.verify(token, process.env.TOKEN_KEY);
         // Verify if user has admin rights
         if (verify.isAdmin === false || verify.isAdmin === null ) {
+
             return response.status(401).json("You don't have the right access rights");
+
         }
 
         request.user = verify;
