@@ -12,12 +12,11 @@ import { ChakraProvider } from '@chakra-ui/react';
 import './styles.css';
 
 import Header from '../Header';
-import JobDetails from '../JobDetails';
 import Search from '../Search';
-import JobsList from '../JobsList';
 import RegistrationForm from '../Header/RegistrationForm';
 import LogInForm from '../Header/LogInForm';
 import Footer from '../Footer';
+import AdminForm from '../AdminForm';
 
 // == Composant
 export default function App() {
@@ -28,12 +27,12 @@ export default function App() {
 
   fetch('http://localhost:5050/jobs/pe')
     .then(data => {
-      console.log(data);
+      // console.log(data);
       return data.json();
     })
     .then(data => {
       data = data.slice(0, 50)
-      console.log(data);
+      // console.log(data);
       setJobs(data)
     })
     .catch(error => {
@@ -48,22 +47,21 @@ export default function App() {
           <Route exact path="/">
             <Header />
             <Search jobs={jobs} />
-            {/* <JobsList jobs={jobs}/> */}
             <Footer />
-          </Route>
-          <Route path="/job/:id" exact>
-            <JobDetails
-              jobs={jobs}
-            />
           </Route>
           <Route path="/register">
             <Header />
             <RegistrationForm />
             <Footer />
           </Route>
-          <Route path="/login">
+          <Route exact path="/login">
             <Header />
             <LogInForm />
+            <Footer />
+          </Route>
+          <Route path="/login/adminform">
+            <Header />
+            <AdminForm />
             <Footer />
           </Route>
           {/* <Route>
@@ -77,13 +75,9 @@ export default function App() {
 }
 
 /* import {useState, useEffect} from 'react'
-
 function App() {
-
   const [dataImg, setDataImg] = useState();
-
   useEffect(() => {
-
     fetch('https://api.thecatapi.com/v1/images/search')
     .then(response => {
       console.log(response);
@@ -94,7 +88,6 @@ function App() {
       setDataImg(data[0].url)
     })
   }, [])
-
   return (
     <div className="App">
       {dataImg &&
@@ -104,5 +97,4 @@ function App() {
     </div>
   );
 }
-
 */
