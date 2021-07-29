@@ -17,7 +17,7 @@ module.exports = function (request, response, next) {
 
                 next();
 
-        }           catch (error) {
+        }       catch (error) {
                 console.error(error);
                 response.status(403).json("Token invalid");
 
