@@ -45,9 +45,7 @@ export default function LogInForm(props) {
             ...prevState,
             // successMessage: 'Connexion réussi.',
           }));
-          const { user, token } = response.data
-          localStorage.setItem("token", token);
-          localStorage.setItem("user", JSON.stringify(user));
+          localStorage.setItem("USER_TOKEN", response.data.token);
           
           redirectToHome();
           // props.showError(null);

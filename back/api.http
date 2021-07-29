@@ -1,25 +1,25 @@
 ### Path for  test
 GET http://localhost:5050/hello
 
+### Pôle Emploi API jobs
+POST  http://localhost:5050/jobs/pe
+
 ### Find all jobs
 GET http://localhost:5050/jobs
-
-### Find one job
-GET http://localhost:5050/job/3
 
 ### Add one job
 POST http://localhost:5050/job/save
 Content-Type: application/json
-
+authorization: token eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjIzLCJ1c2VyRW1haWwiOiJoYXJyeUBob2d3YXJ0cy5pbyIsImlzQWRtaW4iOnRydWUsImlhdCI6MTYyNzQ4OTk1NSwiZXhwIjoxNjI3NTc2MzU1fQ.A7VMttHJbB4G_wcrXZ2Kl9nFvQaDOEN3X7YKDjpVlJk
 {
-     "title": "Une offre",
-     "description" : "Job",
-     "company" : "startup",
-     "technology" : "React",
-     "locality" : "Bordeaux",
+     "title": "Un offre",
+     "description" : "Job qui fait tout",
+     "company" : "ME",
+     "technology" : "React et plus",
+     "locality" : "Vernon",
      "contract" : "CDI",
      "salary" : "avec primes",
-     "user_id" : 1
+     "user_id" : 23
 }
 
 ### Update one job
@@ -66,30 +66,36 @@ POST http://localhost:5050/user/registerUser
 Content-Type: application/json
 
 {
-     "firstName": "Anastasia",
-     "lastName": "Romanov",
-     "email": "anarom@oclock.io",
-     "password": "princessedesneiges",
-     "role": "User"
+     "firstName": "Mike",
+     "lastName": "Jackson",
+     "email": "mj@oclock.io",
+     "password": "michael.jackson",
+     "role": "admin"
 }
 
 ### Find one job and delete
 DELETE http://localhost:5050/user/delete/10
 
 
-### Pôle Emploi API jobs
-POST  http://localhost:5050/jobs/pe
-
-
 ### Login user
 POST  http://localhost:5050/user/loginUser
 Content-type: application/json
 
-{
-     "firstName": "Anastasia",
-     "lastName": "Romanov",
-     "email": "anarom@oclock.io",
-     "password": "princessedesneiges",
-     "role": "User"
+{    
+     "email": "mj@oclock.io",
+     "password": "michael.jackson"
 }
 
+
+
+### Add one user/ user register
+POST http://localhost:5050/user/registerAdmin
+Content-Type: application/json
+
+{
+     "firstName": "Michel",
+     "lastName": "Drucker",
+     "email": "md@oclock.io",
+     "password": "michel.drucker",
+     "role": "admin"
+}
