@@ -30,19 +30,19 @@ router.get('/hello', (request, response) => response.json('Hello World!'));
 // ROUTE TO FETCH POLE EMPLOI DATA
 
 /**
- * Responds with jobs from API Pôle Emploi without user discrimination
- * @name /jobs/pe
- * @group Jobboard
- * @route GET 
- * @returns {Array<Jobs>} 200 - An array of jobs
- * @returns {string} 500 - An error message
- * @route POST 
- * @returns {Array<Jobs>} 200 - An array of jobs
- * @returns {string} 500 - An error message
- */
- router.route('/jobs/pe/')
- .get(poleemploiController.fetchJobs)
- .post(poleemploiController.fetchJobs);
+* Responds with jobs from API Pôle Emploi without user discrimination
+* @name /jobs/pe
+* @group Jobboard
+* @route GET 
+* @returns {Array<Jobs>} 200 - An array of jobs
+* @returns {string} 500 - An error message
+* @route POST 
+* @returns {Array<Jobs>} 200 - An array of jobs
+* @returns {string} 500 - An error message
+*/
+router.route('/jobs/pe/')
+      .get(poleemploiController.fetchJobs)
+      .post(poleemploiController.fetchJobs);
 
 
 // ROUTES RELATED TO JOB
@@ -100,7 +100,7 @@ router.post('/job/save', authorizationAdmin, validateBody(jobSchema), jobControl
 * @returns {*} 204 - Job has been updated
 * @returns {string} 500 - An error message
 */
-router.patch('/job/update', authorizationAdmin,validateBody(jobSchema), jobController.addJob);
+router.patch('/job/update', authorizationAdmin, validateBody(jobSchema), jobController.addJob);
 
 /**
 * Finds and deletes a job in database
@@ -158,15 +158,15 @@ router.delete('/job/delete/:id(\\d+)', authorizationAdmin, jobController.deleteJ
 */
 router.post('/user/registerUser', validateBody(userSchema), userController.isRegister);
 
-// SE RAJOUTER UN COMPTE ADMIN NOUS-MEME VIA LE FORMULAIRE DE LOGIN
-/**
-* Adds a new Admin in database
-* @route POST /user/register
-* @group Jobboard
-* @param {UserPost.model} object.body.required User object to add to database
-* @returns {User.model} 201 - The newly created Admin* @returns {String} 500 - An error message
-*/
-router.post('/user/registerAdmin', /*authorizationAdmin,*/ validateBody(userSchema), userController.isRegister);
+// // SE RAJOUTER UN COMPTE ADMIN NOUS-MEME VIA LE FORMULAIRE DE LOGIN
+// /**
+// * Adds a new Admin in database
+// * @route POST /user/register
+// * @group Jobboard
+// * @param {UserPost.model} object.body.required User object to add to database
+// * @returns {User.model} 201 - The newly created Admin* @returns {String} 500 - An error message
+// */
+// router.post('/user/registerAdmin', /*authorizationAdmin,*/ validateBody(userSchema), userController.isRegister);
 
 
 /**
@@ -225,31 +225,13 @@ router.delete('/user/delete/:id(\\d+)', authorizationUser, userController.delete
 */
 router.delete('/user/delete/:id(\\d+)', authorizationAdmin, userController.deleteOneUser);
 
-
-// ROUTE TO FETCH POLE EMPLOI DATA
-
-/**
-* Responds with jobs from API Pôle Emploi
-* @name /jobs/pe
-* @group Jobboard
-* @route GET 
-* @returns {Array<Jobs>} 200 - An array of jobs
-* @returns {string} 500 - An error message
-* @route POST 
-* @returns {Array<Jobs>} 200 - An array of jobs
-* @returns {string} 500 - An error message
-*/
-router.route('/jobs/pe/')
-       .get(poleemploiController.fetchJobs)
-       .post(poleemploiController.fetchJobs);
-
 router.use((request, response) => response.status(404).json(`Endpoint ${request.url} not found`))
 
 module.exports = router;
 
 
 
-// suite au login, pour l'arrivée sur la "page de profil", il faudrau une route user et admin de plus:
+// suite au login, pour l'arrivée sur la "page de profil", il faudra une route user et admin de plus:
 // un router pour les visiteurs connectées
 // un router pour les admins
 
