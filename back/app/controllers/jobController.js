@@ -34,7 +34,7 @@ const jobController = {
             const newJob = await job.save();
             if (newJob) { //equivalent if (newJob !== undefined)
                 //model responds with instance, hence it's an insert
-                response.status(201).json(newJob);
+                return response.status(201).json(newJob);
             } else {
                 //no return from model, hence it's an update
                 response.status(204).json(job);

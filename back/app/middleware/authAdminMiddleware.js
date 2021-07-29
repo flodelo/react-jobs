@@ -19,6 +19,7 @@ module.exports = function (request, response, next) {
         // Verify if the user is an Admin
         if (verify.isAdmin === false || verify.isAdmin === null ) {
             return response.status(401).json("You don't have access rights");
+            
         }
 
         request.user = verify;
