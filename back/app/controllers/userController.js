@@ -5,18 +5,19 @@ const bcrypt = require('bcrypt');
 const userController = {
 
     isRegister: async (request, response) => {
-        //console.log(isRegister);
+      
         try {
     
             // User input from front-end (body): email and password
             const { email, password } = request.body;
-            console.log(request.body, "heelo");
+            console.log(request.body, "hello");
+
             // Validate user input
             if (!(email && password)) {
                 response.status(400).send("Please enter both, email and password!");
             }
     
-            // Validate if user exists in database
+            // Check if user exists in database
             const existUser = await User.findOneByEmail(email);
     
             if (existUser) {
@@ -27,11 +28,11 @@ const userController = {
             
             // Create user in database
             const newUser = new User({
-                firstName: request.body.firstname.toLowerCase().toString(),
-                lastName: request.body.lastname.toLowerCase().toString(),
-                email: request.body.email.toLowerCase().toString(),
+                firstName: request.body.firstname.toString().toLowerCase(),
+                lastName: request.body.lastname.toString().toLowerCase(),
+                email: request.body.email.toString().toLowerCase(),
                 password: encryptedPassword,
-                role: " " /* empty string as "dynamisation", Joi's default role is "user", as all admins are registered directly in database at the moment this should be enough right now*/
+                role: "user" /* empty string as "dynamisation", Joi's default role is "user", as all admins are registered directly in database at the moment this should be enough right now*/
             });
             const insert =  await newUser.save();
             console.log(insert);
@@ -51,7 +52,7 @@ const userController = {
                 
                 // Get user input
                 const { email, password } = request.body;
-        
+                console.log(request.body);
                 // Validate user input
                 if (!(email || password))  {
                     return response.status(400).send("Please enter both, email and password!");
@@ -69,7 +70,6 @@ const userController = {
                     delete user.password;
                     return response.status(200).json({user, token: jwt.createToken(user)});
                 }
-            
             } catch (error) {
                 console.log(error);
             }

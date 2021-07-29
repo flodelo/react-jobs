@@ -1,6 +1,8 @@
-### Path for  test
+### Test route
 GET http://localhost:5050/hello
 
+
+# JOB
 ### Pôle Emploi API jobs
 POST  http://localhost:5050/jobs/pe
 
@@ -8,40 +10,43 @@ POST  http://localhost:5050/jobs/pe
 GET http://localhost:5050/jobs
 
 ### Add one job
-POST http://localhost:5050/job/save
+POST http://localhost:5050/jobs/save
 Content-Type: application/json
-authorization: token eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjIzLCJ1c2VyRW1haWwiOiJoYXJyeUBob2d3YXJ0cy5pbyIsImlzQWRtaW4iOnRydWUsImlhdCI6MTYyNzQ4OTk1NSwiZXhwIjoxNjI3NTc2MzU1fQ.A7VMttHJbB4G_wcrXZ2Kl9nFvQaDOEN3X7YKDjpVlJk
+authorization: token eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjIsInVzZXJFbWFpbCI6ImZlbGFuYUBvY2xvY2suaW8iLCJpc0FkbWluIjp0cnVlLCJpYXQiOjE2Mjc1NjgwMjUsImV4cCI6MTYyNzY1NDQyNX0.pMJO0LTnblp-VoFsGxPejGRZcH9t8OjO-KKyTY4iRJQ
+
 {
-     "title": "Un offre",
-     "description" : "Job qui fait tout",
+     "title": "Developpeur React junior",
+     "description" : "Opportunité de folie",
      "company" : "ME",
-     "technology" : "React et plus",
+     "technology" : "React Redux",
      "locality" : "Vernon",
-     "contract" : "CDI",
-     "salary" : "avec primes",
-     "user_id" : 23
+     "contract" : "alternance",
+     "salary" : "avec prime",
+     "user_id" : 3
 }
 
 ### Update one job
-PATCH http://localhost:5050/job/update
+PATCH http://localhost:5050/jobs/update/3
 Content-Type: application/json
+authorization: token eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjIsInVzZXJFbWFpbCI6ImZlbGFuYUBvY2xvY2suaW8iLCJpc0FkbWluIjp0cnVlLCJpYXQiOjE2Mjc1NzAyNDcsImV4cCI6MTYyNzY1NjY0N30.9ySpQpKj8lQLwknKW3kJY8IGiOJsZQ5R3qSxt53cdNA
 
 {
-     "title": "Une offre de folie",
-     "description" : "Job en  remote",
-     "company" : "mm&a",
-     "technology" : "React-Redux c'est sûr",
-     "locality" : "Nouvelle-Aquitaine",
-     "contract" : "CDI",
-     "salary" : "sans primes",
-     "user_id" : 1
+     "id": 3,
+     "title": "React junior",
+     "description" : "café à volonté",
+     "company" : "ME",
+     "technology" : "React en folie",
+     "locality" : "Vernon",
+     "contract" : "alternance",
+     "salary" : " beaucoup",
+     "user_id" : 3
 }
 
 ### Find one job and delete
-DELETE http://localhost:5050/job/delete/3
+DELETE http://localhost:5050/jobs/delete/4
+authorization: token eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjIsInVzZXJFbWFpbCI6ImZlbGFuYUBvY2xvY2suaW8iLCJpc0FkbWluIjp0cnVlLCJpYXQiOjE2Mjc1NzAyNDcsImV4cCI6MTYyNzY1NjY0N30.9ySpQpKj8lQLwknKW3kJY8IGiOJsZQ5R3qSxt53cdNA
 
-
-
+# USER
 ### Find all users
 GET http://localhost:5050/users
 
@@ -62,15 +67,15 @@ Content-Type: application/json
 }
 
 ### Add one user/ user register
-POST http://localhost:5050/user/registerUser
+POST http://localhost:5050/users/registerUser
 Content-Type: application/json
 
 {
-     "firstName": "Mike",
-     "lastName": "Jackson",
-     "email": "mj@oclock.io",
-     "password": "michael.jackson",
-     "role": "admin"
+     "firstname": "Salade",
+     "lastname": "De Fruit",
+     "email": "salade@oclock.io",
+     "password": "Salade"
+     
 }
 
 ### Find one job and delete
@@ -82,8 +87,8 @@ POST  http://localhost:5050/user/loginUser
 Content-type: application/json
 
 {    
-     "email": "mj@oclock.io",
-     "password": "michael.jackson"
+     "email": "felana@oclock.io",
+     "password": "Felana"
 }
 
 

@@ -55,7 +55,7 @@ class Job {
     }
 
     // We are not sure yet to need this method as we might choose to handle 
-    // showing details of one job without changing the page 
+    // showing details of one job with a toggle, meaning without changing the page 
     // /**
     // * Retrieves one job from database
     // * @static
