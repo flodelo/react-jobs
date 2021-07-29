@@ -6,12 +6,12 @@ const poleemploiController = require('./controllers/poleemploiController');
 
 
 const Job = require('./models/job');
-const User = require('./models/user');
+
 
 const jobSchema = require('./schemas/job');
 const userSchema = require('./schemas/user');
 const { validateBody } = require('./services/validator');
-const authorizationUser = require('./middleware/authUserMiddleware');
+//const authorizationUser = require('./middleware/authUserMiddleware');
 const authorizationAdmin = require('../app/middleware/authAdminMiddleware');
 
 
@@ -90,17 +90,17 @@ router.get('/jobs', jobController.findAllJobs);
 * @returns {Job.model} 201 - The newly created job
 * @returns {string} 500 - An error message
 */
-router.post('/job/save', authorizationAdmin, validateBody(jobSchema), jobController.addJob);
+router.post('/jobs/save', authorizationAdmin, validateBody(jobSchema), jobController.addJob);
 
 /**
 * Updates a job in database
-* @route PATCH /jobs/update
+* @route PATCH /jobs/update/{id}
 * @group Jobboard
 * @param {Job.model} object.body.required Job object to update in database
 * @returns {*} 204 - Job has been updated
 * @returns {string} 500 - An error message
 */
-router.patch('/job/update', authorizationAdmin, validateBody(jobSchema), jobController.addJob);
+router.patch('/jobs/update/:id(\\d+)', authorizationAdmin, validateBody(jobSchema), jobController.addJob);
 
 /**
 * Finds and deletes a job in database
@@ -111,7 +111,7 @@ router.patch('/job/update', authorizationAdmin, validateBody(jobSchema), jobCont
 * @returns {string} 404 - An error message
 * @returns {string} 500 - An error message
 */
-router.delete('/job/delete/:id(\\d+)', authorizationAdmin, jobController.deleteJob);
+router.delete('/jobs/delete/:id(\\d+)', authorizationAdmin, jobController.deleteJob);
 
 
 //ROUTES RELATED TO USER
@@ -156,7 +156,7 @@ router.delete('/job/delete/:id(\\d+)', authorizationAdmin, jobController.deleteJ
 * @returns {User.model} 201 - The newly created user
 * @returns {string} 500 - An error message
 */
-router.post('/user/registerUser', validateBody(userSchema), userController.isRegister);
+router.post('/users/registerUser', validateBody(userSchema), userController.isRegister);
 
 // // SE RAJOUTER UN COMPTE ADMIN NOUS-MEME VIA LE FORMULAIRE DE LOGIN
 // /**
@@ -177,7 +177,7 @@ router.post('/user/registerUser', validateBody(userSchema), userController.isReg
 * @returns {Job.model} 201 - The newly connected user
 * @returns {string} 500 - An error message
 */
-router.post('/user/loginUser', userController.isLogin);
+router.post('/users/loginUser', userController.isLogin);
 
 // This route likely is superfluous
 // /**
@@ -190,28 +190,28 @@ router.post('/user/loginUser', userController.isLogin);
 // */
 // router.post('/user/loginAdmin', /*authorizationAdmin,*/ validateBody(userSchema), userController.isLogin);
 
-/**
-* Updates a user in database
-* @route PATCH /users/update
-* @group Jobboard
-* @param {User.model} object.body.required User object to update in database
-* @returns {*} 204 - User has been updated
-* @returns {string} 500 - An error message
-*/
-router.patch('/users/update', authorizationUser, validateBody(userSchema), userController.addUser);
+///**
+//* Updates a user in database
+//* @route PATCH /users/update
+//* @group Jobboard
+//* @param {User.model} object.body.required User object to update in database
+//* @returns {*} 204 - User has been updated
+//* @returns {string} 500 - An error message
+//*/
+//router.patch('/users/update', authorizationUser, validateBody(userSchema), userController.addUser);
 // SI BESOIN DE RAJOUTER UNE ROUTE POUR LES ADMIN pour modifier les info user
-router.patch('/users/update', authorizationAdmin, validateBody(userSchema), userController.addUser);
+//router.patch('/users/update', authorizationAdmin, validateBody(userSchema), userController.addUser);
 
-/**
-* Finds and deletes a user in database
-* @route DELETE /user/delete/{id}
-* @group Jobboard
-* @param {number} id.path.required The id of the job to delete
-* @returns {*} 204 - User has been deleted
-* @returns {string} 404 - An error message
-* @returns {string} 500 - An error message
-*/
-router.delete('/user/delete/:id(\\d+)', authorizationUser, userController.deleteOneUser);
+///**
+//* Finds and deletes a user in database
+//* @route DELETE /user/delete/{id}
+//* @group Jobboard
+//* @param {number} id.path.required The id of the job to delete
+//* @returns {*} 204 - User has been deleted
+//* @returns {string} 404 - An error message
+//* @returns {string} 500 - An error message
+//*/
+//router.delete('/users/delete/:id(\\d+)', authorizationUser, userController.deleteOneUser);
 
 // SI BESOIN D'ETRE UN ADMIN POUR SUPPRIMER UN PROFIL Utilisateur lambda
 /**
@@ -223,7 +223,7 @@ router.delete('/user/delete/:id(\\d+)', authorizationUser, userController.delete
 * @returns {string} 404 - An error message
 * @returns {string} 500 - An error message
 */
-router.delete('/user/delete/:id(\\d+)', authorizationAdmin, userController.deleteOneUser);
+router.delete('/users/delete/:id(\\d+)', authorizationAdmin, userController.deleteOneUser);
 
 router.use((request, response) => response.status(404).json(`Endpoint ${request.url} not found`))
 

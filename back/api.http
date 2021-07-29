@@ -8,45 +8,66 @@ POST  http://localhost:5050/jobs/pe
 GET http://localhost:5050/jobs
 
 ### Add one job
-POST http://localhost:5050/job/save
+POST http://localhost:5050/jobs/save
 Content-Type: application/json
-authorization: token eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjIzLCJ1c2VyRW1haWwiOiJoYXJyeUBob2d3YXJ0cy5pbyIsImlzQWRtaW4iOnRydWUsImlhdCI6MTYyNzQ4OTk1NSwiZXhwIjoxNjI3NTc2MzU1fQ.A7VMttHJbB4G_wcrXZ2Kl9nFvQaDOEN3X7YKDjpVlJk
+authorization: token eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEzLCJ1c2VyRW1haWwiOiJlckBvY2xvY2suaW8iLCJpc0FkbWluIjp0cnVlLCJpYXQiOjE2Mjc1NjgyNzQsImV4cCI6MTYyNzY1NDY3NH0.2OrgrMzxn9NL3vhScPvQOT4wPhfsmSjYtC02EB3G2L4
+
 {
-     "title": "Un offre",
-     "description" : "Job qui fait tout",
-     "company" : "ME",
-     "technology" : "React et plus",
-     "locality" : "Vernon",
+     "title": "Offre d'emploi développeur web reactJS",
+     "description" : "Offre d'emploi",
+     "company" : "M&M",
+     "technology" : "React en job en ville",
+     "locality" : "Versailles",
      "contract" : "CDI",
-     "salary" : "avec primes",
-     "user_id" : 23
+     "salary" : "Primes en nature",
+     "user_id" : 13
 }
 
 ### Update one job
-PATCH http://localhost:5050/job/update
+PATCH http://localhost:5050/jobs/update
 Content-Type: application/json
+authorization: token eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEzLCJ1c2VyRW1haWwiOiJlckBvY2xvY2suaW8iLCJpc0FkbWluIjp0cnVlLCJpYXQiOjE2Mjc1NjgyNzQsImV4cCI6MTYyNzY1NDY3NH0.2OrgrMzxn9NL3vhScPvQOT4wPhfsmSjYtC02EB3G2L4
 
 {
-     "title": "Une offre de folie",
-     "description" : "Job en  remote",
-     "company" : "mm&a",
-     "technology" : "React-Redux c'est sûr",
-     "locality" : "Nouvelle-Aquitaine",
+     "id": "3",
+     "title": "Offre  reactJS",
+     "description" : "Offre d'emploi",
+     "company" : "M&M",
+     "technology" : "React en job en ville",
+     "locality" : "Versailles",
      "contract" : "CDI",
-     "salary" : "sans primes",
-     "user_id" : 1
+     "salary" : "Primes en nature",
+     "user_id" : 13
 }
 
 ### Find one job and delete
-DELETE http://localhost:5050/job/delete/3
+DELETE http://localhost:5050/jobs/delete/3
+authorization: token eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEzLCJ1c2VyRW1haWwiOiJlckBvY2xvY2suaW8iLCJpc0FkbWluIjp0cnVlLCJpYXQiOjE2Mjc1NjgyNzQsImV4cCI6MTYyNzY1NDY3NH0.2OrgrMzxn9NL3vhScPvQOT4wPhfsmSjYtC02EB3G2L4
+
+
+### Add one user/ user register
+POST http://localhost:5050/users/registerUser
+Content-Type: application/json
+
+{
+     "firstname": "Felana",
+     "lastname": "LEtrange",
+     "email": "fl@oclock.io",
+     "password": "felana",
+     "role": "admin"
+}
 
 
 
-### Find all users
-GET http://localhost:5050/users
 
-### Find one user by id
-GET http://localhost:5050/user/4
+### Login user
+POST  http://localhost:5050/users/loginUser
+Content-type: application/json
+
+{    
+     "email": "fl@oclock.io",
+     "password": "felana"
+}
 
 ### Update one user 
 PATCH http://localhost:5050/users/update
@@ -54,48 +75,13 @@ Content-Type: application/json
 
 {
      "id": 7,
-     "firstName": "François",
-     "lastName": "BB",
-     "email": "flo@oclock.io",
-     "password": "trucDeFloBB",
+     "firstName": "Felana",
+     "lastName": "Letrange",
+     "email": "fl@oclock.io",
+     "password": "trucDeFleLet",
      "role": "Admin"
 }
 
-### Add one user/ user register
-POST http://localhost:5050/user/registerUser
-Content-Type: application/json
-
-{
-     "firstName": "Mike",
-     "lastName": "Jackson",
-     "email": "mj@oclock.io",
-     "password": "michael.jackson",
-     "role": "admin"
-}
-
-### Find one job and delete
-DELETE http://localhost:5050/user/delete/10
-
-
-### Login user
-POST  http://localhost:5050/user/loginUser
-Content-type: application/json
-
-{    
-     "email": "mj@oclock.io",
-     "password": "michael.jackson"
-}
-
-
-
-### Add one user/ user register
-POST http://localhost:5050/user/registerAdmin
-Content-Type: application/json
-
-{
-     "firstName": "Michel",
-     "lastName": "Drucker",
-     "email": "md@oclock.io",
-     "password": "michel.drucker",
-     "role": "admin"
-}
+### Find one user and delete
+DELETE http://localhost:5050/users/delete/13
+authorization: token eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjE0LCJ1c2VyRW1haWwiOiJmbEBvY2xvY2suaW8iLCJpc0FkbWluIjp0cnVlLCJpYXQiOjE2Mjc1Njk4MTAsImV4cCI6MTYyNzY1NjIxMH0.O0l4hcptNNREfngF5cSJuTqPyvI0dGYMo_sEPhmtDsE
