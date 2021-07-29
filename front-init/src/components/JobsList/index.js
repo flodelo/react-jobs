@@ -18,7 +18,7 @@ export default function JobsList({ jobs }) {
   console.log(jobs); */
 
   return (
-    <VStack mt={5} p={10} bg="gray.50" spacing={4} divider={<StackDivider borderColor="gray.200" align="stretch" />}>
+    <VStack bg="gray.50" spacing={4} divider={<StackDivider borderColor="gray.200" align="stretch" />}>
       {jobs.map((job) => <Job job={job} key={job.id} />)}
     </VStack>
   );
