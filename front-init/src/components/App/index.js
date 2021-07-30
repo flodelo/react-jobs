@@ -8,6 +8,7 @@ import {
 
 import { ChakraProvider } from '@chakra-ui/react';
 
+import { BASE_URL } from '../constants/apiConstants';
 // == Import
 import './styles.css';
 
@@ -25,7 +26,7 @@ export default function App() {
 
   useEffect(() => {
 
-  fetch('http://localhost:5050/jobs/pe')
+  fetch(BASE_URL +'/jobs/pe')
     .then(data => {
       // console.log(data);
       return data.json();
