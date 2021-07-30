@@ -33,7 +33,7 @@ export default function Job({ val }) {
               borderLeftColor: 'blue.500'}}>
   <AccordionButton>
   <Box flex="1" textAlign="left">
-  <Heading as="h2" size="md">{val.intitule}</Heading>
+  <Heading as="h2" size="sm">{val.intitule}</Heading>
   </Box>
   <Badge fontSize="1.25em" ml="1" colorScheme="green">{val.typeContrat}</Badge>
   <AccordionIcon />
