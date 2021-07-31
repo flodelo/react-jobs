@@ -19,8 +19,12 @@ import RegistrationForm from '../Header/RegistrationForm';
 import LogInForm from '../Header/LogInForm';
 import Footer from '../Footer';
 import AdminForm from '../AdminForm';
+
+import BackTopButton from '../BackTopButton';
+
 import About from '../Header/About';
 import Contact from '../Header/Contact';
+
 
 
 // == Composant
@@ -50,6 +54,7 @@ export default function App() {
               <div className="app">
         <Switch>
           <Route exact path="/">
+            <BackTopButton />
             <Header />
             <Search jobs={jobs} />
             <Footer />
