@@ -5,9 +5,9 @@ import { useState, useEffect } from "react";
 
 // == Imports NPM
 import {
-  Input, Button, HStack, VStack, StackDivider, Accordion,
+  Input, Button, HStack, VStack, StackDivider, Accordion, InputLeftElement, InputGroup,
 } from '@chakra-ui/react';
-import Filters from './Filters';
+import { SearchIcon } from '@chakra-ui/icons';
 import Job from '../Search/Job';
 
 export default function Search ({jobs}) {
@@ -29,17 +29,20 @@ export default function Search ({jobs}) {
   return (
     <>
       <HStack spacing="10px" justify="center" mr={10} ml={10} mb={5}>
+        <InputGroup w="500px">
+        <InputLeftElement
+        pointerEvents="none"
+        children={<SearchIcon color="gray.300" />}
+        />
         <Input
           type="text"
           placeholder="Rechercher"
           onChange={handleSearchTerm}
           variant="outline"
-          display="flex"
           placeholder="Recherche par mots-clés..."
-          w="500px"
         />
+      </InputGroup>
       </HStack>
-      <Filters /> 
       <VStack mt={5} p={10} bg="gray.50" spacing={4} divider={<StackDivider borderColor="gray.200" align="stretch" />}>
       <Accordion width="80%" allowToggle >
         {jobs
