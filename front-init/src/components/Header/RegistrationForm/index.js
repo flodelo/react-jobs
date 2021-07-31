@@ -3,6 +3,8 @@ import React, { useState } from 'react';
 import axios from 'axios';
 // import { withRouter } from "react-router-dom";
 
+import { Twemoji } from 'react-emoji-render';
+
 import {
   Flex,
   Box,
@@ -92,7 +94,7 @@ export default function RegistrationForm(props) {
     >
       <Stack spacing={8} mx="auto" maxW="lg" py={12} px={6}>
         <Stack align="center">
-          <Heading fontSize="4xl">Inscription 🐱‍💻</Heading>
+          <Heading fontSize="4xl">Inscription <Twemoji text=""/></Heading>
         </Stack>
         <Box
           rounded="lg"

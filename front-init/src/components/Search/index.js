@@ -4,6 +4,7 @@ import React from 'react';
 import { useState, useEffect } from "react";
 
 // == Imports NPM
+import { Twemoji } from 'react-emoji-render';
 import {
   Input, Button, VStack, StackDivider, Accordion, InputLeftElement, InputGroup, Text,
 } from '@chakra-ui/react';
@@ -29,7 +30,7 @@ export default function Search ({jobs}) {
   return (
     <>
       <VStack spacing="10px" justify="center" mr={10} ml={10} mb={5}>
-        <Text>Recherchez une ville, une technologie, un type de contrat...</Text>
+        <Text>Recherchez une ville, une technologie, un type de contrat... <Twemoji text=":mag_right:"/></Text>
         <InputGroup w="500px">
         <InputLeftElement
         pointerEvents="none"
