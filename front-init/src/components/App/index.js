@@ -26,7 +26,7 @@ export default function App() {
 
   useEffect(() => {
 
-  fetch(BASE_URL +'/jobs/pe')
+  fetch(BASE_URL +'/hello', {withCredentials: true})
     .then(data => {
       // console.log(data);
       return data.json();

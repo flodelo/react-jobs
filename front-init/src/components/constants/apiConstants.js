@@ -1,2 +1,1 @@
-export const BASE_URL = 'https://job-board-react1234.herokuapp.com';
-
+export const BASE_URL = 'https://cors.bridged.cc/https://job-board-react1234.herokuapp.com';
