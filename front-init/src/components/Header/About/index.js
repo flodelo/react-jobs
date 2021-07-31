@@ -9,10 +9,7 @@ export default function About() {
       m="0.5em"
       w="300px"
       bg={useColorModeValue('gray.50', 'gray.800')}
-      border="1px" borderColor="gray.200" borderRadius="5px"
       _hover={{
-        borderLeft:"2px",
-        borderLeftColor:"blue.500",
         boxShadow: 'lg',
       }}
       py={16}
@@ -45,10 +42,7 @@ export default function About() {
     m="0.5em"
      w="300px"
       bg={useColorModeValue('gray.50', 'gray.800')}
-      border="1px" borderColor="gray.200" borderRadius="5px"
       _hover={{
-        borderLeft:"2px",
-        borderLeftColor:"blue.500",
         boxShadow: 'lg',
       }}
       py={16}
@@ -71,9 +65,9 @@ export default function About() {
           mb={2}
         />
 
-        <Text fontWeight={600}>Caroline Wiese</Text>
+        <Text fontWeight={600}>Alexandre Chochois</Text>
         <Text fontSize={'sm'} color={useColorModeValue('gray.400', 'gray.400')}>
-          Lead dev Back
+        Scrum Master et dev Front
         </Text>
       </Box>
     </Stack>
@@ -82,10 +76,7 @@ export default function About() {
     m="0.5em"
       w="300px"
       bg={useColorModeValue('gray.50', 'gray.800')}
-      border="1px" borderColor="gray.200" borderRadius="5px"
       _hover={{
-        borderLeft:"2px",
-        borderLeftColor:"blue.500",
         boxShadow: 'lg',
       }}
       py={16}
@@ -119,10 +110,7 @@ export default function About() {
     m="0.5em"
       w="300px"
       bg={useColorModeValue('gray.50', 'gray.800')}
-      border="1px" borderColor="gray.200" borderRadius="5px"
       _hover={{
-        borderLeft:"2px",
-        borderLeftColor:"blue.500",
         boxShadow: 'lg',
       }}
       py={16}
@@ -147,7 +135,7 @@ export default function About() {
 
         <Text fontWeight={600}>Felana Letrange</Text>
         <Text fontSize={'sm'} color={useColorModeValue('gray.400', 'gray.400')}>
-          Git Master
+          Git Master et dev Back
         </Text>
       </Box>
     </Stack>
@@ -156,10 +144,7 @@ export default function About() {
     m="0.5em"
       w="300px"
       bg={useColorModeValue('gray.50', 'gray.800')}
-      border="1px" borderColor="gray.200" borderRadius="5px"
       _hover={{
-        borderLeft:"2px",
-        borderLeftColor:"blue.500",
         boxShadow: 'lg',
       }}
       py={16}
@@ -182,9 +167,9 @@ export default function About() {
           mb={2}
         />
 
-        <Text fontWeight={600}>Alexandre Chochois</Text>
+        <Text fontWeight={600}>Florian Delobelle</Text>
         <Text fontSize={'sm'} color={useColorModeValue('gray.400', 'gray.400')}>
-          Scrum Master
+          Product Owner et dev Front
         </Text>
       </Box>
     </Stack>
