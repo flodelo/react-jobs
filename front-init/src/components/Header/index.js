@@ -8,6 +8,7 @@ import {
 } from '@chakra-ui/react';
 
 import MenuBurger from './MenuBurger';
+import Logo from './Logo';
 
 const Header = () => {
   const responsiveSize = useBreakpointValue(['md', 'lg']);
@@ -19,12 +20,12 @@ const Header = () => {
  // Fonction permettant une redirection lors de l'event onClick sur un élément texte
   
   return (
-    <Flex p={10}>
-      <Box p="2">
-        <Heading onClick={redirectHome} size={responsiveSize}><span role="img" aria-label="atom emoji">⚛</span> React-jobs.fr</Heading>
-      </Box>
+    <Flex>
+      <Box boxSize="40" onClick={redirectHome}>
+        <Logo  size={responsiveSize}/>
+      </Box>             
       <Spacer />
-      <Box>
+      <Box p={10}>
       
       <Link as={ReactLink} to='/register'
         >
