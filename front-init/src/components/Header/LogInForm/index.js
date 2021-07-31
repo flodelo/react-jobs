@@ -2,6 +2,9 @@ import React, { useState } from 'react';
 // import { withRouter } from "react-router-dom";
 
 import axios from 'axios';
+
+import { Twemoji } from 'react-emoji-render';
+
 import {
   Flex,
   Box,
@@ -102,6 +105,7 @@ export default function LogInForm(props) {
     props.history.push('/');
   };
 
+
   return (
     <Flex
       align="center"
@@ -110,9 +114,9 @@ export default function LogInForm(props) {
       bg={useColorModeValue('gray.50', 'gray.800')}
     >
       <Stack spacing={8} mx="auto" maxW="lg" py={12} px={6}>
-        <Stack align="center">
-          <Heading fontSize="4xl">Connexion ✌️</Heading>
-        </Stack>
+        <Box justifyContent="center" display="flex" >
+          <Heading display="flex" fontSize="4xl">Connexion <Twemoji display="flex" text="✌️"/></Heading>
+        </Box>
         <Box
           rounded="lg"
           bg={useColorModeValue('white', 'gray.700')}
