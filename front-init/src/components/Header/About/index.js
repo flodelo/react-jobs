@@ -4,61 +4,29 @@ import { Avatar, Box, Stack, Text, useColorModeValue, Flex } from '@chakra-ui/re
 
 export default function About() {
   return (
-    <Flex p={10}>
-     {/* <Stack
-      bg={useColorModeValue('white', 'gray.800')}
-      boxShadow={'lg'}
-      p={8}
-      rounded={'xl'}
-      align={'center'}
-      pos={'relative'}
-      _after={{
-        content: `""`,
-        w: 0,
-        h: 0,
-        borderLeft: 'solid transparent',
-        borderLeftWidth: 16,
-        borderRight: 'solid transparent',
-        borderRightWidth: 16,
-        borderTop: 'solid',
-        borderTopWidth: 16,
-        borderTopColor: useColorModeValue('white', 'gray.800'),
-        pos: 'absolute',
-        bottom: '-16px',
-        left: '50%',
-        transform: 'translateX(-50%)',
-      }}>
-    </Stack> */}
+    <Flex p={10} wrap="wrap" justifyContent="space-around" bg={useColorModeValue('gray.50', 'gray.800')} >
     <Stack
-      bg={useColorModeValue('white', 'gray.800')}
-      boxShadow={'lg'}
-      p={8}
-      rounded={'xl'}
+      m="0.5em"
+      w="300px"
+      bg={useColorModeValue('gray.50', 'gray.800')}
+      border="1px" borderColor="gray.200" borderRadius="5px"
+      _hover={{
+        borderLeft:"2px",
+        borderLeftColor:"blue.500",
+        boxShadow: 'lg',
+      }}
+      py={16}
+      px={8}
+      spacing={{ base: 8, md: 10 }}
       align={'center'}
-      pos={'relative'}
-      _after={{
-        content: `""`,
-        w: 0,
-        h: 0,
-        borderLeft: 'solid transparent',
-        borderLeftWidth: 16,
-        borderRight: 'solid transparent',
-        borderRightWidth: 16,
-        borderTop: 'solid',
-        borderTopWidth: 16,
-        borderTopColor: useColorModeValue('white', 'gray.800'),
-        pos: 'absolute',
-        bottom: '-16px',
-        left: '50%',
-        transform: 'translateX(-50%)',
-      }}>
+      direction={'column'}>
       <Text
         fontSize={{ base: 'm', md: 'm' }}
         textAlign={'center'}
         maxW={'3xl'}>
         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur tempor dolor sit amet maximus vehicula. In sapien magna, facilisis at gravida sit amet, sagittis nec enim. Fusce sit amet dolor ac enim convallis bibendum. Aenean pulvinar cursus nunc.
       </Text>
-      <Box textAlign={'center'} mb={50}>
+      <Box textAlign={'center'}>
         <Avatar
           src={
             'https://images.unsplash.com/photo-1586297135537-94bc9ba060aa?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=100&q=80'
@@ -67,15 +35,22 @@ export default function About() {
           mb={2}
         />
 
-        <Text fontWeight={600}>Florian Delobelle</Text>
+        <Text fontWeight={600}>Caroline Wiese</Text>
         <Text fontSize={'sm'} color={useColorModeValue('gray.400', 'gray.400')}>
-          Product Owner
+          Lead dev Back
         </Text>
       </Box>
     </Stack>
-
     <Stack
+    m="0.5em"
+     w="300px"
       bg={useColorModeValue('gray.50', 'gray.800')}
+      border="1px" borderColor="gray.200" borderRadius="5px"
+      _hover={{
+        borderLeft:"2px",
+        borderLeftColor:"blue.500",
+        boxShadow: 'lg',
+      }}
       py={16}
       px={8}
       spacing={{ base: 8, md: 10 }}
@@ -104,7 +79,15 @@ export default function About() {
     </Stack>
 
     <Stack
+    m="0.5em"
+      w="300px"
       bg={useColorModeValue('gray.50', 'gray.800')}
+      border="1px" borderColor="gray.200" borderRadius="5px"
+      _hover={{
+        borderLeft:"2px",
+        borderLeftColor:"blue.500",
+        boxShadow: 'lg',
+      }}
       py={16}
       px={8}
       spacing={{ base: 8, md: 10 }}
@@ -133,7 +116,15 @@ export default function About() {
     </Stack>
 
     <Stack
+    m="0.5em"
+      w="300px"
       bg={useColorModeValue('gray.50', 'gray.800')}
+      border="1px" borderColor="gray.200" borderRadius="5px"
+      _hover={{
+        borderLeft:"2px",
+        borderLeftColor:"blue.500",
+        boxShadow: 'lg',
+      }}
       py={16}
       px={8}
       spacing={{ base: 8, md: 10 }}
@@ -162,7 +153,15 @@ export default function About() {
     </Stack>
 
     <Stack
+    m="0.5em"
+      w="300px"
       bg={useColorModeValue('gray.50', 'gray.800')}
+      border="1px" borderColor="gray.200" borderRadius="5px"
+      _hover={{
+        borderLeft:"2px",
+        borderLeftColor:"blue.500",
+        boxShadow: 'lg',
+      }}
       py={16}
       px={8}
       spacing={{ base: 8, md: 10 }}
