@@ -40,17 +40,25 @@ export default function MenuBurger() {
             Déposer une annonce
           </MenuItem>
           </Link>
+
+        <Link as={ReactLink} to='/about'>
           <MenuItem icon={<QuestionIcon/>}>
             A propos
           </MenuItem>
+          </Link>
+
+        <Link as={ReactLink} to='/contact'>
           <MenuItem icon={<EmailIcon/>}>
             Nous contacter
           </MenuItem>
+          </Link>
+
           <MenuItem>
           <Icon as={FaDiscord} mr={2.5}/>
             Discord
           </MenuItem>
           <Link href="https://twitter.com/reactjsfrance" isExternal>
+          
           <MenuItem>
             <Icon as={FaTwitter} mr={2.5}/>
             Twitter 
