@@ -1,11 +1,13 @@
 /* eslint-disable max-len */
 import React from 'react';
 
+import { Link as ReactLink } from 'react-router-dom';
+
 import {
-  Flex, Spacer, Box, Link, Heading, Button, IconButton, Menu, MenuButton, useBreakpointValue,
+  Flex, Spacer, Box, Heading, Button, IconButton, Menu, MenuButton, useBreakpointValue, Text, Link
 } from '@chakra-ui/react';
 
-import { HamburgerIcon } from '@chakra-ui/icons';
+import MenuBurger from './MenuBurger';
 
 const Header = () => {
   const responsiveSize = useBreakpointValue(['md', 'lg']);
@@ -23,9 +25,8 @@ const Header = () => {
       </Box>
       <Spacer />
       <Box>
-
-        <Link
-          href="/register"
+      
+      <Link as={ReactLink} to='/register'
         >
           <Button
             display={{
@@ -40,9 +41,9 @@ const Header = () => {
           >
             Inscription
           </Button>
-        </Link>
-        <Link
-          href="/login"
+          </Link>
+        
+          <Link as={ReactLink} to='/login'
         >
           <Button
             display={{
@@ -59,12 +60,8 @@ const Header = () => {
         </Link>
         <Menu>
           {/* Creation du menu burger avec props */}
-          <MenuButton
+          <MenuBurger
             size={responsiveSize}
-            as={IconButton}
-            aria-label="Options"
-            icon={<HamburgerIcon />}
-            color="blue.500"
           />
         </Menu>
       </Box>
