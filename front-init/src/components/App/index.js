@@ -13,11 +13,15 @@ import { BASE_URL } from '../constants/apiConstants';
 import './styles.css';
 
 import Header from '../Header';
+import MenuBurger from '../Header/MenuBurger';
 import Search from '../Search';
 import RegistrationForm from '../Header/RegistrationForm';
 import LogInForm from '../Header/LogInForm';
 import Footer from '../Footer';
 import AdminForm from '../AdminForm';
+import About from '../Header/About';
+import Contact from '../Header/Contact';
+
 
 // == Composant
 export default function App() {
@@ -63,6 +67,16 @@ export default function App() {
           <Route path="/login/adminform">
             <Header />
             <AdminForm />
+            <Footer />
+          </Route>
+          <Route path="/about">
+            <Header />
+            <About />
+            <Footer />
+          </Route>
+          <Route path="/contact">
+            <Header />
+            <Contact />
             <Footer />
           </Route>
           {/* <Route>
