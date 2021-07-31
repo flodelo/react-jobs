@@ -5,7 +5,7 @@ import { useState, useEffect } from "react";
 
 // == Imports NPM
 import {
-  Input, Button, HStack, VStack, StackDivider, Accordion, InputLeftElement, InputGroup,
+  Input, Button, VStack, StackDivider, Accordion, InputLeftElement, InputGroup, Text,
 } from '@chakra-ui/react';
 import { SearchIcon } from '@chakra-ui/icons';
 import Job from '../Search/Job';
@@ -28,7 +28,8 @@ export default function Search ({jobs}) {
 
   return (
     <>
-      <HStack spacing="10px" justify="center" mr={10} ml={10} mb={5}>
+      <VStack spacing="10px" justify="center" mr={10} ml={10} mb={5}>
+        <Text>Recherchez une ville, une technologie, un type de contrat...</Text>
         <InputGroup w="500px">
         <InputLeftElement
         pointerEvents="none"
@@ -39,10 +40,11 @@ export default function Search ({jobs}) {
           placeholder="Rechercher"
           onChange={handleSearchTerm}
           variant="outline"
-          placeholder="Recherche par mots-clés..."
+          placeholder="Ex : Bordeaux, Redux, CDI"
+          size="lg"
         />
       </InputGroup>
-      </HStack>
+      </VStack>
       <VStack mt={5} p={10} bg="gray.50" spacing={4} divider={<StackDivider borderColor="gray.200" align="stretch" />}>
       <Accordion width="80%" allowToggle >
         {jobs
