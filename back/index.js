@@ -29,7 +29,6 @@ app.use(express.urlencoded({
     extended: true,
 }));
 
-
 // potential static route
 //app.use(express.static('public'));
 
