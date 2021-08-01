@@ -1,20 +1,87 @@
 import React from 'react';
 
-import { Avatar, Box, Stack, Text, useColorModeValue, Flex } from '@chakra-ui/react';
+import { Heading, Link, Avatar, Box, Stack, Text, useColorModeValue, Flex, HStack, useBreakpointValue } from '@chakra-ui/react';
+
+import { ExternalLinkIcon } from '@chakra-ui/icons'
 
 export default function About() {
   return (
-    <Flex p={10} wrap="wrap" justifyContent="space-around" bg={useColorModeValue('gray.50', 'gray.800')} >
-    <Stack
+    <>
+    <Heading align={'center'} as="h1" bg={useColorModeValue('gray.50', 'gray.800')} pt="1em">A propos</Heading>
+    <Flex p={5} flexWrap="wrap" justifyContent="space-around" bg={useColorModeValue('gray.50', 'gray.800')} >
+    <Flex spacing="24px" d="flex" flexWrap="wrap">
+      <Box 
+      m="0.5em"
+      w="100%"
+      bg={useColorModeValue('gray.50', 'gray.800')}
+      py={4}
+      px={8}
+      spacing={{ base: 8, md: 10 }}
+      align={'left'}>
+      <Text
+      fontWeight={700}
+      fontSize={useBreakpointValue({ base: 'lg', md: 'xl' })}
+        textAlign={'left'}>
+        React... ton framework frontend de coeur ?
+      </Text>
+      <Text
+      fontWeight={500}
+      fontSize={useBreakpointValue({ base: 'lg', md: 'xl' })}
+        textAlign={'left'}>
+        React-jobs.fr est la source #1 pour trouver ta prochaine mission React qui te correspond. Nous sélectionnons les offres les plus pertinentes en France pour te faciliter la vie.
+      </Text>
+      <Text
+      fontWeight={700}
+      fontSize={useBreakpointValue({ base: 'md', md: 'lg' })}
+        textAlign={'left'}
+        mt="1em">
+        #Entraide #Communauté #Passion
+      </Text>
+      <Text
+      mt="1em"
+      fontSize={useBreakpointValue({ base: 'md', md: 'lg' })}
+        textAlign={'left'}
+        maxW={'3xl'}>
+        Le projet a été créé par 5 développeurs formés par <Link href="https://oclock.io/" isExternal>O'clock<ExternalLinkIcon mx="5px" /></Link>
+      </Text>
+    </Box>
+    <Box 
+      w="0.5em"
+      w="100%"
+      bg={useColorModeValue('gray.50', 'gray.800')}
+      py={8}
+      px={8}
+      spacing={{ base: 8, md: 10 }}
+      align={'center'}
+      background="linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5) ), url(https://images.pexels.com/photos/4164418/pexels-photo-4164418.jpeg?cs=srgb&dl=pexels-antonio-batini%C4%87-4164418.jpg&fm=jpg)"
+      backgroundSize={'cover'}
+      borderRadius="5px">
+      <Text
+        textAlign={'center'}
+        maxW={'3xl'}
+        color="white"
+        textShadow="1px 1px 20px #000000"
+        fontWeight={700}
+        fontSize={useBreakpointValue({ base: 'lg', md: 'xl' })}>
+        Le saviez vous ? React est le framework le plus recherché dans le monde : 
+        59% des recruteurs tech sont à l'affût de développeurs connaissant React. 
+        Malheureusement, seuls 27,6% des programmeurs disent savoir l'utiliser.
+        </Text><Link color="white" href="https://www.codingame.com/work/codingame-developer-survey-2021/?utm_source=press&utm_medium=referral&utm_campaign=developer-survey-2021&utm_content=b2b" isExternal>(Source : Codingame.com - 2021)<ExternalLinkIcon mx="5px"/></Link>
+    </Box>
+    </Flex>
+    </Flex>
+<Heading align={'center'} as="h2" bg={useColorModeValue('gray.50', 'gray.800')} pt="1em">Notre équipe</Heading>
+    <Flex p={1} wrap="wrap" justifyContent="space-around" bg={useColorModeValue('gray.50', 'gray.800')} >
+    <Flex
       m="0.5em"
       w="300px"
       bg={useColorModeValue('gray.50', 'gray.800')}
       _hover={{
         boxShadow: 'lg',
       }}
-      py={16}
+      py={8}
       px={8}
-      spacing={{ base: 8, md: 10 }}
+      spacing={{ base: 6, md: 8 }}
       align={'center'}
       direction={'column'}>
       <Text
@@ -37,7 +104,7 @@ export default function About() {
           Lead dev Back
         </Text>
       </Box>
-    </Stack>
+    </Flex>
     <Stack
     m="0.5em"
      w="300px"
@@ -45,9 +112,9 @@ export default function About() {
       _hover={{
         boxShadow: 'lg',
       }}
-      py={16}
+      py={8}
       px={8}
-      spacing={{ base: 8, md: 10 }}
+      spacing={{ base: 6, md: 8 }}
       align={'center'}
       direction={'column'}>
       <Text
@@ -79,9 +146,9 @@ export default function About() {
       _hover={{
         boxShadow: 'lg',
       }}
-      py={16}
+      py={8}
       px={8}
-      spacing={{ base: 8, md: 10 }}
+      spacing={{ base: 6, md: 8 }}
       align={'center'}
       direction={'column'}>
       <Text
@@ -113,9 +180,9 @@ export default function About() {
       _hover={{
         boxShadow: 'lg',
       }}
-      py={16}
+      py={8}
       px={8}
-      spacing={{ base: 8, md: 10 }}
+      spacing={{ base: 6, md: 8 }}
       align={'center'}
       direction={'column'}>
       <Text
@@ -147,9 +214,9 @@ export default function About() {
       _hover={{
         boxShadow: 'lg',
       }}
-      py={16}
+      py={8}
       px={8}
-      spacing={{ base: 8, md: 10 }}
+      spacing={{ base: 6, md: 8 }}
       align={'center'}
       direction={'column'}>
       <Text
@@ -174,5 +241,6 @@ export default function About() {
       </Box>
     </Stack>
     </Flex>
+    </>
   );
 }
