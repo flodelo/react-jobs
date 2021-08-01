@@ -63,7 +63,7 @@ export default function About() {
         textShadow="1px 1px 20px #000000"
         fontWeight={700}
         fontSize={useBreakpointValue({ base: 'lg', md: 'xl' })}>
-        Le saviez vous ? React est le framework le plus recherché dans le monde : 
+        "Fun fact" pour surmonter ton syndrome de l'imposteur > React est le framework le plus recherché dans le monde : 
         59% des recruteurs tech sont à l'affût de développeurs connaissant React. 
         Malheureusement, seuls 27,6% des programmeurs disent savoir l'utiliser.
         </Text><Link color="white" href="https://www.codingame.com/work/codingame-developer-survey-2021/?utm_source=press&utm_medium=referral&utm_campaign=developer-survey-2021&utm_content=b2b" isExternal>(Source : Codingame.com - 2021)<ExternalLinkIcon mx="5px"/></Link>
