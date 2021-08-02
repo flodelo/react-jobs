@@ -82,10 +82,10 @@ export default function AdminForm(props) {
   const redirectToHome = () => {
     props.history.push('/');
   };
-  const redirectToLogin = () => {
-    props.history.push('/login');
-  };
-  // title, description, company, technology, locality, contract, salary
+  // const redirectToLogin = () => {
+  //   props.history.push('/login');
+  // };
+
   return (
     <Flex
       align="center"
@@ -153,6 +153,16 @@ export default function AdminForm(props) {
                 onChange={handleChange}
               />
             </FormControl>
+
+            {/* <RadioGroup onChange={handleChange} value={state.contract}>
+              <Stack direction="row">
+                <Radio value={state.contract}>CDI</Radio>
+                <Radio value={state.contract}>CDD</Radio>
+                <Radio value={state.contract}>Freelance</Radio>
+                <Radio value={state.contract}>Alternance</Radio>
+                <Radio value={state.contract}>Stage</Radio>
+              </Stack>
+            </RadioGroup> */}
            
             <FormControl id="salary">
               <FormLabel>Salaire</FormLabel>
