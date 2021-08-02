@@ -121,7 +121,7 @@ export default function LogInForm(props) {
     >
       <Stack spacing={8} mx="auto" maxW="lg" py={12} px={6}>
         <Box justifyContent="center" display="flex" >
-          <Heading display="flex" fontSize="4xl">Connexion <Twemoji display="flex" text="✌️"/></Heading>
+          <Heading display="flex" fontSize="4xl">Connexion <Twemoji ClassName="twemoji" display="flex" text="✌️"/></Heading>
         </Box>
         <Box
           rounded="lg"

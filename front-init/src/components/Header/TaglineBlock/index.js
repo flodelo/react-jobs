@@ -46,7 +46,7 @@ export default function TaglineBlock() {
             fontWeight={300}
             lineHeight={1}
             mr={4}
-            fontSize={useBreakpointValue({ base: '2xl', md: '3xl' })}>Consultez les 50 dernières offres React en France 
+            fontSize={useBreakpointValue({ base: '2xl', md: '3xl' })}>Consultez les offres React les plus récentes en France 
             <Twemoji className="twemoji" text="🇫🇷"/> 
           </Text>
           </Stack>
