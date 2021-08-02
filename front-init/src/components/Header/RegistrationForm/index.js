@@ -41,14 +41,14 @@ export default function RegistrationForm(props) {
     // if (state.email.length && state.password.length) {
       // props.showError(null);
       const payload = {
-        "firstName" : state.firstname,
-        "lastName" : state.lastname,
+        "firstname" : state.firstname,
+        "lastname" : state.lastname,
         "email" : state.email,
         "password" : state.password,
         // "role" : "User-Agent", (deleted > Felana request)
       };
       
-     axios.post('http://localhost:5050/user/registerUser', payload)
+     axios.post('http://localhost:5050/users/registerUser', payload)
         .then((response) => {
           if (response.status === 200) {
             setState((prevState) => ({
