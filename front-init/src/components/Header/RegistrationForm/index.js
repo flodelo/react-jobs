@@ -93,9 +93,9 @@ export default function RegistrationForm(props) {
       height="100%"
     >
       <Stack spacing={8} mx="auto" maxW="lg" py={12} px={6}>
-        <Stack align="center">
-          <Heading fontSize="4xl">Inscription <Twemoji text=""/></Heading>
-        </Stack>
+        <Box align="center" justifyContent="center" display="flex">
+          <Heading display="flex" fontSize="4xl">Inscription <Twemoji display="flex" onlyEmojiClassName="twemoji" display="flex" text="⚛️"/></Heading>
+        </Box>
         <Box
           rounded="lg"
           bg={useColorModeValue('white', 'gray.700')}
