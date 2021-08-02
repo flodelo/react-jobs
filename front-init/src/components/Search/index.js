@@ -5,7 +5,7 @@ import { useState, useEffect } from "react";
 
 // == Imports NPM
 import {
-  Input, Button, VStack, StackDivider, Accordion, InputLeftElement, InputGroup, Text,
+  Input, Button, VStack, StackDivider, Accordion, InputLeftElement, InputGroup, Text, useColorModeValue,
 } from '@chakra-ui/react';
 import { SearchIcon } from '@chakra-ui/icons';
 import Job from '../Search/Job';
@@ -28,7 +28,7 @@ export default function Search ({jobs}) {
 
   return (
     <>
-      <VStack spacing="10px" justify="center" mr={5} ml={5} mb={5}>
+      <VStack spacing="10px" justify="center" p={5} bg={useColorModeValue('gray.50', 'gray.800')}>
         <Text>Recherchez une ville, une technologie, un type de contrat...</Text>
         <InputGroup maxWidth="500px">
         <InputLeftElement
@@ -45,7 +45,7 @@ export default function Search ({jobs}) {
         />
       </InputGroup>
       </VStack>
-      <VStack mt={5} p={10} bg="gray.50" spacing={4} divider={<StackDivider borderColor="gray.200" align="stretch" />}>
+      <VStack p={10} bg={useColorModeValue('gray.50', 'gray.800')} spacing={4} divider={<StackDivider borderColor="gray.200" align="stretch" />}>
       <Accordion width="80%" allowToggle >
         {jobs
           .filter(val =>

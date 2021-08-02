@@ -22,7 +22,7 @@ export default function TaglineBlock() {
       background="linear-gradient( rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2) ), url(https://images.pexels.com/photos/4458418/pexels-photo-4458418.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260)"
       backgroundSize={'cover'}
       backgroundPosition="75% 35%"
-      mb="1em"
+      pb="1em"
       >
       <VStack
       position="absolute"
