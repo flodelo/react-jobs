@@ -3,8 +3,6 @@ import React, { useState } from 'react';
 import axios from 'axios';
 // import { withRouter } from "react-router-dom";
 
-import { Twemoji } from 'react-emoji-render';
-
 import {
   Flex,
   Box,
@@ -18,15 +16,16 @@ import {
   useColorModeValue,
 } from '@chakra-ui/react';
 
-export default function RegistrationForm(props) {
+export default function AdminForm(props) {
 
   const [state, setState] = useState({
-    firstname: '',
-    lastname: '',
-    email: '',
-    password: '',
-    // confirmPassword: '',
-    // successMessage: null,
+    title: '',
+    technology: '',
+    company: '',
+    locality: '',
+    contract: '',
+    salary: '',
+    description: '',
   });
 
   const handleChange = (e) => {
@@ -41,14 +40,16 @@ export default function RegistrationForm(props) {
     // if (state.email.length && state.password.length) {
       // props.showError(null);
       const payload = {
-        "firstname" : state.firstname,
-        "lastname" : state.lastname,
-        "email" : state.email,
-        "password" : state.password,
-        // "role" : "User-Agent", (deleted > Felana request)
+        "title" : state.title,
+        "technology" : state.technology,
+        "company" : state.company,
+        "locality" : state.locality,
+        "contract" : state.contract,
+        "salary" : state.salary,
+        "description" : state.description,
       };
       
-     axios.post('http://localhost:5050/users/registerUser', payload)
+     axios.post('http://localhost:5050/jobs/save', payload)
         .then((response) => {
           if (response.status === 200) {
             setState((prevState) => ({
@@ -81,9 +82,9 @@ export default function RegistrationForm(props) {
   const redirectToHome = () => {
     props.history.push('/');
   };
-  const redirectToLogin = () => {
-    props.history.push('/login');
-  };
+  // const redirectToLogin = () => {
+  //   props.history.push('/login');
+  // };
 
   return (
     <Flex
@@ -94,7 +95,7 @@ export default function RegistrationForm(props) {
     >
       <Stack spacing={8} mx="auto" maxW="lg" py={12} px={6}>
         <Stack align="center">
-          <Heading fontSize="4xl">Inscription <Twemoji text=""/></Heading>
+          <Heading fontSize="4xl">Ajouter une offre 🐱‍💻</Heading>
         </Stack>
         <Box
           rounded="lg"
@@ -103,51 +104,82 @@ export default function RegistrationForm(props) {
           p={8}
         >
           <Stack spacing={4}>
-          <FormControl id="email">
-              <FormLabel>Prénom</FormLabel>
+          <FormControl id="title">
+              <FormLabel>Titre de l'offre</FormLabel>
               <Input
                 type="text"
-                id="firstname"
-                value={state.firstname}
+                id="title"
+                value={state.title}
                 onChange={handleChange}
               />
             </FormControl>
 
-            <FormControl id="email">
-              <FormLabel>Nom</FormLabel>
+            <FormControl id="technology">
+              <FormLabel>Technos</FormLabel>
               <Input
                 type="text"
-                id="lastname"
-                value={state.lastname}
+                id="technology"
+                value={state.technology}
                 onChange={handleChange}
               />
             </FormControl>
 
-            <FormControl id="email">
-              <FormLabel>Adresse e-mail</FormLabel>
+            <FormControl id="company">
+              <FormLabel>Entreprise</FormLabel>
               <Input
-                type="email"
-                id="email"
-                value={state.email}
+                type="text"
+                id="company"
+                value={state.company}
                 onChange={handleChange}
               />
             </FormControl>
 
-            <FormControl id="password">
-              <FormLabel>Mot de passe</FormLabel>
+            <FormControl id="locality">
+              <FormLabel>Localisation</FormLabel>
               <Input
-                type="password"
-                id="password"
-                value={state.password}
+                type="text"
+                id="locality"
+                value={state.locality}
                 onChange={handleChange}
               />
             </FormControl>
-            <FormControl id="password">
-              <FormLabel>Confirmez votre mot de passe</FormLabel>
+
+            <FormControl id="contract">
+              <FormLabel>Contrat</FormLabel>
               <Input
-                type="password"
-                id="confirmPassword"
-                value={state.confirmPassword}
+                type="text"
+                id="contract"
+                value={state.contract}
+                onChange={handleChange}
+              />
+            </FormControl>
+
+            {/* <RadioGroup onChange={handleChange} value={state.contract}>
+              <Stack direction="row">
+                <Radio value={state.contract}>CDI</Radio>
+                <Radio value={state.contract}>CDD</Radio>
+                <Radio value={state.contract}>Freelance</Radio>
+                <Radio value={state.contract}>Alternance</Radio>
+                <Radio value={state.contract}>Stage</Radio>
+              </Stack>
+            </RadioGroup> */}
+           
+            <FormControl id="salary">
+              <FormLabel>Salaire</FormLabel>
+              <Input
+                type="text"
+                id="salary"
+                value={state.salary}
+                onChange={handleChange}
+              />
+            </FormControl>
+            <FormControl id="description">
+              <FormLabel>Description de l'offre</FormLabel>
+              <Input
+                type="text"
+                id="description"
+                value={state.description}
+                onChange={handleChange}
               />
             </FormControl>
             <Stack spacing={10}>
@@ -156,15 +188,12 @@ export default function RegistrationForm(props) {
                 align="start"
                 justify="space-between"
               >
-
-                <Link href="/login" color="blue.500">Déja un compte ? Connectez-vous</Link>
-
               </Stack>
               <Button
                 color="blue.500"
                 onClick={handleSubmitClick}
               >
-                Je m'inscris
+                Publier
               </Button>
             </Stack>
           </Stack>

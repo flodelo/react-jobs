@@ -78,9 +78,17 @@ class User {
     //     }
     // }
 
+    /**
+    * Finds one user by his/her email in database
+    * @static
+    * @async
+    * @param {string} email 
+    * @returns {User} the instance identified by its email
+    * @throws {Error} an error object
+    */
     static async findOneByEmail(email) {
         try {
-            const {rows} = await database.query('SELECT * FROM "user" WHERE email=$1  ', [email]);
+            const {rows} = await database.query('SELECT * FROM "user" WHERE email=$1 ', [email]);
             if (rows[0]) {
                 return new User(rows[0]);
             }
@@ -92,6 +100,7 @@ class User {
             }
         }
     }
+
     /**
     * Adds or updates an instance of User in database
     * @async
@@ -111,7 +120,6 @@ class User {
                 return this;
             }
         } catch (error) {
-
             console.log(error);
             if (error.detail) {
                 throw new Error(error.detail);
@@ -146,7 +154,6 @@ class User {
         }
     }
 }    
-
 
 module.exports = User;
 
