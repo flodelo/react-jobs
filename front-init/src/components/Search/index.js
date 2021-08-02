@@ -8,7 +8,8 @@ import {
   Input, Button, VStack, StackDivider, Accordion, InputLeftElement, InputGroup, Text, useColorModeValue,
 } from '@chakra-ui/react';
 import { SearchIcon } from '@chakra-ui/icons';
-import Job from '../Search/Job';
+import Job from './Job';
+import PremiumJobs from './PremiumJobs';
 
 export default function Search ({jobs}) {
   
@@ -45,6 +46,7 @@ export default function Search ({jobs}) {
         />
       </InputGroup>
       </VStack>
+      <PremiumJobs/>
       <VStack p={10} bg={useColorModeValue('gray.50', 'gray.800')} spacing={4} divider={<StackDivider borderColor="gray.200" align="stretch" />}>
       <Accordion width="80%" allowToggle >
         {jobs
