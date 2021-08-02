@@ -37,6 +37,7 @@ export default function Search ({jobs}) {
         children={<SearchIcon color="gray.300" />}
         />
         <Input
+          boxShadow="rgb(0 0 0 / 5%) 0 10px 15px"
           type="text"
           onChange={handleSearchTerm}
           variant="outline"
