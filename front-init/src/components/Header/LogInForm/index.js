@@ -42,7 +42,7 @@ export default function LogInForm(props) {
       "email" : state.email,
       "password" : state.password,
     };
-    axios.post("http://localhost:5050/user/loginUser", payload)
+    axios.post("http://localhost:5050/users/loginUser", payload)
      .then((response) => {
         if (response.status === 200) {
           const { user, token } = response.data
@@ -64,11 +64,17 @@ export default function LogInForm(props) {
             // successMessage: 'Connexion réussi.',
           }));
 
+
           if (isAdmin) {
           redirectToDashboard() }
 
           else { 
           redirectToHome() }
+
+          localStorage.setItem("USER_TOKEN", response.data.token);
+          
+          redirectToHome();
+
           // props.showError(null);
         }
         else if (response.code === 204) {
