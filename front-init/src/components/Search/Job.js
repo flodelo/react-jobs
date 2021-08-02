@@ -3,6 +3,10 @@ import { Link as ReactRouter } from 'react-router-dom';
 
 import { ArrowForwardIcon } from '@chakra-ui/icons';
 
+import dayjs from 'dayjs';
+import 'dayjs/locale/fr'
+// const dayjs = require('dayjs');
+
 import {
   Heading, Box, Badge, Button, Text, Link,
   Accordion,
@@ -48,7 +52,7 @@ export default function Job({ val }) {
   </Flex>
   <br />
   <p as="h3">{val.description}</p>
-  <p as="h3">{val.dateCreation} </p>
+  <p as="h3">{dayjs(val.dateCreation).locale('fr').format('dddd DD MMMM YYYY')} </p>
   <Link href={val.origineOffre.partenaires && val.origineOffre.partenaires[0].url ?  val.origineOffre.partenaires[0].url : val.origineOffre.urlOrigine} isExternal><Button rightIcon={<ArrowForwardIcon />}>Je postule</Button></Link>
   </AccordionPanel>
   {/* <p>{job.completed.toString()}</p> */}
