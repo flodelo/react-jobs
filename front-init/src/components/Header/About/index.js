@@ -1,5 +1,7 @@
 import React from 'react';
 
+import { Link as ReactLink } from 'react-router-dom';
+
 import { Heading, Link, Avatar, Box, Stack, Text, useColorModeValue, Flex, HStack, useBreakpointValue } from '@chakra-ui/react';
 
 import { ExternalLinkIcon } from '@chakra-ui/icons'
@@ -223,21 +225,22 @@ export default function About() {
         fontSize={{ base: 'm', md: 'm' }}
         textAlign={'center'}
         maxW={'3xl'}>
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur tempor dolor sit amet maximus vehicula. In sapien magna, facilisis at gravida sit amet, sagittis nec enim. Fusce sit amet dolor ac enim convallis bibendum. Aenean pulvinar cursus nunc.
+        34 ans, domicilié à Boulogne-sur-Mer (Pas-de-Calais, 62), ex-journaliste sportif en quête de reconversion.
       </Text>
       <Box textAlign={'center'}>
         <Avatar
           src={
-            'https://images.unsplash.com/photo-1586297135537-94bc9ba060aa?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=100&q=80'
+            'https://media-exp1.licdn.com/dms/image/C4D03AQFN7JMdd6BsjQ/profile-displayphoto-shrink_400_400/0/1550840608493?e=1633564800&v=beta&t=2HroTWMk7Vctvo6WtjtUYtvRGqfL6jKzLjZ7Kea9KV8'
           }
-          alt={'Jenny Wilson'}
+          alt={'Alexandre Chochois'}
           mb={2}
         />
-
+        <Link href="https://www.linkedin.com/in/alexandre-chochois" isExternal>
+        <Text fontWeight={600}>Alexandre Chochois</Text> </Link>
         <Text fontWeight={600}>Florian Delobelle</Text>
-        <Text fontSize={'sm'} color={useColorModeValue('gray.400', 'gray.400')}>
-          Product Owner et dev Front
-        </Text>
+        // <Text fontSize={'sm'} color={useColorModeValue('gray.400', 'gray.400')}>
+          // Product Owner et dev Front
+        // </Text>
       </Box>
     </Stack>
     </Flex>
