@@ -5,12 +5,11 @@ const bcrypt = require('bcrypt');
 const userController = {
 
     isRegister: async (request, response) => {
-      
+
         try {
-    
             // User input from front-end (body): email and password
             const { email, password } = request.body;
-            console.log(request.body, "hello");
+            // console.log(request.body, "hello");
 
             // Validate user input
             if (!(email && password)) {
@@ -33,11 +32,13 @@ const userController = {
                 lastName: request.body.lastname.toString().toLowerCase(),
                 email: request.body.email.toString().toLowerCase(),
                 password: encryptedPassword,
-                role: "user" /* empty string as "dynamisation", Joi's default role is "user", as all admins are registered directly in database at the moment this should be enough right now*/
+                role: "user" /* once we have different user types (e.g. candidate and recruter) 
+                and a front-end admin profile with a fonctionnality to create other user types as well as 
+                users with admin rights, we will handle role creation dynamically */
 
             });
             const insert =  await newUser.save();
-            console.log(insert);
+            // console.log(insert);
             response.status(201).send(insert);
             }
         } catch (error) {
@@ -51,10 +52,9 @@ const userController = {
 
         // Our login logic goes here
             try {
-                
                 // Get user input
                 const { email, password } = request.body;
-                console.log(request.body);
+                // console.log(request.body);
                 // Validate user input
                 if (!(email || password))  {
                     return response.status(400).send("Please enter both, email and password!");
@@ -77,7 +77,7 @@ const userController = {
             }
     },
 
-    // We are not sure yet to need this method
+    // We are not sure yet if we will need this method
     // getAllUser: async (_, response) => {
     //     try {
     
@@ -104,27 +104,32 @@ const userController = {
     //     }
     // },
 
-    addUser: async (request, response) => {
-        try {
-            const user = new User(request.body);
-            const newUser = await user.save();
-            if (newUser) { //equivalent if (newUser !== undefined)
-                //model responds with instance, hence it's an insert
-                response.status(201).json(newUser);
-            } else {
-                //no return from model, hence it's an update
-                response.status(204).json(user);
-            }
-        } catch (error) {
-            response.status(500).send(error.message);
-        }
-    },
+    // We are not sure yet if we will need this method
+    // addUser: async (request, response) => {
+    //     try {
+    //         const user = new User(request.body);
+    //         const newUser = await user.save();
+    //         if (newUser) { //equivalent if (newUser !== undefined)
+    //             //model responds with instance, hence it's an insert
+    //             response.status(201).json(newUser);
+    //         } else {
+    //             //no return from model, hence it's an update
+    //             response.status(204).json(user);
+    //         }
+    //     } catch (error) {
+    //         response.status(500).send(error.message);
+    //     }
+    // },
     
     deleteOneUser: async (request, response) => {
         try {
             const user = await User.findOneAndDelete(parseInt(request.params.id, 10));
             if(!user) // if user is no more, delete was successful
-                response.status(204).json(user);
+                // with response.status(204).json(user); --> status code 204 has no body, 
+                // so .json might be completely unnecessary,
+                // sending a personnalised status message in the body is possible with
+                // status code 200 though:
+                response.status(200).send("Delete successful.");
         } catch (error) {
             if (error instanceof User.UserError) {
                 response.status(404).send(error.message);
@@ -133,16 +138,6 @@ const userController = {
             }
         }
     },
-
 };
 
 module.exports = userController;
-
-
-
-
-
-
-
-
-
