@@ -51,8 +51,8 @@ export default function Job({ val }) {
   <Heading display="flex" as="h2" size="sm" color="blue.500">{val.typeContrat}</Heading>
   </Flex>
   <br />
-  <p as="h3">{val.description}</p>
-  <p as="h3">{dayjs(val.dateCreation).locale('fr').format('dddd DD MMMM YYYY')} </p>
+  <Text as="p">{val.description}</Text>
+  <Text fontWeight="700" as="p">Publié le : {dayjs(val.dateCreation).locale('fr').format('dddd DD MMMM YYYY')} </Text>
   <Link href={val.origineOffre.partenaires && val.origineOffre.partenaires[0].url ?  val.origineOffre.partenaires[0].url : val.origineOffre.urlOrigine} isExternal><Button rightIcon={<ArrowForwardIcon />}>Je postule</Button></Link>
   </AccordionPanel>
   {/* <p>{job.completed.toString()}</p> */}
