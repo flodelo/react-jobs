@@ -1,11 +1,14 @@
 /* eslint-disable max-len */
 import React from 'react';
 
+import { Link as ReactLink } from 'react-router-dom';
+
 import {
-  Flex, Spacer, Box, Link, Heading, Button, IconButton, Menu, MenuButton, useBreakpointValue,
+  Flex, Spacer, Box, Heading, Button, IconButton, Menu, MenuButton, useBreakpointValue, Text, Link
 } from '@chakra-ui/react';
 
-import { HamburgerIcon } from '@chakra-ui/icons';
+import MenuBurger from './MenuBurger';
+import Logo from './Logo';
 
 const Header = () => {
   const responsiveSize = useBreakpointValue(['md', 'lg']);
@@ -17,15 +20,14 @@ const Header = () => {
  // Fonction permettant une redirection lors de l'event onClick sur un élément texte
   
   return (
-    <Flex p={10}>
-      <Box p="2">
-        <Heading onClick={redirectHome} size={responsiveSize}><span role="img" aria-label="atom emoji">⚛</span> React-jobs.fr</Heading>
-      </Box>
+    <Flex>
+      <Box boxSize="40" onClick={redirectHome}>
+        <Logo  size={responsiveSize}/>
+      </Box>             
       <Spacer />
-      <Box>
-
-        <Link
-          href="/register"
+      <Box p={10}>
+      
+      <Link as={ReactLink} to='/register'
         >
           <Button
             display={{
@@ -37,12 +39,13 @@ const Header = () => {
             color="blue.500"
             variant="outline"
             mr="2"
+            mt="2"
           >
             Inscription
           </Button>
-        </Link>
-        <Link
-          href="/login"
+          </Link>
+        
+          <Link as={ReactLink} to='/login'
         >
           <Button
             display={{
@@ -53,18 +56,14 @@ const Header = () => {
             size={responsiveSize}
             color="blue.500"
             mr="2"
+            mt="2"
           >
             Connexion
           </Button>
         </Link>
         <Menu>
           {/* Creation du menu burger avec props */}
-          <MenuButton
-            size={responsiveSize}
-            as={IconButton}
-            aria-label="Options"
-            icon={<HamburgerIcon />}
-            color="blue.500"
+          <MenuBurger
           />
         </Menu>
       </Box>

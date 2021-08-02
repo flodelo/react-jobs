@@ -1,11 +1,14 @@
 import React from 'react'
 
+import { Link as ReactLink } from 'react-router-dom';
+
 import {
   Box,
   Container,
   Stack,
   Text,
-  Icon
+  Icon,
+  Link
 } from '@chakra-ui/react';
 import { FaDiscord, FaTwitter } from 'react-icons/fa';
 
@@ -25,8 +28,15 @@ export default function Footer() {
         align={{ base: 'center', md: 'center' }}>
         <Text>React-jobs.fr © 2021 CFAFF. Tous droits réservés</Text>
         <Stack direction={'row'} spacing={6}>
-            <Icon as={FaDiscord} w={5} h={5} />
-            <Icon as={FaTwitter} w={5} h={5} />
+            
+        <Link href="https://discord.com/invite/jR3f6Uwm" isExternal>
+          <Icon as={FaDiscord} w={5} h={5} />
+        </Link>   
+            
+        <Link href="https://twitter.com/react_jobs_fr" isExternal>
+          <Icon as={FaTwitter} w={5} h={5} />
+        </Link>
+
         </Stack>
       </Container>
     </Box>
