@@ -24,6 +24,7 @@ import BackTopButton from '../BackTopButton';
 
 import About from '../Header/About';
 import Contact from '../Header/Contact';
+import TaglineBlock from '../Header/TaglineBlock';
 
 
 
@@ -56,6 +57,7 @@ export default function App() {
           <Route exact path="/">
             <BackTopButton />
             <Header />
+            <TaglineBlock />
             <Search jobs={jobs} />
             <Footer />
           </Route>
