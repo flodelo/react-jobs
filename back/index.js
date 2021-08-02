@@ -4,6 +4,7 @@ const express = require('express');
 const cors = require('cors');
 
 const PORT = process.env.PORT || 1234;
+app.use(cors());
 const app = express();
 const router = require('./app/router');
 
@@ -13,7 +14,6 @@ const router = require('./app/router');
 //const swaggerConfig = require('./app/middlewares/swagger.js');
 
 
-app.use(cors());
 
 // dès qu'on veut utiliser une requète POST
 
