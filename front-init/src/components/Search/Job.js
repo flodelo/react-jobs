@@ -14,7 +14,8 @@ import {
   AccordionButton,
   AccordionPanel,
   AccordionIcon,
-  Flex
+  Flex,
+  useBreakpointValue,
 } from '@chakra-ui/react';
 
 import PropTypes from 'prop-types';
@@ -40,20 +41,20 @@ export default function Job({ val }) {
              >
   <AccordionButton>
   <Box flex="1" textAlign="left">
-  <Heading as="h2" size="sm">{(val.intitule).toUpperCase()}</Heading>
+  <Heading as="h2" size={useBreakpointValue({ base: "xs", md: "sm" })}>{(val.intitule).toUpperCase()}</Heading>
   </Box>
-  <Badge fontSize="sm" ml="1" colorScheme="">{val.lieuTravail.libelle}</Badge>
+  <Badge display={useBreakpointValue({ base: "none", md: "sm" })} size={useBreakpointValue({ base: "xs", md: "sm" })} ml="1" colorScheme="">{val.lieuTravail.libelle}</Badge>
   <AccordionIcon />
   </AccordionButton>
   <AccordionPanel>
   <Flex justifyContent="space-between">
-  <Heading display="flex" as="h3" size="sm" color="blue.500">{val.entreprise.nom}</Heading>
-  <Heading display="flex" as="h2" size="sm" color="blue.500">{val.typeContrat}</Heading>
+  <Heading display="flex" as="h3" fontSize={useBreakpointValue({ base: "xs", md: "sm" })} color="blue.500">{val.entreprise.nom}</Heading>
+  <Heading display="flex" as="h2" fontSize={useBreakpointValue({ base: "xs", md: "sm" })} color="blue.500">{val.typeContrat}</Heading>
   </Flex>
   <br />
-  <Text as="p">{val.description}</Text>
-  <Text fontWeight="700" as="p">Publié le : {dayjs(val.dateCreation).locale('fr').format('dddd DD MMMM YYYY')} </Text>
-  <Link href={val.origineOffre.partenaires && val.origineOffre.partenaires[0].url ?  val.origineOffre.partenaires[0].url : val.origineOffre.urlOrigine} isExternal><Button rightIcon={<ArrowForwardIcon />}>Je postule</Button></Link>
+  <Text fontSize={useBreakpointValue({ base: "sm", md: "md" })} as="p">{val.description}</Text>
+  <Text fontSize={useBreakpointValue({ base: "xs", md: "sm" })} fontWeight="700" as="p">Publié le : {dayjs(val.dateCreation).locale('fr').format('dddd DD MMMM YYYY')} </Text>
+  <Link fontSize={useBreakpointValue({ base: "sm", md: "md" })} href={val.origineOffre.partenaires && val.origineOffre.partenaires[0].url ?  val.origineOffre.partenaires[0].url : val.origineOffre.urlOrigine} isExternal><Button rightIcon={<ArrowForwardIcon />}>Je postule</Button></Link>
   </AccordionPanel>
   {/* <p>{job.completed.toString()}</p> */}
   {/* </Link> */}

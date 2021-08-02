@@ -2,9 +2,3 @@
   float: left;
   margin-right: 10px;
 }
-
-@media (max-width:629px) {
-  .twemoji {
-    display: none;
-  }
-}

@@ -35,7 +35,7 @@ export default function PremiumJobs() {
   <Box display="flex" flex="1" textAlign="left">
   <Twemoji className="twemoji" text="⭐"/><Heading as="h2" size="sm">HELPER - REFERENT</Heading>
   </Box>
-  <Badge fontSize="sm" ml="1" colorScheme="green">France</Badge>
+  <Badge fontSize="sm" ml="1" colorScheme="green">REMOTE</Badge>
   <AccordionIcon />
   </AccordionButton>
   <AccordionPanel>
