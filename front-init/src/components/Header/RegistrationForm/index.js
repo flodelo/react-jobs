@@ -3,6 +3,8 @@ import React, { useState } from 'react';
 import axios from 'axios';
 // import { withRouter } from "react-router-dom";
 
+import { Twemoji } from 'react-emoji-render';
+
 import {
   Flex,
   Box,
@@ -39,14 +41,14 @@ export default function RegistrationForm(props) {
     // if (state.email.length && state.password.length) {
       // props.showError(null);
       const payload = {
-        "firstName" : state.firstname,
-        "lastName" : state.lastname,
+        "firstname" : state.firstname,
+        "lastname" : state.lastname,
         "email" : state.email,
         "password" : state.password,
         // "role" : "User-Agent", (deleted > Felana request)
       };
       
-     axios.post('http://localhost:5050/user/registerUser', payload)
+     axios.post('http://localhost:5050/users/registerUser', payload)
         .then((response) => {
           if (response.status === 200) {
             setState((prevState) => ({
@@ -92,7 +94,7 @@ export default function RegistrationForm(props) {
     >
       <Stack spacing={8} mx="auto" maxW="lg" py={12} px={6}>
         <Stack align="center">
-          <Heading fontSize="4xl">Inscription 🐱‍💻</Heading>
+          <Heading fontSize="4xl">Inscription <Twemoji text=""/></Heading>
         </Stack>
         <Box
           rounded="lg"

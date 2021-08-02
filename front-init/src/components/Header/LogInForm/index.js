@@ -2,6 +2,9 @@ import React, { useState } from 'react';
 // import { withRouter } from "react-router-dom";
 
 import axios from 'axios';
+
+import { Twemoji } from 'react-emoji-render';
+
 import {
   Flex,
   Box,
@@ -39,7 +42,7 @@ export default function LogInForm(props) {
       "email" : state.email,
       "password" : state.password,
     };
-    axios.post("http://localhost:5050/user/loginUser", payload)
+    axios.post("http://localhost:5050/users/loginUser", payload)
      .then((response) => {
         if (response.status === 200) {
           const { user, token } = response.data
@@ -61,11 +64,17 @@ export default function LogInForm(props) {
             // successMessage: 'Connexion réussi.',
           }));
 
+
           if (isAdmin) {
           redirectToDashboard() }
 
           else { 
           redirectToHome() }
+
+          localStorage.setItem("USER_TOKEN", response.data.token);
+          
+          redirectToHome();
+
           // props.showError(null);
         }
         else if (response.code === 204) {
@@ -102,6 +111,7 @@ export default function LogInForm(props) {
     props.history.push('/');
   };
 
+
   return (
     <Flex
       align="center"
@@ -110,9 +120,9 @@ export default function LogInForm(props) {
       bg={useColorModeValue('gray.50', 'gray.800')}
     >
       <Stack spacing={8} mx="auto" maxW="lg" py={12} px={6}>
-        <Stack align="center">
-          <Heading fontSize="4xl">Connexion ✌️</Heading>
-        </Stack>
+        <Box justifyContent="center" display="flex" >
+          <Heading display="flex" fontSize="4xl">Connexion <Twemoji display="flex" text="✌️"/></Heading>
+        </Box>
         <Box
           rounded="lg"
           bg={useColorModeValue('white', 'gray.700')}
