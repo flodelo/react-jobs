@@ -63,7 +63,7 @@ export default function About() {
         textShadow="1px 1px 20px #000000"
         fontWeight={700}
         fontSize={useBreakpointValue({ base: 'lg', md: 'xl' })}>
-        "Fun fact" pour surmonter ton syndrome de l'imposteur > React est le framework le plus recherché dans le monde : 
+        Bon à savoir : React est le framework le plus recherché dans le monde : 
         59% des recruteurs tech sont à l'affût de développeurs connaissant React. 
         Malheureusement, seuls 27,6% des programmeurs disent savoir l'utiliser.
         </Text><Link color="white" href="https://www.codingame.com/work/codingame-developer-survey-2021/?utm_source=press&utm_medium=referral&utm_campaign=developer-survey-2021&utm_content=b2b" isExternal>(Source : Codingame.com - 2021)<ExternalLinkIcon mx="5px"/></Link>
@@ -72,7 +72,7 @@ export default function About() {
     </Flex>
 <Heading align={'center'} as="h2" bg={useColorModeValue('gray.50', 'gray.800')} pt="1em">Notre équipe</Heading>
     <Flex p={1} wrap="wrap" justifyContent="space-around" bg={useColorModeValue('gray.50', 'gray.800')} >
-    <Flex
+    <Stack
       m="0.5em"
       w="300px"
       bg={useColorModeValue('gray.50', 'gray.800')}
@@ -104,7 +104,7 @@ export default function About() {
           Lead dev Back
         </Text>
       </Box>
-    </Flex>
+    </Stack>
     <Stack
     m="0.5em"
      w="300px"
