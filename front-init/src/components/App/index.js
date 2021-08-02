@@ -35,7 +35,9 @@ export default function App() {
 
   useEffect(() => {
 
-  fetch(BASE_URL +'/hello', {withCredentials: true})
+  // fetch(BASE_URL +'/hello', {withCredentials: true})
+  fetch('http://localhost:5050/jobs/pe')
+  
     .then(data => {
       // console.log(data);
       return data.json();
