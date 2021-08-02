@@ -53,18 +53,20 @@ export default function MenuBurger() {
           </MenuItem>
           </Link>
 
-          <MenuItem>
-          <Icon as={FaDiscord} mr={2.5}/>
-            Discord
-          </MenuItem>
-          <Link href="https://twitter.com/reactjsfrance" isExternal>
-          
-          <MenuItem>
-            <Icon as={FaTwitter} mr={2.5}/>
-            Twitter 
-            {/*{href="https://twitter.com/reactjsfrance"}*/}
-          </MenuItem>
+          <Link href="https://discord.com/invite/jR3f6Uwm" isExternal>
+            <MenuItem>
+            <Icon as={FaDiscord} mr={2.5}/>
+              Discord
+            </MenuItem>
           </Link>
+
+          <Link href="https://twitter.com/react_jobs_fr" isExternal>
+            <MenuItem>
+              <Icon as={FaTwitter} mr={2.5}/>
+              Twitter 
+            </MenuItem>
+          </Link>
+
         </MenuList>
 </Menu>
 
