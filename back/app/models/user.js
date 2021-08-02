@@ -88,7 +88,7 @@ class User {
     */
     static async findOneByEmail(email) {
         try {
-            const {rows} = await database.query('SELECT * FROM "user" WHERE email=$1  ', [email]);
+            const {rows} = await database.query('SELECT * FROM "user" WHERE email=$1 ', [email]);
             if (rows[0]) {
                 return new User(rows[0]);
             }

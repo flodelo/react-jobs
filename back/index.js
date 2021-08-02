@@ -13,15 +13,21 @@ const router = require('./app/router');
 //const swaggerConfig = require('./app/middlewares/swagger.js');
 
 // CORS-enabled for all origins
-app.use(cors()) 
+// app.use(cors("*")); 
+app.use((request,response,next) => {
+  response.header('Access-Control-Allow-Origin', '*');
+  response.header('Access-Control-Allow-Credentials', true);
+  response.header("Access-Control-Allow-Headers", 'Content-Type, Accept, Authorization');
+  response.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE,OPTIONS');
+  next();
+})
 
 // All data sent as json in POST methods 
 app.use(express.json());
 // All, but POST route requesting access token to Pôle Emploi API, which is set to be in urlencoded
 app.use(express.urlencoded({
     extended: true,
-}))
-
+}));
 
 // potential static route
 //app.use(express.static('public'));
