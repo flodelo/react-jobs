@@ -8,15 +8,25 @@ import {
 
 import { ChakraProvider } from '@chakra-ui/react';
 
+import { BASE_URL } from '../constants/apiConstants';
 // == Import
 import './styles.css';
 
 import Header from '../Header';
+import MenuBurger from '../Header/MenuBurger';
 import Search from '../Search';
 import RegistrationForm from '../Header/RegistrationForm';
 import LogInForm from '../Header/LogInForm';
 import Footer from '../Footer';
 import AdminForm from '../AdminForm';
+
+import BackTopButton from '../BackTopButton';
+
+import About from '../Header/About';
+import Contact from '../Header/Contact';
+import TaglineBlock from '../Header/TaglineBlock';
+
+
 
 // == Composant
 export default function App() {
@@ -25,7 +35,7 @@ export default function App() {
 
   useEffect(() => {
 
-  fetch('http://localhost:5050/jobs/pe')
+  fetch(BASE_URL +'/hello', {withCredentials: true})
     .then(data => {
       // console.log(data);
       return data.json();
@@ -45,7 +55,9 @@ export default function App() {
               <div className="app">
         <Switch>
           <Route exact path="/">
+            <BackTopButton />
             <Header />
+            <TaglineBlock />
             <Search jobs={jobs} />
             <Footer />
           </Route>
@@ -62,6 +74,16 @@ export default function App() {
           <Route path="/login/adminform">
             <Header />
             <AdminForm />
+            <Footer />
+          </Route>
+          <Route path="/about">
+            <Header />
+            <About />
+            <Footer />
+          </Route>
+          <Route path="/contact">
+            <Header />
+            <Contact />
             <Footer />
           </Route>
           {/* <Route>

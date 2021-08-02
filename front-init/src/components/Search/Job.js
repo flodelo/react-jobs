@@ -33,7 +33,7 @@ export default function Job({ val }) {
               borderLeftColor: 'blue.500'}}>
   <AccordionButton>
   <Box flex="1" textAlign="left">
-  <Heading as="h2" size="md">{val.intitule}</Heading>
+  <Heading as="h2" size="sm">{val.intitule}</Heading>
   </Box>
   <Badge fontSize="1.25em" ml="1" colorScheme="green">{val.typeContrat}</Badge>
   <AccordionIcon />
@@ -41,7 +41,7 @@ export default function Job({ val }) {
   <AccordionPanel>
   <Heading as="h3" size="sm" color="blue.500">{val.entreprise.nom}</Heading>
   <p as="h3">{val.description}</p>
-  <Link href={val.origineOffre.urlOrigine} isExternal><Button rightIcon={<ArrowForwardIcon />}>Je postule</Button></Link>
+  <Link href={val.origineOffre.partenaires && val.origineOffre.partenaires[0].url ?  val.origineOffre.partenaires[0].url : val.origineOffre.urlOrigine} isExternal><Button rightIcon={<ArrowForwardIcon />}>Je postule</Button></Link>
   </AccordionPanel>
   {/* <p>{job.completed.toString()}</p> */}
   {/* </Link> */}
@@ -52,7 +52,7 @@ export default function Job({ val }) {
 
 {/*
   
-  <Link href={val.origineOffre.partenaires[0].url == "undefined" ? val.origineOffre.urlOrigine : val.origineOffre.partenaires[0].url} isExternal>
+  <Link href={val.origineOffre.partenaires && val.origineOffre.partenaires[0].url ?  val.origineOffre.partenaires[0].url : val.origineOffre.urlOrigine} isExternal>
   
    Job.propTypes = {
   title: PropTypes.string,
