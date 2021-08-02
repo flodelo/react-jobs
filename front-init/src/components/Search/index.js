@@ -1,9 +1,10 @@
 // == Import React
 import React from 'react';
 
-import { useState, useEffect } from "react";
+import { useState } from "react";
 
 // == Imports NPM
+import InfiniteScroll from "react-infinite-scroll-component";
 import {
   Input, Button, VStack, StackDivider, Accordion, InputLeftElement, InputGroup, Text, useColorModeValue,
 } from '@chakra-ui/react';
@@ -12,8 +13,14 @@ import Job from './Job';
 import PremiumJobs from './PremiumJobs';
 
 export default function Search ({jobs}) {
+
+  const perPage = 5;
+  const [allJobs, setAllJobs] = useState(jobs.slice(0, perPage));
+  const [hasMore, setHasMore] = useState(true);
   
   const [searchTerm, setSearchTerm] = useState("");
+
+  const [lastPosition, setLastPosition] = useState(perPage);
 
   // useEffect(() => {
   //   fetch("http://localhost:5050/jobs/pe")
@@ -25,6 +32,14 @@ export default function Search ({jobs}) {
     setSearchTerm("");
     let value = e.target.value;
     value.length > 2 && setSearchTerm(e.target.value);
+  };
+
+  const fetchMoreData = () => {
+      setTimeout(() => {
+        setAllJobs((prev) => [...prev, ...jobs.slice(lastPosition, lastPosition + perPage)]);
+      }, 250);
+
+    setLastPosition(lastPosition + perPage);
   };
 
   return (
@@ -48,9 +63,14 @@ export default function Search ({jobs}) {
       </InputGroup>
       </VStack>
       <PremiumJobs/>
+      <InfiniteScroll
+          dataLength={allJobs}
+          next={fetchMoreData}
+          hasMore={hasMore}
+        >
       <VStack p={10} bg={useColorModeValue('gray.50', 'gray.800')} spacing={4} divider={<StackDivider borderColor="gray.200" align="stretch" />}>
       <Accordion width="80%" allowToggle >
-        {jobs
+        {allJobs
           .filter(val =>
             val.description.toLowerCase().includes(searchTerm.toLowerCase())
             || val.intitule.toLowerCase().includes(searchTerm.toLowerCase())
@@ -64,6 +84,7 @@ export default function Search ({jobs}) {
           })}
       </Accordion>
       </VStack>
+      </InfiniteScroll>
     </>
   );
 } 
