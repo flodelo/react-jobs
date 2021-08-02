@@ -22,13 +22,13 @@ class User {
     // to test the class of an error in the controller without having to 
     // import the class of the error
 
-    static UserError = UserError;
+    // static UserError = UserError;
 
-    constructor(data={}) {
-        for (const prop in data) {
-            this[prop] = data[prop];
-        }
-    }
+    // constructor(data={}) {
+    //     for (const prop in data) {
+    //         this[prop] = data[prop];
+    //     }
+    // }
 
     // We are not sure yet to need this method
     // /**
