@@ -39,6 +39,7 @@ const Header = () => {
             color="blue.500"
             variant="outline"
             mr="2"
+            mt="2"
           >
             Inscription
           </Button>
@@ -55,6 +56,7 @@ const Header = () => {
             size={responsiveSize}
             color="blue.500"
             mr="2"
+            mt="2"
           >
             Connexion
           </Button>
@@ -62,7 +64,6 @@ const Header = () => {
         <Menu>
           {/* Creation du menu burger avec props */}
           <MenuBurger
-            size={responsiveSize}
           />
         </Menu>
       </Box>
