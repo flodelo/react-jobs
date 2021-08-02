@@ -134,9 +134,9 @@ export default function About() {
           mb={2}
         />
 
-        <Text fontWeight={600}>Alexandre Chochois</Text>
+        <Text fontWeight={600}>Florian Delobelle</Text>
         <Text fontSize={'sm'} color={useColorModeValue('gray.400', 'gray.400')}>
-        Scrum Master et dev Front
+        Product Owner et dev Front
         </Text>
       </Box>
     </Stack>
@@ -237,10 +237,9 @@ export default function About() {
         />
         <Link href="https://www.linkedin.com/in/alexandre-chochois" isExternal>
         <Text fontWeight={600}>Alexandre Chochois</Text> </Link>
-        <Text fontWeight={600}>Florian Delobelle</Text>
-        // <Text fontSize={'sm'} color={useColorModeValue('gray.400', 'gray.400')}>
-          // Product Owner et dev Front
-        // </Text>
+        <Text fontSize={'sm'} color={useColorModeValue('gray.400', 'gray.400')}>
+          Scrum Master et dev Front
+        </Text>
       </Box>
     </Stack>
     </Flex>
