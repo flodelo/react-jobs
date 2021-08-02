@@ -10,6 +10,7 @@ import {
   AccordionButton,
   AccordionPanel,
   AccordionIcon,
+  Flex
 } from '@chakra-ui/react';
 
 import PropTypes from 'prop-types';
@@ -27,20 +28,27 @@ export default function Job({ val }) {
       ligne de code pour utiliser la méthode .map avec des composants UI
       <p>{jobs.locality}</p>
   <p>{jobs.contract}</p> */}
-  <AccordionItem _hover={{
+  <AccordionItem  pt= "2" mb= "2"
+    _hover={{
               boxShadow: 'lg',
               borderLeftWidth: '2px',
-              borderLeftColor: 'blue.500'}}>
+              borderLeftColor: 'blue.500'}}
+             >
   <AccordionButton>
   <Box flex="1" textAlign="left">
-  <Heading as="h2" size="sm">{val.intitule}</Heading>
+  <Heading as="h2" size="sm">{(val.intitule).toUpperCase()}</Heading>
   </Box>
-  <Badge fontSize="1.25em" ml="1" colorScheme="green">{val.typeContrat}</Badge>
+  <Badge fontSize="sm" ml="1" colorScheme="">{val.lieuTravail.libelle}</Badge>
   <AccordionIcon />
   </AccordionButton>
   <AccordionPanel>
-  <Heading as="h3" size="sm" color="blue.500">{val.entreprise.nom}</Heading>
+  <Flex justifyContent="space-between">
+  <Heading display="flex" as="h3" size="sm" color="blue.500">{val.entreprise.nom}</Heading>
+  <Heading display="flex" as="h2" size="sm" color="blue.500">{val.typeContrat}</Heading>
+  </Flex>
+  <br />
   <p as="h3">{val.description}</p>
+  <p as="h3">{val.dateCreation} </p>
   <Link href={val.origineOffre.partenaires && val.origineOffre.partenaires[0].url ?  val.origineOffre.partenaires[0].url : val.origineOffre.urlOrigine} isExternal><Button rightIcon={<ArrowForwardIcon />}>Je postule</Button></Link>
   </AccordionPanel>
   {/* <p>{job.completed.toString()}</p> */}
