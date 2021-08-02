@@ -4,7 +4,7 @@ const express = require('express');
 const cors = require('cors');
 
 const PORT = process.env.PORT || 1234;
-app.use(cors());
+
 const app = express();
 const router = require('./app/router');
 
@@ -12,8 +12,14 @@ const router = require('./app/router');
 //const expressSwagger = require('express-swagger-generator')(app);
 //expressSwagger(swaggerConfig);
 //const swaggerConfig = require('./app/middlewares/swagger.js');
-
-
+//app.use(cors());
+app.use(function(req, res, next) {
+  res.header("Access-Control-Allow-Origin", '*');
+  res.header("Access-Control-Allow-Credentials", true);
+  res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE,OPTIONS');
+  res.header("Access-Control-Allow-Headers", 'Origin,X-Requested-With,Content-Type,Accept,content-type,application/json');
+  next();
+});
 
 // dès qu'on veut utiliser une requète POST
 
