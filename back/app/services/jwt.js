@@ -1,10 +1,10 @@
+// We have chosen to secure the authorisation of admin access with JSON Web Tokens
 const jwt = require('jsonwebtoken');
 
 
 const SECRET_KEY_JWT = process.env.TOKEN_KEY;
 
 module.exports = {
-
 
     createToken (userData) {
 

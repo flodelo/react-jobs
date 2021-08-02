@@ -8,33 +8,42 @@ import {
 
 import { ChakraProvider } from '@chakra-ui/react';
 
+import { BASE_URL } from '../constants/apiConstants';
 // == Import
 import './styles.css';
 
 import Header from '../Header';
-import JobDetails from '../JobDetails';
+import MenuBurger from '../Header/MenuBurger';
 import Search from '../Search';
-import JobsList from '../JobsList';
 import RegistrationForm from '../Header/RegistrationForm';
 import LogInForm from '../Header/LogInForm';
 import Footer from '../Footer';
+import AdminForm from '../AdminForm';
+
+import BackTopButton from '../BackTopButton';
+
+import About from '../Header/About';
+import Contact from '../Header/Contact';
+import TaglineBlock from '../Header/TaglineBlock';
+
+
 
 // == Composant
 export default function App() {
 
-const [toDo, setTodo] = useState([]);
+  const [jobs, setJobs] = useState([]);
 
   useEffect(() => {
 
-  fetch('http://localhost:5050/jobs/pe')
+  fetch(BASE_URL +'/hello', {withCredentials: true})
     .then(data => {
-      console.log(data);
+      // console.log(data);
       return data.json();
     })
     .then(data => {
-      data = data.slice(0, 20)
-      console.log(data);
-      setTodo(data)
+      data = data.slice(0, 50)
+      // console.log(data);
+      setJobs(data)
     })
     .catch(error => {
       console.log(error)
@@ -43,12 +52,13 @@ const [toDo, setTodo] = useState([]);
 
   return (
     <ChakraProvider>
-      <div className="app">
+              <div className="app">
         <Switch>
           <Route exact path="/">
+            <BackTopButton />
             <Header />
-            <Search jobs={toDo} />
-            <JobsList jobs={toDo} />
+            <TaglineBlock />
+            <Search jobs={jobs} />
             <Footer />
           </Route>
           <Route path="/register">
@@ -56,9 +66,24 @@ const [toDo, setTodo] = useState([]);
             <RegistrationForm />
             <Footer />
           </Route>
-          <Route path="/login">
+          <Route exact path="/login">
             <Header />
             <LogInForm />
+            <Footer />
+          </Route>
+          <Route path="/login/adminform">
+            <Header />
+            <AdminForm />
+            <Footer />
+          </Route>
+          <Route path="/about">
+            <Header />
+            <About />
+            <Footer />
+          </Route>
+          <Route path="/contact">
+            <Header />
+            <Contact />
             <Footer />
           </Route>
           {/* <Route>
@@ -72,13 +97,9 @@ const [toDo, setTodo] = useState([]);
 }
 
 /* import {useState, useEffect} from 'react'
-
 function App() {
-
   const [dataImg, setDataImg] = useState();
-
   useEffect(() => {
-
     fetch('https://api.thecatapi.com/v1/images/search')
     .then(response => {
       console.log(response);
@@ -89,7 +110,6 @@ function App() {
       setDataImg(data[0].url)
     })
   }, [])
-
   return (
     <div className="App">
       {dataImg &&
@@ -99,5 +119,4 @@ function App() {
     </div>
   );
 }
-
 */
