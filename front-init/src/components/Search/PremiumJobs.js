@@ -33,9 +33,9 @@ export default function PremiumJobs() {
               borderLeftColor: 'blue.500'}}>
   <AccordionButton>
   <Box display="flex" flex="1" textAlign="left">
-  <Twemoji className="twemoji" text="⭐"/><Heading as="h2" size="sm"> Helper - référent</Heading>
+  <Twemoji className="twemoji" text="⭐"/><Heading as="h2" size="sm">HELPER - REFERENT</Heading>
   </Box>
-  <Badge fontSize="1.25em" ml="1" colorScheme="green">CDI</Badge>
+  <Badge fontSize="sm" ml="1" colorScheme="green">France</Badge>
   <AccordionIcon />
   </AccordionButton>
   <AccordionPanel>
