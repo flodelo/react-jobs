@@ -11,7 +11,7 @@ const router = require('./app/router');
 //expressSwagger(swaggerConfig);
 //const swaggerConfig = require('./app/middlewares/swagger.js');
 
-app.use(cors()) 
+app.use(cors());
 
 // dès qu'on veut utiliser une requète POST
 app.use(express.json());
@@ -20,7 +20,7 @@ app.use(express.json());
 
 app.use(express.urlencoded({
     extended: true,
-}))
+}));
 
 
 //notre route statique
