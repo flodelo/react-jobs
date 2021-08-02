@@ -37,11 +37,11 @@ export default function Search ({jobs}) {
         />
         <Input
           type="text"
-          placeholder="Rechercher"
           onChange={handleSearchTerm}
           variant="outline"
           placeholder="Ex : Bordeaux, Redux, CDI"
           size="lg"
+          bg="white"
         />
       </InputGroup>
       </VStack>
