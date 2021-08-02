@@ -37,7 +37,7 @@ export default function LogInForm(props) {
       "email" : state.email,
       "password" : state.password,
     };
-    axios.post("http://localhost:5050/user/loginUser", payload)
+    axios.post("http://localhost:5050/users/loginUser", payload)
      .then((response) => {
         if (response.status === 200) {
           console.log(response)
