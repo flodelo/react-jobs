@@ -17,6 +17,7 @@ import {
   IconButton, 
   Link,
   Icon,
+  useBreakpointValue,
 } from '@chakra-ui/react';
 
 import { Link as ReactLink } from 'react-router-dom';
@@ -25,14 +26,18 @@ import { FaDiscord, FaTwitter } from 'react-icons/fa';
 
 
 export default function MenuBurger() {
+
+  const responsiveSize = useBreakpointValue(['md', 'lg']);
+
   return (
       <Menu>
         <MenuButton
+          size={responsiveSize}
+          mt="2"
           color="blue.500"
           as={IconButton}
           aria-label="Options"
           icon={<HamburgerIcon />}
-          variant="outline"
         />
         <MenuList>
         <Link as={ReactLink} to='/login/adminform'>
