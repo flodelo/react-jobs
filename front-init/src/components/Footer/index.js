@@ -16,6 +16,7 @@ export default function Footer() {
   return (
     <Box
       bg='#282C34'
+      // bg='#2568a8'
       color='white'
       height="100%"
       >

@@ -54,6 +54,7 @@
     "@emotion/styled": "^11.3.0",
     "axios": "^0.21.1",
     "core-js": "^3.9.1",
+    "dayjs": "^1.10.6",
     "dotenv-webpack": "^7.0.3",
     "framer-motion": "^4.1.17",
     "i": "^0.3.6",

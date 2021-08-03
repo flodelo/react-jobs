@@ -18,10 +18,10 @@ export default function TaglineBlock() {
     <Flex
       position="relative"
       w="100%"
-      h="15em"
-      background="linear-gradient( rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2) ), url(https://images.pexels.com/photos/4458418/pexels-photo-4458418.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260)"
+      h={useBreakpointValue({ base: "15em", md: "20em" })}
+      background="linear-gradient( rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2) ), url(https://images.pexels.com/photos/5244017/pexels-photo-5244017.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260)"
       backgroundSize={'cover'}
-      backgroundPosition="75% 35%"
+      backgroundPosition="60% 38%"
       pb="1em"
       >
       <VStack
@@ -46,7 +46,7 @@ export default function TaglineBlock() {
             fontWeight={300}
             lineHeight={1}
             mr={4}
-            fontSize={useBreakpointValue({ base: '2xl', md: '3xl' })}>Consultez les 50 dernières offres React en France 
+            fontSize={useBreakpointValue({ base: '2xl', md: '3xl' })}>Consultez les offres React les plus récentes en France 
             <Twemoji className="twemoji" text="🇫🇷"/> 
           </Text>
           </Stack>

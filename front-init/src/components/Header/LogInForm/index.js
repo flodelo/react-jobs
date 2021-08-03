@@ -42,7 +42,7 @@ export default function LogInForm(props) {
       "email" : state.email,
       "password" : state.password,
     };
-    axios.post("http://localhost:5050/users/loginUser", payload)
+    axios.post("http://18.212.203.228:5050" + "users/loginUser", payload)
      .then((response) => {
         if (response.status === 200) {
           const { user, token } = response.data
@@ -121,7 +121,7 @@ export default function LogInForm(props) {
     >
       <Stack spacing={8} mx="auto" maxW="lg" py={12} px={6}>
         <Box justifyContent="center" display="flex" >
-          <Heading display="flex" fontSize="4xl">Connexion <Twemoji display="flex" text="✌️"/></Heading>
+          <Heading display="flex" fontSize="4xl">Connexion <Twemoji ClassName="twemoji" display="flex" text="✌️"/></Heading>
         </Box>
         <Box
           rounded="lg"
