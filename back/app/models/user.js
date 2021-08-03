@@ -24,11 +24,11 @@ class User {
 
     // static UserError = UserError;
 
-    // constructor(data={}) {
-    //     for (const prop in data) {
-    //         this[prop] = data[prop];
-    //     }
-    // }
+     constructor(data={}) {
+         for (const prop in data) {
+             this[prop] = data[prop];
+         }
+     }
 
     // We are not sure yet to need this method
     // /**
