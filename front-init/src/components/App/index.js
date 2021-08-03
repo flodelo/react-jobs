@@ -30,9 +30,17 @@ import TaglineBlock from '../Header/TaglineBlock';
 
 // == Composant
 export default function App() {
-
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [jobs, setJobs] = useState([]);
+  const [isAdmin, setIsAdmin] = useState(false);
 
+  const handleIsLoggedIn = (logState) => {
+    setIsLoggedIn(logState)
+  }
+
+  const handleIsAdmin = (adminState) => {
+    setIsAdmin(adminState)
+  }
   useEffect(() => {
 
   // fetch(BASE_URL +'/hello', {withCredentials: true})
@@ -55,7 +63,7 @@ export default function App() {
   return (
     <ChakraProvider>
               <div className="app">
-        <Header />
+        <Header isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} isAdmin={isAdmin}/>
         <Switch>
           <Route exact path="/">
             <BackTopButton />
@@ -66,11 +74,11 @@ export default function App() {
             <RegistrationForm />
           </Route>
           <Route exact path="/login">
-            <LogInForm />
+            <LogInForm handleIsLoggedIn={handleIsLoggedIn} handleIsAdmin={handleIsAdmin}/>
           </Route>
-          <Route path="/login/adminform">
+          {isAdmin && <Route path="/login/adminform">
             <AdminForm />
-          </Route>
+          </Route>}
           <Route path="/about">
             <About />
           </Route>

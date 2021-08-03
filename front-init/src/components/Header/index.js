@@ -1,5 +1,6 @@
 /* eslint-disable max-len */
-import React from 'react';
+import React, {useState} from 'react';
+import { useHistory } from "react-router-dom";
 
 import { Link as ReactLink } from 'react-router-dom';
 
@@ -10,23 +11,27 @@ import {
 import MenuBurger from './MenuBurger';
 import Logo from './Logo';
 
-const Header = () => {
+const Header = ({isLoggedIn,setIsLoggedIn, isAdmin}) => {
+  const history = useHistory();
   const responsiveSize = useBreakpointValue(['md', 'lg']);
   // Le hook useBreakpointValue répond également au redimensionnement de la fenêtre et renvoie la valeur appropriée pour la nouvelle taille de la fenêtre
-
- const redirectHome = () => {
-  window.location.href = "/";
- } 
  // Fonction permettant une redirection lors de l'event onClick sur un élément texte
-  
+  const isLoggedOut = () => {
+    setIsLoggedIn(false);
+    localStorage.clear();
+    history.push("/");
+  }
+
   return (
     <Flex>
-      <Box boxSize="40" onClick={redirectHome}>
+      <Box boxSize="40">
         <Logo  size={responsiveSize}/>
       </Box>             
       <Spacer />
       <Box p={10}>
-      
+      {
+        !isLoggedIn ? 
+        <>
       <Link as={ReactLink} to='/register'
         >
           <Button
@@ -60,10 +65,28 @@ const Header = () => {
           >
             Connexion
           </Button>
-        </Link>
+          </Link> </>:
+
+        <Button
+            display={{
+              base: 'none',
+              md: 'inline-block',
+              lg: 'inline-block',
+            }}
+            onClick={isLoggedOut}
+            size={responsiveSize}
+            color="blue.500"
+            mr="2"
+            mt="2"
+          >
+            Déconnexion
+          </Button>
+          
+        }
+
         <Menu>
           {/* Creation du menu burger avec props */}
-          <MenuBurger
+          <MenuBurger isAdmin={isAdmin}
           />
         </Menu>
       </Box>

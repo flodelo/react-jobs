@@ -18,7 +18,7 @@ import {
   useColorModeValue,
 } from '@chakra-ui/react';
 
-export default function LogInForm(props) {
+export default function LogInForm({handleIsLoggedIn, handleIsAdmin}) {
   const history = useHistory();
   const [isAdmin, setIsAdmin] = useState(false)
   const [isLogged, setIsLogged] = useState(false)
@@ -47,13 +47,14 @@ export default function LogInForm(props) {
      .then((response) => {
         if (response.status === 200) {
           const { user, token } = response.data
-          
-          if (user.token) {
-            setIsLogged(true)
-          }
+          console.log("c'est le rôle", user.role);
+          // if (user.token) {
+          // }
+          handleIsLoggedIn(true)
 
-          if (user.role === "admin") {
-            setIsAdmin(true)
+          if (user.role == "admin") {
+            console.log("c'est le rôle", user.role);
+            handleIsAdmin(true)
           }
 
           localStorage.setItem("token", token);
@@ -66,11 +67,11 @@ export default function LogInForm(props) {
           }));
 
 
-          if (isAdmin) {
-          redirectToDashboard() }
+          // if (isAdmin) {
+          // redirectToDashboard() }
 
-          else { 
-          redirectToHome() }
+          // else { 
+          // redirectToHome() }
 
           localStorage.setItem("USER_TOKEN", response.data.token);
           
@@ -86,6 +87,8 @@ export default function LogInForm(props) {
         }
       })
       .catch((error) => {
+        handleIsLoggedIn(false);
+        handleIsAdmin(false);
         console.log(error);
       });
   };
@@ -122,7 +125,7 @@ export default function LogInForm(props) {
     >
       <Stack spacing={8} mx="auto" maxW="lg" py={12} px={6}>
         <Box justifyContent="center" display="flex" >
-          <Heading display="flex" fontSize="4xl">Connexion <Twemoji ClassName="twemoji" display="flex" text="✌️"/></Heading>
+          <Heading display="flex" fontSize="4xl">Connexion <Twemoji className="twemoji" display="flex" text="✌️"/></Heading>
         </Box>
         <Box
           rounded="lg"
