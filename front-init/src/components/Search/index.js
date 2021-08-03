@@ -65,6 +65,12 @@ export default function Search ({jobs}) {
           dataLength={allJobs}
           next={fetchMoreData}
           hasMore={hasMore}
+          loader={<h4>Loading...</h4>}
+          endMessage={
+            <p style={{ textAlign: 'center' }}>
+              <b>Yay! You have seen it all</b>
+            </p>
+          }
         >
       <VStack p={10} bg={useColorModeValue('gray.50', 'gray.800')} spacing={4} divider={<StackDivider borderColor="gray.200" align="stretch" />}>
       <Accordion width="80%" allowToggle >
