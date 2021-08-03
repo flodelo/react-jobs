@@ -42,7 +42,7 @@ export default function LogInForm(props) {
       "email" : state.email,
       "password" : state.password,
     };
-    axios.post("http://localhost:5050/users/loginUser", payload)
+    axios.post("http://18.212.203.228:5050" + "users/loginUser", payload)
      .then((response) => {
         if (response.status === 200) {
           const { user, token } = response.data
