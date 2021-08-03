@@ -22,13 +22,13 @@ class Job {
 // to test the class of an error in the controller without having to 
 // import the class of the error
   
-    
+    // static JobError ;
 
     constructor(data={}) {
-        for (const prop in data) {
-            this[prop] = data[prop];
-        }
-    }
+         for (const prop in data) {
+             this[prop] = data[prop];
+         }
+     }
 
     /**
     * Retrieves all jobs from database
