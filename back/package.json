@@ -1,7 +1,14 @@
 {
   "name": "project-job-board",
   "version": "1.0.0",
+<<<<<<< HEAD
   "main": "index.js",
+=======
+
+  "description": "",
+  "main": "__dirname + index.js",
+
+>>>>>>> c9bd80d7dfd7e9a7f1925a9184fe597ad1d8925f
   "scripts": {
     "start": "node index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
