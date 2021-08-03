@@ -35,9 +35,7 @@ export default function Search ({jobs}) {
   };
 
   const fetchMoreData = () => {
-      setTimeout(() => {
         setAllJobs((prev) => [...prev, ...jobs.slice(lastPosition, lastPosition + perPage)]);
-      }, 250);
 
     setLastPosition(lastPosition + perPage);
   };
