@@ -55,43 +55,33 @@ export default function App() {
   return (
     <ChakraProvider>
               <div className="app">
+        <Header />
         <Switch>
           <Route exact path="/">
             <BackTopButton />
-            <Header />
             <TaglineBlock />
             <Search jobs={jobs} />
-            <Footer />
           </Route>
           <Route path="/register">
-            <Header />
             <RegistrationForm />
-            <Footer />
           </Route>
           <Route exact path="/login">
-            <Header />
             <LogInForm />
-            <Footer />
           </Route>
           <Route path="/login/adminform">
-            <Header />
             <AdminForm />
-            <Footer />
           </Route>
           <Route path="/about">
-            <Header />
             <About />
-            <Footer />
           </Route>
           <Route path="/contact">
-            <Header />
             <Contact />
-            <Footer />
           </Route>
           {/* <Route>
           <Error />
         </Route> */}
         </Switch>
+        <Footer />
       </div>
     </ChakraProvider>
 

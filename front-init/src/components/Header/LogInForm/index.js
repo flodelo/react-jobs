@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-// import { withRouter } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 
 import axios from 'axios';
 
@@ -19,6 +19,7 @@ import {
 } from '@chakra-ui/react';
 
 export default function LogInForm(props) {
+  const history = useHistory();
   const [isAdmin, setIsAdmin] = useState(false)
   const [isLogged, setIsLogged] = useState(false)
   const [state, setState] = useState({
@@ -42,7 +43,7 @@ export default function LogInForm(props) {
       "email" : state.email,
       "password" : state.password,
     };
-    axios.post("http://18.212.203.228:5050" + "users/loginUser", payload)
+    axios.post("http://18.212.203.228:5050/users/loginUser", payload)
      .then((response) => {
         if (response.status === 200) {
           const { user, token } = response.data
@@ -105,10 +106,10 @@ export default function LogInForm(props) {
  */
 
 
-  const redirectToHome = (props) => {
+  const redirectToHome = () => {
     // props.updateTitle('Accueil');
-    console.log(props)
-    props.history.push('/');
+    console.log(history)
+    history.push('/');
   };
 
 
