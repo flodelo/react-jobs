@@ -3,6 +3,10 @@ import { Link as ReactRouter } from 'react-router-dom';
 
 import { ArrowForwardIcon } from '@chakra-ui/icons';
 
+import dayjs from 'dayjs';
+import 'dayjs/locale/fr'
+// const dayjs = require('dayjs');
+
 import {
   Heading, Box, Badge, Button, Text, Link,
   Accordion,
@@ -10,6 +14,8 @@ import {
   AccordionButton,
   AccordionPanel,
   AccordionIcon,
+  Flex,
+  useBreakpointValue,
 } from '@chakra-ui/react';
 
 import PropTypes from 'prop-types';
@@ -27,21 +33,28 @@ export default function Job({ val }) {
       ligne de code pour utiliser la méthode .map avec des composants UI
       <p>{jobs.locality}</p>
   <p>{jobs.contract}</p> */}
-  <AccordionItem _hover={{
+  <AccordionItem  pt= "2" mb= "2"
+    _hover={{
               boxShadow: 'lg',
               borderLeftWidth: '2px',
-              borderLeftColor: 'blue.500'}}>
+              borderLeftColor: 'blue.500'}}
+             >
   <AccordionButton>
   <Box flex="1" textAlign="left">
-  <Heading as="h2" size="sm">{val.intitule}</Heading>
+  <Heading as="h2" size={useBreakpointValue({ base: "xs", md: "sm" })}>{(val.intitule).toUpperCase()}</Heading>
   </Box>
-  <Badge fontSize="1.25em" ml="1" colorScheme="green">{val.typeContrat}</Badge>
+  <Badge display={useBreakpointValue({ base: "none", md: "sm" })} size={useBreakpointValue({ base: "xs", md: "sm" })} ml="1" colorScheme="">{val.lieuTravail.libelle}</Badge>
   <AccordionIcon />
   </AccordionButton>
   <AccordionPanel>
-  <Heading as="h3" size="sm" color="blue.500">{val.entreprise.nom}</Heading>
-  <p as="h3">{val.description}</p>
-  <Link href={val.origineOffre.partenaires && val.origineOffre.partenaires[0].url ?  val.origineOffre.partenaires[0].url : val.origineOffre.urlOrigine} isExternal><Button rightIcon={<ArrowForwardIcon />}>Je postule</Button></Link>
+  <Flex justifyContent="space-between">
+  <Heading display="flex" as="h3" fontSize={useBreakpointValue({ base: "xs", md: "sm" })} color="blue.500">{val.entreprise.nom}</Heading>
+  <Heading display="flex" as="h2" fontSize={useBreakpointValue({ base: "xs", md: "sm" })} color="blue.500">{val.typeContrat}</Heading>
+  </Flex>
+  <br />
+  <Text fontSize={useBreakpointValue({ base: "sm", md: "md" })} as="p">{val.description}</Text>
+  <Text fontSize={useBreakpointValue({ base: "xs", md: "sm" })} fontWeight="700" as="p">Publié le : {dayjs(val.dateCreation).locale('fr').format('dddd DD MMMM YYYY')} </Text>
+  <Link fontSize={useBreakpointValue({ base: "sm", md: "md" })} href={val.origineOffre.partenaires && val.origineOffre.partenaires[0].url ?  val.origineOffre.partenaires[0].url : val.origineOffre.urlOrigine} isExternal><Button rightIcon={<ArrowForwardIcon />}>Je postule</Button></Link>
   </AccordionPanel>
   {/* <p>{job.completed.toString()}</p> */}
   {/* </Link> */}

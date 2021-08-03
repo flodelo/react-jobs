@@ -35,13 +35,15 @@ export default function App() {
 
   useEffect(() => {
 
-  fetch(BASE_URL +'/hello', {withCredentials: true})
+  // fetch(BASE_URL +'/hello', {withCredentials: true})
+  fetch('http://18.212.203.228:5050' + '/jobs/pe')
+  
     .then(data => {
       // console.log(data);
       return data.json();
     })
     .then(data => {
-      data = data.slice(0, 50)
+      data = data.slice(0, 100)
       // console.log(data);
       setJobs(data)
     })
