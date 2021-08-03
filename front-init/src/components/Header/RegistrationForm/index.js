@@ -48,8 +48,9 @@ export default function RegistrationForm(props) {
         // "role" : "User-Agent", (deleted > Felana request)
       };
       
-     axios.post('http://localhost:5050/users/registerUser', payload)
+     axios.post("http://18.212.203.228:5050" + "/users/registerUser", payload)
         .then((response) => {
+          console.log(response)
           if (response.status === 200) {
             setState((prevState) => ({
               ...prevState,
