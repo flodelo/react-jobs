@@ -12,7 +12,6 @@ const expressSwagger = require('express-swagger-generator')(app);
 const PORT = process.env.PORT || 1234;
 
 
-<<<<<<< HEAD
 // API documentation with Swagger 
 //const expressSwagger = require('express-swagger-generator')(app);
 //expressSwagger(swaggerConfig);
@@ -28,15 +27,6 @@ app.use(function(req, res, next) {
   next();
 });
 // dès qu'on veut utiliser une requète POST
-=======
-app.use(cors());
-expressSwagger(swaggerConfig);
-
-
-app.get('/', (request, response) => {
-  response.redirect('/api-docs');
-});
->>>>>>> c9bd80d7dfd7e9a7f1925a9184fe597ad1d8925f
 
 
 // dès qu'on veut utiliser une requète POST
