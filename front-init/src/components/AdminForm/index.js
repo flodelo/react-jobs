@@ -16,7 +16,7 @@ import {
   useColorModeValue,
 } from '@chakra-ui/react';
 
-export default function AdminForm(props) {
+export default function AdminForm({isAdmin}) {
 
   const [state, setState] = useState({
     title: '',
@@ -26,6 +26,7 @@ export default function AdminForm(props) {
     contract: '',
     salary: '',
     description: '',
+    user_id: isAdmin
   });
 
   const handleChange = (e) => {
@@ -47,9 +48,15 @@ export default function AdminForm(props) {
         "contract" : state.contract,
         "salary" : state.salary,
         "description" : state.description,
+        'user_id': localStorage.getItem('USER_ID'),
       };
       
-     axios.post('http://localhost:5050/jobs/save', payload)
+     axios.post('http://18.212.203.228:5050/jobs/save', payload,
+     {headers: {
+       'Authorization':`Bearer ${localStorage.getItem('USER_TOKEN')}`,
+      //  'user_id' : `Bearer ${localStorage.getItem('USER_ID')}`,
+     }}
+     )
         .then((response) => {
           if (response.status === 200) {
             setState((prevState) => ({
