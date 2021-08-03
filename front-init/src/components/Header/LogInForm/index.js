@@ -20,8 +20,8 @@ import {
 
 export default function LogInForm({handleIsLoggedIn, handleIsAdmin}) {
   const history = useHistory();
-  const [isAdmin, setIsAdmin] = useState(false)
-  const [isLogged, setIsLogged] = useState(false)
+  // const [isAdmin, setIsAdmin] = useState(false)
+  // const [isLogged, setIsLogged] = useState(false)
   const [state, setState] = useState({
     email: '',
     password: '',
@@ -53,12 +53,22 @@ export default function LogInForm({handleIsLoggedIn, handleIsAdmin}) {
           handleIsLoggedIn(true)
 
           if (user.role == "admin") {
-            console.log("c'est le rôle", user.role);
+            console.log("c'est le rôle", user.role, user.id);
             handleIsAdmin(true)
           }
 
-          localStorage.setItem("token", token);
+          // localStorage.setItem("token", token);
+          localStorage.setItem("USER_TOKEN", response.data.token);
+          console.log("cest le localStorage", response.data.token);
+          
           localStorage.setItem("user", JSON.stringify(user));
+          console.log("cest le user", user);
+          
+          localStorage.setItem("USER_ID", user.id);
+          console.log("cest le getItem", user.id);
+
+          
+          
 
           console.log(response)
           setState((prevState) => ({
@@ -73,8 +83,7 @@ export default function LogInForm({handleIsLoggedIn, handleIsAdmin}) {
           // else { 
           // redirectToHome() }
 
-          localStorage.setItem("USER_TOKEN", response.data.token);
-          
+  
           redirectToHome();
 
           // props.showError(null);
@@ -92,7 +101,6 @@ export default function LogInForm({handleIsLoggedIn, handleIsAdmin}) {
         console.log(error);
       });
   };
-
  /* .then((response)) => {
    const user = response.user
    if (user.role.includes("Admin"))
