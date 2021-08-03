@@ -1,24 +1,32 @@
 require('dotenv').config();
 const express = require('express');
 const router = require('./app/router');
-const swaggerConfig = require('./app/services/swagger.js');
+//const swaggerConfig = require('./app/services/swagger.js');
 // Managing Cross-origin ressource sharing with node.js package CORS
 const cors = require('cors');
 
 const app = express();
 // API documentation with Swagger 
 
-const expressSwagger = require('express-swagger-generator')(app);
+//const expressSwagger = require('express-swagger-generator')(app);
 const PORT = process.env.PORT || 1234;
 
 
-app.use(cors());
-expressSwagger(swaggerConfig);
+// API documentation with Swagger 
+//const expressSwagger = require('express-swagger-generator')(app);
+//expressSwagger(swaggerConfig);
+//const swaggerConfig = require('./app/middlewares/swagger.js');
+//app.use(cors());
+app.use(function(req, res, next) {
+  res.setHeader("Access-Control-Allow-Origin", '*');
+  res.setHeader("Access-Control-Allow-Credentials", true);
+  res.setHeader('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE,OPTIONS');
+  res.setHeader("Access-Control-Allow-Headers", 'Origin,X-Requested-With,Content-Type,Accept,content-type,application/json');
 
 
-app.get('/', (request, response) => {
-  response.redirect('/api-docs');
+  next();
 });
+// dès qu'on veut utiliser une requète POST
 
 
 // dès qu'on veut utiliser une requète POST
@@ -29,7 +37,7 @@ app.use(express.urlencoded({
     extended: true,
 }));
 
-
+app.options('*', cors());
 // potential static route
 //app.use(express.static('public'));
 
