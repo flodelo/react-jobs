@@ -16,8 +16,8 @@ $$ LANGUAGE SQL STRICT;
 
 CREATE FUNCTION update_user(json) RETURNS void AS $$
     UPDATE "user" SET
-		firstName=$1->>'firstname', 
-		lastName=$1->>'lastname', 
+		firstname=$1->>'firstname', 
+		lastname=$1->>'lastname', 
 		email=$1->>'email', 
 		password=$1->>'password', 
 		role=$1->>'role'
