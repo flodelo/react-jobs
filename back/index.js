@@ -1,14 +1,14 @@
 require('dotenv').config();
 const express = require('express');
 const router = require('./app/router');
-const swaggerConfig = require('./app/services/swagger.js');
+//const swaggerConfig = require('./app/services/swagger.js');
 // Managing Cross-origin ressource sharing with node.js package CORS
 const cors = require('cors');
 
 const app = express();
 // API documentation with Swagger 
 
-const expressSwagger = require('express-swagger-generator')(app);
+//const expressSwagger = require('express-swagger-generator')(app);
 const PORT = process.env.PORT || 1234;
 
 
