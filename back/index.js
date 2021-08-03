@@ -1,25 +1,25 @@
 require('dotenv').config();
 const express = require('express');
+const router = require('./app/router');
+const swaggerConfig = require('./app/services/swagger.js');
 // Managing Cross-origin ressource sharing with node.js package CORS
 const cors = require('cors');
-
-const PORT = process.env.PORT || 1234;
-app.use(cors());
 const app = express();
-const router = require('./app/router');
-
 // API documentation with Swagger 
-//const expressSwagger = require('express-swagger-generator')(app);
-//expressSwagger(swaggerConfig);
-//const swaggerConfig = require('./app/middlewares/swagger.js');
+const expressSwagger = require('express-swagger-generator')(app);
+const PORT = process.env.PORT || 1234;
 
+
+app.use(cors());
+expressSwagger(swaggerConfig);
+
+app.get('/', (request, response) => {
+  response.redirect('/api-docs');
+});
 
 
 // dès qu'on veut utiliser une requète POST
-
-
 // All data sent as json in POST methods 
-
 app.use(express.json());
 // All, but POST route requesting access token to Pôle Emploi API, which is set to be in urlencoded
 app.use(express.urlencoded({
