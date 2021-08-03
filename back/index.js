@@ -4,14 +4,17 @@ const router = require('./app/router');
 const swaggerConfig = require('./app/services/swagger.js');
 // Managing Cross-origin ressource sharing with node.js package CORS
 const cors = require('cors');
+
 const app = express();
 // API documentation with Swagger 
+
 const expressSwagger = require('express-swagger-generator')(app);
 const PORT = process.env.PORT || 1234;
 
 
 app.use(cors());
 expressSwagger(swaggerConfig);
+
 
 app.get('/', (request, response) => {
   response.redirect('/api-docs');
