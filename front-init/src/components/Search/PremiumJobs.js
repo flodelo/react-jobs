@@ -53,8 +53,9 @@ export default function PremiumJobs({premiumJobs}) {
                         borderLeftColor: 'blue.500'}}
                       >
             <AccordionButton>
+            <Twemoji className="twemoji" text="⭐"/>
             <Box flex="1" textAlign="left">
-            <Heading as="h2" size={useBreakpointValue({ base: "xs", md: "sm" })}>{premiumJobs.title}
+            <Heading as="h2" size={useBreakpointValue({ base: "xs", md: "sm" })}>{(premiumJobs.title).toUpperCase()}
             </Heading>
             </Box>
             <Badge size={useBreakpointValue({ base: "xs", md: "sm" })} ml="1" colorScheme="">{premiumJobs.locality}</Badge>
@@ -68,7 +69,7 @@ export default function PremiumJobs({premiumJobs}) {
             <br />
             <Text fontSize={useBreakpointValue({ base: "sm", md: "md" })} as="p">{premiumJobs.description}
             </Text>
-            <Text fontSize={useBreakpointValue({ base: "xs", md: "sm" })} fontWeight="700" as="p">Publié le : DATE</Text>
+            <Text fontSize={useBreakpointValue({ base: "xs", md: "sm" })} fontWeight="700" as="p"> {premiumJobs.salary}</Text>
             <Link fontSize={useBreakpointValue({ base: "sm", md: "md" })} href="https://oclock.io/team" isExternal><Button rightIcon={<ArrowForwardIcon />}>Je postule</Button></Link>
             </AccordionPanel>
             {/* <p>{job.completed.toString()}</p> */}
