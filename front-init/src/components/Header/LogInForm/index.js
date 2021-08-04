@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-// import { withRouter } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 
 import axios from 'axios';
 
@@ -18,9 +18,10 @@ import {
   useColorModeValue,
 } from '@chakra-ui/react';
 
-export default function LogInForm(props) {
-  const [isAdmin, setIsAdmin] = useState(false)
-  const [isLogged, setIsLogged] = useState(false)
+export default function LogInForm({handleIsLoggedIn, handleIsAdmin}) {
+  const history = useHistory();
+  // const [isAdmin, setIsAdmin] = useState(false)
+  // const [isLogged, setIsLogged] = useState(false)
   const [state, setState] = useState({
     email: '',
     password: '',
@@ -42,21 +43,32 @@ export default function LogInForm(props) {
       "email" : state.email,
       "password" : state.password,
     };
-    axios.post("http://localhost:5050/users/loginUser", payload)
+    axios.post("http://18.212.203.228:5050/users/loginUser", payload)
      .then((response) => {
         if (response.status === 200) {
           const { user, token } = response.data
+          console.log("c'est le rôle", user.role);
+          // if (user.token) {
+          // }
+          handleIsLoggedIn(true)
+
+          if (user.role == "admin") {
+            console.log("c'est le rôle", user.role, user.id);
+            handleIsAdmin(true)
+          }
+
+          // localStorage.setItem("token", token);
+          localStorage.setItem("USER_TOKEN", response.data.token);
+          console.log("cest le localStorage", response.data.token);
           
-          if (user.token) {
-            setIsLogged(true)
-          }
-
-          if (user.role === "admin") {
-            setIsAdmin(true)
-          }
-
-          localStorage.setItem("token", token);
           localStorage.setItem("user", JSON.stringify(user));
+          console.log("cest le user", user);
+          
+          localStorage.setItem("USER_ID", user.id);
+          console.log("cest le getItem", user.id);
+
+          
+          
 
           console.log(response)
           setState((prevState) => ({
@@ -65,14 +77,13 @@ export default function LogInForm(props) {
           }));
 
 
-          if (isAdmin) {
-          redirectToDashboard() }
+          // if (isAdmin) {
+          // redirectToDashboard() }
 
-          else { 
-          redirectToHome() }
+          // else { 
+          // redirectToHome() }
 
-          localStorage.setItem("USER_TOKEN", response.data.token);
-          
+  
           redirectToHome();
 
           // props.showError(null);
@@ -85,10 +96,11 @@ export default function LogInForm(props) {
         }
       })
       .catch((error) => {
+        handleIsLoggedIn(false);
+        handleIsAdmin(false);
         console.log(error);
       });
   };
-
  /* .then((response)) => {
    const user = response.user
    if (user.role.includes("Admin"))
@@ -105,10 +117,10 @@ export default function LogInForm(props) {
  */
 
 
-  const redirectToHome = (props) => {
+  const redirectToHome = () => {
     // props.updateTitle('Accueil');
-    console.log(props)
-    props.history.push('/');
+    console.log(history)
+    history.push('/');
   };
 
 
@@ -121,7 +133,7 @@ export default function LogInForm(props) {
     >
       <Stack spacing={8} mx="auto" maxW="lg" py={12} px={6}>
         <Box justifyContent="center" display="flex" >
-          <Heading display="flex" fontSize="4xl">Connexion <Twemoji display="flex" text="✌️"/></Heading>
+          <Heading display="flex" fontSize="4xl">Connexion <Twemoji className="twemoji" display="flex" text="✌️"/></Heading>
         </Box>
         <Box
           rounded="lg"

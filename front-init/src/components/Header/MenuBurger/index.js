@@ -25,7 +25,7 @@ import { Link as ReactLink } from 'react-router-dom';
 import { FaDiscord, FaTwitter } from 'react-icons/fa';
 
 
-export default function MenuBurger() {
+export default function MenuBurger({isAdmin}) {
 
   const responsiveSize = useBreakpointValue(['md', 'lg']);
 
@@ -40,11 +40,11 @@ export default function MenuBurger() {
           icon={<HamburgerIcon />}
         />
         <MenuList>
-        <Link as={ReactLink} to='/login/adminform'>
+        {isAdmin && <Link as={ReactLink} to='/login/adminform'>
         <MenuItem icon={<AddIcon />}>
             Déposer une annonce
           </MenuItem>
-          </Link>
+          </Link>}
 
         <Link as={ReactLink} to='/about'>
           <MenuItem icon={<QuestionIcon/>}>

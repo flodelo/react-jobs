@@ -111,7 +111,9 @@ console.log("this", this);
                 //it is important to name the result here, else wise 
                 //postgre will do it automatically and we won't be able 
                 //to guess
+
                  const {rows} = await database.query('INSERT INTO "user"(firstname,lastname,  email, password,role) VALUES ($1, $2, $3, $4, $5) RETURNING * ', [this.firstname, this.lastname, this.email, this.password, this.role]);
+
                 this.id = rows[0].id;
                 return this;
             }

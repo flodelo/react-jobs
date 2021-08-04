@@ -30,18 +30,28 @@ import TaglineBlock from '../Header/TaglineBlock';
 
 // == Composant
 export default function App() {
-
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [jobs, setJobs] = useState([]);
+  const [isAdmin, setIsAdmin] = useState(false);
 
+  const handleIsLoggedIn = (logState) => {
+    setIsLoggedIn(logState)
+  }
+
+  const handleIsAdmin = (adminState) => {
+    setIsAdmin(adminState)
+  }
   useEffect(() => {
 
-  fetch(BASE_URL +'/hello', {withCredentials: true})
+  // fetch(BASE_URL +'/hello', {withCredentials: true})
+  fetch('http://18.212.203.228:5050' + '/jobs/pe')
+  
     .then(data => {
       // console.log(data);
       return data.json();
     })
     .then(data => {
-      data = data.slice(0, 50)
+      data = data.slice(0, 100)
       // console.log(data);
       setJobs(data)
     })
@@ -53,43 +63,33 @@ export default function App() {
   return (
     <ChakraProvider>
               <div className="app">
+        <Header isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} isAdmin={isAdmin}/>
         <Switch>
           <Route exact path="/">
             <BackTopButton />
-            <Header />
             <TaglineBlock />
             <Search jobs={jobs} />
-            <Footer />
           </Route>
           <Route path="/register">
-            <Header />
             <RegistrationForm />
-            <Footer />
           </Route>
           <Route exact path="/login">
-            <Header />
-            <LogInForm />
-            <Footer />
+            <LogInForm handleIsLoggedIn={handleIsLoggedIn} handleIsAdmin={handleIsAdmin}/>
           </Route>
-          <Route path="/login/adminform">
-            <Header />
+          {isAdmin && <Route path="/login/adminform">
             <AdminForm />
-            <Footer />
-          </Route>
+          </Route>}
           <Route path="/about">
-            <Header />
             <About />
-            <Footer />
           </Route>
           <Route path="/contact">
-            <Header />
             <Contact />
-            <Footer />
           </Route>
           {/* <Route>
           <Error />
         </Route> */}
         </Switch>
+        <Footer />
       </div>
     </ChakraProvider>
 
