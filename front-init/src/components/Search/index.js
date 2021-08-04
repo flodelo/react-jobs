@@ -11,21 +11,35 @@ import { SearchIcon } from '@chakra-ui/icons';
 import Job from './Job';
 import PremiumJobs from './PremiumJobs';
 
-export default function Search ({jobs}) {
-  
+export default function Search({jobs}) {
+  const [premiumJobs, setPremiumJobs] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
+  
+  useEffect(() => {
 
-  // useEffect(() => {
-  //   fetch("http://localhost:5050/jobs/pe")
-  //     .then((response) => response.json())
-  //     .then((json) => setJobs(json));
-  // }, []);
+    // fetch(BASE_URL +'/hello', {withCredentials: true})
+    fetch('http://18.212.203.228:5050' + '/jobs')
+    
+      .then(data => {
+        console.log("1er console log de data PremiumJobs",data);
+        return data.json();
+      })
+      .then(data => {
+        data = data.slice(0, 2)
+        console.log("2eme console log de data PremiumJobs",data);
+        setPremiumJobs(data)
+      })
+      .catch(error => {
+        console.log(error)
+      })
+    }, [])
 
-  const handleSearchTerm = (e) => {
-    setSearchTerm("");
-    let value = e.target.value;
-    value.length > 2 && setSearchTerm(e.target.value);
-  };
+    const handleSearchTerm = (e) => {
+      setSearchTerm("");
+      let value = e.target.value;
+      value.length > 2 && setSearchTerm(e.target.value);
+    };
+
 
   return (
     <>
@@ -47,7 +61,13 @@ export default function Search ({jobs}) {
         />
       </InputGroup>
       </VStack>
-      <PremiumJobs/>
+      <VStack pt={5} pb={2} pl={10} pr={10} bg={useColorModeValue('gray.50', 'gray.800')} spacing={2}>
+      <Accordion width="80%" allowToggle bg="#fcf5eb" >
+      {premiumJobs.map((val) => {
+            return (<PremiumJobs premiumJobs={val} key={val.id} />
+      )})}
+      </Accordion>
+      </VStack>
       <VStack p={10} bg={useColorModeValue('gray.50', 'gray.800')} spacing={4} divider={<StackDivider borderColor="gray.200" align="stretch" />}>
       <Accordion width="80%" allowToggle >
         {jobs

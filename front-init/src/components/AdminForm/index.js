@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useHistory } from "react-router-dom";
 
 import axios from 'axios';
 // import { withRouter } from "react-router-dom";
@@ -17,7 +18,7 @@ import {
 } from '@chakra-ui/react';
 
 export default function AdminForm({isAdmin}) {
-
+  const history = useHistory();
   const [state, setState] = useState({
     title: '',
     technology: '',
@@ -58,12 +59,13 @@ export default function AdminForm({isAdmin}) {
      }}
      )
         .then((response) => {
+          redirectToHome();
           if (response.status === 200) {
             setState((prevState) => ({
               ...prevState,
               // successMessage: 'Registration successful. Redirecting to home page..',
             }));
-            redirectToHome();
+            // redirectToHome();
             console.log(response)
             // props.showError(null);
           } else {
@@ -80,6 +82,8 @@ export default function AdminForm({isAdmin}) {
     console.log(state);
     // if (state.password === state.confirmPassword) {
       sendDetailsToServer();
+      
+
     // }
     // else {
       // props.showError('Passwords do not match');
@@ -87,7 +91,8 @@ export default function AdminForm({isAdmin}) {
   };
 
   const redirectToHome = () => {
-    props.history.push('/');
+    console.log(history)
+    history.push('/');
   };
   // const redirectToLogin = () => {
   //   props.history.push('/login');

@@ -52,11 +52,11 @@ export default function MenuBurger({isAdmin}) {
           </MenuItem>
           </Link>
 
-        <Link as={ReactLink} to='/contact'>
+        {/*<Link as={ReactLink} to='/contact'>
           <MenuItem icon={<EmailIcon/>}>
             Nous contacter
           </MenuItem>
-          </Link>
+          </Link> */}
 
           <Link href="https://discord.com/invite/jR3f6Uwm" isExternal>
             <MenuItem>

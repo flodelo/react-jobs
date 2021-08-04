@@ -8,9 +8,14 @@ import {
   Stack,
   Text,
   Icon,
-  Link
+  Link,
 } from '@chakra-ui/react';
 import { FaDiscord, FaTwitter } from 'react-icons/fa';
+
+import {
+  EmailIcon
+} from '@chakra-ui/icons';
+
 
 export default function Footer() {
   return (
@@ -36,6 +41,10 @@ export default function Footer() {
             
         <Link href="https://twitter.com/react_jobs_fr" isExternal>
           <Icon as={FaTwitter} w={5} h={5} />
+        </Link>
+
+        <Link href="mailto:react.job.board@gmail.com" isExternal>
+          <Icon as={EmailIcon} w={5} h={5} />
         </Link>
 
         </Stack>
