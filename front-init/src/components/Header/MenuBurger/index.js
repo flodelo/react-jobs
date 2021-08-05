@@ -58,7 +58,7 @@ export default function MenuBurger({isAdmin}) {
           </MenuItem>
           </Link> */}
 
-          <Link href="https://discord.com/invite/jR3f6Uwm" isExternal>
+          <Link href="https://discord.gg/jR3f6Uwm" isExternal>
             <MenuItem>
             <Icon as={FaDiscord} mr={2.5}/>
               Discord

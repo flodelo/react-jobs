@@ -55,7 +55,7 @@ export default function About() {
       px={8}
       spacing={{ base: 8, md: 10 }}
       align={'center'}
-      background="linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5) ), url(https://images.pexels.com/photos/4164418/pexels-photo-4164418.jpeg?cs=srgb&dl=pexels-antonio-batini%C4%87-4164418.jpg&fm=jpg)"
+      background="linear-gradient( rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7) ), url(https://images.pexels.com/photos/4164418/pexels-photo-4164418.jpeg?cs=srgb&dl=pexels-antonio-batini%C4%87-4164418.jpg&fm=jpg)"
       backgroundSize={'cover'}
       borderRadius="5px">
       <Text
@@ -90,12 +90,12 @@ export default function About() {
         fontSize={{ base: 'm', md: 'm' }}
         textAlign={'center'}
         maxW={'3xl'}>
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur tempor dolor sit amet maximus vehicula. In sapien magna, facilisis at gravida sit amet, sagittis nec enim. Fusce sit amet dolor ac enim convallis bibendum. Aenean pulvinar cursus nunc.
+        32 ans, je vis à Arras dans le Pas-de-Calais (62), actuellement chargé de communication et développeur web React en devenir :)
       </Text>
       <Box textAlign={'center'}>
         <Avatar
           src={
-            'https://images.unsplash.com/photo-1586297135537-94bc9ba060aa?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=100&q=80'
+            'https://i.goopics.net/1bxvg.jpg'
           }
           alt={'Jenny Wilson'}
           mb={2}
@@ -125,7 +125,7 @@ export default function About() {
         fontSize={{ base: 'm', md: 'm' }}
         textAlign={'center'}
         maxW={'3xl'}>
-        37 ans, domiciliée en Dordogne, ex-Biologiste et anciennement Attachée de Recherche clinique, maman fière de deux petites filles et folle de SQL !
+        37 ans, domiciliée en Dordogne, ex-Biologiste et anciennement Attachée de Recherche Clinique, maman fière de deux petites filles et folle de SQL !
       </Text>
       <Box textAlign={'center'}>
         <Avatar
@@ -172,7 +172,7 @@ export default function About() {
 
         <Text fontWeight={600}>Florian Brun-Buisson</Text>
         <Text fontSize={'sm'} color={useColorModeValue('gray.400', 'gray.400')}>
-          Lead dev Front
+          Lead Dev Front
         </Text>
       </Box>
     </Stack>
@@ -193,12 +193,12 @@ export default function About() {
         fontSize={{ base: 'm', md: 'm' }}
         textAlign={'center'}
         maxW={'3xl'}>
-       39 ans. Développeur Web Backend. Je vis en Nouvelle-Aquitaine, du coté de Poitiers.
+       39 ans. Développeuse Web Backend. Je vis en Nouvelle-Aquitaine, du coté de Poitiers.
       </Text>
       <Box textAlign={'center'}>
         <Avatar
           src={
-            'https://media-exp1.licdn.com/dms/image/D4D35AQFxbTv7Dz7TqA/profile-framedphoto-shrink_800_800/0/1627143503035?e=1628244000&v=beta&t=uVTKlIW-p4x6EkLtMlWRLo-JZPlNM9_cDC-owuf7EKw'
+            'https://i.goopics.net/AP5Yb.jpg'
           }
           alt={'Felana Letrange'}
           mb={2}
@@ -208,7 +208,7 @@ export default function About() {
           <Text fontWeight={600}>Felana Letrange</Text>
         </Link>
         <Text fontSize={'sm'} color={useColorModeValue('gray.400', 'gray.400')}>
-          Git Master et dev Back
+          Git Master et Dev Back
         </Text>
       </Box>
     </Stack>
@@ -242,7 +242,7 @@ export default function About() {
         <Link href="https://www.linkedin.com/in/alexandre-chochois" isExternal>
         <Text fontWeight={600}>Alexandre Chochois</Text> </Link>
         <Text fontSize={'sm'} color={useColorModeValue('gray.400', 'gray.400')}>
-          Scrum Master et dev Front
+          Scrum Master et Dev Front
         </Text>
       </Box>
     </Stack>
