@@ -53,7 +53,7 @@ export default function PremiumJobs({premiumJobs}) {
                         borderLeftColor: 'blue.500'}}
                       >
             <AccordionButton>
-            <Twemoji className="twemoji" text="👍"/>
+            <Twemoji className="twemoji" text="⭐"/>
             <Box flex="1" textAlign="left">
             <Heading as="h2" size={useBreakpointValue({ base: "xs", md: "sm" })}>{(premiumJobs.title).toUpperCase()}
             </Heading>
