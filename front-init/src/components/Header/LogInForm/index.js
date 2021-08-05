@@ -128,7 +128,7 @@ export default function LogInForm({handleIsLoggedIn, handleIsAdmin}) {
     <Flex
       align="center"
       justify="center"
-      height="100%"
+      height="75vh"
       bg={useColorModeValue('gray.50', 'gray.800')}
     >
       <Stack spacing={8} mx="auto" maxW="lg" py={12} px={6}>
