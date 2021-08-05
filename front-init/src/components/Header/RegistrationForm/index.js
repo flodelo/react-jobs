@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useHistory } from "react-router-dom";
 
 import axios from 'axios';
 // import { withRouter } from "react-router-dom";
@@ -18,8 +19,8 @@ import {
   useColorModeValue,
 } from '@chakra-ui/react';
 
-export default function RegistrationForm(props) {
-
+export default function RegistrationForm() {
+  const history = useHistory();
   const [state, setState] = useState({
     firstname: '',
     lastname: '',
@@ -48,14 +49,16 @@ export default function RegistrationForm(props) {
         // "role" : "User-Agent", (deleted > Felana request)
       };
       
-     axios.post('http://localhost:5050/users/registerUser', payload)
+     axios.post("http://18.212.203.228:5050" + "/users/registerUser", payload)
         .then((response) => {
+          redirectToHome();
+          console.log(response)
           if (response.status === 200) {
             setState((prevState) => ({
               ...prevState,
               // successMessage: 'Registration successful. Redirecting to home page..',
             }));
-            redirectToHome();
+            
             console.log(response)
             // props.showError(null);
           } else {
@@ -79,11 +82,11 @@ export default function RegistrationForm(props) {
   };
 
   const redirectToHome = () => {
-    props.history.push('/');
+  history.push('/');
   };
-  const redirectToLogin = () => {
-    props.history.push('/login');
-  };
+  // const redirectToLogin = () => {
+  //   props.history.push('/login');
+  // };
 
   return (
     <Flex

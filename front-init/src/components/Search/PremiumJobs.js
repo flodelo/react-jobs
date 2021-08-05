@@ -1,4 +1,4 @@
-import React from 'react';
+import React,  { useState, useEffect } from 'react';
 import { Link as ReactRouter } from 'react-router-dom';
 
 import { ArrowForwardIcon } from '@chakra-ui/icons';
@@ -17,39 +17,64 @@ import {
   VStack,
   useColorModeValue,
   StackDivider,
+  useBreakpointValue,
+  Flex,
 } from '@chakra-ui/react';
 
-import PropTypes from 'prop-types';
+export default function PremiumJobs({premiumJobs}) {
+  // const [jobs, setJobs] = useState([]);
+  
+  // useEffect(() => {
 
-export default function PremiumJobs() {
+  //   // fetch(BASE_URL +'/hello', {withCredentials: true})
+  //   fetch('http://18.212.203.228:5050' + '/jobs')
+    
+  //     .then(data => {
+  //       console.log("1er console log de data PremiumJobs",data);
+  //       return data.json();
+  //     })
+  //     .then(data => {
+  //       data = data.slice(0, 2)
+  //       console.log("2eme console log de data PremiumJobs",data);
+  //       setJobs(data)
+  //     })
+  //     .catch(error => {
+  //       console.log(error)
+  //     })
+  //   }, [])
+
+// <Twemoji className="twemoji" text="⭐"/>
 
   return (
-  <>
-  <VStack pt={5} pb={2} pl={10} pr={10} bg={useColorModeValue('gray.50', 'gray.800')} spacing={2}>
-  <Accordion width="80%" allowToggle bg="#fcf5eb" >
-  <AccordionItem _hover={{
-              boxShadow: 'lg',
-              borderLeftWidth: '2px',
-              borderLeftColor: 'blue.500'}}>
-  <AccordionButton>
-  <Box display="flex" flex="1" textAlign="left">
-  <Twemoji className="twemoji" text="📌"/><Heading as="h2" size="sm">HELPER - REFERENT</Heading>
-  </Box>
-  <Badge fontSize="sm" ml="1" colorScheme="green">REMOTE</Badge>
-  <AccordionIcon />
-  </AccordionButton>
-  <AccordionPanel>
-  <Heading as="h3" size="sm" color="blue.500">O'clock</Heading>
-  <p as="h3">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quia iusto aliquam quidem maxime ratione consequatur praesentium harum voluptate, culpa beatae temporibus, dolorum quasi in ipsa facilis, aspernatur obcaecati esse unde.</p>
-  <Link href="https://lesinge.paris/fr"><Button rightIcon={<ArrowForwardIcon />}>Je postule</Button></Link>
-  </AccordionPanel>
-  {/* <p>{job.completed.toString()}</p> */}
-  {/* </Link> */}
-  </AccordionItem>
-  </Accordion>
-  </VStack>
-  </>
-  );
+          <AccordionItem  pt= "2" mb= "2"
+              _hover={{
+                        boxShadow: 'lg',
+                        borderLeftWidth: '2px',
+                        borderLeftColor: 'blue.500'}}
+                      >
+            <AccordionButton>
+            <Twemoji className="twemoji" text="👍"/>
+            <Box flex="1" textAlign="left">
+            <Heading as="h2" size={useBreakpointValue({ base: "xs", md: "sm" })}>{(premiumJobs.title).toUpperCase()}
+            </Heading>
+            </Box>
+            <Badge size={useBreakpointValue({ base: "xs", md: "sm" })} ml="1" colorScheme="">{premiumJobs.locality}</Badge>
+            <AccordionIcon />
+            </AccordionButton>
+            <AccordionPanel>
+            <Flex justifyContent="space-between">
+            <Heading display="flex" as="h3" fontSize={useBreakpointValue({ base: "xs", md: "sm" })} color="blue.500">{premiumJobs.locality}</Heading>
+            <Heading display="flex" as="h2" fontSize={useBreakpointValue({ base: "xs", md: "sm" })} color="blue.500">{premiumJobs.contract}</Heading>
+            </Flex>
+            <br />
+            <Text fontSize={useBreakpointValue({ base: "sm", md: "md" })} as="p">{premiumJobs.description}
+            </Text>
+            <Text fontSize={useBreakpointValue({ base: "xs", md: "sm" })} fontWeight="700" as="p"> {premiumJobs.salary}</Text>
+            <Link fontSize={useBreakpointValue({ base: "sm", md: "md" })} href="https://oclock.io/team" isExternal><Button rightIcon={<ArrowForwardIcon />}>Je postule</Button></Link>
+            </AccordionPanel>
+            {/* <p>{job.completed.toString()}</p> */}
+            </AccordionItem>
+            );
 }
 
 {/*

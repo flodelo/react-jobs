@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useHistory } from "react-router-dom";
 
 import axios from 'axios';
 // import { withRouter } from "react-router-dom";
@@ -16,8 +17,8 @@ import {
   useColorModeValue,
 } from '@chakra-ui/react';
 
-export default function AdminForm(props) {
-
+export default function AdminForm({isAdmin}) {
+  const history = useHistory();
   const [state, setState] = useState({
     title: '',
     technology: '',
@@ -26,6 +27,7 @@ export default function AdminForm(props) {
     contract: '',
     salary: '',
     description: '',
+    user_id: isAdmin
   });
 
   const handleChange = (e) => {
@@ -47,16 +49,23 @@ export default function AdminForm(props) {
         "contract" : state.contract,
         "salary" : state.salary,
         "description" : state.description,
+        'user_id': localStorage.getItem('USER_ID'),
       };
       
-     axios.post('http://localhost:5050/jobs/save', payload)
+     axios.post('http://18.212.203.228:5050/jobs/save', payload,
+     {headers: {
+       'Authorization':`Bearer ${localStorage.getItem('USER_TOKEN')}`,
+      //  'user_id' : `Bearer ${localStorage.getItem('USER_ID')}`,
+     }}
+     )
         .then((response) => {
+          redirectToHome();
           if (response.status === 200) {
             setState((prevState) => ({
               ...prevState,
               // successMessage: 'Registration successful. Redirecting to home page..',
             }));
-            redirectToHome();
+            // redirectToHome();
             console.log(response)
             // props.showError(null);
           } else {
@@ -73,6 +82,8 @@ export default function AdminForm(props) {
     console.log(state);
     // if (state.password === state.confirmPassword) {
       sendDetailsToServer();
+      
+
     // }
     // else {
       // props.showError('Passwords do not match');
@@ -80,7 +91,8 @@ export default function AdminForm(props) {
   };
 
   const redirectToHome = () => {
-    props.history.push('/');
+    console.log(history)
+    history.push('/');
   };
   // const redirectToLogin = () => {
   //   props.history.push('/login');
