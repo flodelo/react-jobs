@@ -37,7 +37,7 @@ export default function Search ({jobs}) {
         return data.json();
       })
       .then(data => {
-        data = data.slice(0, 2)
+        // data = data.slice(0, 2)
         console.log("2eme console log de data PremiumJobs",data);
         setPremiumJobs(data)
       })

@@ -4,6 +4,8 @@ import { useHistory } from "react-router-dom";
 import axios from 'axios';
 // import { withRouter } from "react-router-dom";
 
+import { Twemoji } from 'react-emoji-render';
+
 import {
   Flex,
   Box,
@@ -108,7 +110,7 @@ export default function AdminForm({isAdmin}) {
     >
       <Stack spacing={8} mx="auto" maxW="lg" py={12} px={6}>
         <Stack align="center">
-          <Heading fontSize="4xl">Ajouter une offre 🐱‍💻</Heading>
+          <Heading fontSize="4xl">Ajouter une offre <Twemoji display="flex" onlyEmojiClassName="twemoji" display="flex" text="📝"/></Heading>
         </Stack>
         <Box
           rounded="lg"
@@ -204,7 +206,7 @@ export default function AdminForm({isAdmin}) {
               >
               </Stack>
               <Button
-                color="blue.500"
+                color="#0468ae"
                 onClick={handleSubmitClick}
               >
                 Publier

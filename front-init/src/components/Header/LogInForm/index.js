@@ -169,12 +169,12 @@ export default function LogInForm({handleIsLoggedIn, handleIsAdmin}) {
               >
                 <Link
                   href="/register"
-                  color="blue.500"
+                  color="#0468ae"
                 >Pas encore de compte ? Cliquez ici pour vous inscrire
                 </Link>
               </Stack>
               <Button
-                color="blue.500"
+                color="#0468ae"
                 onClick={handleSubmitClick}
               >
                 Je me connecte

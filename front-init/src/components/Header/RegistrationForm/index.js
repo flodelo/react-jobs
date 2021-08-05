@@ -97,7 +97,7 @@ export default function RegistrationForm() {
     >
       <Stack spacing={8} mx="auto" maxW="lg" py={12} px={6}>
         <Box align="center" justifyContent="center" display="flex">
-          <Heading display="flex" fontSize="4xl">Inscription <Twemoji display="flex" onlyEmojiClassName="twemoji" display="flex" text="⚛️"/></Heading>
+          <Heading display="flex" fontSize="4xl">Inscription <Twemoji display="flex" onlyEmojiClassName="twemoji" display="flex" text="👩🏻‍💻"/></Heading>
         </Box>
         <Box
           rounded="lg"
@@ -160,11 +160,11 @@ export default function RegistrationForm() {
                 justify="space-between"
               >
 
-                <Link href="/login" color="blue.500">Déja un compte ? Connectez-vous</Link>
+                <Link href="/login" color="#0468ae">Déja un compte ? Connectez-vous</Link>
 
               </Stack>
               <Button
-                color="blue.500"
+                color="#0468ae"
                 onClick={handleSubmitClick}
               >
                 Je m'inscris

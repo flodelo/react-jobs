@@ -130,9 +130,9 @@ export default function About() {
       <Box textAlign={'center'}>
         <Avatar
           src={
-            'https://images.unsplash.com/photo-1586297135537-94bc9ba060aa?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=100&q=80'
+            'https://media-exp1.licdn.com/dms/image/C4D03AQHiB8eXPFjsBA/profile-displayphoto-shrink_800_800/0/1613555923540?e=1633564800&v=beta&t=752IJtCMhi3M3mSSzcWwL-q2RRj4nY4g0so7NiK2rpk'
           }
-          alt={'Jenny Wilson'}
+          alt={'Caro Wiese'}
           mb={2}
         />
 
@@ -193,18 +193,20 @@ export default function About() {
         fontSize={{ base: 'm', md: 'm' }}
         textAlign={'center'}
         maxW={'3xl'}>
-       39 ans. Développeur Web Backend, je vis en Nouvelle-Aquitaine, du coté de Poitiers.
+       39 ans. Développeur Web Backend. Je vis en Nouvelle-Aquitaine, du coté de Poitiers.
       </Text>
       <Box textAlign={'center'}>
         <Avatar
           src={
-            'https://images.unsplash.com/photo-1586297135537-94bc9ba060aa?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=100&q=80'
+            'https://media-exp1.licdn.com/dms/image/D4D35AQFxbTv7Dz7TqA/profile-framedphoto-shrink_800_800/0/1627143503035?e=1628244000&v=beta&t=uVTKlIW-p4x6EkLtMlWRLo-JZPlNM9_cDC-owuf7EKw'
           }
-          alt={'Jenny Wilson'}
+          alt={'Felana Letrange'}
           mb={2}
         />
 
-        <Text fontWeight={600}>Felana Letrange</Text>
+        <Link href="https://www.linkedin.com/in/felana-letrange/" isExternal>
+          <Text fontWeight={600}>Felana Letrange</Text>
+        </Link>
         <Text fontSize={'sm'} color={useColorModeValue('gray.400', 'gray.400')}>
           Git Master et dev Back
         </Text>
