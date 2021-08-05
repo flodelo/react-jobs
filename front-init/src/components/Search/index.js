@@ -1,7 +1,7 @@
 // == Import React
 import React from 'react';
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 // == Imports NPM
 import InfiniteScroll from "react-infinite-scroll-component";
@@ -15,21 +15,14 @@ import PremiumJobs from './PremiumJobs';
 
 export default function Search ({jobs}) {
 
+  const [premiumJobs, setPremiumJobs] = useState([]);
   const perPage = 5;
   const [allJobs, setAllJobs] = useState(jobs.slice(0, perPage));
   const [hasMore, setHasMore] = useState(false);
-  
-
-export default function Search({jobs}) {
-  const [premiumJobs, setPremiumJobs] = useState([]);
-
   const [searchTerm, setSearchTerm] = useState("");
+  const [lastPosition, setLastPosition] = useState(perPage);
   
   useEffect(() => {
-
-
-  const [lastPosition, setLastPosition] = useState(perPage);
-
   // useEffect(() => {
   //   fetch("http://localhost:5050/jobs/pe")
   //     .then((response) => response.json())
@@ -59,8 +52,6 @@ export default function Search({jobs}) {
       value.length > 2 && setSearchTerm(e.target.value);
     };
 
-
-
   const fetchMoreData = () => {
     setHasMore(true)
         setAllJobs((prev) => [...prev, ...jobs.slice(lastPosition, lastPosition + perPage)]);
@@ -88,14 +79,6 @@ export default function Search({jobs}) {
         />
       </InputGroup>
       </VStack>
-
-      <PremiumJobs/>
-      <InfiniteScroll
-          dataLength={allJobs}
-          next={fetchMoreData}
-          hasMore={setHasMore}
-        >
-
       <VStack pt={5} pb={2} pl={10} pr={10} bg={useColorModeValue('gray.50', 'gray.800')} spacing={2}>
       <Accordion width="80%" allowToggle bg="#fcf5eb" >
       {premiumJobs.map((val) => {
@@ -103,7 +86,11 @@ export default function Search({jobs}) {
       )})}
       </Accordion>
       </VStack>
-
+      <InfiniteScroll
+          dataLength={allJobs}
+          next={fetchMoreData}
+          hasMore={setHasMore}
+        >
       <VStack p={10} bg={useColorModeValue('gray.50', 'gray.800')} spacing={4} divider={<StackDivider borderColor="gray.200" align="stretch" />}>
       <Accordion width="80%" allowToggle >
         {allJobs
