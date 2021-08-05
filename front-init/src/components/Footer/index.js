@@ -27,7 +27,7 @@ export default function Footer() {
       >
       <Container
         as={Stack}
-        p={10}
+        p={5}
         direction={{ base: 'column', md: 'row' }}
         spacing={4}
         justify={{ base: 'center', md: 'space-between' }}
