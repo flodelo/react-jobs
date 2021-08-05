@@ -51,7 +51,7 @@ export default function App() {
       return data.json();
     })
     .then(data => {
-      data = data.slice(0, 100)
+      // data = data.slice(0, 100)
       // console.log(data);
       setJobs(data)
     })
