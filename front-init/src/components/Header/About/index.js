@@ -102,10 +102,10 @@ export default function About() {
         />
 
         <Link href="https://www.linkedin.com/in/carowiese?lipi=urn%3Ali%3Apage%3Ad_flagship3_profile_view_base_contact_details%3BlRfhnLi6QDaG1yAqX4MFGg%3D%3D" isExternal>
-        <Text fontWeight={600}>Caroline Wiese</Text>
+        <Text fontWeight={600}>Florian Delobelle</Text>
         </Link>
         <Text fontSize={'sm'} color={useColorModeValue('gray.400', 'gray.400')}>
-          Lead dev Back
+          Product Owner et Dev Front
         </Text>
       </Box>
     </Stack>
@@ -136,9 +136,9 @@ export default function About() {
           mb={2}
         />
 
-        <Text fontWeight={600}>Florian Delobelle</Text>
+        <Text fontWeight={600}>Caroline Wiese</Text>
         <Text fontSize={'sm'} color={useColorModeValue('gray.400', 'gray.400')}>
-        Product Owner et dev Front
+        Lead Dev Back
         </Text>
       </Box>
     </Stack>

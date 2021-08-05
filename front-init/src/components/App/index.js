@@ -8,7 +8,6 @@ import {
 
 import { ChakraProvider } from '@chakra-ui/react';
 
-import { BASE_URL } from '../constants/apiConstants';
 // == Import
 import './styles.css';
 

@@ -26,7 +26,7 @@ export default function TaglineBlock() {
       >
       <VStack
       position="absolute"
-      bottom="5"
+      bottom="6"
       w="100%"
         justify={'center'}
         px={useBreakpointValue({ base: 4, md: 8 })}>
