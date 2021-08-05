@@ -37,7 +37,7 @@ export default function Job({ val }) {
       <p>{jobs.locality}</p>
   <p>{jobs.contract}</p> */}
   <VStack p={1} bg={useColorModeValue('gray.50', 'gray.800')} spacing={4} divider={<StackDivider color="gray.50" align="stretch" />}>
-      <Accordion bg="white" width="80%" allowToggle >
+      <Accordion bg="white" width={useBreakpointValue({ base: "80%", md: "60%" })} allowToggle >
   <AccordionItem  pt= "2" pb= "2"
     _hover={{
               boxShadow: 'lg',

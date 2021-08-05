@@ -47,7 +47,7 @@ export default function PremiumJobs({premiumJobs}) {
 
   return (
     <VStack p={1} bg={useColorModeValue('gray.50', 'gray.800')} spacing={4}>
-      <Accordion width="80%" allowToggle bg="#fcf5eb" >
+      <Accordion width={useBreakpointValue({ base: "80%", md: "60%" })} allowToggle bg="#fcf5eb" >
           <AccordionItem  pt= "2" pb= "2"
               _hover={{
                         boxShadow: 'lg',

@@ -6,7 +6,7 @@ import { useState, useEffect } from "react";
 // == Imports NPM
 import InfiniteScroll from "react-infinite-scroll-component";
 import {
-  Input, VStack, InputLeftElement, InputGroup, Text, useColorModeValue,
+  Input, VStack, InputLeftElement, InputGroup, Text, useColorModeValue, Stack,
 } from '@chakra-ui/react';
 import { SearchIcon } from '@chakra-ui/icons';
 import Job from './Job';
@@ -80,7 +80,7 @@ export default function Search ({jobs}) {
         />
       </InputGroup>
       </VStack>
-
+      <VStack spacing="10px" justify="center" p={5} bg={useColorModeValue('gray.50', 'gray.800')}></VStack>
       {premiumJobs.map((val) => {
             return (<PremiumJobs premiumJobs={val} key={val.id} />
       )})}
