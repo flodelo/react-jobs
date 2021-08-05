@@ -15,6 +15,7 @@ import {
   Button,
   Heading,
   useColorModeValue,
+  Textarea,
 } from '@chakra-ui/react';
 
 export default function AdminForm({isAdmin}) {
@@ -185,15 +186,16 @@ export default function AdminForm({isAdmin}) {
                 onChange={handleChange}
               />
             </FormControl>
+
             <FormControl id="description">
               <FormLabel>Description de l'offre</FormLabel>
-              <Input
-                type="text"
+              <Textarea type="text"
                 id="description"
                 value={state.description}
                 onChange={handleChange}
               />
-            </FormControl>
+              </FormControl>
+          
             <Stack spacing={10}>
               <Stack
                 direction={{ base: 'column', sm: 'row' }}
