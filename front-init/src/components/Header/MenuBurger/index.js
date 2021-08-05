@@ -34,7 +34,7 @@ export default function MenuBurger({isAdmin}) {
         <MenuButton
           size={responsiveSize}
           mt="2"
-          color="blue.500"
+          color="#0468ae"
           as={IconButton}
           aria-label="Options"
           icon={<HamburgerIcon />}

@@ -101,7 +101,9 @@ export default function About() {
           mb={2}
         />
 
+        <Link href="https://www.linkedin.com/in/carowiese?lipi=urn%3Ali%3Apage%3Ad_flagship3_profile_view_base_contact_details%3BlRfhnLi6QDaG1yAqX4MFGg%3D%3D" isExternal>
         <Text fontWeight={600}>Caroline Wiese</Text>
+        </Link>
         <Text fontSize={'sm'} color={useColorModeValue('gray.400', 'gray.400')}>
           Lead dev Back
         </Text>
@@ -123,7 +125,7 @@ export default function About() {
         fontSize={{ base: 'm', md: 'm' }}
         textAlign={'center'}
         maxW={'3xl'}>
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur tempor dolor sit amet maximus vehicula. In sapien magna, facilisis at gravida sit amet, sagittis nec enim. Fusce sit amet dolor ac enim convallis bibendum. Aenean pulvinar cursus nunc.
+        37 ans, domiciliée en Dordogne, ex-Biologiste et anciennement Attachée de Recherche clinique, maman fière de deux petites filles et folle de SQL !
       </Text>
       <Box textAlign={'center'}>
         <Avatar
@@ -191,7 +193,7 @@ export default function About() {
         fontSize={{ base: 'm', md: 'm' }}
         textAlign={'center'}
         maxW={'3xl'}>
-       Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur tempor dolor sit amet maximus vehicula. In sapien magna, facilisis at gravida sit amet, sagittis nec enim. Fusce sit amet dolor ac enim convallis bibendum. Aenean pulvinar cursus nunc.
+       39 ans. Développeur Web Backend, je vis en Nouvelle-Aquitaine, du coté de Poitiers.
       </Text>
       <Box textAlign={'center'}>
         <Avatar

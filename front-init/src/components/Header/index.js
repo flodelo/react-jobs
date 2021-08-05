@@ -41,7 +41,8 @@ const Header = ({isLoggedIn,setIsLoggedIn, isAdmin}) => {
               lg: 'inline-block',
             }}
             size={responsiveSize}
-            color="blue.500"
+            variant="solid"
+            color="#0468ae"
             mr="2"
             mt="2"
           >
@@ -58,7 +59,7 @@ const Header = ({isLoggedIn,setIsLoggedIn, isAdmin}) => {
               lg: 'inline-block',
             }}
             size={responsiveSize}
-            color="blue.500"
+            color="#0468ae"
             mr="2"
             mt="2"
           >
@@ -74,7 +75,7 @@ const Header = ({isLoggedIn,setIsLoggedIn, isAdmin}) => {
             }}
             onClick={isLoggedOut}
             size={responsiveSize}
-            color="blue.500"
+            color="#0468ae"
             mr="2"
             mt="2"
           >
