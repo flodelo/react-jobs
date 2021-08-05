@@ -62,7 +62,7 @@ export default function Search ({jobs}) {
   return (
     <>
       <VStack spacing="10px" justify="center" p={5} bg={useColorModeValue('gray.50', 'gray.800')}>
-        <Text>Recherchez une ville, une technologie, un type de contrat...</Text>
+        <Text color="gray.500">Recherchez une ville, une technologie, un type de contrat...</Text>
         <InputGroup maxWidth="500px">
         <InputLeftElement
         pointerEvents="none"
