@@ -11,16 +11,17 @@ import {
 import MenuBurger from './MenuBurger';
 import Logo from './Logo';
 
-const Header = ({isLoggedIn,setIsLoggedIn, isAdmin}) => {
+const Header = ({isLoggedIn,setIsLoggedIn, isAdmin, setIsAdmin}) => {
   const history = useHistory();
   const responsiveSize = useBreakpointValue(['md', 'lg']);
   // Le hook useBreakpointValue répond également au redimensionnement de la fenêtre et renvoie la valeur appropriée pour la nouvelle taille de la fenêtre
  // Fonction permettant une redirection lors de l'event onClick sur un élément texte
   const isLoggedOut = () => {
-    setIsLoggedIn(false);
     localStorage.clear();
+    setIsLoggedIn(false);
     history.push("/");
   }
+  
 
   return (
     <Flex bg="gray.50">
@@ -86,7 +87,7 @@ const Header = ({isLoggedIn,setIsLoggedIn, isAdmin}) => {
 
         <Menu>
           {/* Creation du menu burger avec props */}
-          <MenuBurger isAdmin={isAdmin}
+          <MenuBurger isAdmin={isAdmin} isLoggedIn={isLoggedIn}
           />
         </Menu>
       </Box>

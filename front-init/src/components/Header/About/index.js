@@ -104,7 +104,7 @@ export default function About() {
           mb={2}
         />
 
-        <Link href="https://www.linkedin.com/in/carowiese?lipi=urn%3Ali%3Apage%3Ad_flagship3_profile_view_base_contact_details%3BlRfhnLi6QDaG1yAqX4MFGg%3D%3D" isExternal>
+        <Link href="https://www.linkedin.com/in/florian-delobelle-42681b45/" isExternal>
         <Text color="#0468ae" fontWeight={600}>Florian Delobelle</Text>
         </Link>
         <Text fontSize={'sm'} color={useColorModeValue('gray.400', 'gray.400')}>
@@ -139,7 +139,9 @@ export default function About() {
           mb={2}
         />
 
-        <Text color="#0468ae" fontWeight={600}>Caroline Wiese</Text>
+        <Link href="https://www.linkedin.com/in/carowiese?lipi=urn%3Ali%3Apage%3Ad_flagship3_profile_view_base_contact_details%3BlRfhnLi6QDaG1yAqX4MFGg%3D%3D" isExternal>
+          <Text color="#0468ae" fontWeight={600}>Caroline Wiese</Text>
+          </Link>
         <Text fontSize={'sm'} color={useColorModeValue('gray.400', 'gray.400')}>
         Lead Dev Back
         </Text>
@@ -173,7 +175,9 @@ export default function About() {
           mb={2}
         />
 
-        <Text color="#0468ae" fontWeight={600}>Florian Brun-Buisson</Text>
+        <Link href="https://www.linkedin.com/in/florian-brun-buisson-631053145/" isExternal>
+          <Text color="#0468ae" fontWeight={600}>Florian Brun-Buisson</Text>
+        </Link>
         <Text fontSize={'sm'} color={useColorModeValue('gray.400', 'gray.400')}>
           Lead Dev Front
         </Text>
@@ -232,7 +236,7 @@ export default function About() {
         fontSize={{ base: 'm', md: 'm' }}
         textAlign={'center'}
         maxW={'3xl'}>
-        34 ans, domicilié à Boulogne-sur-Mer (Pas-de-Calais, 62), ex-journaliste sportif en quête de reconversion.
+        34 ans, domicilié à Boulogne-sur-Mer (Pas-de-Calais, 62), ex-journaliste sportif en quête de reconversion. En bref, sur tous les Front(s) ! :D
       </Text>
       <Box textAlign={'center'}>
         <Avatar
