@@ -159,12 +159,12 @@ export default function About() {
         fontSize={{ base: 'm', md: 'm' }}
         textAlign={'center'}
         maxW={'3xl'}>
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur tempor dolor sit amet maximus vehicula. In sapien magna, facilisis at gravida sit amet, sagittis nec enim. Fusce sit amet dolor ac enim convallis bibendum. Aenean pulvinar cursus nunc.
+        32 ans, installé en Normandie, j'ai trouvé le chemin du développement web après avoir travaillé dans différentes Maisons de Couture pendant 10 ans.
       </Text>
       <Box textAlign={'center'}>
         <Avatar
           src={
-            'https://images.unsplash.com/photo-1586297135537-94bc9ba060aa?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=100&q=80'
+            'https://media-exp1.licdn.com/dms/image/C5103AQGhQV2sQZW2FA/profile-displayphoto-shrink_800_800/0/1516959223349?e=1633564800&v=beta&t=bxAkHHZm9AkS_twJC-s85w4ZvCn0fEFK9sZG9TvXACc'
           }
           alt={'Jenny Wilson'}
           mb={2}

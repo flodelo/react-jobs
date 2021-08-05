@@ -46,7 +46,9 @@ export default function PremiumJobs({premiumJobs}) {
 // <Twemoji className="twemoji" text="⭐"/>
 
   return (
-          <AccordionItem  pt= "2" mb= "2"
+    <VStack p={1} bg={useColorModeValue('gray.50', 'gray.800')} spacing={4}>
+      <Accordion width="80%" allowToggle bg="#fcf5eb" >
+          <AccordionItem  pt= "2" pb= "2"
               _hover={{
                         boxShadow: 'lg',
                         borderLeftWidth: '2px',
@@ -70,10 +72,14 @@ export default function PremiumJobs({premiumJobs}) {
             <Text fontSize={useBreakpointValue({ base: "sm", md: "md" })} as="p">{premiumJobs.description}
             </Text>
             <Text fontSize={useBreakpointValue({ base: "xs", md: "sm" })} fontWeight="700" as="p"> {premiumJobs.salary}</Text>
-            <Link fontSize={useBreakpointValue({ base: "sm", md: "md" })} href="https://oclock.io/team" isExternal><Button rightIcon={<ArrowForwardIcon />}>Je postule</Button></Link>
+            <Flex justifyContent="flex-end">
+            <Link fontSize={useBreakpointValue({ base: "sm", md: "md" })} href="https://oclock.io/team" isExternal><Button color="#0468ae" rightIcon={<ArrowForwardIcon />}>Je postule</Button></Link>
+            </Flex>
             </AccordionPanel>
             {/* <p>{job.completed.toString()}</p> */}
             </AccordionItem>
+            </Accordion>
+      </VStack>
             );
 }
 

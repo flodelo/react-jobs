@@ -6,7 +6,7 @@ import { useState, useEffect } from "react";
 // == Imports NPM
 import InfiniteScroll from "react-infinite-scroll-component";
 import {
-  Input, Button, VStack, StackDivider, Accordion, InputLeftElement, InputGroup, Text, useColorModeValue,
+  Input, VStack, InputLeftElement, InputGroup, Text, useColorModeValue,
 } from '@chakra-ui/react';
 import { SearchIcon } from '@chakra-ui/icons';
 import Job from './Job';
@@ -80,25 +80,23 @@ export default function Search ({jobs}) {
         />
       </InputGroup>
       </VStack>
-      <VStack pt={5} pb={2} pl={10} pr={10} bg={useColorModeValue('gray.50', 'gray.800')} spacing={2}>
-      <Accordion width="80%" allowToggle bg="#fcf5eb" >
+
       {premiumJobs.map((val) => {
             return (<PremiumJobs premiumJobs={val} key={val.id} />
       )})}
-      </Accordion>
-      </VStack>
+<VStack spacing="0.5em" justify="center" p={5} bg={useColorModeValue('gray.50', 'gray.800')}></VStack>
       <InfiniteScroll
           dataLength={allJobs}
           next={fetchMoreData}
           hasMore={setHasMore}
         >
-      <VStack p={10} bg={useColorModeValue('gray.50', 'gray.800')} spacing={4} divider={<StackDivider borderColor="gray.50" align="stretch" />}>
-      <Accordion width="80%" allowToggle >
+      
         {allJobs
           .filter(val =>
             val.description.toLowerCase().includes(searchTerm.toLowerCase())
             || val.intitule.toLowerCase().includes(searchTerm.toLowerCase())
             || val.typeContrat.toLowerCase().includes(searchTerm.toLowerCase())
+            || val.lieuTravail.libelle.toLowerCase().includes(searchTerm.toLowerCase())
           )
           .map((val) => {
             return (
@@ -106,8 +104,7 @@ export default function Search ({jobs}) {
               />
             );
           })}
-      </Accordion>
-      </VStack>
+      
       </InfiniteScroll>
     </>
   );
