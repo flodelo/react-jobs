@@ -11,7 +11,7 @@ export default function About() {
     <>
     <Heading align={'center'} as="h1" bg={useColorModeValue('gray.50', 'gray.800')} pt="1em">A propos</Heading>
     <Flex p={5} flexWrap="wrap" justifyContent="space-around" bg={useColorModeValue('gray.50', 'gray.800')} >
-    <Flex spacing="24px" d="flex" flexWrap="wrap">
+    <Flex justifyContent="center" spacing="24px" flexWrap="wrap">
       <Box 
       m="0.5em"
       w="100%"
@@ -19,30 +19,32 @@ export default function About() {
       py={4}
       px={8}
       spacing={{ base: 8, md: 10 }}
-      align={'left'}>
+      align={'center'}>
       <Text
       fontWeight={700}
-      fontSize={useBreakpointValue({ base: 'lg', md: 'xl' })}
-        textAlign={'left'}>
+      color="#0468ae"
+      fontSize={useBreakpointValue({ base: 'xl', md: '2xl' })}
+        textAlign={'center'}>
         React... ton framework frontend de coeur ?
       </Text>
       <Text
       fontWeight={500}
       fontSize={useBreakpointValue({ base: 'lg', md: 'xl' })}
-        textAlign={'left'}>
-        React-jobs.fr est la source #1 pour trouver ta prochaine mission React qui te correspond. Nous sélectionnons les offres les plus pertinentes en France pour te faciliter la vie.
+        textAlign={'center'}>
+        React-jobs.fr est la source #1 pour trouver ta prochaine mission React qui te correspond. <br /> Nous sélectionnons les offres les plus pertinentes en France pour te faciliter la vie.
       </Text>
       <Text
       fontWeight={700}
       fontSize={useBreakpointValue({ base: 'md', md: 'lg' })}
-        textAlign={'left'}
-        mt="1em">
+        textAlign={'center'}
+        mt="1em"
+        color="#0468ae">
         #Entraide #Communauté #Passion
       </Text>
       <Text
       mt="1em"
       fontSize={useBreakpointValue({ base: 'md', md: 'lg' })}
-        textAlign={'left'}
+        textAlign={'center'}
         maxW={'3xl'}>
         Le projet a été créé par 5 développeurs formés par <Link href="https://oclock.io/" isExternal>O'clock<ExternalLinkIcon mx="5px" /></Link>
       </Text>
@@ -50,12 +52,13 @@ export default function About() {
     <Box 
       w="0.5em"
       w="100%"
+      maxWidth="1200px"
       bg={useColorModeValue('gray.50', 'gray.800')}
       py={8}
       px={8}
       spacing={{ base: 8, md: 10 }}
       align={'center'}
-      background="linear-gradient( rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7) ), url(https://images.pexels.com/photos/4164418/pexels-photo-4164418.jpeg?cs=srgb&dl=pexels-antonio-batini%C4%87-4164418.jpg&fm=jpg)"
+      background="linear-gradient( rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7) ), url(https://images.pexels.com/photos/177598/pexels-photo-177598.jpeg?cs=srgb&dl=pexels-markus-spiske-177598.jpg&fm=jpg)"
       backgroundSize={'cover'}
       borderRadius="5px">
       <Text
@@ -68,7 +71,7 @@ export default function About() {
         Bon à savoir : React est le framework le plus recherché dans le monde : 
         59% des recruteurs tech sont à l'affût de développeurs connaissant React. 
         Malheureusement, seuls 27,6% des programmeurs disent savoir l'utiliser.
-        </Text><Link color="white" href="https://www.codingame.com/work/codingame-developer-survey-2021/?utm_source=press&utm_medium=referral&utm_campaign=developer-survey-2021&utm_content=b2b" isExternal>(Source : Codingame.com - 2021)<ExternalLinkIcon mx="5px"/></Link>
+        </Text><Link color="white" href="https://www.codingame.com/work/codingame-developer-survey-2021/" isExternal>(Source : Codingame.com - 2021)<ExternalLinkIcon mx="5px"/></Link>
     </Box>
     </Flex>
     </Flex>
@@ -102,7 +105,7 @@ export default function About() {
         />
 
         <Link href="https://www.linkedin.com/in/carowiese?lipi=urn%3Ali%3Apage%3Ad_flagship3_profile_view_base_contact_details%3BlRfhnLi6QDaG1yAqX4MFGg%3D%3D" isExternal>
-        <Text fontWeight={600}>Florian Delobelle</Text>
+        <Text color="#0468ae" fontWeight={600}>Florian Delobelle</Text>
         </Link>
         <Text fontSize={'sm'} color={useColorModeValue('gray.400', 'gray.400')}>
           Product Owner et Dev Front
@@ -136,7 +139,7 @@ export default function About() {
           mb={2}
         />
 
-        <Text fontWeight={600}>Caroline Wiese</Text>
+        <Text color="#0468ae" fontWeight={600}>Caroline Wiese</Text>
         <Text fontSize={'sm'} color={useColorModeValue('gray.400', 'gray.400')}>
         Lead Dev Back
         </Text>
@@ -159,7 +162,7 @@ export default function About() {
         fontSize={{ base: 'm', md: 'm' }}
         textAlign={'center'}
         maxW={'3xl'}>
-        32 ans, installé en Normandie, j'ai trouvé le chemin du développement web après avoir travaillé dans différentes Maisons de Couture pendant 10 ans.
+        32 ans, installé en Normandie, j'ai trouvé le chemin du développement web après avoir travaillé dans différentes Maisons de Couture.
       </Text>
       <Box textAlign={'center'}>
         <Avatar
@@ -170,7 +173,7 @@ export default function About() {
           mb={2}
         />
 
-        <Text fontWeight={600}>Florian Brun-Buisson</Text>
+        <Text color="#0468ae" fontWeight={600}>Florian Brun-Buisson</Text>
         <Text fontSize={'sm'} color={useColorModeValue('gray.400', 'gray.400')}>
           Lead Dev Front
         </Text>
@@ -205,7 +208,7 @@ export default function About() {
         />
 
         <Link href="https://www.linkedin.com/in/felana-letrange/" isExternal>
-          <Text fontWeight={600}>Felana Letrange</Text>
+          <Text color="#0468ae" fontWeight={600}>Felana Letrange</Text>
         </Link>
         <Text fontSize={'sm'} color={useColorModeValue('gray.400', 'gray.400')}>
           Git Master et Dev Back
@@ -240,7 +243,7 @@ export default function About() {
           mb={2}
         />
         <Link href="https://www.linkedin.com/in/alexandre-chochois" isExternal>
-        <Text fontWeight={600}>Alexandre Chochois</Text> </Link>
+        <Text color="#0468ae" fontWeight={600}>Alexandre Chochois</Text> </Link>
         <Text fontSize={'sm'} color={useColorModeValue('gray.400', 'gray.400')}>
           Scrum Master et Dev Front
         </Text>
