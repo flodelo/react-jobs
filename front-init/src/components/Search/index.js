@@ -16,7 +16,7 @@ export default function Search ({jobs}) {
 
   const perPage = 5;
   const [allJobs, setAllJobs] = useState(jobs.slice(0, perPage));
-  const [hasMore, setHasMore] = useState(true);
+  const [hasMore, setHasMore] = useState(false);
   
   const [searchTerm, setSearchTerm] = useState("");
 
@@ -35,6 +35,7 @@ export default function Search ({jobs}) {
   };
 
   const fetchMoreData = () => {
+    setHasMore(true)
         setAllJobs((prev) => [...prev, ...jobs.slice(lastPosition, lastPosition + perPage)]);
 
     setLastPosition(lastPosition + perPage);
@@ -64,13 +65,7 @@ export default function Search ({jobs}) {
       <InfiniteScroll
           dataLength={allJobs}
           next={fetchMoreData}
-          hasMore={hasMore}
-          loader={<h4>Loading...</h4>}
-          endMessage={
-            <p style={{ textAlign: 'center' }}>
-              <b>Yay! You have seen it all</b>
-            </p>
-          }
+          hasMore={setHasMore}
         >
       <VStack p={10} bg={useColorModeValue('gray.50', 'gray.800')} spacing={4} divider={<StackDivider borderColor="gray.200" align="stretch" />}>
       <Accordion width="80%" allowToggle >
