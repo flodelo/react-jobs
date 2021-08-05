@@ -106,6 +106,7 @@ export default function Search ({jobs}) {
           })}
       
       </InfiniteScroll>
+      <VStack spacing="0.5em" justify="center" p={5} bg={useColorModeValue('gray.50', 'gray.800')}></VStack>
     </>
   );
 } 
