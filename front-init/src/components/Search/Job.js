@@ -57,7 +57,7 @@ export default function Job({ val }) {
   <Heading display="flex" as="h2" fontSize={useBreakpointValue({ base: "xs", md: "sm" })} color="blue.500">{val.typeContrat}</Heading>
   </Flex>
   <br />
-  <Text fontSize={useBreakpointValue({ base: "sm", md: "md" })} as="p">{val.description}</Text>
+  <Text noOfLines={[3, 4, 6]} fontSize={useBreakpointValue({ base: "sm", md: "md" })} as="p">{val.description}</Text>
   <Text fontSize={useBreakpointValue({ base: "xs", md: "sm" })} fontWeight="700" as="p">Publié le : {dayjs(val.dateCreation).locale('fr').format('dddd DD MMMM YYYY')} </Text>
   <Flex justifyContent="flex-end">
   <Link fontSize={useBreakpointValue({ base: "sm", md: "md" })} href={val.origineOffre.partenaires && val.origineOffre.partenaires[0].url ?  val.origineOffre.partenaires[0].url : val.origineOffre.urlOrigine} isExternal><Button color="#0468ae" rightIcon={<ArrowForwardIcon />}>Je postule</Button></Link>

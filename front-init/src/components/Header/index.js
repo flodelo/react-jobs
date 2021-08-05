@@ -70,7 +70,7 @@ const Header = ({isLoggedIn,setIsLoggedIn, isAdmin, setIsAdmin}) => {
 
         <Button
             display={{
-              base: 'none',
+              base: 'inline-block',
               md: 'inline-block',
               lg: 'inline-block',
             }}

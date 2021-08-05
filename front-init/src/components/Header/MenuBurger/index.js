@@ -11,6 +11,7 @@ import {
 
 import { 
   Menu, 
+  Button,
   MenuButton, 
   MenuList, 
   MenuItem,
@@ -40,6 +41,37 @@ export default function MenuBurger({isAdmin, isLoggedIn}) {
           icon={<HamburgerIcon />}
         />
         <MenuList>
+        { !isLoggedIn &&
+        <>
+        <Link as={ReactLink} to='/register'
+        >
+          <MenuItem
+            display={{
+              md: 'none',
+              lg: 'none',
+            }}
+            size={responsiveSize}
+            variant="solid"
+            mr="2"
+            mt="2"
+          >
+            Inscription
+          </MenuItem>
+          </Link>
+
+        <Link as={ReactLink} to='/login'
+        >
+          <MenuItem
+            display={{
+              md: 'none',
+              lg: 'none',
+            }}
+          >
+            Connexion
+          </MenuItem>
+          </Link>
+          </>}
+
         {isAdmin && isLoggedIn && <Link as={ReactLink} to='/login/adminform'>
         <MenuItem icon={<AddIcon />}>
             Déposer une annonce
