@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useHistory } from "react-router-dom";
+import { Link as ReactLink } from 'react-router-dom';
 
 import axios from 'axios';
 
@@ -12,10 +13,11 @@ import {
   FormLabel,
   Input,
   Stack,
-  Link,
   Button,
   Heading,
   useColorModeValue,
+  Text,
+  Link,
 } from '@chakra-ui/react';
 
 export default function LogInForm({handleIsLoggedIn, handleIsAdmin}) {
@@ -167,10 +169,12 @@ export default function LogInForm({handleIsLoggedIn, handleIsAdmin}) {
                 align="start"
                 justify="space-between"
               >
-                <Link
+                <Link as={ReactLink} to='/register'>
+                <Text
                   href="/register"
                   color="#0468ae"
                 >Pas encore de compte ? Cliquez ici pour vous inscrire
+                </Text>
                 </Link>
               </Stack>
               <Button

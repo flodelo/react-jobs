@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Link as ReactLink } from 'react-router-dom';
 import { useHistory } from "react-router-dom";
 
 import axios from 'axios';
@@ -159,9 +160,12 @@ export default function RegistrationForm() {
                 align="start"
                 justify="space-between"
               >
-
-                <Link href="/login" color="#0468ae">Déja un compte ? Connectez-vous</Link>
-
+                <Link as={ReactLink} to='/login'>
+                <Text 
+                color="#0468ae">
+                Déja un compte ? Connectez-vous
+                </Text>
+                </Link>
               </Stack>
               <Button
                 color="#0468ae"
