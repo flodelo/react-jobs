@@ -76,7 +76,7 @@ export default function MenuBurger({isAdmin, isLoggedIn}) {
           </Link>
           </>}
 
-        {isAdmin && isLoggedIn && <Link as={ReactLink} to='/login/adminform'>
+        {(isAdmin && isLoggedIn) && <Link as={ReactLink} to='/login/adminform'>
         <MenuItem icon={<AddIcon />}>
             Déposer une annonce
           </MenuItem>
