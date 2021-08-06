@@ -25,6 +25,8 @@ import { Link as ReactLink } from 'react-router-dom';
 
 import { FaDiscord, FaTwitter } from 'react-icons/fa';
 
+import { AiTwotoneEdit, AiOutlineRightCircle } from 'react-icons/ai';
+
 
 export default function MenuBurger({isAdmin, isLoggedIn}) {
 
@@ -55,6 +57,7 @@ export default function MenuBurger({isAdmin, isLoggedIn}) {
             mr="2"
             mt="2"
           >
+            <Icon as={AiTwotoneEdit} mr={2.5}/>
             Inscription
           </MenuItem>
           </Link>
@@ -67,6 +70,7 @@ export default function MenuBurger({isAdmin, isLoggedIn}) {
               lg: 'none',
             }}
           >
+            <Icon as={AiOutlineRightCircle} mr={2.5}/>
             Connexion
           </MenuItem>
           </Link>

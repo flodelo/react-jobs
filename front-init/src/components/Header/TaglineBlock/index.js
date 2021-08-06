@@ -37,7 +37,7 @@ export default function TaglineBlock() {
             fontWeight={700}
             lineHeight={1}
             fontSize={useBreakpointValue({ base: '3xl', md: '4xl' })}>
-            Les hooks n'ont plus de secret pour vous ?
+            Les hooks n'ont plus de secret pour toi ?
           </Text>
           <Stack direction={'row'} display="flex">
           <Text display="flex" flexWrap="wrap"
@@ -46,7 +46,7 @@ export default function TaglineBlock() {
             fontWeight={300}
             lineHeight={1}
             mr={4}
-            fontSize={useBreakpointValue({ base: '2xl', md: '3xl' })}>Consultez les offres React les plus récentes en France 
+            fontSize={useBreakpointValue({ base: '2xl', md: '3xl' })}>Consulte les offres React les plus récentes en France 
             <Twemoji className="twemoji" text="🇫🇷"/> 
           </Text>
           </Stack>

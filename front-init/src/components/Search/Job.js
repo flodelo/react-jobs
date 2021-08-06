@@ -58,6 +58,8 @@ export default function Job({ val }) {
   </Flex>
   <br />
   <Text noOfLines={[3, 4, 6]} fontSize={useBreakpointValue({ base: "sm", md: "md" })} as="p">{val.description}</Text>
+  <br />
+  <Text fontSize={useBreakpointValue({ base: "xs", md: "sm" })} fontWeight="700" as="p">{val.lieuTravail.libelle}</Text>
   <Text fontSize={useBreakpointValue({ base: "xs", md: "sm" })} fontWeight="700" as="p">Publié le : {dayjs(val.dateCreation).locale('fr').format('dddd DD MMMM YYYY')} </Text>
   <Flex justifyContent="flex-end">
   <Link fontSize={useBreakpointValue({ base: "sm", md: "md" })} href={val.origineOffre.partenaires && val.origineOffre.partenaires[0].url ?  val.origineOffre.partenaires[0].url : val.origineOffre.urlOrigine} isExternal><Button color="#0468ae" rightIcon={<ArrowForwardIcon />}>Je postule</Button></Link>

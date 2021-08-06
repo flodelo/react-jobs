@@ -60,17 +60,19 @@ export default function PremiumJobs({premiumJobs}) {
             <Heading as="h2" size={useBreakpointValue({ base: "xs", md: "sm" })}>{(premiumJobs.title).toUpperCase()}
             </Heading>
             </Box>
-            <Badge size={useBreakpointValue({ base: "xs", md: "sm" })} ml="1" colorScheme="">{premiumJobs.locality}</Badge>
+            <Badge display={useBreakpointValue({ base: "none", md: "sm" })} size={useBreakpointValue({ base: "xs", md: "sm" })} ml="1" colorScheme="">{premiumJobs.locality}</Badge>
             <AccordionIcon />
             </AccordionButton>
             <AccordionPanel>
             <Flex justifyContent="space-between">
-            <Heading display="flex" as="h3" fontSize={useBreakpointValue({ base: "xs", md: "sm" })} color="blue.500">{premiumJobs.locality}</Heading>
+            <Heading display="flex" as="h3" fontSize={useBreakpointValue({ base: "xs", md: "sm" })} color="blue.500">{premiumJobs.company}</Heading>
             <Heading display="flex" as="h2" fontSize={useBreakpointValue({ base: "xs", md: "sm" })} color="blue.500">{premiumJobs.contract}</Heading>
             </Flex>
             <br />
             <Text fontSize={useBreakpointValue({ base: "sm", md: "md" })} as="p">{premiumJobs.description}
             </Text>
+            <br />
+            <Text fontSize={useBreakpointValue({ base: "xs", md: "sm" })} fontWeight="700" as="p">{premiumJobs.locality}</Text>
             <Text fontSize={useBreakpointValue({ base: "xs", md: "sm" })} fontWeight="700" as="p"> {premiumJobs.salary}</Text>
             <Flex justifyContent="flex-end">
             <Link fontSize={useBreakpointValue({ base: "sm", md: "md" })} href="https://oclock.io/team" isExternal><Button color="#0468ae" rightIcon={<ArrowForwardIcon />}>Je postule</Button></Link>
