@@ -8,6 +8,7 @@ import axios from 'axios';
 import { Twemoji } from 'react-emoji-render';
 
 import {
+  Text,
   Flex,
   Box,
   FormControl,
