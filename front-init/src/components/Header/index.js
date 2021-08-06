@@ -24,7 +24,7 @@ const Header = ({isLoggedIn,setIsLoggedIn, isAdmin, setIsAdmin}) => {
   
 
   return (
-    <Flex bg="gray.50">
+    <Flex bg="gray.50" pb="1.5em" pt="1em">
       <Box boxSize="40">
         <Logo  size={responsiveSize}/>
       </Box>             
