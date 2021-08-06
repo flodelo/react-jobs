@@ -43,7 +43,7 @@ export default function Footer() {
           <Icon as={FaTwitter} w={5} h={5} />
         </Link>
 
-        <Link href="mailto:react.job.board@gmail.com" isExternal>
+        <Link href="mailto:contact@react-jobs.fr" isExternal>
           <Icon as={EmailIcon} w={5} h={5} />
         </Link>
 

@@ -93,7 +93,7 @@ export default function About() {
         fontSize={{ base: 'm', md: 'm' }}
         textAlign={'center'}
         maxW={'3xl'}>
-        32 ans, je vis à Arras dans le Pas-de-Calais (62), actuellement chargé de communication et développeur web React en devenir :)
+        32 ans, je vis à Arras dans le Pas-de-Calais (62), actuellement chargé de communication et développeur web React en devenir.
       </Text>
       <Box textAlign={'center'}>
         <Avatar
@@ -253,6 +253,38 @@ export default function About() {
         </Text>
       </Box>
     </Stack>
+    </Flex>
+    <Heading align={'center'} as="h1" bg={useColorModeValue('gray.50', 'gray.800')} pt="1em">Contact</Heading>
+    <Flex p={5} flexWrap="wrap" justifyContent="space-around" bg={useColorModeValue('gray.50', 'gray.800')} >
+    <Flex justifyContent="center" spacing="24px" flexWrap="wrap">
+      <Box 
+      m="0.5em"
+      w="100%"
+      bg={useColorModeValue('gray.50', 'gray.800')}
+      py={4}
+      px={8}
+      spacing={{ base: 8, md: 10 }}
+      align={'center'}>
+      <Text
+      fontWeight={700}
+      color="#0468ae"
+      fontSize={useBreakpointValue({ base: 'xl', md: '2xl' })}
+        textAlign={'center'}>
+        Intéressé par notre projet ? Envie d'en savoir plus ?
+      </Text>
+      <Text
+      fontWeight={500}
+      fontSize={useBreakpointValue({ base: 'lg', md: 'xl' })}
+        textAlign={'center'}>
+        N'hésitez pas à nous contacter par email : <Text
+      fontWeight={700}
+      fontSize={useBreakpointValue({ base: 'xl', md: '2xl' })}
+        textAlign={'center'}>
+        contact@react-jobs.fr
+      </Text>
+      </Text>
+    </Box>
+    </Flex>
     </Flex>
     </>
   );
