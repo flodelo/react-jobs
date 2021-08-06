@@ -31,7 +31,7 @@ export default function About() {
       fontWeight={500}
       fontSize={useBreakpointValue({ base: 'lg', md: 'xl' })}
         textAlign={'center'}>
-        React-jobs.fr est la source #1 pour trouver ta prochaine mission React qui te correspond. <br /> Nous sélectionnons les offres les plus pertinentes en France pour te faciliter la vie.
+        React-jobs.fr est la source #1 pour trouver la prochaine mission React qui te correspond. <br /> Nous sélectionnons les offres les plus pertinentes en France pour te faciliter la vie.
       </Text>
       <Text
       fontWeight={700}
@@ -46,7 +46,7 @@ export default function About() {
       fontSize={useBreakpointValue({ base: 'md', md: 'lg' })}
         textAlign={'center'}
         maxW={'3xl'}>
-        Le projet a été créé par 5 développeurs formés par <Link href="https://oclock.io/" isExternal>O'clock<ExternalLinkIcon mx="5px" /></Link>
+        Le projet a été créé par cinq développeurs formés par <Link href="https://oclock.io/" isExternal>O'clock<ExternalLinkIcon mx="5px" /></Link>
       </Text>
     </Box>
     <Box 
@@ -200,7 +200,7 @@ export default function About() {
         fontSize={{ base: 'm', md: 'm' }}
         textAlign={'center'}
         maxW={'3xl'}>
-       39 ans. Développeuse Web Backend. Je vis en Nouvelle-Aquitaine, du coté de Poitiers.
+       39 ans, Poitiers. Dev Web Backend. “Quand on veut une chose, tout l'Univers conspire à nous permettre de réaliser notre rêve.” Paulo Coelho
       </Text>
       <Box textAlign={'center'}>
         <Avatar
