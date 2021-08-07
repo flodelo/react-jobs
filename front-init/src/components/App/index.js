@@ -24,6 +24,7 @@ import BackTopButton from '../BackTopButton';
 import About from '../Header/About';
 import Contact from '../Header/Contact';
 import TaglineBlock from '../Header/TaglineBlock';
+import Page404 from '../Page404';
 
 
 
@@ -84,6 +85,7 @@ export default function App() {
           <Route path="/contact">
             <Contact />
           </Route>
+          <Route path="*" component={Page404} />
           {/* <Route>
           <Error />
         </Route> */}
