@@ -3,8 +3,7 @@
 Job Board is an end-of-training project in which we are creating an application to help developers find React-related jobs in France.
 ## Technology Stack 
 - Language: JavaScript
-- Hosting platform: AWS
-  
+- Hosting platform: AWS 
 ### Server/Backend
 - Platform: [NodeJS] (https://nodejs.org/en/download/) (v12 or later)
 - Package management: [NPM] (https://www.npmjs.com/package/npm) (v7 or later)
@@ -15,6 +14,7 @@ Job Board is an end-of-training project in which we are creating an application 
 - Framework: [ReactJS] (https://reactjs.org/versions) (v17 or later)
 - Toolchain: [Webpack] (https://webpack.js.org/) (v3 or later) et [Babel] (https://babeljs.io/setup) (v7 or later)
 - CSS framework: [Chakra] (https://chakra-ui.com/docs/getting-started) (v1 or later)
+
 These tools are essential not only to install, but also to make the application work.
 Please install before you continue.
 ## Installation
