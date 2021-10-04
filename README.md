@@ -35,7 +35,7 @@ sqitch deploy db:pg:jobboard
 Configure PostgreSQL (or provide environnemental variables necessary) for `createdb` and `sqitch` commands to execute correctly.
 Finally, place yourself in the front-init folder and start the server.
 ```bash
-cd front-init
+'cd' front-init
 npm run start
 ```
 Ctrl + left click on the link `http://localhost:8080/` to run the project in your navigator.
