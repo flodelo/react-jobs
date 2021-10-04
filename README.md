@@ -12,7 +12,7 @@ Job Board is an end-of-training project in which we are creating an application 
 - Database management: [Sqitch] (https://sqitch.org/download/) (v1 or later)
 ### Web/Frontend
 - Framework: [ReactJS] (https://reactjs.org/versions) (v17 or later)
-- Toolchain: [Webpack] (https://webpack.js.org/) (v3 or later) et [Babel] (https://babeljs.io/setup) (v7 or later)
+- Toolchain: [Webpack] (https://webpack.js.org/) (v3 or later) and [Babel] (https://babeljs.io/setup) (v7 or later)
 - CSS framework: [Chakra] (https://chakra-ui.com/docs/getting-started) (v1 or later)
 
 These tools are essential not only to install, but also to make the application work.
