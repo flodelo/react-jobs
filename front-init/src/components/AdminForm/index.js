@@ -1,7 +1,10 @@
 import React, { useState } from 'react';
+import { useHistory } from "react-router-dom";
 
 import axios from 'axios';
 // import { withRouter } from "react-router-dom";
+
+import { Twemoji } from 'react-emoji-render';
 
 import {
   Flex,
@@ -14,10 +17,11 @@ import {
   Button,
   Heading,
   useColorModeValue,
+  Textarea,
 } from '@chakra-ui/react';
 
 export default function AdminForm({isAdmin}) {
-
+  const history = useHistory();
   const [state, setState] = useState({
     title: '',
     technology: '',
@@ -58,12 +62,13 @@ export default function AdminForm({isAdmin}) {
      }}
      )
         .then((response) => {
+          redirectToHome();
           if (response.status === 200) {
             setState((prevState) => ({
               ...prevState,
               // successMessage: 'Registration successful. Redirecting to home page..',
             }));
-            redirectToHome();
+            // redirectToHome();
             console.log(response)
             // props.showError(null);
           } else {
@@ -80,6 +85,8 @@ export default function AdminForm({isAdmin}) {
     console.log(state);
     // if (state.password === state.confirmPassword) {
       sendDetailsToServer();
+      
+
     // }
     // else {
       // props.showError('Passwords do not match');
@@ -87,7 +94,8 @@ export default function AdminForm({isAdmin}) {
   };
 
   const redirectToHome = () => {
-    props.history.push('/');
+    console.log(history)
+    history.push('/');
   };
   // const redirectToLogin = () => {
   //   props.history.push('/login');
@@ -102,7 +110,7 @@ export default function AdminForm({isAdmin}) {
     >
       <Stack spacing={8} mx="auto" maxW="lg" py={12} px={6}>
         <Stack align="center">
-          <Heading fontSize="4xl">Ajouter une offre 🐱‍💻</Heading>
+          <Heading fontSize="4xl">Ajouter une offre <Twemoji display="flex" onlyEmojiClassName="twemoji" display="flex" text="📝"/></Heading>
         </Stack>
         <Box
           rounded="lg"
@@ -180,15 +188,16 @@ export default function AdminForm({isAdmin}) {
                 onChange={handleChange}
               />
             </FormControl>
+
             <FormControl id="description">
               <FormLabel>Description de l'offre</FormLabel>
-              <Input
-                type="text"
+              <Textarea type="text"
                 id="description"
                 value={state.description}
                 onChange={handleChange}
               />
-            </FormControl>
+              </FormControl>
+          
             <Stack spacing={10}>
               <Stack
                 direction={{ base: 'column', sm: 'row' }}
@@ -197,7 +206,7 @@ export default function AdminForm({isAdmin}) {
               >
               </Stack>
               <Button
-                color="blue.500"
+                color="#0468ae"
                 onClick={handleSubmitClick}
               >
                 Publier

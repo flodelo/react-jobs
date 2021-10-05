@@ -11,6 +11,7 @@ import {
 
 import { 
   Menu, 
+  Button,
   MenuButton, 
   MenuList, 
   MenuItem,
@@ -24,8 +25,10 @@ import { Link as ReactLink } from 'react-router-dom';
 
 import { FaDiscord, FaTwitter } from 'react-icons/fa';
 
+import { AiTwotoneEdit, AiOutlineRightCircle } from 'react-icons/ai';
 
-export default function MenuBurger({isAdmin}) {
+
+export default function MenuBurger({isAdmin, isLoggedIn}) {
 
   const responsiveSize = useBreakpointValue(['md', 'lg']);
 
@@ -34,13 +37,46 @@ export default function MenuBurger({isAdmin}) {
         <MenuButton
           size={responsiveSize}
           mt="2"
-          color="blue.500"
+          color="#0468ae"
           as={IconButton}
           aria-label="Options"
           icon={<HamburgerIcon />}
         />
         <MenuList>
-        {isAdmin && <Link as={ReactLink} to='/login/adminform'>
+        { !isLoggedIn &&
+        <>
+        <Link as={ReactLink} to='/register'
+        >
+          <MenuItem
+            display={{
+              md: 'none',
+              lg: 'none',
+            }}
+            size={responsiveSize}
+            variant="solid"
+            mr="2"
+            mt="2"
+          >
+            <Icon as={AiTwotoneEdit} mr={2.5}/>
+            Inscription
+          </MenuItem>
+          </Link>
+
+        <Link as={ReactLink} to='/login'
+        >
+          <MenuItem
+            display={{
+              md: 'none',
+              lg: 'none',
+            }}
+          >
+            <Icon as={AiOutlineRightCircle} mr={2.5}/>
+            Connexion
+          </MenuItem>
+          </Link>
+          </>}
+
+        {(isAdmin && isLoggedIn) && <Link as={ReactLink} to='/login/adminform'>
         <MenuItem icon={<AddIcon />}>
             Déposer une annonce
           </MenuItem>
@@ -52,13 +88,13 @@ export default function MenuBurger({isAdmin}) {
           </MenuItem>
           </Link>
 
-        <Link as={ReactLink} to='/contact'>
+        {/*<Link as={ReactLink} to='/contact'>
           <MenuItem icon={<EmailIcon/>}>
             Nous contacter
           </MenuItem>
-          </Link>
+          </Link> */}
 
-          <Link href="https://discord.com/invite/jR3f6Uwm" isExternal>
+          <Link href="https://discord.gg/jR3f6Uwm" isExternal>
             <MenuItem>
             <Icon as={FaDiscord} mr={2.5}/>
               Discord

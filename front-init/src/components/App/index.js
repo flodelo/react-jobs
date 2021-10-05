@@ -8,7 +8,6 @@ import {
 
 import { ChakraProvider } from '@chakra-ui/react';
 
-import { BASE_URL } from '../constants/apiConstants';
 // == Import
 import './styles.css';
 
@@ -25,6 +24,7 @@ import BackTopButton from '../BackTopButton';
 import About from '../Header/About';
 import Contact from '../Header/Contact';
 import TaglineBlock from '../Header/TaglineBlock';
+import Page404 from '../Page404';
 
 
 
@@ -51,7 +51,7 @@ export default function App() {
       return data.json();
     })
     .then(data => {
-      data = data.slice(0, 100)
+      // data = data.slice(0, 100)
       // console.log(data);
       setJobs(data)
     })
@@ -85,6 +85,7 @@ export default function App() {
           <Route path="/contact">
             <Contact />
           </Route>
+          <Route path="*" component={Page404} />
           {/* <Route>
           <Error />
         </Route> */}

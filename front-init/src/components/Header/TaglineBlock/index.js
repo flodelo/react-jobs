@@ -26,27 +26,27 @@ export default function TaglineBlock() {
       >
       <VStack
       position="absolute"
-      bottom="5"
+      bottom="6"
       w="100%"
         justify={'center'}
         px={useBreakpointValue({ base: 4, md: 8 })}>
         <Stack maxW={'4xl'} align={'flex-start'} spacing={2}>
           <Text
-            textShadow="0.25px 0.25px 10px #000000"
-            color={'white'}
+            textShadow="2px 2px 5px #000000"
+            color={'#F7FAFC'}
             fontWeight={700}
             lineHeight={1}
             fontSize={useBreakpointValue({ base: '3xl', md: '4xl' })}>
-            Les hooks n'ont plus de secret pour vous ?
+            Les hooks n'ont plus de secret pour toi ?
           </Text>
           <Stack direction={'row'} display="flex">
           <Text display="flex" flexWrap="wrap"
-            textShadow="0.25px 0.25px 10px #000000"
-            color={'white'}
+            textShadow="2px 2px 5px #000000"
+            color={'#F7FAFC'}
             fontWeight={300}
             lineHeight={1}
             mr={4}
-            fontSize={useBreakpointValue({ base: '2xl', md: '3xl' })}>Consultez les offres React les plus récentes en France 
+            fontSize={useBreakpointValue({ base: '2xl', md: '3xl' })}>Consulte les offres React les plus récentes en France 
             <Twemoji className="twemoji" text="🇫🇷"/> 
           </Text>
           </Stack>

@@ -36,7 +36,7 @@ const BackTopButton = () =>{
     h="0px"
     fontSize="3rem"
     zIndex={1}
-    color="blue.500"
+    color="#0468ae"
     _focus={{
       outline: "none"
     }}

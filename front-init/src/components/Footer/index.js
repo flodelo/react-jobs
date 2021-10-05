@@ -8,9 +8,14 @@ import {
   Stack,
   Text,
   Icon,
-  Link
+  Link,
 } from '@chakra-ui/react';
 import { FaDiscord, FaTwitter } from 'react-icons/fa';
+
+import {
+  EmailIcon
+} from '@chakra-ui/icons';
+
 
 export default function Footer() {
   return (
@@ -22,7 +27,7 @@ export default function Footer() {
       >
       <Container
         as={Stack}
-        p={10}
+        p={5}
         direction={{ base: 'column', md: 'row' }}
         spacing={4}
         justify={{ base: 'center', md: 'space-between' }}
@@ -30,12 +35,16 @@ export default function Footer() {
         <Text>React-jobs.fr © 2021 CFAFF. Tous droits réservés</Text>
         <Stack direction={'row'} spacing={6}>
             
-        <Link href="https://discord.com/invite/jR3f6Uwm" isExternal>
+        <Link href="https://discord.gg/jR3f6Uwm" isExternal>
           <Icon as={FaDiscord} w={5} h={5} />
         </Link>   
             
         <Link href="https://twitter.com/react_jobs_fr" isExternal>
           <Icon as={FaTwitter} w={5} h={5} />
+        </Link>
+
+        <Link href="mailto:contact@react-jobs.fr" isExternal>
+          <Icon as={EmailIcon} w={5} h={5} />
         </Link>
 
         </Stack>

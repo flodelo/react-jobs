@@ -11,19 +11,20 @@ import {
 import MenuBurger from './MenuBurger';
 import Logo from './Logo';
 
-const Header = ({isLoggedIn,setIsLoggedIn, isAdmin}) => {
+const Header = ({isLoggedIn,setIsLoggedIn, isAdmin, setIsAdmin}) => {
   const history = useHistory();
   const responsiveSize = useBreakpointValue(['md', 'lg']);
   // Le hook useBreakpointValue répond également au redimensionnement de la fenêtre et renvoie la valeur appropriée pour la nouvelle taille de la fenêtre
  // Fonction permettant une redirection lors de l'event onClick sur un élément texte
   const isLoggedOut = () => {
-    setIsLoggedIn(false);
     localStorage.clear();
+    setIsLoggedIn(false);
     history.push("/");
   }
+  
 
   return (
-    <Flex>
+    <Flex bg="gray.50" pb="1.5em" pt="1em">
       <Box boxSize="40">
         <Logo  size={responsiveSize}/>
       </Box>             
@@ -41,8 +42,8 @@ const Header = ({isLoggedIn,setIsLoggedIn, isAdmin}) => {
               lg: 'inline-block',
             }}
             size={responsiveSize}
-            color="blue.500"
-            variant="outline"
+            variant="solid"
+            color="#0468ae"
             mr="2"
             mt="2"
           >
@@ -59,7 +60,7 @@ const Header = ({isLoggedIn,setIsLoggedIn, isAdmin}) => {
               lg: 'inline-block',
             }}
             size={responsiveSize}
-            color="blue.500"
+            color="#0468ae"
             mr="2"
             mt="2"
           >
@@ -69,13 +70,13 @@ const Header = ({isLoggedIn,setIsLoggedIn, isAdmin}) => {
 
         <Button
             display={{
-              base: 'none',
+              base: 'inline-block',
               md: 'inline-block',
               lg: 'inline-block',
             }}
             onClick={isLoggedOut}
             size={responsiveSize}
-            color="blue.500"
+            color="#0468ae"
             mr="2"
             mt="2"
           >
@@ -86,7 +87,7 @@ const Header = ({isLoggedIn,setIsLoggedIn, isAdmin}) => {
 
         <Menu>
           {/* Creation du menu burger avec props */}
-          <MenuBurger isAdmin={isAdmin}
+          <MenuBurger isAdmin={isAdmin} isLoggedIn={isLoggedIn}
           />
         </Menu>
       </Box>

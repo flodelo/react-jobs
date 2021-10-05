@@ -4,33 +4,65 @@ import React from 'react';
 import { useState, useEffect } from "react";
 
 // == Imports NPM
+import InfiniteScroll from "react-infinite-scroll-component";
 import {
-  Input, Button, VStack, StackDivider, Accordion, InputLeftElement, InputGroup, Text, useColorModeValue,
+  Input, VStack, InputLeftElement, InputGroup, Text, useColorModeValue, Stack,
 } from '@chakra-ui/react';
 import { SearchIcon } from '@chakra-ui/icons';
 import Job from './Job';
 import PremiumJobs from './PremiumJobs';
 
-export default function Search ({jobs}) {
-  
-  const [searchTerm, setSearchTerm] = useState("");
 
+export default function Search ({jobs}) {
+
+  const [premiumJobs, setPremiumJobs] = useState([]);
+  const perPage = 5;
+  const [allJobs, setAllJobs] = useState(jobs.slice(0, perPage));
+  const [hasMore, setHasMore] = useState(false);
+  const [searchTerm, setSearchTerm] = useState("");
+  const [lastPosition, setLastPosition] = useState(perPage);
+  
+  useEffect(() => {
   // useEffect(() => {
   //   fetch("http://localhost:5050/jobs/pe")
   //     .then((response) => response.json())
   //     .then((json) => setJobs(json));
   // }, []);
 
-  const handleSearchTerm = (e) => {
-    setSearchTerm("");
-    let value = e.target.value;
-    value.length > 2 && setSearchTerm(e.target.value);
+    // fetch(BASE_URL +'/hello', {withCredentials: true})
+    fetch('http://18.212.203.228:5050' + '/jobs')
+    
+      .then(data => {
+        console.log("1er console log de data PremiumJobs",data);
+        return data.json();
+      })
+      .then(data => {
+        // data = data.slice(0, 2)
+        console.log("2eme console log de data PremiumJobs",data);
+        setPremiumJobs(data)
+      })
+      .catch(error => {
+        console.log(error)
+      })
+    }, [])
+
+    const handleSearchTerm = (e) => {
+      setSearchTerm("");
+      let value = e.target.value;
+      value.length > 2 && setSearchTerm(e.target.value);
+    };
+
+  const fetchMoreData = () => {
+    setHasMore(true)
+        setAllJobs((prev) => [...prev, ...jobs.slice(lastPosition, lastPosition + perPage)]);
+
+    setLastPosition(lastPosition + perPage);
   };
 
   return (
     <>
       <VStack spacing="10px" justify="center" p={5} bg={useColorModeValue('gray.50', 'gray.800')}>
-        <Text>Recherchez une ville, une technologie, un type de contrat...</Text>
+        <Text mt="2em" color="gray.500">Rechercher une ville, une technologie, un type de contrat...</Text>
         <InputGroup maxWidth="500px">
         <InputLeftElement
         pointerEvents="none"
@@ -44,17 +76,27 @@ export default function Search ({jobs}) {
           placeholder="Ex : Bordeaux, Redux, CDI"
           size="lg"
           bg="white"
+          mb="1.5em" 
         />
       </InputGroup>
       </VStack>
-      <PremiumJobs/>
-      <VStack p={10} bg={useColorModeValue('gray.50', 'gray.800')} spacing={4} divider={<StackDivider borderColor="gray.200" align="stretch" />}>
-      <Accordion width="80%" allowToggle >
-        {jobs
+      <VStack spacing="10px" justify="center" p={5} bg={useColorModeValue('gray.50', 'gray.800')}></VStack>
+      {premiumJobs.map((val) => {
+            return (<PremiumJobs premiumJobs={val} key={val.id} />
+      )})}
+<VStack spacing="0.5em" justify="center" p={5} bg={useColorModeValue('gray.50', 'gray.800')}></VStack>
+      <InfiniteScroll
+          dataLength={allJobs}
+          next={fetchMoreData}
+          hasMore={setHasMore}
+        >
+      
+        {allJobs
           .filter(val =>
             val.description.toLowerCase().includes(searchTerm.toLowerCase())
             || val.intitule.toLowerCase().includes(searchTerm.toLowerCase())
             || val.typeContrat.toLowerCase().includes(searchTerm.toLowerCase())
+            || val.lieuTravail.libelle.toLowerCase().includes(searchTerm.toLowerCase())
           )
           .map((val) => {
             return (
@@ -62,8 +104,9 @@ export default function Search ({jobs}) {
               />
             );
           })}
-      </Accordion>
-      </VStack>
+      
+      </InfiniteScroll>
+      <VStack spacing="0.5em" justify="center" p={5} bg={useColorModeValue('gray.50', 'gray.800')}></VStack>
     </>
   );
 } 

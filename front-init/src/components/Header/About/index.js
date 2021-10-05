@@ -11,7 +11,7 @@ export default function About() {
     <>
     <Heading align={'center'} as="h1" bg={useColorModeValue('gray.50', 'gray.800')} pt="1em">A propos</Heading>
     <Flex p={5} flexWrap="wrap" justifyContent="space-around" bg={useColorModeValue('gray.50', 'gray.800')} >
-    <Flex spacing="24px" d="flex" flexWrap="wrap">
+    <Flex justifyContent="center" spacing="24px" flexWrap="wrap">
       <Box 
       m="0.5em"
       w="100%"
@@ -19,43 +19,46 @@ export default function About() {
       py={4}
       px={8}
       spacing={{ base: 8, md: 10 }}
-      align={'left'}>
+      align={'center'}>
       <Text
       fontWeight={700}
-      fontSize={useBreakpointValue({ base: 'lg', md: 'xl' })}
-        textAlign={'left'}>
+      color="#0468ae"
+      fontSize={useBreakpointValue({ base: 'xl', md: '2xl' })}
+        textAlign={'center'}>
         React... ton framework frontend de coeur ?
       </Text>
       <Text
       fontWeight={500}
       fontSize={useBreakpointValue({ base: 'lg', md: 'xl' })}
-        textAlign={'left'}>
-        React-jobs.fr est la source #1 pour trouver ta prochaine mission React qui te correspond. Nous sélectionnons les offres les plus pertinentes en France pour te faciliter la vie.
+        textAlign={'center'}>
+        React-jobs.fr est la source #1 pour trouver la prochaine mission React qui te correspond. <br /> Nous sélectionnons les offres les plus pertinentes en France pour te faciliter la vie.
       </Text>
       <Text
       fontWeight={700}
       fontSize={useBreakpointValue({ base: 'md', md: 'lg' })}
-        textAlign={'left'}
-        mt="1em">
+        textAlign={'center'}
+        mt="1em"
+        color="#0468ae">
         #Entraide #Communauté #Passion
       </Text>
       <Text
       mt="1em"
       fontSize={useBreakpointValue({ base: 'md', md: 'lg' })}
-        textAlign={'left'}
+        textAlign={'center'}
         maxW={'3xl'}>
-        Le projet a été créé par 5 développeurs formés par <Link href="https://oclock.io/" isExternal>O'clock<ExternalLinkIcon mx="5px" /></Link>
+        Le projet a été créé par cinq développeurs formés par <Link href="https://oclock.io/" isExternal>O'clock<ExternalLinkIcon mx="5px" /></Link>
       </Text>
     </Box>
     <Box 
       w="0.5em"
       w="100%"
+      maxWidth="1200px"
       bg={useColorModeValue('gray.50', 'gray.800')}
       py={8}
       px={8}
       spacing={{ base: 8, md: 10 }}
       align={'center'}
-      background="linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5) ), url(https://images.pexels.com/photos/4164418/pexels-photo-4164418.jpeg?cs=srgb&dl=pexels-antonio-batini%C4%87-4164418.jpg&fm=jpg)"
+      background="linear-gradient( rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7) ), url(https://images.pexels.com/photos/177598/pexels-photo-177598.jpeg?cs=srgb&dl=pexels-markus-spiske-177598.jpg&fm=jpg)"
       backgroundSize={'cover'}
       borderRadius="5px">
       <Text
@@ -68,7 +71,7 @@ export default function About() {
         Bon à savoir : React est le framework le plus recherché dans le monde : 
         59% des recruteurs tech sont à l'affût de développeurs connaissant React. 
         Malheureusement, seuls 27,6% des programmeurs disent savoir l'utiliser.
-        </Text><Link color="white" href="https://www.codingame.com/work/codingame-developer-survey-2021/?utm_source=press&utm_medium=referral&utm_campaign=developer-survey-2021&utm_content=b2b" isExternal>(Source : Codingame.com - 2021)<ExternalLinkIcon mx="5px"/></Link>
+        </Text><Link color="white" href="https://www.codingame.com/work/codingame-developer-survey-2021/" isExternal>(Source : Codingame.com - 2021)<ExternalLinkIcon mx="5px"/></Link>
     </Box>
     </Flex>
     </Flex>
@@ -90,20 +93,22 @@ export default function About() {
         fontSize={{ base: 'm', md: 'm' }}
         textAlign={'center'}
         maxW={'3xl'}>
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur tempor dolor sit amet maximus vehicula. In sapien magna, facilisis at gravida sit amet, sagittis nec enim. Fusce sit amet dolor ac enim convallis bibendum. Aenean pulvinar cursus nunc.
+        32 ans, je vis à Arras dans le Pas-de-Calais (62), actuellement chargé de communication et développeur web React en devenir.
       </Text>
       <Box textAlign={'center'}>
         <Avatar
           src={
-            'https://images.unsplash.com/photo-1586297135537-94bc9ba060aa?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=100&q=80'
+            'https://i.goopics.net/1bxvg.jpg'
           }
           alt={'Jenny Wilson'}
           mb={2}
         />
 
-        <Text fontWeight={600}>Caroline Wiese</Text>
+        <Link href="https://www.linkedin.com/in/florian-delobelle-42681b45/" isExternal>
+        <Text color="#0468ae" fontWeight={600}>Florian Delobelle</Text>
+        </Link>
         <Text fontSize={'sm'} color={useColorModeValue('gray.400', 'gray.400')}>
-          Lead dev Back
+          Product Owner et Dev Front
         </Text>
       </Box>
     </Stack>
@@ -123,20 +128,22 @@ export default function About() {
         fontSize={{ base: 'm', md: 'm' }}
         textAlign={'center'}
         maxW={'3xl'}>
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur tempor dolor sit amet maximus vehicula. In sapien magna, facilisis at gravida sit amet, sagittis nec enim. Fusce sit amet dolor ac enim convallis bibendum. Aenean pulvinar cursus nunc.
+        37 ans, domiciliée en Dordogne, ex-Biologiste et anciennement Attachée de Recherche Clinique, maman fière de deux petites filles et folle de SQL !
       </Text>
       <Box textAlign={'center'}>
         <Avatar
           src={
-            'https://images.unsplash.com/photo-1586297135537-94bc9ba060aa?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=100&q=80'
+            'https://media-exp1.licdn.com/dms/image/C4D03AQHiB8eXPFjsBA/profile-displayphoto-shrink_800_800/0/1613555923540?e=1633564800&v=beta&t=752IJtCMhi3M3mSSzcWwL-q2RRj4nY4g0so7NiK2rpk'
           }
-          alt={'Jenny Wilson'}
+          alt={'Caro Wiese'}
           mb={2}
         />
 
-        <Text fontWeight={600}>Florian Delobelle</Text>
+        <Link href="https://www.linkedin.com/in/carowiese?lipi=urn%3Ali%3Apage%3Ad_flagship3_profile_view_base_contact_details%3BlRfhnLi6QDaG1yAqX4MFGg%3D%3D" isExternal>
+          <Text color="#0468ae" fontWeight={600}>Caroline Wiese</Text>
+          </Link>
         <Text fontSize={'sm'} color={useColorModeValue('gray.400', 'gray.400')}>
-        Product Owner et dev Front
+        Lead Dev Back
         </Text>
       </Box>
     </Stack>
@@ -157,20 +164,22 @@ export default function About() {
         fontSize={{ base: 'm', md: 'm' }}
         textAlign={'center'}
         maxW={'3xl'}>
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur tempor dolor sit amet maximus vehicula. In sapien magna, facilisis at gravida sit amet, sagittis nec enim. Fusce sit amet dolor ac enim convallis bibendum. Aenean pulvinar cursus nunc.
+        32 ans, installé en Normandie, j'ai trouvé le chemin du développement web après avoir travaillé dans différentes Maisons de Couture.
       </Text>
       <Box textAlign={'center'}>
         <Avatar
           src={
-            'https://images.unsplash.com/photo-1586297135537-94bc9ba060aa?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=100&q=80'
+            'https://media-exp1.licdn.com/dms/image/C5103AQGhQV2sQZW2FA/profile-displayphoto-shrink_800_800/0/1516959223349?e=1633564800&v=beta&t=bxAkHHZm9AkS_twJC-s85w4ZvCn0fEFK9sZG9TvXACc'
           }
           alt={'Jenny Wilson'}
           mb={2}
         />
 
-        <Text fontWeight={600}>Florian Brun-Buisson</Text>
+        <Link href="https://www.linkedin.com/in/florian-brun-buisson-631053145/" isExternal>
+          <Text color="#0468ae" fontWeight={600}>Florian Brun-Buisson</Text>
+        </Link>
         <Text fontSize={'sm'} color={useColorModeValue('gray.400', 'gray.400')}>
-          Lead dev Front
+          Lead Dev Front
         </Text>
       </Box>
     </Stack>
@@ -191,20 +200,22 @@ export default function About() {
         fontSize={{ base: 'm', md: 'm' }}
         textAlign={'center'}
         maxW={'3xl'}>
-       Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur tempor dolor sit amet maximus vehicula. In sapien magna, facilisis at gravida sit amet, sagittis nec enim. Fusce sit amet dolor ac enim convallis bibendum. Aenean pulvinar cursus nunc.
+       39 ans, Poitiers. Dev Web Backend. “Quand on veut une chose, tout l'Univers conspire à nous permettre de réaliser notre rêve.” Paulo Coelho
       </Text>
       <Box textAlign={'center'}>
         <Avatar
           src={
-            'https://images.unsplash.com/photo-1586297135537-94bc9ba060aa?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=100&q=80'
+            'https://i.goopics.net/AP5Yb.jpg'
           }
-          alt={'Jenny Wilson'}
+          alt={'Felana Letrange'}
           mb={2}
         />
 
-        <Text fontWeight={600}>Felana Letrange</Text>
+        <Link href="https://www.linkedin.com/in/felana-letrange/" isExternal>
+          <Text color="#0468ae" fontWeight={600}>Felana Letrange</Text>
+        </Link>
         <Text fontSize={'sm'} color={useColorModeValue('gray.400', 'gray.400')}>
-          Git Master et dev Back
+          Git Master et Dev Back
         </Text>
       </Box>
     </Stack>
@@ -225,7 +236,7 @@ export default function About() {
         fontSize={{ base: 'm', md: 'm' }}
         textAlign={'center'}
         maxW={'3xl'}>
-        34 ans, domicilié à Boulogne-sur-Mer (Pas-de-Calais, 62), ex-journaliste sportif en quête de reconversion.
+        34 ans, domicilié à Boulogne-sur-Mer (Pas-de-Calais, 62), ex-journaliste sportif en quête de reconversion. En bref, sur tous les Front(s) ! :D
       </Text>
       <Box textAlign={'center'}>
         <Avatar
@@ -236,12 +247,44 @@ export default function About() {
           mb={2}
         />
         <Link href="https://www.linkedin.com/in/alexandre-chochois" isExternal>
-        <Text fontWeight={600}>Alexandre Chochois</Text> </Link>
+        <Text color="#0468ae" fontWeight={600}>Alexandre Chochois</Text> </Link>
         <Text fontSize={'sm'} color={useColorModeValue('gray.400', 'gray.400')}>
-          Scrum Master et dev Front
+          Scrum Master et Dev Front
         </Text>
       </Box>
     </Stack>
+    </Flex>
+    <Heading align={'center'} as="h1" bg={useColorModeValue('gray.50', 'gray.800')} pt="1em">Contact</Heading>
+    <Flex p={5} flexWrap="wrap" justifyContent="space-around" bg={useColorModeValue('gray.50', 'gray.800')} >
+    <Flex justifyContent="center" spacing="24px" flexWrap="wrap">
+      <Box 
+      m="0.5em"
+      w="100%"
+      bg={useColorModeValue('gray.50', 'gray.800')}
+      py={4}
+      px={8}
+      spacing={{ base: 8, md: 10 }}
+      align={'center'}>
+      <Text
+      fontWeight={700}
+      color="#0468ae"
+      fontSize={useBreakpointValue({ base: 'xl', md: '2xl' })}
+        textAlign={'center'}>
+        Intéressé par notre projet ? Envie d'en savoir plus ?
+      </Text>
+      <Text
+      fontWeight={500}
+      fontSize={useBreakpointValue({ base: 'lg', md: 'xl' })}
+        textAlign={'center'}>
+        N'hésitez pas à nous contacter par email : <Text
+      fontWeight={700}
+      fontSize={useBreakpointValue({ base: 'xl', md: '2xl' })}
+        textAlign={'center'}>
+        contact@react-jobs.fr
+      </Text>
+      </Text>
+    </Box>
+    </Flex>
     </Flex>
     </>
   );

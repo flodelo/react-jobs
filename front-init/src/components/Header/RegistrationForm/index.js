@@ -1,4 +1,6 @@
 import React, { useState } from 'react';
+import { Link as ReactLink } from 'react-router-dom';
+import { useHistory } from "react-router-dom";
 
 import axios from 'axios';
 // import { withRouter } from "react-router-dom";
@@ -6,6 +8,7 @@ import axios from 'axios';
 import { Twemoji } from 'react-emoji-render';
 
 import {
+  Text,
   Flex,
   Box,
   FormControl,
@@ -18,8 +21,8 @@ import {
   useColorModeValue,
 } from '@chakra-ui/react';
 
-export default function RegistrationForm(props) {
-
+export default function RegistrationForm() {
+  const history = useHistory();
   const [state, setState] = useState({
     firstname: '',
     lastname: '',
@@ -50,13 +53,14 @@ export default function RegistrationForm(props) {
       
      axios.post("http://18.212.203.228:5050" + "/users/registerUser", payload)
         .then((response) => {
+          redirectToHome();
           console.log(response)
           if (response.status === 200) {
             setState((prevState) => ({
               ...prevState,
               // successMessage: 'Registration successful. Redirecting to home page..',
             }));
-            redirectToHome();
+            
             console.log(response)
             // props.showError(null);
           } else {
@@ -80,11 +84,11 @@ export default function RegistrationForm(props) {
   };
 
   const redirectToHome = () => {
-    props.history.push('/');
+  history.push('/');
   };
-  const redirectToLogin = () => {
-    props.history.push('/login');
-  };
+  // const redirectToLogin = () => {
+  //   props.history.push('/login');
+  // };
 
   return (
     <Flex
@@ -95,7 +99,7 @@ export default function RegistrationForm(props) {
     >
       <Stack spacing={8} mx="auto" maxW="lg" py={12} px={6}>
         <Box align="center" justifyContent="center" display="flex">
-          <Heading display="flex" fontSize="4xl">Inscription <Twemoji display="flex" onlyEmojiClassName="twemoji" display="flex" text="⚛️"/></Heading>
+          <Heading display="flex" fontSize="4xl">Inscription <Twemoji display="flex" onlyEmojiClassName="twemoji" display="flex" text="👩🏻‍💻"/></Heading>
         </Box>
         <Box
           rounded="lg"
@@ -157,12 +161,15 @@ export default function RegistrationForm(props) {
                 align="start"
                 justify="space-between"
               >
-
-                <Link href="/login" color="blue.500">Déja un compte ? Connectez-vous</Link>
-
+                <Link as={ReactLink} to='/login'>
+                <Text 
+                color="#0468ae">
+                Déja un compte ? Connectez-vous
+                </Text>
+                </Link>
               </Stack>
               <Button
-                color="blue.500"
+                color="#0468ae"
                 onClick={handleSubmitClick}
               >
                 Je m'inscris
