@@ -3,10 +3,8 @@ import { Link as ReactLink } from 'react-router-dom';
 import { useHistory } from "react-router-dom";
 
 import axios from 'axios';
-// import { withRouter } from "react-router-dom";
 
 import { Twemoji } from 'react-emoji-render';
-
 import {
   Text,
   Flex,
@@ -28,8 +26,6 @@ export default function RegistrationForm() {
     lastname: '',
     email: '',
     password: '',
-    // confirmPassword: '',
-    // successMessage: null,
   });
 
   const handleChange = (e) => {
@@ -41,54 +37,39 @@ export default function RegistrationForm() {
   };
 
   const sendDetailsToServer = () => {
-    // if (state.email.length && state.password.length) {
-      // props.showError(null);
-      const payload = {
-        "firstname" : state.firstname,
-        "lastname" : state.lastname,
-        "email" : state.email,
-        "password" : state.password,
-        // "role" : "User-Agent", (deleted > Felana request)
-      };
-      
-     axios.post("http://18.212.203.228:5050" + "/users/registerUser", payload)
-        .then((response) => {
-          redirectToHome();
-          console.log(response)
-          if (response.status === 200) {
-            setState((prevState) => ({
-              ...prevState,
-              // successMessage: 'Registration successful. Redirecting to home page..',
-            }));
-            
-            console.log(response)
-            // props.showError(null);
-          } else {
-          // props.showError("Some error ocurred");
-      }})
-  .catch((error) => {
-      console.log(error.response);
-  });
- }
+    const payload = {
+      "firstname": state.firstname,
+      "lastname": state.lastname,
+      "email": state.email,
+      "password": state.password,
+    };
 
+    axios.post("http://18.212.203.228:5050" + "/users/registerUser", payload)
+      .then((response) => {
+        redirectToHome();
+        // console.log(response)
+        if (response.status === 200) {
+          setState((prevState) => ({
+            ...prevState,
+          }));
+        } else {
+          // props.showError("Erreur");
+        }
+      })
+      .catch((error) => {
+        console.log(error.response);
+      });
+  }
 
   const handleSubmitClick = (e) => {
     e.preventDefault();
-    console.log(state);
-    // if (state.password === state.confirmPassword) {
-      sendDetailsToServer();
-    // }
-    // else {
-      // props.showError('Passwords do not match');
-    // }
+    // console.log(state);
+    sendDetailsToServer();
   };
 
   const redirectToHome = () => {
-  history.push('/');
+    history.push('/');
   };
-  // const redirectToLogin = () => {
-  //   props.history.push('/login');
-  // };
 
   return (
     <Flex
@@ -99,7 +80,7 @@ export default function RegistrationForm() {
     >
       <Stack spacing={8} mx="auto" maxW="lg" py={12} px={6}>
         <Box align="center" justifyContent="center" display="flex">
-          <Heading display="flex" fontSize="4xl">Inscription <Twemoji display="flex" onlyEmojiClassName="twemoji" display="flex" text="👩🏻‍💻"/></Heading>
+          <Heading display="flex" fontSize="4xl">Inscription <Twemoji display="flex" onlyEmojiClassName="twemoji" display="flex" text="👩🏻‍💻" /></Heading>
         </Box>
         <Box
           rounded="lg"
@@ -108,7 +89,7 @@ export default function RegistrationForm() {
           p={8}
         >
           <Stack spacing={4}>
-          <FormControl id="email">
+            <FormControl id="email">
               <FormLabel>Prénom</FormLabel>
               <Input
                 type="text"
@@ -162,10 +143,10 @@ export default function RegistrationForm() {
                 justify="space-between"
               >
                 <Link as={ReactLink} to='/login'>
-                <Text 
-                color="#0468ae">
-                Déja un compte ? Connectez-vous
-                </Text>
+                  <Text
+                    color="#0468ae">
+                    Déja un compte ? Connectez-vous
+                  </Text>
                 </Link>
               </Stack>
               <Button
@@ -181,16 +162,3 @@ export default function RegistrationForm() {
     </Flex>
   );
 }
-
-/* <div className="alert alert-success mt-2" style={{ display: state.successMessage ? 'block' : 'none' }} role="alert">
-        {state.successMessage}
-      </div>
-      <div className="mt-2">
-        <span>Already have an account? </span>
-        <span className="loginText" onClick={() => redirectToLogin()}>Login here</span>
-      </div>
-    </div>
-  );
-} */
-
-// export default withRouter(RegistrationForm);

@@ -15,7 +15,6 @@ import Footer from '../Footer';
 import AdminForm from '../Header/AdminForm';
 import BackTopButton from '../BackTopButton';
 import About from '../Header/About';
-import Contact from '../Header/Contact';
 import TaglineBlock from '../Header/TaglineBlock';
 import Page404 from '../Page404';
 
@@ -71,9 +70,6 @@ export default function App() {
           </Route>}
           <Route path="/about">
             <About />
-          </Route>
-          <Route path="/contact">
-            <Contact />
           </Route>
           <Route path="*"> 
             <Page404/>
