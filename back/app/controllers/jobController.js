@@ -1,6 +1,5 @@
 const Job = require('../models/job');
 
-
 const jobController = {
 
     findAllJobs: async (_, response) => {

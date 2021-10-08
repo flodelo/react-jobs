@@ -61,22 +61,23 @@ export default function AdminForm({isAdmin}) {
       //  'user_id' : `Bearer ${localStorage.getItem('USER_ID')}`,
      }}
      )
-        .then((response) => {
-          redirectToHome();
-          if (response.status === 200) {
-            setState((prevState) => ({
-              ...prevState,
-              // successMessage: 'Registration successful. Redirecting to home page..',
-            }));
-            // redirectToHome();
-            console.log(response)
-            // props.showError(null);
-          } else {
-          // props.showError("Some error ocurred");
-      }})
-  .catch((error) => {
-      console.log(error.response);
-  });
+       .then((response) => {
+         redirectToHome();
+         if (response.status === 200) {
+           setState((prevState) => ({
+             ...prevState,
+             // successMessage: 'Registration successful. Redirecting to home page..',
+           }));
+           // redirectToHome();
+           console.log(response)
+           // props.showError(null);
+         } else {
+           // props.showError("Some error ocurred");
+         }
+       })
+       .catch((error) => {
+         console.log(error.response);
+       });
  }
 
 
