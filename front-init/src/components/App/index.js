@@ -1,34 +1,24 @@
 // == Import npm
 import React, { useEffect, useState } from 'react';
-
+import { ChakraProvider } from '@chakra-ui/react';
 import {
   Switch,
   Route,
 } from 'react-router-dom';
 
-import { ChakraProvider } from '@chakra-ui/react';
-
-// == Import
-import './styles.css';
-
+// == Import composants
 import Header from '../Header';
-import MenuBurger from '../Header/MenuBurger';
 import Search from '../Search';
 import RegistrationForm from '../Header/RegistrationForm';
 import LogInForm from '../Header/LogInForm';
 import Footer from '../Footer';
-import AdminForm from '../AdminForm';
-
+import AdminForm from '../Header/AdminForm';
 import BackTopButton from '../BackTopButton';
-
 import About from '../Header/About';
-import Contact from '../Header/Contact';
 import TaglineBlock from '../Header/TaglineBlock';
 import Page404 from '../Page404';
 
-
-
-// == Composant
+// == Création du composant App
 export default function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [jobs, setJobs] = useState([]);
@@ -43,26 +33,25 @@ export default function App() {
   }
   useEffect(() => {
 
-  // fetch(BASE_URL +'/hello', {withCredentials: true})
-  fetch('http://18.212.203.228:5050' + '/jobs/pe')
-  
-    .then(data => {
-      // console.log(data);
-      return data.json();
-    })
-    .then(data => {
-      // data = data.slice(0, 100)
-      // console.log(data);
-      setJobs(data)
-    })
-    .catch(error => {
-      console.log(error)
-    })
+    fetch('http://18.212.203.228:5050' + '/jobs/pe')
+
+      .then(data => {
+        // console.log(data);
+        return data.json();
+      })
+      .then(data => {
+        // data = data.slice(0, 100)
+        // console.log(data);
+        setJobs(data)
+      })
+      .catch(error => {
+        console.log(error)
+      })
   }, [])
 
   return (
     <ChakraProvider>
-              <div className="app">
+      <div className="app">
         <Header isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} isAdmin={isAdmin}/>
         <Switch>
           <Route exact path="/">
@@ -76,19 +65,15 @@ export default function App() {
           <Route exact path="/login">
             <LogInForm handleIsLoggedIn={handleIsLoggedIn} handleIsAdmin={handleIsAdmin}/>
           </Route>
-          {isAdmin && <Route path="/login/adminform">
+            {isAdmin && <Route path="/login/adminform">
             <AdminForm />
           </Route>}
           <Route path="/about">
             <About />
           </Route>
-          <Route path="/contact">
-            <Contact />
+          <Route path="*"> 
+            <Page404/>
           </Route>
-          <Route path="*" component={Page404} />
-          {/* <Route>
-          <Error />
-        </Route> */}
         </Switch>
         <Footer />
       </div>
@@ -96,28 +81,3 @@ export default function App() {
 
   );
 }
-
-/* import {useState, useEffect} from 'react'
-function App() {
-  const [dataImg, setDataImg] = useState();
-  useEffect(() => {
-    fetch('https://api.thecatapi.com/v1/images/search')
-    .then(response => {
-      console.log(response);
-      return response.json();
-    })
-    .then(data => {
-      console.log(data);
-      setDataImg(data[0].url)
-    })
-  }, [])
-  return (
-    <div className="App">
-      {dataImg &&
-      <img src={dataImg}
-      alt="cat image" style={{width: "500px"}}
-      />}
-    </div>
-  );
-}
-*/

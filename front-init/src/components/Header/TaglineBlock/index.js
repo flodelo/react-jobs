@@ -1,19 +1,15 @@
 import React from 'react';
 
 import { Twemoji } from 'react-emoji-render';
-
-import "./style.css";
-
 import {
   Stack,
   Flex,
-  Button,
   Text,
   VStack,
-  useBreakpointValue,} from '@chakra-ui/react';
+  useBreakpointValue,
+} from '@chakra-ui/react';
 
 export default function TaglineBlock() {
-
   return (
     <Flex
       position="relative"
@@ -23,11 +19,11 @@ export default function TaglineBlock() {
       backgroundSize={'cover'}
       backgroundPosition="60% 38%"
       pb="1em"
-      >
+    >
       <VStack
-      position="absolute"
-      bottom="6"
-      w="100%"
+        position="absolute"
+        bottom="6"
+        w="100%"
         justify={'center'}
         px={useBreakpointValue({ base: 4, md: 8 })}>
         <Stack maxW={'4xl'} align={'flex-start'} spacing={2}>
@@ -40,15 +36,15 @@ export default function TaglineBlock() {
             Les hooks n'ont plus de secret pour toi ?
           </Text>
           <Stack direction={'row'} display="flex">
-          <Text display="flex" flexWrap="wrap"
-            textShadow="2px 2px 5px #000000"
-            color={'#F7FAFC'}
-            fontWeight={300}
-            lineHeight={1}
-            mr={4}
-            fontSize={useBreakpointValue({ base: '2xl', md: '3xl' })}>Consulte les offres React les plus récentes en France 
-            <Twemoji className="twemoji" text="🇫🇷"/> 
-          </Text>
+            <Text display="flex" flexWrap="wrap"
+              textShadow="2px 2px 5px #000000"
+              color={'#F7FAFC'}
+              fontWeight={300}
+              lineHeight={1}
+              mr={4}
+              fontSize={useBreakpointValue({ base: '2xl', md: '3xl' })}>Consulte les offres React les plus récentes en France
+              <Twemoji className="twemoji" text="🇫🇷" />
+            </Text>
           </Stack>
         </Stack>
       </VStack>

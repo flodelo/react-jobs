@@ -5,7 +5,6 @@ import { Link as ReactLink } from 'react-router-dom';
 import axios from 'axios';
 
 import { Twemoji } from 'react-emoji-render';
-
 import {
   Flex,
   Box,
@@ -20,14 +19,13 @@ import {
   Link,
 } from '@chakra-ui/react';
 
-export default function LogInForm({handleIsLoggedIn, handleIsAdmin}) {
+export default function LogInForm({ handleIsLoggedIn, handleIsAdmin }) {
   const history = useHistory();
   // const [isAdmin, setIsAdmin] = useState(false)
   // const [isLogged, setIsLogged] = useState(false)
   const [state, setState] = useState({
     email: '',
     password: '',
-    // successMessage: null,
   });
 
   const handleChange = (e) => {
@@ -42,53 +40,30 @@ export default function LogInForm({handleIsLoggedIn, handleIsAdmin}) {
     e.preventDefault();
     console.log(state);
     const payload = {
-      "email" : state.email,
-      "password" : state.password,
+      "email": state.email,
+      "password": state.password,
     };
     axios.post("http://18.212.203.228:5050/users/loginUser", payload)
-     .then((response) => {
+      .then((response) => {
         if (response.status === 200) {
           const { user, token } = response.data
-          console.log("c'est le rôle", user.role);
-          // if (user.token) {
-          // }
+          // console.log("c'est le rôle", user.role);
+
           handleIsLoggedIn(true)
 
           if (user.role == "admin") {
-            console.log("c'est le rôle", user.role, user.id);
+            // console.log("c'est le rôle", user.role, user.id);
             handleIsAdmin(true)
           }
-
-          // localStorage.setItem("token", token);
           localStorage.setItem("USER_TOKEN", response.data.token);
-          console.log("cest le localStorage", response.data.token);
-          
           localStorage.setItem("user", JSON.stringify(user));
-          console.log("cest le user", user);
-          
           localStorage.setItem("USER_ID", user.id);
-          console.log("cest le getItem", user.id);
 
-          
-          
-
-          console.log(response)
           setState((prevState) => ({
             ...prevState,
-            // successMessage: 'Connexion réussi.',
           }));
 
-
-          // if (isAdmin) {
-          // redirectToDashboard() }
-
-          // else { 
-          // redirectToHome() }
-
-  
           redirectToHome();
-
-          // props.showError(null);
         }
         else if (response.code === 204) {
           // props.showError("Le nom d'utilisateur et le mot de passe ne correspondent pas");
@@ -103,28 +78,11 @@ export default function LogInForm({handleIsLoggedIn, handleIsAdmin}) {
         console.log(error);
       });
   };
- /* .then((response)) => {
-   const user = response.user
-   if (user.role.includes("Admin"))
-   redirectToDashboard() }
-
-  1. si le rôle de l'user est "Admin", rediriger vers "/admin" avec la vue 
-  2. redirection vers admin via react-router
-  3. envoi d'une offre via formulaire
-
-  A voir : 
-  1. comment garder le token et aussi comment réaliser un logout.
-  2. S'assurer que la route n'est pas accessible en tapant l'url avec /admin
- } 
- */
-
 
   const redirectToHome = () => {
-    // props.updateTitle('Accueil');
-    console.log(history)
+    // console.log(history)
     history.push('/');
   };
-
 
   return (
     <Flex
@@ -135,7 +93,7 @@ export default function LogInForm({handleIsLoggedIn, handleIsAdmin}) {
     >
       <Stack spacing={8} mx="auto" maxW="lg" py={12} px={6}>
         <Box justifyContent="center" display="flex" >
-          <Heading display="flex" fontSize="4xl">Connexion <Twemoji className="twemoji" display="flex" text="✌️"/></Heading>
+          <Heading display="flex" fontSize="4xl">Connexion <Twemoji className="twemoji" display="flex" text="✌️" /></Heading>
         </Box>
         <Box
           rounded="lg"
@@ -170,11 +128,11 @@ export default function LogInForm({handleIsLoggedIn, handleIsAdmin}) {
                 justify="space-between"
               >
                 <Link as={ReactLink} to='/register'>
-                <Text
-                  href="/register"
-                  color="#0468ae"
-                >Pas encore de compte ? Cliquez ici pour vous inscrire
-                </Text>
+                  <Text
+                    href="/register"
+                    color="#0468ae"
+                  >Pas encore de compte ? Cliquez ici pour vous inscrire
+                  </Text>
                 </Link>
               </Stack>
               <Button
