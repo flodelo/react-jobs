@@ -16,7 +16,7 @@ const poleemploiController = {
                 'grant_type': 'client_credentials',
                 'client_id': process.env.CLIENT_ID,
                 'client_secret': process.env.CLIENT_SECRET,
-                'scope': 'application_PAR_jobboard_bbd66325e3c090fee72f14d54ccb6bc6fe98dd16eb100d9840ac47bb35c0adef api_offresdemploiv2 o2dsoffre'
+                'scope': 'api_offresdemploiv2 o2dsoffre'
             });
 
             // this is similar to fetch(url, { method: 'POST', headers: headers, body: data}).then ...:

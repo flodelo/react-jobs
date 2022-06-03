@@ -33,7 +33,7 @@ export default function App() {
   }
   useEffect(() => {
 
-    fetch('http://18.212.203.228:5050' + '/jobs/pe')
+    fetch('http://localhost:1234' + '/jobs/pe')
 
       .then(data => {
         // console.log(data);
@@ -52,7 +52,7 @@ export default function App() {
   return (
     <ChakraProvider>
       <div className="app">
-        <Header isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} isAdmin={isAdmin}/>
+        <Header isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} isAdmin={isAdmin} />
         <Switch>
           <Route exact path="/">
             <BackTopButton />
@@ -63,16 +63,16 @@ export default function App() {
             <RegistrationForm />
           </Route>
           <Route exact path="/login">
-            <LogInForm handleIsLoggedIn={handleIsLoggedIn} handleIsAdmin={handleIsAdmin}/>
+            <LogInForm handleIsLoggedIn={handleIsLoggedIn} handleIsAdmin={handleIsAdmin} />
           </Route>
-            {isAdmin && <Route path="/login/adminform">
+          {isAdmin && <Route path="/login/adminform">
             <AdminForm />
           </Route>}
           <Route path="/about">
             <About />
           </Route>
-          <Route path="*"> 
-            <Page404/>
+          <Route path="*">
+            <Page404 />
           </Route>
         </Switch>
         <Footer />
